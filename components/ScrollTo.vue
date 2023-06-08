@@ -30,7 +30,7 @@ const scrollIntoView = (e) => {
   padding: 12px 50px;
   color: var(--c-white);
   display: block;
-  font-family: var(--font-avenir);
+  font-family: theme('fontFamily.avenir');
   text-transform: uppercase;
   min-width: 20rem;
   max-width: 25rem;

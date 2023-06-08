@@ -106,14 +106,14 @@ defineProps({
   &__title {
     font-size: 3rem;
     margin-bottom: 1rem;
-    font-family: var(--font-metalsmith);
+    font-family: theme('fontFamily.metalsmith');
     text-transform: lowercase;
   }
 
   &__subtitle {
     font-size: 2.28rem;
     margin-bottom: 1rem;
-    font-family: var(--font-avenir);
+    font-family: theme('fontFamily.avenir');
     text-transform: uppercase;
   }
 

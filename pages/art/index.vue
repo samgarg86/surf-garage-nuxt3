@@ -2,13 +2,13 @@
   <!--  <pre>-->
   <!--    {{entries.items[0]}}-->
   <!--  </pre>-->
-  <div class="md:columns-2 lg:columns-4 gap-4">
+  <div class="sm:columns-2 md:columns-4 gap-2">
     <NuxtLink
       v-for="({id, url, title}, index) in images"
       :key="index"
       :to="`/art/prints/${id}`">
       <img
-        class="rounded-lg block mb-4 w-full"
+        class="rounded-lg block mb-2 w-full"
         :alt="`Surf Garage - ${title}`"
         :src="url"/>
     </NuxtLink>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-center items-center">
+  <nav class="flex justify-center items-center font-avenir">
     <div class="mr-10">SURF</div>
     <div>PAINTINGS</div>
     <NuxtLink to="/art"><img src="/logo.svg" class="w-[25rem]"/></NuxtLink>

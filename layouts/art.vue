@@ -17,9 +17,4 @@ const {snipcartApiKey} = config.public
 </script>
 
 <style>
-html.dark {
-  color-scheme: light;
-  background-color: #fff;
-  color: theme('colors.black');
-}
 </style>

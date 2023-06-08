@@ -28,7 +28,7 @@
 defineProps({
   title: String,
   subtitle: String,
-  icons: [],
+  icons: Array,
   bgImage: String
 })
 </script>

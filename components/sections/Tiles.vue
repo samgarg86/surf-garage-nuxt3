@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  tiles: []
+  tiles: Array
 })
 </script>
 

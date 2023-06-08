@@ -24,7 +24,7 @@
 defineProps({
   title: String,
   subtitle: String,
-  icons: []
+  icons: Array
 })
 </script>
 <style lang="postcss">

@@ -31,7 +31,7 @@ import Logo from "~/assets/images/logo.svg?component";
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  font-family: var(--font-metalsmith);
+  font-family: theme('fontFamily.metalsmith');
   z-index: 3;
 
   @media screen(md) {

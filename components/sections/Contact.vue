@@ -53,7 +53,7 @@ import ContactLinks from "@/components/ContactLinks.vue";
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 5rem;
     justify-items: center;
-    font-family: var(--font-metalsmith);
+    font-family: theme('fontFamily.metalsmith');
     text-transform: lowercase;
   }
 

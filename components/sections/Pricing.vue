@@ -9,7 +9,7 @@
         :key="index"
         class="pricing__content-item">
         <h3 class="pricing__title lowercase">{{ title }}</h3>
-        <h4 class="pricing__perMonth">€{{ monthlyPrice }}/{{$t("month")}}</h4>
+        <h4 class="pricing__perMonth">€{{ monthlyPrice }}/{{$t("pricing.month")}}</h4>
         <div v-if="priceDescription" class="pricing__price">{{ priceDescription }}</div>
       </li>
     </ul>
@@ -18,7 +18,7 @@
 
 <script setup>
 defineProps({
-  plans: []
+  plans: Array
 })
 </script>
 

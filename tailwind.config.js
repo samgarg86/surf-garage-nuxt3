@@ -18,8 +18,9 @@ module.exports = {
       yellow: "#fffacd",
     },
     fontFamily: {
-      sans: ["Graphik", "sans-serif"],
-      serif: ["Merriweather", "serif"],
+      metalsmith: ["Metalsmith", "sans-serif"],
+      avenir: ["Avenir Next", "serif"],
+      myriad: ["Myriad Pro Regular", "serif"]
     },
     spacing: {
       px: "1px",
@@ -39,6 +40,15 @@ module.exports = {
       8: "8rem",
       9: "9rem",
       10: "10rem",
+    },
+    fontSize: {
+      sm: '1rem',
+      base: '2rem',
+      xl: '2.5rem',
+      '2xl': '3rem',
+      '3xl': '3.5rem',
+      '4xl': '4rem',
+      '5xl': '4.5rem',
     },
     extend: {},
   },

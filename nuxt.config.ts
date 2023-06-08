@@ -1,6 +1,6 @@
 import svgLoader from 'vite-svg-loader'
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/i18n',"@nuxtjs/tailwindcss", "@nuxt/ui"],
+  modules: ['@nuxtjs/i18n',"@nuxtjs/tailwindcss"],
   i18n: {
     langDir: "./locales",
     strategy: "prefix_and_default",
