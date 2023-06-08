@@ -1,27 +1,27 @@
-globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/node-fetch-native/dist/polyfill.mjs';
+globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/node-fetch-native/dist/polyfill.mjs';
 import { Server } from 'node:http';
 import { tmpdir } from 'node:os';
 import { join as join$1 } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, getRequestHeader, setResponseHeader, getRequestHeaders, readBody, createError, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, getQuery as getQuery$1 } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/h3/dist/index.mjs';
-import { createRenderer } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { stringify, uneval } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/devalue/index.js';
-import { renderToString } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/vue/server-renderer/index.mjs';
-import { createFetch as createFetch$1, Headers } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/ofetch/dist/node.mjs';
-import destr from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/destr/dist/index.mjs';
-import { createCall, createFetch } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/hookable/dist/index.mjs';
-import { snakeCase } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/scule/dist/index.mjs';
-import { klona } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/defu/dist/defu.mjs';
-import { hash } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/ohash/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/ufo/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/unstorage/drivers/fs.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/radix3/dist/index.mjs';
-import { generateJSON } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/@intlify/bundle-utils/index.mjs';
-import { relative, join } from 'file:///Users/samwise/dev/surf-garage/surf-art/node_modules/pathe/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, getRequestHeader, setResponseHeader, getRequestHeaders, readBody, createError, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, getQuery as getQuery$1 } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/h3/dist/index.mjs';
+import { createRenderer } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { stringify, uneval } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/devalue/index.js';
+import { renderToString } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/vue/server-renderer/index.mjs';
+import { createFetch as createFetch$1, Headers } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/ofetch/dist/node.mjs';
+import destr from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/destr/dist/index.mjs';
+import { createCall, createFetch } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/unenv/runtime/fetch/index.mjs';
+import { createHooks } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/hookable/dist/index.mjs';
+import { snakeCase } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/scule/dist/index.mjs';
+import { klona } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/defu/dist/defu.mjs';
+import { hash } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/ohash/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/ufo/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/unstorage/drivers/fs.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/radix3/dist/index.mjs';
+import { generateJSON } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/@intlify/bundle-utils/index.mjs';
+import { relative, join } from 'file:///Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/pathe/dist/index.mjs';
 
 const providers = [
   ["APPVEYOR"],
@@ -218,7 +218,7 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
   }
 });
 
-const serverAssets = [{"baseName":"server","dir":"/Users/samwise/dev/surf-garage/surf-art/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"/Users/samwise/dev/surf-garage/surf-garage-nuxt3/server/assets"}];
 
 const assets = createStorage();
 
@@ -230,11 +230,11 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets);
 
-storage.mount('i18n', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/samwise/dev/surf-garage/surf-art/.nuxt/i18n","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/samwise/dev/surf-garage/surf-art","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/samwise/dev/surf-garage/surf-art/server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/samwise/dev/surf-garage/surf-art/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/samwise/dev/surf-garage/surf-art/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('i18n', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/samwise/dev/surf-garage/surf-garage-nuxt3/.nuxt/i18n","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/samwise/dev/surf-garage/surf-garage-nuxt3","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/samwise/dev/surf-garage/surf-garage-nuxt3/server","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/samwise/dev/surf-garage/surf-garage-nuxt3/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/samwise/dev/surf-garage/surf-garage-nuxt3/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -534,14 +534,14 @@ function getRouteRulesForPath(path) {
 
 const script = "\"use strict\";const w=window,de=document.documentElement,knownColorSchemes=[\"dark\",\"light\"],preference=window.localStorage.getItem(\"nuxt-color-mode\")||\"system\";let value=preference===\"system\"?getColorScheme():preference;const forcedColorMode=de.getAttribute(\"data-color-mode-forced\");forcedColorMode&&(value=forcedColorMode),addColorScheme(value),w[\"__NUXT_COLOR_MODE__\"]={preference,value,getColorScheme,addColorScheme,removeColorScheme};function addColorScheme(e){const o=\"\"+e+\"\",t=\"\";de.classList?de.classList.add(o):de.className+=\" \"+o,t&&de.setAttribute(\"data-\"+t,e)}function removeColorScheme(e){const o=\"\"+e+\"\",t=\"\";de.classList?de.classList.remove(o):de.className=de.className.replace(new RegExp(o,\"g\"),\"\"),t&&de.removeAttribute(\"data-\"+t)}function prefersColorScheme(e){return w.matchMedia(\"(prefers-color-scheme\"+e+\")\")}function getColorScheme(){if(w.matchMedia&&prefersColorScheme(\"\").media!==\"not all\"){for(const e of knownColorSchemes)if(prefersColorScheme(\":\"+e).matches)return e}return\"light\"}\n";
 
-const _HSNLTlI54S = (function(nitro) {
+const _PpkCAeuFcl = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
 });
 
 const plugins = [
-  _HSNLTlI54S
+  _PpkCAeuFcl
 ];
 
 function defineRenderHandler(handler) {
@@ -665,7 +665,7 @@ const localeStorage = prefixStorage(useStorage(), PRECOMPILED_LOCALE_KEY);
 const resolveKey = (key) => `${key}.js`;
 const localeKey = (locale, hash) => `${locale}-${hash}`;
 const configKey = (hash) => `${CONFIG_KEY}-${hash}`;
-const _1oGppS = defineEventHandler(async (event) => {
+const _oXu70a = defineEventHandler(async (event) => {
   const body = await readBody(event);
   validate(body);
   const cacheCode = await getCacheCode(body);
@@ -770,7 +770,7 @@ const isFunction = (val) => typeof val === 'function';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isObject = (val) => val !== null && typeof val === 'object';
 
-const _mXPEsh = defineEventHandler(async (event) => {
+const _qGAdug = defineEventHandler(async (event) => {
   const hash = event.context.params?.hash;
   if (hash == null) {
     throw createError({ statusMessage: `require the 'hash'`, statusCode: 400 });
@@ -856,13 +856,13 @@ function getNeedPrecompileMessages(messages) {
   return needPrecompileMessages;
 }
 
-const _lazy_XTjqIe = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_1Capke = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_XTjqIe, lazy: true, middleware: false, method: undefined },
-  { route: '/__i18n__/precompile', handler: _1oGppS, lazy: false, middleware: false, method: "post" },
-  { route: '/__i18n__/prerender/:hash', handler: _mXPEsh, lazy: false, middleware: false, method: "get" },
-  { route: '/**', handler: _lazy_XTjqIe, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_1Capke, lazy: true, middleware: false, method: undefined },
+  { route: '/__i18n__/precompile', handler: _oXu70a, lazy: false, middleware: false, method: "post" },
+  { route: '/__i18n__/prerender/:hash', handler: _qGAdug, lazy: false, middleware: false, method: "get" },
+  { route: '/**', handler: _lazy_1Capke, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -995,9 +995,9 @@ const appRootTag = "div";
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
-const getClientManifest = () => import('/Users/samwise/dev/surf-garage/surf-art/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getClientManifest = () => import('/Users/samwise/dev/surf-garage/surf-garage-nuxt3/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getStaticRenderedHead = () => Promise.resolve().then(function () { return _virtual__headStatic$1; }).then((r) => r.default || r);
-const getServerEntry = () => import('/Users/samwise/dev/surf-garage/surf-art/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
+const getServerEntry = () => import('/Users/samwise/dev/surf-garage/surf-garage-nuxt3/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
 const getSSRStyles = lazyCachedFunction(() => Promise.resolve().then(function () { return styles$1; }).then((r) => r.default || r));
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();

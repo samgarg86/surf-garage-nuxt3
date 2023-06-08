@@ -3,12 +3,12 @@ declare module 'nuxt/schema' {
   interface NuxtConfig {
     ["i18n"]?: typeof import("@nuxtjs/i18n").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     ["tailwindcss"]?: typeof import("@nuxtjs/tailwindcss").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    ["unocss"]?: typeof import("/Users/samwise/dev/surf-garage/surf-art/node_modules/@unocss/nuxt/dist/index").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    ["vueuse"]?: typeof import("/Users/samwise/dev/surf-garage/surf-art/node_modules/@vueuse/nuxt/index").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    ["colorMode"]?: typeof import("/Users/samwise/dev/surf-garage/surf-art/node_modules/@nuxtjs/color-mode/dist/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["unocss"]?: typeof import("/Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/@unocss/nuxt/dist/index").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["vueuse"]?: typeof import("/Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/@vueuse/nuxt/index").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["colorMode"]?: typeof import("/Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/@nuxtjs/color-mode/dist/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     ["nui"]?: typeof import("@nuxt/ui").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule | string | [NuxtModule | string, Record<string, any>] | ["@nuxtjs/i18n", Exclude<NuxtConfig["i18n"], boolean>] | ["@nuxtjs/tailwindcss", Exclude<NuxtConfig["tailwindcss"], boolean>] | ["/Users/samwise/dev/surf-garage/surf-art/node_modules/@unocss/nuxt/dist/index", Exclude<NuxtConfig["unocss"], boolean>] | ["/Users/samwise/dev/surf-garage/surf-art/node_modules/@vueuse/nuxt/index", Exclude<NuxtConfig["vueuse"], boolean>] | ["/Users/samwise/dev/surf-garage/surf-art/node_modules/@nuxtjs/color-mode/dist/module", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["nui"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule | string | [NuxtModule | string, Record<string, any>] | ["@nuxtjs/i18n", Exclude<NuxtConfig["i18n"], boolean>] | ["@nuxtjs/tailwindcss", Exclude<NuxtConfig["tailwindcss"], boolean>] | ["/Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/@unocss/nuxt/dist/index", Exclude<NuxtConfig["unocss"], boolean>] | ["/Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/@vueuse/nuxt/index", Exclude<NuxtConfig["vueuse"], boolean>] | ["/Users/samwise/dev/surf-garage/surf-garage-nuxt3/node_modules/@nuxtjs/color-mode/dist/module", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["nui"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
   interface RuntimeConfig {
    app: {

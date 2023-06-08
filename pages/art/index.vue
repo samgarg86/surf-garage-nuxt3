@@ -1,23 +1,26 @@
 <template>
-<!--  <pre>-->
-<!--    {{entries.items[0]}}-->
-<!--  </pre>-->
+  <!--  <pre>-->
+  <!--    {{entries.items[0]}}-->
+  <!--  </pre>-->
   <div class="md:columns-2 lg:columns-4 gap-4">
     <NuxtLink
-        v-for="({id, url, title}, index) in images"
-        :key="index"
-        :to="`/prints/${id}`">
+      v-for="({id, url, title}, index) in images"
+      :key="index"
+      :to="`/art/prints/${id}`">
       <img
-          class="rounded-lg block mb-4 w-full"
-          :alt="`Surf Garage - ${title}`"
-          :src="url"/>
+        class="rounded-lg block mb-4 w-full"
+        :alt="`Surf Garage - ${title}`"
+        :src="url"/>
     </NuxtLink>
   </div>
-
 </template>
 
 <script setup>
 import {useContentful} from '#imports';
+
+definePageMeta({
+  layout: "art",
+});
 
 const contentful = useContentful()
 const entries = await contentful.getEntries({

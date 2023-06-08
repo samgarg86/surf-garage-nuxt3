@@ -22,7 +22,7 @@ export const resolveNuxtI18nOptions = async (context) => {
                 : {}
           }
   nuxtI18nOptions.vueI18n = Object({})
-  nuxtI18nOptions.locales = [Object({"code":"es","iso":"es","file":"es.json","hash":"2d9b9583","type":"static"}),Object({"code":"en","iso":"en","file":"en.json","hash":"6b6fb374","type":"static"})]
+  nuxtI18nOptions.locales = [Object({"code":"es","iso":"es","file":"es.json","hash":"d3934d37","type":"static"}),Object({"code":"en","iso":"en","file":"en.json","hash":"45fd2319","type":"static"})]
   nuxtI18nOptions.defaultLocale = "es"
   nuxtI18nOptions.defaultDirection = "ltr"
   nuxtI18nOptions.routesNameSeparator = "___"
@@ -46,7 +46,7 @@ export const resolveNuxtI18nOptions = async (context) => {
 
 export const nuxtI18nOptionsDefault = Object({experimental: Object({"jsTsFormatResource":false}),precompile: Object({"strictMessage":true,"escapeHtml":false}),vueI18n: "",locales: [],defaultLocale: "",defaultDirection: "ltr",routesNameSeparator: "___",trailingSlash: false,defaultLocaleRouteNameSuffix: "default",strategy: "prefix_except_default",lazy: false,langDir: null,rootRedirect: null,detectBrowserLanguage: Object({"alwaysRedirect":false,"cookieCrossOrigin":false,"cookieDomain":null,"cookieKey":"i18n_redirected","cookieSecure":false,"fallbackLocale":"","redirectOn":"root","useCookie":true}),differentDomains: false,baseUrl: "",dynamicRouteParams: false,customRoutes: "page",pages: Object({}),skipSettingLocaleOnNavigate: false,types: "composition",debug: false})
 
-export const nuxtI18nInternalOptions = Object({__normalizedLocales: [Object({"code":"es","iso":"es","file":"es.json","hash":"2d9b9583","type":"static"}),Object({"code":"en","iso":"en","file":"en.json","hash":"6b6fb374","type":"static"})]})
+export const nuxtI18nInternalOptions = Object({__normalizedLocales: [Object({"code":"es","iso":"es","file":"es.json","hash":"d3934d37","type":"static"}),Object({"code":"en","iso":"en","file":"en.json","hash":"45fd2319","type":"static"})]})
 export const NUXT_I18N_MODULE_ID = "@nuxtjs/i18n"
 export const NUXT_I18N_PRECOMPILE_ENDPOINT = "/__i18n__/precompile"
 export const NUXT_I18N_PRECOMPILED_LOCALE_KEY = "i18n-locales"

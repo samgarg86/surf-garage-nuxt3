@@ -24,7 +24,9 @@
 <script setup lang="js">
 import {useRoute, useContentful, useRuntimeConfig, ref} from '#imports'
 import {AddToCart} from "#components"
-
+definePageMeta({
+  layout: "art",
+});
 const { public: {priceTable : {prints}}} = useRuntimeConfig()
 const route = useRoute()
 const { id } = route.params
