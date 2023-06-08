@@ -1,0 +1,37 @@
+{
+  "language": "Español",
+  "nav": {
+    "about": "Sobre Nosotros",
+    "services": "Que Ofrecemos",
+    "storage": "Guardatablas",
+    "security": "Seguridad",
+    "pricing": "Precios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Aparca tu tabla en Surf Garage",
+    "subtitle": "Un club premium para surfistas",
+    "join-now": "Únete ahora"
+  },
+  "tiles": {
+    "storage": "Guardatablas",
+    "lockers": "Taquillas",
+    "second-hand": "Tablas de Segunda Mano",
+    "board-repair": "Reparación de Tablas",
+    "surf-art": "Surf Art"
+  },
+  "pricing":  {
+    "title": "Precios",
+    "month": "Mes"
+  },
+  "contact": {
+    "title": "Contacto",
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "phone": "Telefono",
+      "message": "Mensaje",
+      "send": "Enviar"
+    }
+  }
+}

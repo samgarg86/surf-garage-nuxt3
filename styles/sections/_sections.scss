@@ -1,0 +1,56 @@
+.section {
+  margin: var(--section-margin-mobile);
+  position: relative;
+  scroll-margin-top: var(--section-margin);
+
+  @include respond-to("tablet-large") {
+    margin: var(--section-margin);
+  }
+
+  /** Full width sections (with padding) **/
+  &__content {
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 2rem;
+
+    &.full-width {
+      max-width: none;
+      @include respond-to("tablet-large") {
+        padding: 5rem;
+      }
+    }
+
+    @include respond-to("tablet-large") {
+      padding: 5rem 0;
+    }
+
+  }
+
+  &__title {
+    font-size: 4rem;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  &--bg {
+    overflow: hidden;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(var(--c-background), var(--c-background-alpha));
+      z-index: -1;
+    }
+  }
+}

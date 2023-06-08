@@ -1,0 +1,12 @@
+import {createClient} from "contentful"
+
+export default defineNuxtPlugin(() => {
+    return {
+        provide: {
+            contentful: () => createClient({
+                space: '5im2bow6vhih',
+                accessToken: 'Urr45xvziePBNjMuCasC4fiCJRRqz8yMguoNKhW4Veo'
+            })
+        }
+    }
+})

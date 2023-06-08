@@ -1,0 +1,28 @@
+:root {
+  --c-amber-yellow: #ba8723;
+  --c-lighter-yellow: #E9C465;
+  --c-wave-blue: #1A304E;
+  --c-board-red: #6B1F15;
+  //? set your brand colors
+
+  --c-white: #fff;
+
+  --c-light-grey: #fafafa;
+  --c-grey: #d7d7d7;
+
+  --c-black-soft: #444;
+  --c-black: #09090e;
+
+  --c-blue: #2c638f;
+  --c-pink: #fff0f5;
+  --c-yellow: #fffacd;
+
+  //? override for project clarity
+
+  --color-primary: var(--c-blue);
+  --color-secondary: var(--c-pink);
+  --color-tertiary: var(--c-yellow);
+
+  --c-background: 0, 0, 0;
+  --c-background-alpha: 0.2;
+}
