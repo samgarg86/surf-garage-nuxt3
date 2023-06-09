@@ -5,11 +5,10 @@ defineProps({
     required: false,
   },
 });
-import whatsapp from "@/assets/icons/whatsapp.svg?component";
-import insta from "@/assets/icons/insta.svg?component";
-import maps from "@/assets/icons/map.svg?component";
-import language from "@/assets/icons/language.svg?component";
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
+import whatsapp from "~/assets/icons/whatsapp.svg?raw";
+import insta from "~/assets/icons/insta.svg?raw";
+import map from "~/assets/icons/map.svg?raw";
+import language from "~/assets/icons/language.svg?raw";
 </script>
 
 <template>
@@ -19,7 +18,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
       href="https://goo.gl/maps/8qRXWmk34xwfq5Hz7"
       target="_blank"
     >
-      <maps class="contact-links__icon" />
+      <div class="contact-links__icon" v-html="map"/>
       <span v-if="!onlyIcons">Calle Castillejos 54, LPA</span>
     </a>
     <a
@@ -27,7 +26,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
       href="https://wa.me/34600273559?text=Hello%2C%20I%27d%20like%20to%20store%20my%20board%20at%20Surf%20Garage"
       target="_blank"
     >
-      <whatsapp class="contact-links__icon" />
+      <div class="contact-links__icon" v-html="whatsapp"/>
       <span v-if="!onlyIcons">+34600273559</span>
     </a>
     <a
@@ -35,7 +34,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
       href="https://www.instagram.com/surfgaragelpa/"
       target="_blank"
     >
-      <insta class="contact-links__icon" />
+      <div class="contact-links__icon" v-html="insta"/>
       <span v-if="!onlyIcons">@surfgaragelpa</span>
     </a>
 
@@ -43,7 +42,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
       v-if="!onlyIcons"
       class="contact-links__link contact-links__link--language"
     >
-      <language class="contact-links__icon contact-links__icon--language" />
+      <div class="contact-links__icon contact-links__icon--language" v-html="language"/>
       <LanguageSwitcher
         class="contact-links__language-switcher"
         :showLanguageName="true"

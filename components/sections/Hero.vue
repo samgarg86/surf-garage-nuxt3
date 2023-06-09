@@ -1,5 +1,5 @@
 <script setup>
-import arrowDown from "@/assets/icons/chevron-down.svg?component";
+import arrowDown from "~/assets/icons/chevron-down.svg?raw";
 defineProps({
   title: String,
   subtitle: String,
@@ -18,9 +18,7 @@ defineProps({
         $t("hero.join-now")
       }}</ScrollTo>
     </div>
-    <ScrollTo to="tiles" class="hero__arrow">
-      <arrowDown class="hero__arrow-icon" />
-    </ScrollTo>
+    <ScrollTo to="tiles" class="hero__arrow" v-html="arrowDown"/>
     <div class="hero__video-bg">
       <div class="hero__dark-bg"></div>
       <iframe

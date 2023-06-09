@@ -1,27 +1,26 @@
 <template>
   <nav class="navigation">
-    <ul>
-      <li>
-        <ScrollTo to="storage">{{ $t("nav.storage") }}</ScrollTo>
+    <ul class="text-base justify-center items-center mx-auto md:grid md:grid-cols-5">
+      <li class="p-1 hidden md:block text-center">
+        <ScrollTo to="storage" class="text-white">{{ $t("nav.storage") }}</ScrollTo>
       </li>
-      <li>
-        <ScrollTo to="pricing">{{ $t("nav.pricing") }}</ScrollTo>
+      <li class="p-1 hidden md:block text-center">
+        <ScrollTo to="pricing" class="text-white">{{ $t("nav.pricing") }}</ScrollTo>
       </li>
-      <li class="site-logo">
-        <Logo class="site-logo__svg" />
+      <li class="site-logo m-1 w-25" v-html="logo">
       </li>
-      <li>
-        <NuxtLink to="/art">Surf Art</NuxtLink>
+      <li class="p-1 hidden md:block text-center">
+        <NuxtLink to="/art" class="text-white">Surf Art</NuxtLink>
       </li>
-      <li>
-        <ScrollTo to="contact">{{ $t("nav.contact") }}</ScrollTo>
+      <li class="p-1 hidden md:block text-center">
+        <ScrollTo to="contact" class="text-white">{{ $t("nav.contact") }}</ScrollTo>
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup>
-import Logo from "~/assets/images/logo.svg?component";
+import logo from "~/assets/images/logo.svg?raw";
 </script>
 
 <style lang="postcss">
@@ -39,44 +38,7 @@ import Logo from "~/assets/images/logo.svg?component";
   }
 
   ul {
-    list-style: none;
-    font-size: 20px;
-    justify-content: center;
-    align-items: center;
     max-width: 120rem;
-    margin: 0 auto;
-
-    @media screen(md) {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-    }
-
-    li {
-      padding: 1rem;
-      display: none;
-      text-align: center;
-
-      &.site-logo {
-        display: block;
-      }
-
-      @media screen(md) {
-        display: block;
-      }
-    }
-
-    a {
-      color: #fff;
-    }
-  }
-}
-
-.site-logo {
-  padding: 0 30px;
-
-  &__svg {
-    width: 250px;
-    /*height: 220px;*/
   }
 }
 </style>

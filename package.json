@@ -17,18 +17,16 @@
     "@types/node": "^18",
     "eslint": "^8.42.0",
     "nuxt": "^3.5.1",
+    "nuxt-svgo": "^3.1.0",
     "postcss-comment": "^2.0.0",
     "postcss-nested": "^6.0.1",
-    "sass": "^1.62.1"
+    "sass": "^1.63.2"
   },
   "dependencies": {
-    "@intlify/nuxt3": "^0.2.4",
     "@nuxtjs/snipcart": "^2.0.2",
     "contentful": "^10.2.3",
     "eslint-plugin-nuxt": "^4.0.0",
-    "postcss-import": "^15.1.0",
     "postcss-simple-vars": "^7.0.1",
-    "vite-svg-loader": "^4.0.0",
     "vue-gtag": "^2.0.1",
     "vue3-burger-menu": "^1.1.1"
   }

@@ -41,10 +41,11 @@ module.exports = {
       8: "8rem",
       9: "9rem",
       10: "10rem",
+      25: "25rem"
     },
     fontSize: {
       sm: '1rem',
-      base: '2rem',
+      base: '2.2rem',
       xl: '2.5rem',
       '2xl': '3rem',
       '3xl': '3.5rem',

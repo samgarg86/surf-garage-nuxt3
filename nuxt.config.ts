@@ -1,6 +1,9 @@
 import svgLoader from 'vite-svg-loader'
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/i18n',"@nuxtjs/tailwindcss"],
+  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-svgo'],
+  svgo: {
+    svgo: false
+  },
   i18n: {
     langDir: "./locales",
     strategy: "prefix_and_default",
@@ -31,19 +34,12 @@ export default defineNuxtConfig({
       ],
     },
   },
-  vite: {
-    plugins: [
-      svgLoader(),
-    ],
-  },
   runtimeConfig: {
     public: {
       contentful: {
         space: "5im2bow6vhih",
         accessToken: "Urr45xvziePBNjMuCasC4fiCJRRqz8yMguoNKhW4Veo",
       },
-      snipcartApiKey:
-        "MjMyM2Q4NjgtZWI4NS00MTFjLThlNTQtOTExNjkwMDE3ZjI2NjM4MjE1NzE4NjM4MjYyMjk0",
       priceTable: {
         prints: {
           "10x20": 10,

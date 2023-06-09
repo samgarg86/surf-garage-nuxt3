@@ -85,7 +85,7 @@ defineProps({
     text-align: center;
     z-index: 999;
     width: 100%;
-    font-size: 2.5rem;
+    font-size: theme('fontSize.base');
   }
 
   &__desc {
