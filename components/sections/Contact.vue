@@ -78,7 +78,7 @@
       background: theme('colors.lightYellow');
       padding: 0 1rem;
       margin-left: 1rem;
-      color: var(--c-black);
+      color: theme(colors.black);
       border: 1px solid transparent;
     }
 
