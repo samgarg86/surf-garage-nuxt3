@@ -5,7 +5,9 @@ defineProps({
 </script>
 
 <template>
-  <section id="tiles" class="section tiles" :class="Math.abs(tiles.length % 2) === 1 && 'tiles--odd'">
+  <section id="tiles"
+           class="section tiles"
+           :class="Math.abs(tiles.length % 2) === 1 && 'tiles--odd'">
     <div class="tiles__content">
       <template v-for="(tile, index) in tiles" :key="index">
         <ScrollTo
@@ -14,13 +16,13 @@ defineProps({
           :to="tile.link"
           :style="{ '--bg': `url(${tile.bg})` }"
         >
-          <h2 class="tile__title">
-            {{ tile.text}}
+          <h2 class="tile__title font-metalsmith">
+            {{ tile.text }}
           </h2>
         </ScrollTo>
         <a
           v-else
-          class="tile"
+          class="tile font-metalsmith"
           :style="{ '--bg': `url(${tile.bg})` }"
           :href="tile.link"
           target="_blank"

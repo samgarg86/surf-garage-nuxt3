@@ -18,9 +18,7 @@
 <script setup>
 import {useContentful} from '#imports';
 
-definePageMeta({
-  layout: "art",
-});
+definePageMeta({layout: "art"});
 
 const contentful = useContentful()
 const entries = await contentful.getEntries({

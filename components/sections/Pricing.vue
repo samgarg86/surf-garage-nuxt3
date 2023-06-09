@@ -1,6 +1,6 @@
 <template>
   <section id="pricing" class="section pricing">
-    <h2 class="pricing__section-title section__title">
+    <h2 class="pricing__section-title section__title font-metalsmith">
       {{ $t("pricing.title") }}
     </h2>
     <ul class="section__content pricing__content">
@@ -8,7 +8,7 @@
         v-for="({title, monthlyPrice, priceDescription}, index) in plans"
         :key="index"
         class="pricing__content-item">
-        <h3 class="pricing__title lowercase">{{ title }}</h3>
+        <h3 class="pricing__title font-metalsmith lowercase">{{ title }}</h3>
         <h4 class="pricing__perMonth">€{{ monthlyPrice }}/{{$t("pricing.month")}}</h4>
         <div v-if="priceDescription" class="pricing__price">{{ priceDescription }}</div>
       </li>

@@ -1,12 +1,12 @@
 <template>
   <button
-      class="snipcart-add-item border-1 border-solid px-10 py-3 w-full md:w-auto"
-      :data-item-id="id"
-      :data-item-price="price"
-      :data-item-description="description"
-      :data-item-name="title"
-      :data-item-image="image"
-      data-item-quantity="1"
+    class="snipcart-add-item border-2 border-solid px-5 py-1.5 w-full md:w-auto bg-black text-white"
+    :data-item-id="id"
+    :data-item-price="price"
+    :data-item-description="description"
+    :data-item-name="title"
+    :data-item-image="image"
+    data-item-quantity="1"
   >Add to basket</button>
 </template>
 <script setup>

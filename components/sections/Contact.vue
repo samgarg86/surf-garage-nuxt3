@@ -5,7 +5,7 @@ import ContactLinks from "@/components/ContactLinks.vue";
 
 <template>
   <section id="contact" class="section contact">
-    <h2 class="contact__title section__title">
+    <h2 class="contact__title section__title font-metalsmith">
       <span>{{ $t("contact.title") }}</span>
     </h2>
     <div class="section__content contact__content full-width">

@@ -1,14 +1,15 @@
 <template>
-  <div>
+  <div class="mx-2">
     <!--    <MenuHamburgerMenu />-->
     <ArtHeader/>
-    <slot />
+    <slot/>
     <div hidden
          id="snipcart"
          :data-api-key="snipcartApiKey"
-         data-config-modal-style="side"
-    ></div>
+         data-config-modal-style="side">
+    </div>
   </div>
+  <SectionsContact/>
 </template>
 
 <script lang="ts" setup>

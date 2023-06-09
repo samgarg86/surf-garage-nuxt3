@@ -6,7 +6,7 @@
   >
     <div class="section__content">
       <div class="about-security__info about-info">
-        <h2 class="about-info__title">{{ title }}</h2>
+        <h2 class="about-info__title font-metalsmith">{{ title }}</h2>
         <div class="about-info__subtitle">{{ subtitle }}</div>
       </div>
       <div class="about-security__tiles about-tiles">
@@ -18,7 +18,7 @@
           <div :class="['about-tile__icon']">
             <img :src="icon.url"/>
           </div>
-          <h3 class="about-tile__title">{{ icon.title }}</h3>
+          <h3 class="about-tile__title font-metalsmith">{{ icon.title }}</h3>
         </article>
       </div>
     </div>

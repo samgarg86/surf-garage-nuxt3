@@ -3,7 +3,8 @@ module.exports = {
   theme: {
     screens: {
       sm: "480px",
-      md: "1024px"
+      md: "1024px",
+      lg: "1440px"
     },
     colors: {
       "amber-yellow": "#ba8723",

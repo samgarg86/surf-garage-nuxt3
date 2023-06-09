@@ -5,13 +5,13 @@
         <ScrollTo to="storage">{{ $t("nav.storage") }}</ScrollTo>
       </li>
       <li>
-        <ScrollTo to="security">{{ $t("nav.security") }}</ScrollTo>
+        <ScrollTo to="pricing">{{ $t("nav.pricing") }}</ScrollTo>
       </li>
       <li class="site-logo">
         <Logo class="site-logo__svg" />
       </li>
       <li>
-        <ScrollTo to="pricing">{{ $t("nav.pricing") }}</ScrollTo>
+        <NuxtLink to="/art">Surf Art</NuxtLink>
       </li>
       <li>
         <ScrollTo to="contact">{{ $t("nav.contact") }}</ScrollTo>
