@@ -1,6 +1,6 @@
 <template>
   <main id="page-wrap">
-<!--    <pre>{{membershipPlans}}</pre>-->
+<!--    <pre>{{heroBgImage}}</pre>-->
     <SectionsHero v-bind="mappedHero"/>
     <SectionsTiles :tiles="mappedTiles"/>
     <SectionsBoardStorage v-bind="mappedBoardStorageSection"/>
@@ -13,13 +13,26 @@
 <script setup>
 const contentful = useContentful()
 const {locale} = useI18n()
-const { items } = await contentful.getEntries({
+const {items} = await contentful.getEntries({
   content_type: 'homepageSections',
   include: 10,
-locale: locale.value
+  locale: locale.value
 })
-const { tiles, heroTitle, heroSubtitle, heroYoutubeVideo, iconSections, membershipPlans } = items?.[0]?.fields || {}
-const mappedHero = {title: heroTitle, subtitle: heroSubtitle, bgVideo: heroYoutubeVideo}
+const {
+  tiles,
+  heroTitle,
+  heroSubtitle,
+  heroBgImage,
+  heroYoutubeVideo,
+  iconSections,
+  membershipPlans
+} = items?.[0]?.fields || {}
+const mappedHero = {
+  title: heroTitle,
+  subtitle: heroSubtitle,
+  bgVideo: heroYoutubeVideo,
+  bgImage: heroBgImage.fields.file.url
+}
 const mappedTiles = tiles.map(t => ({
   text: t.fields.text,
   bg: t.fields.backgroundImage.fields.file.url,

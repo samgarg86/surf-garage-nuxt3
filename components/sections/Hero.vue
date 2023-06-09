@@ -3,20 +3,23 @@ import arrowDown from "~/assets/icons/chevron-down.svg?raw";
 defineProps({
   title: String,
   subtitle: String,
-  bgVideo: String
+  bgVideo: String,
+  bgImage: String
 })
 </script>
 
 <template>
-  <section id="about" class="section hero">
-    <MenuDesktop />
-    <ContactLinks class="hero__contact-links" :onlyIcons="true" />
+  <section id="about" class="section hero"
+           :style="{ '--hero-bg': `url(${bgImage})` }">
+    <MenuDesktop/>
+    <ContactLinks class="hero__contact-links" :onlyIcons="true"/>
     <div class="hero__foreground">
       <h1 class="hero__title">{{ title }}</h1>
       <h2 class="hero__subtitle">{{ subtitle }}</h2>
       <ScrollTo class="button__join" linkType="button" to="contact">{{
-        $t("hero.join-now")
-      }}</ScrollTo>
+          $t("hero.join-now")
+        }}
+      </ScrollTo>
     </div>
     <ScrollTo to="tiles" class="hero__arrow" v-html="arrowDown"/>
     <div class="hero__video-bg">
@@ -39,7 +42,15 @@ defineProps({
   height: calc(100vh - 2 * theme('spacing.1'));
   overflow: hidden;
   position: relative;
-  @include bg-fixed("@/assets/images/lpa1.jpg");
+  /* TODO: Find a way to do mixins in postcss
+  @include bg-fixed("@/assets/images/lpa1.jpg"); */
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
+  ),
+  var(--hero-bg);
+  background-attachment: fixed;
+  background-size: cover;
 
   @media screen(md) {
     height: calc(70vh - theme('spacing[2.5]'));

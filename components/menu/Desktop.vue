@@ -7,7 +7,7 @@
       <li class="p-1 hidden md:block text-center">
         <ScrollTo to="pricing" class="text-white">{{ $t("nav.pricing") }}</ScrollTo>
       </li>
-      <li class="site-logo m-1 w-25" v-html="logo">
+      <li class="site-logo m-1 w-25 mx-auto" v-html="logo">
       </li>
       <li class="p-1 hidden md:block text-center">
         <NuxtLink to="/art" class="text-white">Surf Art</NuxtLink>
