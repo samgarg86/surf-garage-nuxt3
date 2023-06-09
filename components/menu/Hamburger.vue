@@ -1,28 +1,22 @@
 <template>
   <div :class="{
-    'hamburger-menu': true,
+      'hamburger-menu': true,
       'black-bars': black
     }">
     <client-only>
       <Push :closeOnNavigation="true" left>
         <ul>
           <li>
-            <ScrollTo to="about">{{ $t("nav.about") }}</ScrollTo>
+            <NuxtLink to="/#storage">{{ $t("nav.storage") }}</NuxtLink>
           </li>
           <li>
-            <ScrollTo to="tiles">{{ $t("nav.services") }}</ScrollTo>
+            <NuxtLink to="/art">Surf Art</NuxtLink>
           </li>
           <li>
-            <ScrollTo to="storage">{{ $t("nav.storage") }}</ScrollTo>
-          </li>
-        <li>
-          <ScrollTo to="security">{{ $t("nav.security") }}</ScrollTo>
-        </li>
-          <li>
-            <ScrollTo to="pricing">{{ $t("nav.pricing") }}</ScrollTo>
+            <NuxtLink to="/#pricing">{{ $t("nav.pricing") }}</NuxtLink>
           </li>
           <li>
-            <ScrollTo to="contact">{{ $t("nav.contact") }}</ScrollTo>
+            <NuxtLink to="/#contact">{{ $t("nav.contact") }}</NuxtLink>
           </li>
         </ul>
         <ContactLinks class="hamburger-menu__links"/>
