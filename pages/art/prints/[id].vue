@@ -21,17 +21,25 @@
     </div>
   </div>
 </template>
-<script setup lang="js">
+<script setup>
 import {useRoute, useContentful, useRuntimeConfig, ref} from '#imports'
-import {AddToCart} from "#components"
 
-definePageMeta({layout: "art"});
-const { public: {priceTable : {prints}}} = useRuntimeConfig()
+definePageMeta({layout: "art"})
+
+const {public: {priceTable: {prints}}} = useRuntimeConfig()
 const route = useRoute()
-const { id } = route.params
+const {id} = route.params
 const contentful = useContentful()
-const entry = await contentful.getAsset(route.params.id)
-const { fields: {title, description} } = entry || {}
+const entry = await contentful?.getAsset(route.params.id)
+const {fields: {title, description}} = entry || {}
 const image = entry?.fields.file.url
 const size = ref('10x20')
+
+useSeoMeta({
+  title: `Surf Garage Art - ${title}`,
+  ogTitle: title,
+  description: `Surf Garage Art - ${description}`,
+  ogDescription: description,
+  ogImage: image
+})
 </script>

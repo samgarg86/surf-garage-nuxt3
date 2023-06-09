@@ -13,19 +13,20 @@
 </template>
 
 <script setup>
-import {useContentful} from '#imports';
-
 definePageMeta({layout: "art"});
 
-const contentful = useContentful()
-const entries = await contentful.getEntries({
+const {$contentful} = useNuxtApp()
+const images = ref([])
+$contentful().getEntries({
   content_type: 'homepageGallery',
   include: 10
-})
-const images = entries?.items?.[0].fields.images.map(i => ({
-  id: i.sys.id,
-  url: i.fields.file.url,
-  title: i.fields.title
-}))
+}).then(({entries}) => {
+  images.value = entries.items[0].fields.images.map(i => ({
+    id: i.sys.id,
+    url: i.fields.file.url,
+    title: i.fields.title
+  }))
+}).catch(e => console.error('Something went wrong while fetching the images from Contentful', e.message))
+
 </script>
 

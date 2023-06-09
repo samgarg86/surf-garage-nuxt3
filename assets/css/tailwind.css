@@ -49,12 +49,6 @@ html {
 }
 
 body {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-  font-family: theme('fontFamily.myriad');
-  font-size: 2rem;
-  color: theme('colors.black');
   line-height: 1.4;
 }
 

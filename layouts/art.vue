@@ -17,6 +17,20 @@
 <script lang="ts" setup>
 const config = useRuntimeConfig()
 const {snipcartApiKey} = config.public
+
+useHead({
+  link: [
+    {rel: "preconnect", href: "https://app.snipcart.com"},
+    {rel: "preconnect", href: "https://cdn.snipcart.com"},
+    {
+      rel: "stylesheet",
+      href: "https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css",
+    },
+  ],
+  script: [
+    {src: "https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"},
+  ],
+})
 </script>
 
 <style>

@@ -1,6 +1,5 @@
 <template>
   <main id="page-wrap">
-<!--    <pre>{{heroBgImage}}</pre>-->
     <SectionsHero v-bind="mappedHero"/>
     <SectionsTiles :tiles="mappedTiles"/>
     <SectionsBoardStorage v-bind="mappedBoardStorageSection"/>
@@ -11,54 +10,74 @@
 </template>
 
 <script setup>
-const contentful = useContentful()
+
 const {locale} = useI18n()
-const {items} = await contentful.getEntries({
-  content_type: 'homepageSections',
-  include: 10,
-  locale: locale.value
+
+const {$contentful} = useNuxtApp()
+
+const mappedHero = ref()
+const mappedTiles = ref([])
+const mappedBoardStorageSection = ref()
+const mappedBoardSecuritySection = ref()
+const mappedMembershipPlans = ref([])
+
+const getHomepage = async () => {
+  return await $contentful().getEntries({
+    content_type: 'homepageSections',
+    include: 10,
+    locale: locale.value
+  }) || {}
+}
+// const { items } = await getHomepage()
+
+getHomepage().then(({items}) => {
+  const {
+    tiles,
+    heroTitle,
+    heroSubtitle,
+    heroBgImage,
+    heroYoutubeVideo,
+    iconSections,
+    membershipPlans
+  } = items[0].fields || {}
+
+  mappedHero.value = {
+    title: heroTitle,
+    subtitle: heroSubtitle,
+    bgVideo: heroYoutubeVideo,
+    bgImage: heroBgImage.fields.file.url
+  }
+
+  mappedTiles.value = tiles.map(t => ({
+    text: t.fields.text,
+    bg: t.fields.backgroundImage.fields.file.url,
+    type: t.fields.type,
+    link: t.fields.link
+  })) || []
+
+  const boardStorageSection = iconSections.find(section => section.sys.contentType.sys.id === 'boardStorageSection')
+  mappedBoardStorageSection.value = {
+    title: boardStorageSection.fields.title,
+    subtitle: boardStorageSection.fields.subtitle,
+    icons: boardStorageSection.fields.icons.map(icon => ({title: icon.fields.title, url: icon.fields.file.url}))
+  }
+
+  const boardSecuritySection = iconSections.find(section => section.sys.contentType.sys.id === 'boardSecuritySection')
+  mappedBoardSecuritySection.value = {
+    title: boardSecuritySection.fields.title,
+    subtitle: boardSecuritySection.fields.subtitle,
+    icons: boardSecuritySection.fields.icons.map(icon => ({title: icon.fields.title, url: icon.fields.file.url})),
+    bgImage: boardSecuritySection.fields.backgroundImage.fields.file.url
+  }
+
+  mappedMembershipPlans.value = membershipPlans.map(plan => ({
+    title: plan.fields.title,
+    monthlyPrice: plan.fields.monthlyPrice,
+    priceDescription: plan.fields.priceDescription
+  })) || []
+}).catch((e) => {
+  console.error('Something went wrong while fetching the homepage from Contentful', e.message)
 })
-const {
-  tiles,
-  heroTitle,
-  heroSubtitle,
-  heroBgImage,
-  heroYoutubeVideo,
-  iconSections,
-  membershipPlans
-} = items?.[0]?.fields || {}
-const mappedHero = {
-  title: heroTitle,
-  subtitle: heroSubtitle,
-  bgVideo: heroYoutubeVideo,
-  bgImage: heroBgImage.fields.file.url
-}
-const mappedTiles = tiles.map(t => ({
-  text: t.fields.text,
-  bg: t.fields.backgroundImage.fields.file.url,
-  type: t.fields.type,
-  link: t.fields.link
-}))
-const boardStorageSection = iconSections?.find(section => section.sys.contentType.sys.id === 'boardStorageSection')
-const mappedBoardStorageSection = {
-  title: boardStorageSection?.fields.title,
-  subtitle: boardStorageSection?.fields.subtitle,
-  icons: boardStorageSection?.fields.icons.map(icon => ({title: icon.fields.title, url: icon.fields.file.url}))
-}
-
-const boardSecuritySection = iconSections?.find(section => section.sys.contentType.sys.id === 'boardSecuritySection')
-const mappedBoardSecuritySection = {
-  title: boardSecuritySection?.fields.title,
-  subtitle: boardSecuritySection?.fields.subtitle,
-  icons: boardSecuritySection?.fields.icons.map(icon => ({title: icon.fields.title, url: icon.fields.file.url})),
-  bgImage: boardSecuritySection?.fields.backgroundImage.fields.file.url
-}
-
-const mappedMembershipPlans = membershipPlans.map(plan => ({
-  title: plan.fields.title,
-  monthlyPrice: plan.fields.monthlyPrice,
-  priceDescription: plan.fields.priceDescription
-}))
 </script>
 
 <style lang="postcss">

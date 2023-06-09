@@ -86,7 +86,7 @@ defineProps({
     text-align: center;
 
     @media screen(md) {
-      margon-bottom: 1rem;
+      margin-bottom: 1rem;
     }
 
     svg {
@@ -119,7 +119,6 @@ defineProps({
   background-size: 200px;
   background-attachment: fixed;
   color: theme('colors.white');
-//margin-bottom: 10rem;
 
   &__info {
     grid-template-columns: 1fr 3fr;

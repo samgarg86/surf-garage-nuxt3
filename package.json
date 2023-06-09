@@ -24,7 +24,6 @@
     "sass": "^1.63.2"
   },
   "dependencies": {
-    "@nuxtjs/snipcart": "^2.0.2",
     "contentful": "^10.2.3",
     "eslint-plugin-nuxt": "^4.0.0",
     "postcss-simple-vars": "^7.0.1",
