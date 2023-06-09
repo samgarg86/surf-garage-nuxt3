@@ -1,7 +1,4 @@
 <template>
-  <!--  <pre>-->
-  <!--    {{entries.items[0]}}-->
-  <!--  </pre>-->
   <div class="sm:columns-2 md:columns-4 gap-2">
     <NuxtLink
       v-for="({id, url, title}, index) in images"

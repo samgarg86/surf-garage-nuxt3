@@ -28,7 +28,7 @@ const scrollIntoView = (e) => {
 .button {
   border: 2px solid white;
   padding: 12px 50px;
-  color: var(--c-white);
+  color: theme('colors.white');
   display: block;
   font-family: theme('fontFamily.avenir');
   text-transform: uppercase;

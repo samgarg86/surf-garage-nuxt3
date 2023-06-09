@@ -36,12 +36,12 @@ defineProps({
 .language-switcher {
   padding: 1rem 0;
   a {
-    color: var(--c-white);
+    color: theme('colors.white');;
     text-decoration: underline;
     margin-right: 1rem;
 
     &.router-link-active {
-      color: var(--c-lighter-yellow);
+      color: theme('colors.lightYellow');
     }
   }
 }

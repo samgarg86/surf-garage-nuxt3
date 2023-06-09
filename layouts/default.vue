@@ -1,6 +1,10 @@
 <template>
   <div>
-<!--    <MenuHamburgerMenu />-->
-    <slot />
+    <MenuHamburger/>
+    <main id="page-wrap">
+      <slot/>
+    </main>
   </div>
 </template>
+<script setup lang="ts">
+</script>

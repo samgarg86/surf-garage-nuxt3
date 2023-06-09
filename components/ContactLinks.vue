@@ -78,7 +78,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
     width: 40px;
     height: 40px;
     &--language {
-      fill: var(--c-amber-yellow);
+      fill: theme('colors.amberYellow');
     }
   }
 }

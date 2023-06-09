@@ -7,16 +7,16 @@ module.exports = {
       lg: "1440px"
     },
     colors: {
-      "amber-yellow": "#ba8723",
-      "lighter-yellow": "#E9C465",
-      "wave-blue": "#1A304E",
-      "board-red": "#6B1F15",
+      amberYellow: "#ba8723",
+      lightYellow: "#E9C465",
+      waveBlue: "#1A304E",
+      boardRed: "#6B1F15",
       white: "#fff",
-      "light-grey": "#fafafa",
-      "black-soft": "#444",
+      lightGrey: "#fafafa",
+      blackSoft: "#444",
       black: "#09090e",
       pink: "#fff0f5",
-      yellow: "#fffacd",
+      yellow: "#fffacd"
     },
     fontFamily: {
       metalsmith: ["Metalsmith", "sans-serif"],

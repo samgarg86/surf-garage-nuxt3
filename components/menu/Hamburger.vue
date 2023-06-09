@@ -1,37 +1,43 @@
-<script setup>
-// import { Push } from "vue3-burger-menu";
-import ScrollTo from "@/components/ScrollTo.vue";
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
-import ContactLinks from "@/components/ContactLinks.vue";
-</script>
-
 <template>
-  <div class="hamburger-menu">
-    <div :closeOnNavigation="true" left>
-      <ul>
-        <li>
-          <ScrollTo to="about">{{ $t("nav.about") }}</ScrollTo>
-        </li>
-        <li>
-          <ScrollTo to="tiles">{{ $t("nav.services") }}</ScrollTo>
-        </li>
-        <li>
-          <ScrollTo to="storage">{{ $t("nav.storage") }}</ScrollTo>
-        </li>
+  <div :class="{
+    'hamburger-menu': true,
+      'black-bars': black
+    }">
+    <client-only>
+      <Push :closeOnNavigation="true" left>
+        <ul>
+          <li>
+            <ScrollTo to="about">{{ $t("nav.about") }}</ScrollTo>
+          </li>
+          <li>
+            <ScrollTo to="tiles">{{ $t("nav.services") }}</ScrollTo>
+          </li>
+          <li>
+            <ScrollTo to="storage">{{ $t("nav.storage") }}</ScrollTo>
+          </li>
         <li>
           <ScrollTo to="security">{{ $t("nav.security") }}</ScrollTo>
         </li>
-        <li>
-          <ScrollTo to="pricing">{{ $t("nav.pricing") }}</ScrollTo>
-        </li>
-        <li>
-          <ScrollTo to="contact">{{ $t("nav.contact") }}</ScrollTo>
-        </li>
-      </ul>
-      <ContactLinks class="hamburger-menu__links"/>
-    </div>
+          <li>
+            <ScrollTo to="pricing">{{ $t("nav.pricing") }}</ScrollTo>
+          </li>
+          <li>
+            <ScrollTo to="contact">{{ $t("nav.contact") }}</ScrollTo>
+          </li>
+        </ul>
+        <ContactLinks class="hamburger-menu__links"/>
+      </Push>
+    </client-only>
   </div>
 </template>
+
+<script setup>
+import {Push} from "vue3-burger-menu";
+
+defineProps({
+  black: Boolean
+})
+</script>
 
 <style lang="postcss">
 .hamburger-menu {
@@ -54,17 +60,18 @@ import ContactLinks from "@/components/ContactLinks.vue";
   }
 
   .bm-menu {
-    background-color: var(--c-black);
+    background-color: theme('colors.black');
     line-height: 2;
     padding-top: 1rem;
 
     ul {
       margin-left: 1rem;
+
       a {
-        color: var(--c-white);
+        color: theme('colors.white');
 
         &:hover {
-          color: var(--c-amber-yellow);
+          color: theme('colors.amberYellow');
         }
       }
     }
@@ -82,9 +89,17 @@ import ContactLinks from "@/components/ContactLinks.vue";
   }
 
   .contact-links__link {
-    color: var(--c-white);
+    color: theme('colors.white');
+
     &:hover {
-      color: var(--c-amber-yellow);
+      color: theme('colors.amberYellow');
+    }
+  }
+
+  &.black-bars {
+    .bm-burger-bars {
+      display: block;
+      background-color: theme('colors.black');
     }
   }
 }

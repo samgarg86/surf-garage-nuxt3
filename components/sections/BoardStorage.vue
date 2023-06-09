@@ -92,8 +92,8 @@ defineProps({
     svg {
       width: 12rem;
       height: 12rem;
-      color: var(--c-white);
-      fill: var(--c-white);
+      color: theme('colors.white');
+      fill: theme('colors.white');
       margin: 0 auto;
     }
 
@@ -101,7 +101,7 @@ defineProps({
       width: 9rem;
       height: 9rem;
       padding: 1.5rem;
-      border: 3.5px solid var(--c-white);
+      border: 3.5px solid theme('colors.white');
       border-radius: 50%;
       margin: 1.2rem auto 3rem;
 
@@ -115,10 +115,10 @@ defineProps({
 
 .about-storage {
   background: url("@/assets/images/surf-pattern.svg") repeat,
-  var(--c-amber-yellow);
+  theme('colors.amberYellow');
   background-size: 200px;
   background-attachment: fixed;
-  color: var(--c-white);
+  color: theme('colors.white');
 //margin-bottom: 10rem;
 
   &__info {

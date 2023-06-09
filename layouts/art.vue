@@ -1,8 +1,10 @@
 <template>
   <div class="mx-2">
-    <!--    <MenuHamburgerMenu />-->
-    <ArtHeader/>
-    <slot/>
+    <MenuHamburger black/>
+    <main id="page-wrap">
+      <ArtHeader/>
+      <slot/>
+    </main>
     <div hidden
          id="snipcart"
          :data-api-key="snipcartApiKey"

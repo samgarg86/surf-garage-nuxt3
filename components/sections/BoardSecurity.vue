@@ -42,7 +42,7 @@ defineProps({
   background-size: cover;
 
   position: relative;
-  color: var(--c-white);
+  color: theme('colors.white');
 
   &__info {
     grid-template-columns: 4fr 1fr;

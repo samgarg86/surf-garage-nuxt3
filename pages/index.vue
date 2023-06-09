@@ -47,3 +47,64 @@ const mappedMembershipPlans = membershipPlans.map(plan => ({
   priceDescription: plan.fields.priceDescription
 }))
 </script>
+
+<style lang="postcss">
+.section {
+  margin: theme('spacing.1');
+  position: relative;
+  scroll-margin-top: theme('spacing[2.5]');
+
+  @media screen(md) {
+    margin: theme('spacing[2.5]');
+  }
+
+  /** Full width sections (with padding) **/
+
+  &__content {
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 2rem;
+
+    &.full-width {
+      max-width: none;
+      @media screen(md) {
+        padding: 5rem;
+      }
+    }
+
+    @media screen(md) {
+      padding: 5rem 0;
+    }
+  }
+
+  &__title {
+    font-size: 4rem;
+    @apply font-metalsmith;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  &--bg {
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: -1;
+    }
+  }
+}
+</style>

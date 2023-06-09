@@ -21,31 +21,31 @@ const endpoint = "https://formspree.io/f/xwkzrzpj";
 </script>
 
 <template>
-  <form class="contact-form" :action="endpoint" method="POST">
+  <form class="contact-form w-full grid gap-1 mb-1 content-stretch" :action="endpoint" method="POST">
     <input
-      class="contact-form__input"
-      placeholder="contact.form.name"
-      name="name"
-      style="grid-area: name"
+        class="contact-form__input"
+        :placeholder="$t('contact.form.name')"
+        name="name"
+        style="grid-area: name"
     />
     <input
-      class="contact-form__input"
-      placeholder="contact.form.phone"
-      type="tel"
+        class="contact-form__input"
+        :placeholder="$t('contact.form.phone')"
+        type="tel"
       name="phone"
       style="grid-area: phone"
     />
     <input
-      class="contact-form__input"
-      placeholder="contact.form.email"
-      name="email"
-      style="grid-area: email"
+        class="contact-form__input"
+        :placeholder="$t('contact.form.email')"
+        name="email"
+        style="grid-area: email"
     />
     <textarea
-      class="contact-form__textarea"
-      placeholder="contact.form.message"
-      name="message"
-      style="grid-area: message"
+        class="contact-form__textarea"
+        :placeholder="$t('contact.form.message')"
+        name="message"
+        style="grid-area: message"
     ></textarea>
     <div class="contact-form__send" style="grid-area: send">
       <button type="submit" class="contact-form__btn-send">
@@ -57,9 +57,6 @@ const endpoint = "https://formspree.io/f/xwkzrzpj";
 
 <style lang="postcss">
 .contact-form {
-  width: 100%;
-  display: grid;
-  grid-gap: 1rem;
   grid-template-areas:
     "name"
     "phone"
@@ -79,13 +76,10 @@ const endpoint = "https://formspree.io/f/xwkzrzpj";
       ". . send";
   }
 
-  margin-bottom: 1rem;
-  align-content: stretch;
-
   &__input {
     width: 100%;
     padding: 1rem 2rem;
-    background: var(--c-lighter-yellow);
+    background: theme('colors.lightYellow');
     border: none;
     text-transform: lowercase;
   }
@@ -94,7 +88,7 @@ const endpoint = "https://formspree.io/f/xwkzrzpj";
     width: 100%;
     height: 100%;
     padding: 1rem 2rem;
-    background: var(--c-lighter-yellow);
+    background: theme('colors.lightYellow');
     border: none;
     outline: none;
     outline-offset: 0;
@@ -106,8 +100,8 @@ const endpoint = "https://formspree.io/f/xwkzrzpj";
 
     button {
       border: none;
-      background: var(--c-lighter-yellow);
-      color: var(--c-black);
+      background: theme('colors.lightYellow');
+      color: theme('colors.black');
       padding: 1rem 2rem;
       cursor: pointer;
       text-transform: lowercase;

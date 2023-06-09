@@ -37,15 +37,15 @@ defineProps({
 
 <style lang="postcss">
 .hero {
-  width: calc(100vw - 2 * var(--section-margin-mobile));
-  height: calc(100vh - 2 * var(--section-margin-mobile));
+  width: calc(100vw - 2 * theme('spacing.1'));
+  height: calc(100vh - 2 * theme('spacing.1'));
   overflow: hidden;
   position: relative;
   @include bg-fixed("@/assets/images/lpa1.jpg");
 
   @media screen(md) {
-    height: calc(70vh - var(--section-margin));
-    width: calc(100vw - 2 * var(--section-margin));
+    height: calc(70vh - theme('spacing[2.5]'));
+    width: calc(100vw - 2 * theme('spacing[2.5]'));
     position: relative;
   }
 
@@ -140,7 +140,7 @@ defineProps({
 
   &__arrow-icon {
     width: 100%;
-    fill: var(--c-white);
+    fill: theme('colors.white');
   }
 }
 

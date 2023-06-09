@@ -93,7 +93,7 @@ defineProps({
     padding: 20px 30px;
     text-align: center;
     background-color: #fff;
-    color: var(--c-board-red);
+    color: theme('colors.boardRed');
     display: flex;
     justify-content: center;
   }

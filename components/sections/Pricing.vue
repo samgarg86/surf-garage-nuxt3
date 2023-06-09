@@ -24,7 +24,7 @@ defineProps({
 
 <style lang="postcss">
 .pricing {
-  background-color: var(--c-wave-blue);
+  background-color: theme('colors.waveBlue');
   text-align: center;
 
   &__section-title {

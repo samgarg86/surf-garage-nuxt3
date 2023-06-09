@@ -1,8 +1,3 @@
-<script setup>
-import ContactForm from "@/components/ContactForm.vue";
-import ContactLinks from "@/components/ContactLinks.vue";
-</script>
-
 <template>
   <section id="contact" class="section contact">
     <h2 class="contact__title section__title font-metalsmith">
@@ -30,9 +25,14 @@ import ContactLinks from "@/components/ContactLinks.vue";
 
 <style lang="postcss">
 .contact {
-  background-color: var(--c-black);
+  background-color: theme('colors.black');
   max-width: 100%;
-  @include bg-repeat("@/assets/images/surf-bg.jpg");
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
+  ),
+  url('@/assets/images/surf-bg.jpg');
+  background-repeat: repeat;
 
   &__title {
     padding-top: 50px;
@@ -40,8 +40,8 @@ import ContactLinks from "@/components/ContactLinks.vue";
     text-align: center;
 
     span {
-      background: var(--c-lighter-yellow);
-      color: var(--c-black);
+      background: theme('colors.lightYellow');
+      color: theme('colors.black');
       padding: 0.5rem 1rem;
     }
   }
@@ -70,12 +70,12 @@ import ContactLinks from "@/components/ContactLinks.vue";
   }
 
   &__address {
-    color: var(--c-lighter-yellow);
+    color: theme('colors.lightYellow');
   }
 
   .contact-links__link {
     span {
-      background: var(--c-lighter-yellow);
+      background: theme('colors.lightYellow');
       padding: 0 1rem;
       margin-left: 1rem;
       color: var(--c-black);
@@ -84,14 +84,14 @@ import ContactLinks from "@/components/ContactLinks.vue";
 
     &:hover span {
       background: transparent;
-      color: var(--c-lighter-yellow);
-      border-color: var(--c-lighter-yellow);
+      color: theme('colors.lightYellow');
+      border-color: theme('colors.lightYellow');
     }
   }
 
   &__insta {
     &-widget {
-      background: var(--c-black);
+      background: theme('colors.black');
       width: 100%;
       margin: 0 auto;
       padding-bottom: 66.667%;
