@@ -9,6 +9,7 @@
     :data-item-description="description"
     :data-item-name="title"
     :data-item-image="image"
+    :data-item-url="url"
     :disabled="!enableCommerce"
     data-item-quantity="1"
   >Add to basket
@@ -20,7 +21,8 @@ defineProps({
   price: Number,
   description: String,
   title: String,
-  image: String
+  image: String,
+  url: String
 })
-const {enableCommerce} = useRuntimeConfig()
+const {public: {enableCommerce}} = useRuntimeConfig()
 </script>

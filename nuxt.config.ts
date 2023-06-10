@@ -21,7 +21,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      enableCommerce: false,
+      enableCommerce: true,
       contentful: {
         space: "5im2bow6vhih",
         accessToken: "Urr45xvziePBNjMuCasC4fiCJRRqz8yMguoNKhW4Veo",
