@@ -1,6 +1,6 @@
 <template>
-  <MenuHamburger black/>
-  <main id="page-wrap mx-2">
+  <MenuHamburger black class="hamburger-menu-art"/>
+  <main id="page-wrap" class="mx-2">
     <ArtHeader/>
     <slot/>
   </main>
@@ -31,5 +31,11 @@ useHead({
 })
 </script>
 
-<style>
+<style lang="postcss">
+.hamburger-menu-art {
+  .bm-burger-button {
+    top: theme('spacing.2');
+    left: theme('spacing.2');
+  }
+}
 </style>

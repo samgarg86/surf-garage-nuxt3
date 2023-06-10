@@ -9,16 +9,7 @@
     "contact": "Contacto"
   },
   "hero": {
-    "title": "Aparca tu tabla en Surf Garage",
-    "subtitle": "Un club premium para surfistas",
     "join-now": "Únete ahora"
-  },
-  "tiles": {
-    "storage": "Guardatablas",
-    "lockers": "Taquillas",
-    "second-hand": "Tablas de Segunda Mano",
-    "board-repair": "Reparación de Tablas",
-    "surf-art": "Surf Art"
   },
   "pricing":  {
     "title": "Precios",

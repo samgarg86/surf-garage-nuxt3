@@ -9,16 +9,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Park your board at Surf Garage",
-    "subtitle": "A premium club for surfers",
     "join-now": "Join Now"
-  },
-  "tiles": {
-    "storage": "Board Storage",
-    "lockers": "Lockers",
-    "second-hand": "Second Hand Boards",
-    "board-repair": "Board Repairs",
-    "surf-art": "Surf Art"
   },
   "pricing":  {
     "title": "Pricing",
