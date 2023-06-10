@@ -1,6 +1,6 @@
-import contentful from 'contentful';
+import contentful from "contentful";
 
-export default defineNuxtPlugin((/* nuxtApp */) => {
+export default defineNuxtPlugin(() => {
   return {
     provide: {
       contentful: () => contentful.createClient({

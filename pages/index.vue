@@ -21,16 +21,22 @@ const mappedBoardStorageSection = ref()
 const mappedBoardSecuritySection = ref()
 const mappedMembershipPlans = ref([])
 
-const getHomepage = async () => {
-  return await $contentful().getEntries({
-    content_type: 'homepageSections',
-    include: 10,
-    locale: locale.value
-  }) || {}
-}
-// const { items } = await getHomepage()
+// const getHomepage = async () => {
+//   const client = $contentful()
+//   const {items } = await client.getEntries({
+//     content_type: 'homepageSections',
+//     include: 10,
+//     locale: locale.value
+//   })
+//   return items[0]
+// }
 
-getHomepage().then(({items}) => {
+const getHomepage = async () => {
+  const {getFirstEntryOfType} = useContentful()
+  return await getFirstEntryOfType('homepageSections', locale.value)
+}
+
+getHomepage().then((homepage) => {
   const {
     tiles,
     heroTitle,
@@ -39,7 +45,7 @@ getHomepage().then(({items}) => {
     heroYoutubeVideo,
     iconSections,
     membershipPlans
-  } = items[0].fields || {}
+  } = homepage.fields || {}
 
   mappedHero.value = {
     title: heroTitle,
@@ -75,9 +81,11 @@ getHomepage().then(({items}) => {
     monthlyPrice: plan.fields.monthlyPrice,
     priceDescription: plan.fields.priceDescription
   })) || []
-}).catch((e) => {
-  console.error('Something went wrong while fetching the homepage from Contentful', e.message)
 })
+
+//   .catch((e) => {
+//   console.error('Something went wrong while fetching the homepage from Contentful', e.message)
+// })
 </script>
 
 <style lang="postcss">

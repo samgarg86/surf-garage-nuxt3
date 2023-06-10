@@ -15,18 +15,27 @@
 <script setup>
 definePageMeta({layout: "art"});
 
-const {$contentful} = useNuxtApp()
 const images = ref([])
-$contentful().getEntries({
-  content_type: 'homepageGallery',
-  include: 10
-}).then(({entries}) => {
-  images.value = entries.items[0].fields.images.map(i => ({
+// const getHomepageGallery = async () => {
+//   return $contentful().getEntries({
+//     content_type: 'homepageGallery',
+//     include: 10
+//   })
+// }
+
+const {getFirstEntryOfType} = useContentful()
+const getHomepageGallery = async () => {
+  return await getFirstEntryOfType('homepageGallery')
+}
+
+getHomepageGallery().then(entry => {
+  images.value = entry.fields.images.map(i => ({
     id: i.sys.id,
     url: i.fields.file.url,
     title: i.fields.title
   }))
-}).catch(e => console.error('Something went wrong while fetching the images from Contentful', e.message))
+})
+//.catch(e => console.error('Something went wrong while fetching the images from Contentful', e.message))
 
 </script>
 
