@@ -12,7 +12,7 @@
           class="about-tile"
         >
           <div :class="['about-tile__icon']">
-            <img :src="icon.url"/>
+            <img :src="icon.url" data-not-lazy/>
           </div>
           <h3 class="about-tile__title font-metalsmith">{{ icon.title }}</h3>
         </article>

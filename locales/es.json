@@ -24,5 +24,8 @@
       "message": "Mensaje",
       "send": "Enviar"
     }
+  },
+  "art": {
+    "order-prints": "Pedir Copias"
   }
 }

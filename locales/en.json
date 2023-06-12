@@ -24,5 +24,8 @@
       "message": "Message",
       "send": "Send"
     }
+  },
+  "art": {
+    "order-prints": "Order Prints"
   }
 }

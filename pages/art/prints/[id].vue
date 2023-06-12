@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-screen-lg mx-auto my-5 grid md:grid-cols-2 gap-5">
     <div>
-      <img :src="image" :alt="`Surf Garage - ${title}`"/>
+      <img :src="image" :alt="`Surf Garage - ${title}`" data-not-lazy/>
     </div>
     <div>
       <div class="mb-3">
@@ -27,7 +27,7 @@
 <script setup>
 import {useRoute, useContentful, useRuntimeConfig, ref} from '#imports'
 
-definePageMeta({layout: "art"})
+definePageMeta({layout: 'art'})
 
 const {public: {priceTable: {prints}}} = useRuntimeConfig()
 const route = useRoute()

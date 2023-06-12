@@ -1,6 +1,5 @@
 import defaultContentful from 'contentful'
 import {createClient} from "contentful"
-
 export const useContentful = () => {
   const {public: {contentful: {space, accessToken}}} = useRuntimeConfig()
   let client
@@ -9,7 +8,6 @@ export const useContentful = () => {
   } else {
     client = createClient({space, accessToken})
   }
-
   return {
     client,
     getFirstEntryOfType: async (content_type, locale) => {

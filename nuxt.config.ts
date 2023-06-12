@@ -1,6 +1,9 @@
-import svgLoader from 'vite-svg-loader'
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-svgo'],
+  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-svgo', 'nuxt-lazy-load'],
+  lazyLoad: {
+    directiveOnly: true,
+    defaultImage: '/placeholder.jpg'
+  },
   svgo: {
     svgo: false
   },

@@ -1,19 +1,15 @@
 <template>
-  <div class="sm:columns-2 md:columns-4 gap-2">
-    <NuxtLink
-      v-for="({id, url, title}, index) in images"
-      :key="index"
-      :to="`/art/prints/${id}`">
-      <img
-        class="rounded-lg block mb-2 w-full"
-        :alt="`Surf Garage - ${title}`"
-        :src="url"/>
-    </NuxtLink>
+  <div class="sm:columns-2 md:columns-4 gap-2 mb-2">
+    <LazyArtMasonryImage
+      v-for="{id, title, url} in images"
+      :key="id"
+      v-bind="{id, title, url}"
+    />
   </div>
 </template>
 
 <script setup>
-definePageMeta({layout: "art"});
+definePageMeta({layout: 'art'})
 
 const images = ref([])
 // const getHomepageGallery = async () => {
@@ -34,8 +30,6 @@ getHomepageGallery().then(entry => {
     url: i.fields.file.url,
     title: i.fields.title
   }))
-})
-//.catch(e => console.error('Something went wrong while fetching the images from Contentful', e.message))
+}).catch(e => console.error('Something went wrong while fetching the images from Contentful', e.message))
 
 </script>
-
