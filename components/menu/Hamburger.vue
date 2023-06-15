@@ -11,7 +11,7 @@
           <li>
             <NuxtLink to="/" class="mr-1">{{ $t("nav.storage") }}</NuxtLink>
             <div
-              :class="{'hidden': !showBoardStorage}"
+              v-show="showBoardStorage"
               v-if="boardStorageMenu">
               <NuxtLink
                 v-for="([key, value]) in Object.entries(boardStorageMenu)"
@@ -25,7 +25,7 @@
           <li>
             <NuxtLink to="/art" class="mr-1">Surf Art</NuxtLink>
             <div
-              :class="{'hidden': !showSurfArt}"
+              v-show="showSurfArt"
               v-if="surfArtMenu"
             >
               <NuxtLink
@@ -36,12 +36,6 @@
                 - {{ value }}
               </NuxtLink>
             </div>
-          </li>
-          <li>
-            <NuxtLink to="/#pricing">{{ $t("nav.pricing") }}</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/#contact">{{ $t("nav.contact") }}</NuxtLink>
           </li>
         </ul>
         <ContactLinks class="hamburger-menu__links"/>
