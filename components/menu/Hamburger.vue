@@ -45,7 +45,7 @@
 </template>
 
 <script setup>
-import {Push} from 'vue3-burger-menu'
+import { Push } from 'vue3-burger-menu'
 
 const showSurfArt = ref(true)
 const showBoardStorage = ref(true)
@@ -59,15 +59,15 @@ watch(route, newRoute => {
     showSurfArt.value = false
     showBoardStorage.value = true
   }
-}, {deep: true, immediate: true})
+}, { deep: true, immediate: true })
 
-const {getFirstEntryOfType} = useContentful()
+const { getFirstEntryOfType } = useContentful()
 const boardStorageMenu = ref(null)
 const surfArtMenu = ref(null)
 const fetchMenu = async () => {
   return await getFirstEntryOfType('hamburgerMenu')
 }
-fetchMenu().then(({fields}) => {
+fetchMenu().then(({ fields }) => {
   boardStorageMenu.value = fields.boardStorageMenu
   surfArtMenu.value = fields.surfArtMenu
 })
