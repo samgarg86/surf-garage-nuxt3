@@ -23,12 +23,14 @@ defineProps({
 </script>
 
 <style lang="postcss">
-.masonry-image:hover .masonry-image__hover {
-  display: flex;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+@media (hover: hover) {
+  .masonry-image:hover .masonry-image__hover {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
 </style>

@@ -22,7 +22,7 @@ const fetchPage = async () => {
   const entries = await client.getEntries({
     content_type: 'artGalleryPage',
     include: 10,
-    'fields.slug[match]': params.slug[0]
+    'fields.slug[match]': params.slug[0] || 'art-homepage'
   })
   return entries?.items?.[0].fields || undefined
 }

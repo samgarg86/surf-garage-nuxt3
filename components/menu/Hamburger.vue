@@ -1,16 +1,41 @@
 <template>
+  <!--  <pre>{{boardStorageMenu}}</pre>-->
+  <!--  <pre>{{surfArtMenu}}</pre>-->
   <div :class="{
       'hamburger-menu': true,
-      'black-bars': black
+      'black-bars': showSurfArt
     }">
     <client-only>
       <Push :closeOnNavigation="true" left>
         <ul>
           <li>
-            <NuxtLink to="/#storage">{{ $t("nav.storage") }}</NuxtLink>
+            <NuxtLink to="/" class="mr-1">{{ $t("nav.storage") }}</NuxtLink>
+            <div
+              :class="{'hidden': !showBoardStorage}"
+              v-if="boardStorageMenu">
+              <NuxtLink
+                v-for="([key, value]) in Object.entries(boardStorageMenu)"
+                :key="key"
+                :to="key"
+                class="block">
+                - {{ value }}
+              </NuxtLink>
+            </div>
           </li>
           <li>
-            <NuxtLink to="/art">Surf Art</NuxtLink>
+            <NuxtLink to="/art" class="mr-1">Surf Art</NuxtLink>
+            <div
+              :class="{'hidden': !showSurfArt}"
+              v-if="surfArtMenu"
+            >
+              <NuxtLink
+                v-for="([key, value]) in Object.entries(surfArtMenu)"
+                :key="key"
+                :to="key"
+                class="block">
+                - {{ value }}
+              </NuxtLink>
+            </div>
           </li>
           <li>
             <NuxtLink to="/#pricing">{{ $t("nav.pricing") }}</NuxtLink>
@@ -26,10 +51,31 @@
 </template>
 
 <script setup>
-import {Push} from "vue3-burger-menu";
+import {Push} from 'vue3-burger-menu'
 
-defineProps({
-  black: Boolean
+const showSurfArt = ref(true)
+const showBoardStorage = ref(true)
+const route = useRoute()
+
+watch(route, newRoute => {
+  if (newRoute.path.includes('art')) {
+    showSurfArt.value = true
+    showBoardStorage.value = false
+  } else {
+    showSurfArt.value = false
+    showBoardStorage.value = true
+  }
+}, {deep: true, immediate: true})
+
+const {getFirstEntryOfType} = useContentful()
+const boardStorageMenu = ref(null)
+const surfArtMenu = ref(null)
+const fetchMenu = async () => {
+  return await getFirstEntryOfType('hamburgerMenu')
+}
+fetchMenu().then(({fields}) => {
+  boardStorageMenu.value = fields.boardStorageMenu
+  surfArtMenu.value = fields.surfArtMenu
 })
 </script>
 

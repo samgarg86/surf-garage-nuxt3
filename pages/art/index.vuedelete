@@ -1,6 +1,6 @@
 <template>
   <div class="sm:columns-2 md:columns-4 gap-2 mb-2">
-    <LazyArtMasonryImage
+    <ArtMasonryImage
       v-for="{id, title, url} in images"
       :key="id"
       v-bind="{id, title, url}"
@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-definePageMeta({layout: 'art'})
+definePageMeta({ layout: 'art' })
 
 const images = ref([])
 // const getHomepageGallery = async () => {
@@ -19,7 +19,7 @@ const images = ref([])
 //   })
 // }
 
-const {getFirstEntryOfType} = useContentful()
+const { getFirstEntryOfType } = useContentful()
 const getHomepageGallery = async () => {
   return await getFirstEntryOfType('homepageGallery')
 }
