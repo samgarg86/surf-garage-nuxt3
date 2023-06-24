@@ -1,8 +1,8 @@
 <template>
   <div class="sm:columns-2 md:columns-3 mb-2">
     <div class="mb-2">
-      <h1 class="font-bold text-2xl lowercase font-metalsmith mb-1">{{ title }}</h1>
-      <h2 class="font-bold text-xl">{{ description }}</h2>
+      <h1 class="text-2xl lowercase font-metalsmith mb-1">{{ title }}</h1>
+      <h2 class="text-base">{{ description }}</h2>
     </div>
     <ArtMasonryImage
       v-for="{id, title, url} in images"
@@ -12,9 +12,9 @@
   </div>
 </template>
 <script setup>
-definePageMeta({layout: 'art'})
-const {params} = useRoute()
-const {client} = useContentful()
+definePageMeta({ layout: 'art' })
+const { params } = useRoute()
+const { client } = useContentful()
 const title = ref('')
 const description = ref('')
 const images = ref([])
