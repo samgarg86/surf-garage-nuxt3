@@ -1,5 +1,5 @@
 <script setup>
-import arrowDown from "~/assets/icons/chevron-down.svg?raw";
+import arrowDown from '~/assets/icons/chevron-down.svg?raw'
 defineProps({
   title: String,
   subtitle: String,

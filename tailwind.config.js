@@ -42,6 +42,9 @@ module.exports = {
       8: '8rem',
       9: '9rem',
       10: '10rem',
+      12: '12rem',
+      15: '15rem',
+      20: '20rem',
       25: '25rem'
     },
     fontSize:

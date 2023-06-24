@@ -11,9 +11,9 @@
 
 <script setup>
 
-const {locale} = useI18n()
+const { locale } = useI18n()
 
-const {$contentful} = useNuxtApp()
+const { $contentful } = useNuxtApp()
 
 const mappedHero = ref()
 const mappedTiles = ref([])
@@ -32,7 +32,7 @@ const mappedMembershipPlans = ref([])
 // }
 
 const getHomepage = async () => {
-  const {getFirstEntryOfType} = useContentful()
+  const { getFirstEntryOfType } = useContentful()
   return await getFirstEntryOfType('homepageSections', locale.value)
 }
 
@@ -65,14 +65,14 @@ getHomepage().then((homepage) => {
   mappedBoardStorageSection.value = {
     title: boardStorageSection.fields.title,
     subtitle: boardStorageSection.fields.subtitle,
-    icons: boardStorageSection.fields.icons.map(icon => ({title: icon.fields.title, url: icon.fields.file.url}))
+    icons: boardStorageSection.fields.icons.map(icon => ({ title: icon.fields.title, url: icon.fields.file.url }))
   }
 
   const boardSecuritySection = iconSections.find(section => section.sys.contentType.sys.id === 'boardSecuritySection')
   mappedBoardSecuritySection.value = {
     title: boardSecuritySection.fields.title,
     subtitle: boardSecuritySection.fields.subtitle,
-    icons: boardSecuritySection.fields.icons.map(icon => ({title: icon.fields.title, url: icon.fields.file.url})),
+    icons: boardSecuritySection.fields.icons.map(icon => ({ title: icon.fields.title, url: icon.fields.file.url })),
     bgImage: boardSecuritySection.fields.backgroundImage.fields.file.url
   }
 

@@ -3,21 +3,11 @@
     <h2 class="contact__title section__title font-metalsmith">
       <span>{{ $t("contact.title") }}</span>
     </h2>
-    <div class="section__content contact__content full-width">
-      <ContactLinks class="contact__grid-item contact__links"/>
-      <div class="contact__grid-item contact__form">
+    <div class="p-5 md:grid grid-cols-3 gap-5 font-metalsmith">
+      <LazyInstaFeed/>
+      <ContactLinks class="contact__grid-item contact__links lowercase"/>
+      <div class="contact__grid-item contact__form w-full lowercase">
         <ContactForm />
-      </div>
-      <div class="contact__grid-item contact__insta-widget">
-        <!-- SnapWidget -->
-        <iframe
-          class="contact__insta-iframe snapwidget-widget"
-          src="https://snapwidget.com/embed/1014556"
-          allowtransparency="true"
-          frameborder="0"
-          scrolling="no"
-        >
-        </iframe>
       </div>
     </div>
   </section>
@@ -46,29 +36,6 @@
     }
   }
 
-  &__content {
-    @media screen(md) {
-      display: grid;
-    }
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 5rem;
-    justify-items: center;
-    font-family: theme('fontFamily.metalsmith');
-    text-transform: lowercase;
-  }
-
-  &__grid-item {
-    margin-bottom: 4rem;
-
-    @media screen(md) {
-      margin-bottom: 0;
-    }
-  }
-
-  &__form {
-    width: 100%;
-  }
-
   &__address {
     color: theme('colors.lightYellow');
   }
@@ -86,32 +53,6 @@
       background: transparent;
       color: theme('colors.lightYellow');
       border-color: theme('colors.lightYellow');
-    }
-  }
-
-  &__insta {
-    &-widget {
-      background: theme('colors.black');
-      width: 100%;
-      margin: 0 auto;
-      padding-bottom: 66.667%;
-      position: relative;
-
-      @media screen(md) {
-        order: -1;
-      }
-    }
-
-    &-iframe {
-      border: none;
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
     }
   }
 }
