@@ -13,75 +13,53 @@
 
 const { locale } = useI18n()
 
-const { $contentful } = useNuxtApp()
+const { getFirstEntryOfType } = useContentful()
+const homepage = await getFirstEntryOfType('homepageSections', locale.value)
 
-const mappedHero = ref()
-const mappedTiles = ref([])
-const mappedBoardStorageSection = ref()
-const mappedBoardSecuritySection = ref()
-const mappedMembershipPlans = ref([])
+const {
+  tiles,
+  heroTitle,
+  heroSubtitle,
+  heroBgImage,
+  heroYoutubeVideo,
+  iconSections,
+  membershipPlans
+} = homepage.fields || {}
 
-// const getHomepage = async () => {
-//   const client = $contentful()
-//   const {items } = await client.getEntries({
-//     content_type: 'homepageSections',
-//     include: 10,
-//     locale: locale.value
-//   })
-//   return items[0]
-// }
-
-const getHomepage = async () => {
-  const { getFirstEntryOfType } = useContentful()
-  return await getFirstEntryOfType('homepageSections', locale.value)
+const mappedHero = {
+  title: heroTitle,
+  subtitle: heroSubtitle,
+  bgVideo: heroYoutubeVideo,
+  bgImage: heroBgImage.fields.file.url
 }
 
-getHomepage().then((homepage) => {
-  const {
-    tiles,
-    heroTitle,
-    heroSubtitle,
-    heroBgImage,
-    heroYoutubeVideo,
-    iconSections,
-    membershipPlans
-  } = homepage.fields || {}
+const mappedTiles = tiles.map(t => ({
+  text: t.fields.text,
+  bg: t.fields.backgroundImage.fields.file.url,
+  type: t.fields.type,
+  link: t.fields.link
+})) || []
 
-  mappedHero.value = {
-    title: heroTitle,
-    subtitle: heroSubtitle,
-    bgVideo: heroYoutubeVideo,
-    bgImage: heroBgImage.fields.file.url
-  }
+const boardStorageSection = iconSections.find(section => section.sys.contentType.sys.id === 'boardStorageSection')
+const mappedBoardStorageSection = {
+  title: boardStorageSection.fields.title,
+  subtitle: boardStorageSection.fields.subtitle,
+  icons: boardStorageSection.fields.icons.map(icon => ({ title: icon.fields.title, url: icon.fields.file.url }))
+}
 
-  mappedTiles.value = tiles.map(t => ({
-    text: t.fields.text,
-    bg: t.fields.backgroundImage.fields.file.url,
-    type: t.fields.type,
-    link: t.fields.link
-  })) || []
+const boardSecuritySection = iconSections.find(section => section.sys.contentType.sys.id === 'boardSecuritySection')
+const mappedBoardSecuritySection = {
+  title: boardSecuritySection.fields.title,
+  subtitle: boardSecuritySection.fields.subtitle,
+  icons: boardSecuritySection.fields.icons.map(icon => ({ title: icon.fields.title, url: icon.fields.file.url })),
+  bgImage: boardSecuritySection.fields.backgroundImage.fields.file.url
+}
 
-  const boardStorageSection = iconSections.find(section => section.sys.contentType.sys.id === 'boardStorageSection')
-  mappedBoardStorageSection.value = {
-    title: boardStorageSection.fields.title,
-    subtitle: boardStorageSection.fields.subtitle,
-    icons: boardStorageSection.fields.icons.map(icon => ({ title: icon.fields.title, url: icon.fields.file.url }))
-  }
-
-  const boardSecuritySection = iconSections.find(section => section.sys.contentType.sys.id === 'boardSecuritySection')
-  mappedBoardSecuritySection.value = {
-    title: boardSecuritySection.fields.title,
-    subtitle: boardSecuritySection.fields.subtitle,
-    icons: boardSecuritySection.fields.icons.map(icon => ({ title: icon.fields.title, url: icon.fields.file.url })),
-    bgImage: boardSecuritySection.fields.backgroundImage.fields.file.url
-  }
-
-  mappedMembershipPlans.value = membershipPlans.map(plan => ({
-    title: plan.fields.title,
-    monthlyPrice: plan.fields.monthlyPrice,
-    priceDescription: plan.fields.priceDescription
-  })) || []
-})
+const mappedMembershipPlans = membershipPlans.map(plan => ({
+  title: plan.fields.title,
+  monthlyPrice: plan.fields.monthlyPrice,
+  priceDescription: plan.fields.priceDescription
+})) || []
 
 //   .catch((e) => {
 //   console.error('Something went wrong while fetching the homepage from Contentful', e.message)

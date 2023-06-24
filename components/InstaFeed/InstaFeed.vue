@@ -11,7 +11,7 @@
       </div>
     </nuxt-link>
     <div class="columns-3 gap-1">
-      <template v-for="post in data.data.slice(0, 6)" :key="post.id">
+      <template v-for="post in data?.data.slice(0, 6)" :key="post.id">
         <nuxt-link :to="post.permalink" target="_blank">
           <InstaFeedVideoPlayer
             v-if="post.media_type === 'VIDEO'"
@@ -29,6 +29,6 @@
 </template>
 <script setup>
 import insta from '~/assets/icons/insta2.svg?raw'
-const accessToken = 'IGQVJXdV9CczBOLWRLR1lrSW85WjNsZA0J3TG5KZATRLSk1lRHE2NjNpUWsyR0RKZAkR1VHFKYlo2SW10X3hDZA1lDcU9UT3ZAITFpnQ1hpQzFYa3ZALOFRicFptc2Jyc01CMmFQSjI2aHRn'
+const accessToken = 'IGQVJWRS11TTFhVnk0cFc2UDhJSEhaM1NnQmJSRkhIUEhRbHFzSVlnN0lHUDNrRDB2ZAnpfamFReXZACSi0xUlZAFNG41OWdJUm1hU19ZAOUt4NWFCUGRZAdkd3X0hfanNlU245NEt5MHZAicnJ2ZAnV5S3hHVwZDZD'
 const { data } = await useFetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,thumbnail_url&access_token=${accessToken}`)
 </script>
