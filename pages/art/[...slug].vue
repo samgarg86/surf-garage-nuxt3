@@ -5,7 +5,7 @@
       <h2 class="text-base">{{ description }}</h2>
     </div>
     <ArtMasonryImage
-      v-for="{id, title, url} in images"
+      v-for="{id, title, url} in mappedImages"
       :key="id"
       v-bind="{id, title, url}"
     />
@@ -15,25 +15,19 @@
 definePageMeta({ layout: 'art' })
 const { params } = useRoute()
 const { client } = useContentful()
-const title = ref('')
-const description = ref('')
-const images = ref([])
-const fetchPage = async () => {
-  const entries = await client.getEntries({
-    content_type: 'artGalleryPage',
-    include: 10,
-    'fields.slug[match]': params.slug[0] || 'art-homepage'
-  })
-  return entries?.items?.[0].fields || undefined
-}
+const { locale } = useI18n()
 
-fetchPage().then((fields) => {
-  title.value = fields.title
-  description.value = fields.description
-  images.value = fields.images.map(i => ({
-    id: i.sys.id,
-    url: i.fields.file.url,
-    title: i.fields.title
-  }))
+const entries = await client.getEntries({
+  content_type: 'artGalleryPage',
+  include: 10,
+  locale: locale.value,
+  'fields.slug[match]': params.slug[0] || 'art-homepage'
 })
+
+const { title, description, images } = entries?.items?.[0].fields || {}
+const mappedImages = images.map(i => ({
+  id: i.sys.id,
+  url: i.fields.file.url,
+  title: i.fields.title
+}))
 </script>
