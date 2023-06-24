@@ -5,7 +5,7 @@
     </div>
     <div>
       <div class="mb-3">
-        <h1 class="text-2xl font-bold mb-1 lowercase font-metalsmith">{{ title }}</h1>
+        <h1 class="text-2xl mb-1 lowercase font-metalsmith">{{ title }}</h1>
         <h2 v-if="description" class="text-xl font-myriad text-base">{{ description }}</h2>
       </div>
       <select v-model="size" class="px-2 py-1 mb-2 text-lg block w-full md:w-auto border-2">
@@ -25,27 +25,27 @@
   </div>
 </template>
 <script setup>
-import {useRoute, useContentful, useRuntimeConfig, ref} from '#imports'
+import { useRoute, useContentful, useRuntimeConfig, ref } from '#imports'
 
-definePageMeta({layout: 'art'})
+definePageMeta({ layout: 'art' })
 
-const {public: {priceTable: {prints}}} = useRuntimeConfig()
+const { public: { priceTable: { prints } } } = useRuntimeConfig()
 const route = useRoute()
-const {id} = route.params
-const {client} = useContentful()
+const { id } = route.params
+const { client } = useContentful()
 const title = ref('')
 const description = ref('')
 const image = ref('')
 const size = ref('10x20')
 const host = useHost()
 
-const {query} = useRoute()
+const { query } = useRoute()
 if (query.size) size.value = query.size
 const getProductImage = async () => {
   return await client.getAsset(route.params.id)
 }
 
-getProductImage().then(({fields}) => {
+getProductImage().then(({ fields }) => {
   title.value = fields.title
   description.value = fields.description
   image.value = fields.file.url

@@ -1,5 +1,5 @@
 <template>
-  <header class="font-metalsmith font-bold text-center py-2 text-xl">
+  <header class="font-metalsmith text-center py-2 text-xl">
     <NuxtLink to="/art">surf garage art co.</NuxtLink>
   </header>
   <nav class="justify-center items-center mx-auto hidden grid grid-cols-6 font-avenir text-black">

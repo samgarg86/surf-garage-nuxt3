@@ -1,13 +1,3 @@
-<script setup>
-import arrowDown from '~/assets/icons/chevron-down.svg?raw'
-defineProps({
-  title: String,
-  subtitle: String,
-  bgVideo: String,
-  bgImage: String
-})
-</script>
-
 <template>
   <section id="about" class="section hero"
            :style="{ '--hero-bg': `url(${bgImage})` }">
@@ -16,6 +6,11 @@ defineProps({
     <div class="hero__foreground">
       <h1 class="hero__title">{{ title }}</h1>
       <h2 class="hero__subtitle">{{ subtitle }}</h2>
+      <button
+        class="mr-2"
+        @click="interactWithYoutube('mute')"
+      >Mute</button>
+      <button @click="interactWithYoutube('unMute')">Unmute</button>
       <ScrollTo class="button__join" linkType="button" to="contact">{{
           $t("hero.join-now")
         }}
@@ -25,16 +20,38 @@ defineProps({
     <div class="hero__video-bg">
       <div class="hero__dark-bg"></div>
       <iframe
-        :src="bgVideo"
+        :src="`https://www.youtube.com/embed/${bgVideo}?autoplay=1&loop=1&playlist=${bgVideo}&controls=0&enablejsapi=1&mute=1&playsinline=1`"
         title="Surf Garage Video PLayer"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
+        data-not-lazy
+        ref="player"
       >
       </iframe>
     </div>
   </section>
 </template>
+<script setup>
+import arrowDown from '~/assets/icons/chevron-down.svg?raw'
+defineProps({
+  title: String,
+  subtitle: String,
+  bgVideo: String,
+  bgImage: String
+})
+const player = ref(null)
+// const interactWithYoutube = (vidcontrol) => {
+//   player.value?.contentWindow.postMessage('{"event":"command","func":"' + vidcontrol + '","args":""}', '*')
+// }
+
+const interactWithYoutube = (event) => {
+  player.value?.contentWindow.postMessage(JSON.stringify({
+    event: 'command',
+    func: event
+  }), '*')
+}
+</script>
 
 <style lang="postcss">
 .hero {
