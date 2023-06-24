@@ -6,17 +6,15 @@
     <div class="hero__foreground">
       <h1 class="hero__title">{{ title }}</h1>
       <h2 class="hero__subtitle">{{ subtitle }}</h2>
-      <button
-        class="mr-2"
-        @click="interactWithYoutube('mute')"
-      >Mute</button>
-      <button @click="interactWithYoutube('unMute')">Unmute</button>
       <ScrollTo class="button__join" linkType="button" to="contact">{{
           $t("hero.join-now")
         }}
       </ScrollTo>
     </div>
     <ScrollTo to="tiles" class="hero__arrow" v-html="arrowDown"/>
+    <VolumeIcon
+      class="absolute bottom-1 right-1 z-10 hidden md:block"
+      @click="isMute = !isMute" :animate="!isMute"/>
     <div class="hero__video-bg">
       <div class="hero__dark-bg"></div>
       <iframe
@@ -41,15 +39,19 @@ defineProps({
   bgImage: String
 })
 const player = ref(null)
-// const interactWithYoutube = (vidcontrol) => {
-//   player.value?.contentWindow.postMessage('{"event":"command","func":"' + vidcontrol + '","args":""}', '*')
-// }
+const isMute = ref(true)
 
-const interactWithYoutube = (event) => {
-  player.value?.contentWindow.postMessage(JSON.stringify({
-    event: 'command',
-    func: event
-  }), '*')
+watch(isMute, (value) => {
+  if (value) {
+    youtubeCommand('mute')
+  } else {
+    youtubeCommand('unMute')
+  }
+})
+const youtubeCommand = (func) => {
+  const object = { event: 'command', func }
+  console.log('youtubeCommand', object)
+  player.value?.contentWindow.postMessage(JSON.stringify(object), '*')
 }
 </script>
 
