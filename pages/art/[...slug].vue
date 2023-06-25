@@ -17,12 +17,14 @@ const { params } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
 const mappedImages = ref([])
+const slug = params.slug[0] ? `art/${params.slug[0]}` : 'art/homepage'
+// console.log('Looking for art gallery page with slug', slug)
 
 const entries = await client.getEntries({
   content_type: 'artGalleryPage',
   include: 10,
   locale: locale.value,
-  'fields.slug[match]': `art/${params.slug[0]}` || 'art/homepage'
+  'fields.slug[match]': slug
 })
 
 const { fields: { title, description, images }, metadata: { tags } } = entries?.items?.[0] || {}
