@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:columns-2 md:columns-3 mb-2">
+  <div class="sm:columns-2 md:columns-3 mb-1 md:mb-2 gap-1 md:gap-2">
     <div class="mb-2">
       <h1 class="text-2xl lowercase font-metalsmith mb-1">{{ title }}</h1>
       <h2 class="text-base">{{ description }}</h2>

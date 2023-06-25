@@ -3,7 +3,7 @@
     <nuxt-link
       to="https://www.instagram.com/surfgaragelpa/"
       target="_blank"
-      class="inline-flex justify-center items-center border-4 border-white rounded-2xl px-1 mb-1 bg-white">
+      class="inline-flex justify-center items-center rounded-2xl mb-1 bg-white">
       <div v-html="insta" class="w-6"/>
       <div class="text-center w-15 font-avenir uppercase text-sm">
         Follow us on
@@ -29,6 +29,6 @@
 </template>
 <script setup>
 import insta from '~/assets/icons/insta2.svg?raw'
-const { instaAccessToken } = useRuntimeConfig()
+const { public: { instaAccessToken } } = useRuntimeConfig()
 const { data } = await useFetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,thumbnail_url&access_token=${instaAccessToken}`)
 </script>

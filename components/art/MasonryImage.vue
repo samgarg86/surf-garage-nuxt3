@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="`/art/prints/${id}`"
-    class="masonry-image mb-2 relative block"
+    class="masonry-image mb-1 md:mb-2 relative block"
   >
     <img
       :src="`${url}?w=600`"

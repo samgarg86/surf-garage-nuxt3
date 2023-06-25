@@ -25,7 +25,6 @@
   </div>
 </template>
 <script setup>
-import { useRoute, useContentful, useRuntimeConfig, ref } from '#imports'
 
 definePageMeta({ layout: 'art' })
 
