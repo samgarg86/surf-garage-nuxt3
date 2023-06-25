@@ -22,7 +22,7 @@ const entries = await client.getEntries({
   content_type: 'artGalleryPage',
   include: 10,
   locale: locale.value,
-  'fields.slug[match]': params.slug[0] || 'art-homepage'
+  'fields.slug[match]': `art/${params.slug[0]}` || 'art/homepage'
 })
 
 const { fields: { title, description, images }, metadata: { tags } } = entries?.items?.[0] || {}
