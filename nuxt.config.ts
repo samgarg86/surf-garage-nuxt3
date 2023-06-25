@@ -26,14 +26,15 @@ export default defineNuxtConfig({
     public: {
       enableCommerce: true,
       contentful: {
-        space: "5im2bow6vhih",
-        accessToken: "Urr45xvziePBNjMuCasC4fiCJRRqz8yMguoNKhW4Veo",
+        space: process.env.contentfulSpace,
+        accessToken: process.env.contentfulAccessToken,
       },
+      instaAccessToken: process.env.instaAccessToken,
       priceTable: {
         prints: {
-          "10x20": 10,
-          "20x30": 20,
-          "30x40": 30,
+          '10x20': 10,
+          '20x30': 20,
+          '30x40': 30,
         },
       },
     },

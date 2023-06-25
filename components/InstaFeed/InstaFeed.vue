@@ -29,6 +29,6 @@
 </template>
 <script setup>
 import insta from '~/assets/icons/insta2.svg?raw'
-const accessToken = 'IGQVJXWV9vNm9uWV80VHRXcmxiRWt5ZAUZAjMmp0UUJaSlE2RHVWZAHJ4M3VfUnM3YTZAzd2hSTnRjVGhPX1lUdDB0UUVuYVc3azk1NlpkZAExCQ1ZAqcDdDMmpfcEctTDdsV3FxaVVFSk9sbi1LXzRiTHhkVgZDZD'
-const { data } = await useFetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,thumbnail_url&access_token=${accessToken}`)
+const { instaAccessToken } = useRuntimeConfig()
+const { data } = await useFetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,thumbnail_url&access_token=${instaAccessToken}`)
 </script>

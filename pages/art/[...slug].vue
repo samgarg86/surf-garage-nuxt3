@@ -16,6 +16,7 @@ definePageMeta({ layout: 'art' })
 const { params } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
+const mappedImages = ref([])
 
 const entries = await client.getEntries({
   content_type: 'artGalleryPage',
@@ -24,10 +25,15 @@ const entries = await client.getEntries({
   'fields.slug[match]': params.slug[0] || 'art-homepage'
 })
 
-const { title, description, images } = entries?.items?.[0].fields || {}
-const mappedImages = images.map(i => ({
-  id: i.sys.id,
-  url: i.fields.file.url,
-  title: i.fields.title
-}))
+const { title, description, images, tag } = entries?.items?.[0].fields || {}
+
+if (tag) {
+  const { items } = await client.getAssets({
+    'metadata.tags.sys.id[all]': tag,
+    locale: locale.value
+  })
+  mappedImages.value = mapImages(items)
+} else if (images?.length) {
+  mappedImages.value = mapImages(images)
+}
 </script>
