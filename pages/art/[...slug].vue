@@ -25,11 +25,11 @@ const entries = await client.getEntries({
   'fields.slug[match]': params.slug[0] || 'art-homepage'
 })
 
-const { title, description, images, tag } = entries?.items?.[0].fields || {}
+const { fields: { title, description, images }, metadata: { tags } } = entries?.items?.[0] || {}
 
-if (tag) {
+if (tags?.length) {
   const { items } = await client.getAssets({
-    'metadata.tags.sys.id[all]': tag,
+    'metadata.tags.sys.id[all]': tags.map(tag => tag.sys.id).join(','),
     locale: locale.value
   })
   mappedImages.value = mapImages(items)
