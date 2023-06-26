@@ -1,6 +1,5 @@
 <template>
-  <!--  <pre>{{boardStorageMenu}}</pre>-->
-  <!--  <pre>{{surfArtMenu}}</pre>-->
+<!--  <pre>{{siteNav}}</pre>-->
   <div :class="{
       'hamburger-menu': true,
       'black-bars': showSurfArt
@@ -12,9 +11,9 @@
             <NuxtLink to="/" class="mr-1">{{ $t("nav.storage") }}</NuxtLink>
             <div
               v-show="showBoardStorage"
-              v-if="boardStorageMenu">
+              v-if="siteNav?.boardStorageMenu">
               <NuxtLink
-                v-for="([key, value]) in Object.entries(boardStorageMenu)"
+                v-for="([key, value]) in Object.entries(siteNav?.boardStorageMenu)"
                 :key="key"
                 :to="key"
                 class="block">
@@ -26,10 +25,10 @@
             <NuxtLink to="/art" class="mr-1">Surf Art</NuxtLink>
             <div
               v-show="showSurfArt"
-              v-if="surfArtMenu"
+              v-if="siteNav?.surfArtMenu"
             >
               <NuxtLink
-                v-for="([key, value]) in Object.entries(surfArtMenu)"
+                v-for="([key, value]) in Object.entries(siteNav?.surfArtMenu)"
                 :key="key"
                 :to="key"
                 class="block">
@@ -50,6 +49,7 @@ import { Push } from 'vue3-burger-menu'
 const showSurfArt = ref(true)
 const showBoardStorage = ref(true)
 const route = useRoute()
+const { siteNav } = useSiteNav()
 
 watch(route, newRoute => {
   if (newRoute.path.includes('art')) {
@@ -60,10 +60,6 @@ watch(route, newRoute => {
     showBoardStorage.value = true
   }
 }, { deep: true, immediate: true })
-
-const { getFirstEntryOfType } = useContentful()
-
-const { fields: { boardStorageMenu, surfArtMenu } } = await getFirstEntryOfType('hamburgerMenu')
 
 </script>
 

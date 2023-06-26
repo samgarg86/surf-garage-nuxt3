@@ -60,10 +60,6 @@ const mappedMembershipPlans = membershipPlans.map(plan => ({
   monthlyPrice: plan.fields.monthlyPrice,
   priceDescription: plan.fields.priceDescription
 })) || []
-
-//   .catch((e) => {
-//   console.error('Something went wrong while fetching the homepage from Contentful', e.message)
-// })
 </script>
 
 <style lang="postcss">
