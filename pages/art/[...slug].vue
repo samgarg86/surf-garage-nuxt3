@@ -29,6 +29,13 @@ const entries = await client.getEntries({
 
 const { fields: { title, description, images }, metadata: { tags } } = entries?.items?.[0] || {}
 
+useSeoMeta({
+  title: `Surf Garage Art - ${title}`,
+  ogTitle: `Surf Garage Art - ${title}`,
+  description: `Surf Garage Art - ${description}`,
+  ogDescription: `Surf Garage Art - ${description}`
+})
+
 if (tags?.length) {
   const { items } = await client.getAssets({
     'metadata.tags.sys.id[all]': tags.map(tag => tag.sys.id).join(','),

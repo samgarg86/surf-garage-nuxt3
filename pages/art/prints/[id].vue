@@ -41,9 +41,9 @@ const { fields: { title, description, file } } = await client.getAsset(route.par
 
 useSeoMeta({
   title: `Surf Garage Art - ${title}`,
-  ogTitle: title,
+  ogTitle: `Surf Garage Art - ${title}`,
   description: `Surf Garage Art - ${description}`,
-  ogDescription: description,
+  ogDescription: `Surf Garage Art - ${description}`,
   ogImage: file?.url
 })
 </script>
