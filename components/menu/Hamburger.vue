@@ -62,15 +62,9 @@ watch(route, newRoute => {
 }, { deep: true, immediate: true })
 
 const { getFirstEntryOfType } = useContentful()
-const boardStorageMenu = ref(null)
-const surfArtMenu = ref(null)
-const fetchMenu = async () => {
-  return await getFirstEntryOfType('hamburgerMenu')
-}
-fetchMenu().then(({ fields }) => {
-  boardStorageMenu.value = fields.boardStorageMenu
-  surfArtMenu.value = fields.surfArtMenu
-})
+
+const { fields: { boardStorageMenu, surfArtMenu } } = await getFirstEntryOfType('hamburgerMenu')
+
 </script>
 
 <style lang="postcss">
