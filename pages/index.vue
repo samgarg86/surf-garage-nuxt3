@@ -5,7 +5,6 @@
     <SectionsBoardStorage v-bind="mappedBoardStorageSection"/>
     <SectionsBoardSecurity v-bind="mappedBoardSecuritySection"/>
     <SectionsPricing :plans="mappedMembershipPlans" />
-    <SectionsContact />
   </main>
 </template>
 
@@ -73,7 +72,6 @@ const mappedMembershipPlans = membershipPlans.map(plan => ({
   }
 
   /** Full width sections (with padding) **/
-
   &__content {
     margin: 0 auto;
     max-width: 1024px;

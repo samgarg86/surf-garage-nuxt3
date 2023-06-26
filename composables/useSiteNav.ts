@@ -1,6 +1,6 @@
 import {awaitExpression} from "@babel/types";
 
-export default () => {
+export const useSiteNav = () => {
   const { locale } = useI18n()
   const { getFirstEntryOfType } = useContentful()
   let siteNav = useState('siteNav')

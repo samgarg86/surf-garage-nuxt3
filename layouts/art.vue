@@ -3,18 +3,19 @@
   <main id="page-wrap" class="mx-1 md:mx-2">
     <ArtHeader/>
     <slot/>
+    <Footer/>
   </main>
+
   <div hidden
        id="snipcart"
        data-api-key="MjMyM2Q4NjgtZWI4NS00MTFjLThlNTQtOTExNjkwMDE3ZjI2NjM4MjE1NzE4NjM4MjYyMjk0"
        data-config-modal-style="side">
   </div>
-  <SectionsContact/>
 </template>
 
 <script lang="ts" setup>
-const config = useRuntimeConfig()
-const { snipcartApiKey } = config.public
+// const config = useRuntimeConfig()
+// const { snipcartApiKey } = config.public
 
 useHead({
   link: [
@@ -42,19 +43,16 @@ useHead({
 /* Snipcart theme overrides */
 #snipcart {
   /* Tailwind css sets this to transparent so checkout button isn't visible */
-
   .snipcart-button-primary {
     background-color: theme('colors.waveBlue');
   }
 
   /* hamburger menu is above the back button on mobile */
-
   .snipcart-modal__container {
     z-index: 1000;
   }
 
   /* Images are too small */
-
   .snipcart-item-line__media--small {
     height: 10rem;
   }

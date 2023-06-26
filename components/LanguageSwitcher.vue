@@ -1,48 +1,31 @@
-<script setup>
-defineProps({
-  showLanguageName: {
-    type: Boolean,
-    required: false
-  }
-})
-// import i18n from "../../i18n.js";
-// import { useRouter } from 'vue-router'
-// const router = useRouter()
-// const onChange = (e) => {
-//   const locale = e.target.value
-//   if (locale) {
-//     console.log('Selected language', locale)
-//     router.push({
-//       path: `/${locale}`
-//     })
-//   }
-// }
-
-</script>
 <template>
   <div>
-    <!--    <select @change="onChange" v-model="i18n.global.locale.value">-->
-    <!--      <option value="en">en</option>-->
-    <!--      <option value="es">es</option>-->
-    <!--    </select>-->
-    <div class="language-switcher">
-      <router-link :to="switchLocalePath('en')">{{showLanguageName ? 'English' : 'EN'}}</router-link>
-      <router-link :to="switchLocalePath('es')">{{showLanguageName ? 'Español' : 'ES'}}</router-link>
+    <div class="language-switcher py-1">
+      <nuxt-link
+        :to="switchLocalePath('en')"
+        class="mr-1" :class="theme === 'light' ? 'text-black' : 'text-white'"
+      >
+        {{showLanguageName ? 'English' : 'EN'}}
+      </nuxt-link>
+      <nuxt-link :class="theme === 'light' ? 'text-black' : 'text-white'"
+                 :to="switchLocalePath('es')">{{showLanguageName ? 'Español' : 'ES'}}</nuxt-link>
     </div>
   </div>
+
 </template>
+
+<script setup>
+defineProps({
+  showLanguageName: Boolean,
+  theme: String
+})
+</script>
 
 <style lang="postcss">
 .language-switcher {
-  padding: 1rem 0;
-  a {
-    color: theme('colors.white');;
+  a.router-link-active {
     text-decoration: underline;
-    margin-right: 1rem;
-
-    &.router-link-active {
-      color: theme('colors.lightYellow');
-    }
+    //color: theme('colors.black');
   }
 }
 </style>

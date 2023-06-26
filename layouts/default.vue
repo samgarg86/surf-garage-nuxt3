@@ -3,8 +3,9 @@
     <MenuHamburger/>
     <main id="page-wrap">
       <slot/>
+      <Footer />
     </main>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
 </script>

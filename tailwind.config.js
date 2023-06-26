@@ -57,6 +57,8 @@ module.exports = {
         '4xl': '4rem',
         '5xl': '4.5rem'
       },
-    extend: {}
+    gridTemplateColumns: {
+      footer: '1fr 1fr max-content 2fr'
+    }
   }
 }

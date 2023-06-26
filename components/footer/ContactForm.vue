@@ -1,5 +1,5 @@
 <script setup>
-const endpoint = "https://formspree.io/f/xwkzrzpj";
+const endpoint = 'https://formspree.io/f/xwkzrzpj'
 // TODO: Move this to axios submit (but need to implement recaptcha myself)
 // import {ref} from "vue";
 // import axios from 'axios'
@@ -79,7 +79,7 @@ const endpoint = "https://formspree.io/f/xwkzrzpj";
   &__input {
     width: 100%;
     padding: 1rem 2rem;
-    background: theme('colors.lightYellow');
+    background: theme('colors.white');
     border: none;
     text-transform: lowercase;
   }
@@ -88,7 +88,7 @@ const endpoint = "https://formspree.io/f/xwkzrzpj";
     width: 100%;
     height: 100%;
     padding: 1rem 2rem;
-    background: theme('colors.lightYellow');
+    background: theme('colors.white');
     border: none;
     outline: none;
     outline-offset: 0;
@@ -100,7 +100,7 @@ const endpoint = "https://formspree.io/f/xwkzrzpj";
 
     button {
       border: none;
-      background: theme('colors.lightYellow');
+      background: theme('colors.white');
       color: theme('colors.black');
       padding: 1rem 2rem;
       cursor: pointer;
