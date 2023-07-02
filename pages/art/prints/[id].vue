@@ -1,6 +1,6 @@
 <template>
-  <div class="max-w-screen-lg mx-auto my-5 grid md:grid-cols-2 gap-5">
-    <div>
+  <div class="max-w-screen-lg mx-auto my-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-2 lg:gap-5">
+    <div class="md:justify-self-end">
       <img :src="`${file.url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
     </div>
     <div>
@@ -34,10 +34,11 @@ const { id } = route.params
 const { client } = useContentful()
 const size = ref('10x20')
 const host = useHost()
+const { locale } = useI18n()
 
 const { query } = useRoute()
 if (query.size) size.value = query.size
-const { fields: { title, description, file } } = await client.getAsset(route.params.id)
+const { fields: { title, description, file } } = await client.getAsset(route.params.id, { locale: locale.value })
 
 useSeoMeta({
   title: `Surf Garage Art - ${title}`,
