@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="section footer max-w-full">
+  <section id="contact" class="footer max-w-full mx-0">
 <!--    <h2 class="section__title font-metalsmith py-5 text-center">-->
 <!--      <span class="color-black px-1 py-0.5">{{ $t("contact.title") }}</span>-->
 <!--    </h2>-->
@@ -39,7 +39,6 @@ const { siteNav } = useSiteNav()
 
   &__links {
     grid-area: links;
-    //margin: 0 auto;
 
     @media screen(md) {
       padding: 0;
@@ -48,19 +47,22 @@ const { siteNav } = useSiteNav()
 
   &__form {
     grid-area: form;
+    margin: 0 auto;
 
     @media screen(md) {
       max-width: 80rem;
+      margin: 0;
     }
 
     @media screen(lg) {
       max-width: 60rem;
+      justify-self: end;
     }
   }
 
   &__content {
     display: grid;
-    grid-gap: 3rem;
+    grid-gap: 2rem;
 
     grid-template-areas:
       "links links"
@@ -68,12 +70,14 @@ const { siteNav } = useSiteNav()
       "nav1 nav2";
 
     @media screen(md) {
+      grid-gap: 3rem;
       grid-template-areas:
         "links links nav1 nav2"
         "form form form form";
     }
 
     @media screen(lg) {
+      grid-gap: 5rem;
       grid-template-areas:
         "nav1 nav2 links form form"
     }

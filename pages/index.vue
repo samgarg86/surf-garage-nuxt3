@@ -65,10 +65,10 @@ const mappedMembershipPlans = membershipPlans.map(plan => ({
 .section {
   margin: theme('spacing.1');
   position: relative;
-  scroll-margin-top: theme('spacing[2.5]');
+  scroll-margin-top: theme('spacing.2');
 
   @media screen(md) {
-    margin: theme('spacing[2.5]');
+    margin: theme('spacing.2');
   }
 
   /** Full width sections (with padding) **/
@@ -76,13 +76,6 @@ const mappedMembershipPlans = membershipPlans.map(plan => ({
     margin: 0 auto;
     max-width: 1024px;
     padding: 2rem;
-
-    &.full-width {
-      max-width: none;
-      @media screen(md) {
-        padding: 5rem;
-      }
-    }
 
     @media screen(md) {
       padding: 5rem 0;

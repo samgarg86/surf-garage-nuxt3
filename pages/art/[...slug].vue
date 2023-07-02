@@ -1,4 +1,5 @@
 <template>
+<!--  <pre>Entries for {{slug}}: {{entries}}</pre>-->
   <div class="sm:columns-2 md:columns-3 mb-1 md:mb-2 gap-1 md:gap-2">
     <div class="mb-2">
       <h1 class="text-2xl lowercase font-metalsmith mb-1">{{ title }}</h1>
@@ -29,13 +30,6 @@ const entries = await client.getEntries({
 
 const { fields: { title, description, images }, metadata: { tags } } = entries?.items?.[0] || {}
 
-useSeoMeta({
-  title: `Surf Garage Art - ${title}`,
-  ogTitle: `Surf Garage Art - ${title}`,
-  description: `Surf Garage Art - ${description}`,
-  ogDescription: `Surf Garage Art - ${description}`
-})
-
 if (tags?.length) {
   const { items } = await client.getAssets({
     'metadata.tags.sys.id[all]': tags.map(tag => tag.sys.id).join(','),
@@ -45,4 +39,12 @@ if (tags?.length) {
 } else if (images?.length) {
   mappedImages.value = mapImages(images)
 }
+
+useSeoMeta({
+  title: `Surf Garage Art - ${title}`,
+  ogTitle: `${title}`,
+  ...(description && { description }),
+  ...(description && { ogDescription: description }),
+  ...(mappedImages.value?.length && { ogImage: mappedImages.value?.[0]?.url })
+})
 </script>
