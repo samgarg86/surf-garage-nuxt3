@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint --fix",
-    "start": "nuxt start"
+    "start": "nuxt start",
+    "deploy": "sh deployToOcean.sh"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",

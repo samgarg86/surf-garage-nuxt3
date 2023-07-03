@@ -41,6 +41,56 @@ useHead({
 }
 
 /* Snipcart theme overrides */
-@import "~/assets/css/snipcart.css";
+
+/* Tailwind css sets this to transparent so checkout button isn't visible */
+.snipcart-button-primary {
+  background-color: theme('colors.waveBlue');
+}
+
+/* hamburger menu is above the back button on mobile */
+.snipcart-modal__container {
+  z-index: 1000;
+}
+
+/* Images are too small */
+/* Desktop */
+.snipcart-item-line__media {
+  width: 30rem;
+}
+/* Mobile */
+.snipcart-item-line__media--small {
+  width: 20rem;
+  margin-right: 1rem;
+  height: auto;
+}
+
+.snipcart-item-line__image {
+  width: 100%;
+}
+
+.snipcart-item-line--cart-edit .snipcart-item-line__image {
+  width: 100%;
+}
+
+.snipcart-item-line--cart-edit .snipcart-item-line__image {
+  max-width: none;
+}
+
+.snipcart-item-line__container {
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .snipcart-cart-summary--edit.snipcart-modal__container {
+    max-width: 60rem;
+    width: 50%;
+  }
+}
+
+@media screen(lg) {
+  .snipcart-cart-summary--edit.snipcart-modal__container {
+    width: 35%;
+  }
+}
 
 </style>
