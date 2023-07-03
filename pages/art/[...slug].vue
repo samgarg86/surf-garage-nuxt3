@@ -2,13 +2,13 @@
 <!--  <pre>Entries for {{slug}}: {{entries}}</pre>-->
   <div class="sm:columns-2 md:columns-3 mb-1 md:mb-2 gap-1 md:gap-2">
     <div class="mb-2">
-      <h1 class="text-2xl lowercase font-metalsmith mb-1">{{ title }}</h1>
+      <h1 class="text-2xl lowercase font-metalsmith mb-1">{{ pageTitle }}</h1>
       <h2 class="text-base">{{ description }}</h2>
     </div>
     <ArtMasonryImage
       v-for="{id, title, url} in mappedImages"
       :key="id"
-      v-bind="{id, title, url}"
+      v-bind="{id, title, url, f:encodeURIComponent(slug)}"
     />
   </div>
 </template>
@@ -28,7 +28,7 @@ const entries = await client.getEntries({
   'fields.slug[match]': slug
 })
 
-const { fields: { title, description, images }, metadata: { tags } } = entries?.items?.[0] || {}
+const { fields: { title: pageTitle, description, images }, metadata: { tags } } = entries?.items?.[0] || {}
 
 if (tags?.length) {
   const { items } = await client.getAssets({
@@ -41,8 +41,8 @@ if (tags?.length) {
 }
 
 useSeoMeta({
-  title: `Surf Garage Art - ${title}`,
-  ogTitle: `${title}`,
+  title: `Surf Garage Art - ${pageTitle}`,
+  ogTitle: `${pageTitle}`,
   ...(description && { description }),
   ...(description && { ogDescription: description }),
   ...(mappedImages.value?.length && { ogImage: mappedImages.value?.[0]?.url })

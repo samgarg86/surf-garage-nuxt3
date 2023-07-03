@@ -1,6 +1,6 @@
 <template>
   <button
-    class="snipcart-add-item border-2 border-solid px-5 py-1.5 w-full md:w-auto bg-black text-white"
+    class="snipcart-add-item border-2 border-solid px-5 py-1.5 w-full md:w-auto bg-black text-white font-avenir uppercase text-1.8"
     :class="{
     'bg-grey': !enableCommerce,
     }"

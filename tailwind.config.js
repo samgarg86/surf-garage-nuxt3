@@ -50,6 +50,8 @@ module.exports = {
     fontSize:
       {
         sm: '1.6rem',
+        1.8: '1.8rem',
+        2: '2rem',
         base: '2.2rem',
         xl: '2.5rem',
         '2xl': '3rem',

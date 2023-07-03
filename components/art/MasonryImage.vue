@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="`/art/prints/${id}`"
+    :to="`/art/prints/${id}?f=${f}`"
     class="masonry-image mb-1 md:mb-2 relative block"
   >
     <img
@@ -11,6 +11,7 @@
     <div class="masonry-image__hover hidden bg-lightYellow/75 flex justify-center items-center">
       <div class="text-center">
         <div class="text-xl font-avenir text-white mb-10">{{title}}</div>
+        <pre class="text-xl font-avenir text-white">{{referrer}}</pre>
         <span class="px-5 py-1.5 bg-white font-avenir text-sm uppercase">{{ $t('art.order-prints') }}</span>
       </div>
     </div>
@@ -22,7 +23,8 @@ defineProps({
   id: String,
   title: String,
   url: String,
-  description: String
+  description: String,
+  f: String
 })
 </script>
 
