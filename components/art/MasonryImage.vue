@@ -4,12 +4,15 @@
     class="masonry-image mb-1 md:mb-2 relative block"
   >
     <img
-      :src="`${url}?w=600`"
+      :src="`${url}?w=500`"
       :alt="`Surf Garage Art Co - ${title}`"
       class="min-h-[20rem] w-full"
       v-lazy-load/>
     <div class="masonry-image__hover hidden bg-lightYellow/75 flex justify-center items-center">
-      <div class="px-2 py-1.5 bg-white font-avenir text-sm uppercase">{{ $t('art.order-prints') }}</div>
+      <div class="text-center">
+        <div class="text-xl font-avenir text-white mb-10">{{title}}</div>
+        <span class="px-5 py-1.5 bg-white font-avenir text-sm uppercase">{{ $t('art.order-prints') }}</span>
+      </div>
     </div>
   </NuxtLink>
 </template>
@@ -18,7 +21,8 @@
 defineProps({
   id: String,
   title: String,
-  url: String
+  url: String,
+  description: String
 })
 </script>
 
