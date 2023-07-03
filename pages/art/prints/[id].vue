@@ -14,37 +14,42 @@
         <option value="30x40">30cm x 40cm (€{{ prints['30x40'] }})</option>
       </select>
       <AddToCart
-        :id="`${id}-${size}`"
-        :price="prints[size]"
-        :title="`${title} (${size})`"
+        :id="`${id}`"
+        :price="basePrice"
+        :title="title"
         :decription="size"
-        :image="`${file.url}?w=800`"
-        :url="`https://${host}/art/prints/${id}?size=${size}`"
+        :image="`${file.url}?w=600`"
+        :sizes="priceOptions(priceEntries)"
+        :selectedSize="size"
+        :url="validateUrl(id, host)"
       />
     </div>
   </div>
 </template>
 <script setup>
-
 definePageMeta({ layout: 'art' })
 
 const { public: { priceTable: { prints } } } = useRuntimeConfig()
 const route = useRoute()
 const { id } = route.params
 const { client } = useContentful()
-const size = ref('10x20')
-const host = useHost()
 const { locale } = useI18n()
-
+const host = useHost()
+const priceEntries = Object.entries(prints)
+const baseSize = priceEntries[0][0]
+const basePrice = priceEntries[0][1]
 const { query } = useRoute()
+const size = ref(baseSize)
+
 if (query.size) size.value = query.size
+
 const { fields: { title, description, file } } = await client.getAsset(route.params.id, { locale: locale.value })
 
 useSeoMeta({
   title: `Surf Garage Art - ${title}`,
-  ogTitle: `Surf Garage Art - ${title}`,
+  ogTitle: `${title}`,
   description: `Surf Garage Art - ${description}`,
-  ogDescription: `Surf Garage Art - ${description}`,
+  ogDescription: `${description}`,
   ogImage: file?.url
 })
 </script>

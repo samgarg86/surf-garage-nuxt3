@@ -9,6 +9,9 @@
     :data-item-description="description"
     :data-item-name="title"
     :data-item-image="image"
+    data-item-custom1-name="Sizes"
+    :data-item-custom1-options="sizes"
+    :data-item-custom1-value="selectedSize"
     :data-item-url="url"
     :disabled="!enableCommerce"
     data-item-quantity="1"
@@ -22,7 +25,9 @@ defineProps({
   description: String,
   title: String,
   image: String,
-  url: String
+  url: String,
+  sizes: String,
+  selectedSize: String
 })
-const {public: {enableCommerce}} = useRuntimeConfig()
+const { public: { enableCommerce } } = useRuntimeConfig()
 </script>

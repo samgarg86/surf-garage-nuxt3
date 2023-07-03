@@ -4,7 +4,7 @@
     class="masonry-image mb-1 md:mb-2 relative block"
   >
     <img
-      :src="`${url}?w=500`"
+      :src="`${url}?w=600`"
       :alt="`Surf Garage Art Co - ${title}`"
       class="min-h-[20rem] w-full"
       v-lazy-load/>
