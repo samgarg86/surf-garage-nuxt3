@@ -7,12 +7,12 @@
         {{ title }}
       </NuxtLink>
     </div>
-    <div v-for="([key, value]) in Object.entries(nav )"
-         :key="key">
+    <div v-for="({slug, title}, index) in nav"
+         :key="index">
       <NuxtLink
-        :to="key"
+        :to="slug"
         class="inline-block mb-1 px-1 text-black">
-        {{ value }}
+        {{ title }}
       </NuxtLink>
     </div>
   </nav>

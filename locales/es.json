@@ -26,6 +26,7 @@
     }
   },
   "art": {
-    "order-prints": "Pedir Copias"
+    "order-prints": "Pedir Copias",
+    "back-to": "Back to"
   }
 }

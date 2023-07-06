@@ -26,6 +26,7 @@
     }
   },
   "art": {
-    "order-prints": "Order Prints"
+    "order-prints": "Order Prints",
+    "back-to": "Back to"
   }
 }

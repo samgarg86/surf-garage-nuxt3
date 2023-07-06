@@ -13,11 +13,11 @@
               v-show="showBoardStorage"
               v-if="siteNav?.boardStorageMenu">
               <NuxtLink
-                v-for="([key, value]) in Object.entries(siteNav?.boardStorageMenu)"
-                :key="key"
-                :to="key"
+                v-for="({slug, title}, index) in siteNav?.boardStorageMenu"
+                :key="index"
+                :to="slug"
                 class="block">
-                - {{ value }}
+                - {{ title }}
               </NuxtLink>
             </div>
           </li>
@@ -28,11 +28,11 @@
               v-if="siteNav?.surfArtMenu"
             >
               <NuxtLink
-                v-for="([key, value]) in Object.entries(siteNav?.surfArtMenu)"
-                :key="key"
-                :to="key"
+                v-for="({slug, title}, index) in siteNav?.surfArtMenu"
+                :key="index"
+                :to="slug"
                 class="block">
-                - {{ value }}
+                - {{ title }}
               </NuxtLink>
             </div>
           </li>

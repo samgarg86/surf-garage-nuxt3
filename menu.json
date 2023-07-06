@@ -1,0 +1,18 @@
+"boardStorageMenu": [
+{
+"slug": "/#contact",
+"title": "Contacto"
+},
+{
+"slug": "/#pricing",
+"title": "Precios"
+},
+{
+"slug": "/#storage",
+"title": "Guarda tu tabla"
+},
+{
+"slug": "/#security",
+"title": "Seguridad"
+}
+],
