@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <nuxt-link
+    <NuxtLink
       to="https://www.instagram.com/surfgaragelpa/"
       target="_blank"
       class="inline-flex justify-center items-center rounded-2xl mb-1 bg-white">
@@ -9,10 +9,10 @@
         Follow us on
         <span class="font-bold text-base">Instagram</span>
       </div>
-    </nuxt-link>
+    </NuxtLink>
     <div class="columns-3 gap-1">
       <template v-for="post in data?.data.slice(0, 6)" :key="post.id">
-        <nuxt-link :to="post.permalink" target="_blank">
+        <NuxtLink :to="post.permalink" target="_blank">
           <InstaFeedVideoPlayer
             v-if="post.media_type === 'VIDEO'"
             :src="post.thumbnail_url"
@@ -22,7 +22,7 @@
             class="mb-1 w-15 h-15 object-cover"
             :src="post.media_url"
             data-not-lazy/>
-        </nuxt-link>
+        </NuxtLink>
       </template>
     </div>
   </div>

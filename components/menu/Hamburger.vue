@@ -8,21 +8,21 @@
       <Push :closeOnNavigation="true" left>
         <ul>
           <li>
-            <NuxtLink to="/" class="mr-1">{{ $t("nav.storage") }}</NuxtLink>
+            <NuxtLink :to="localeRoute('/')" class="mr-1">{{ $t("nav.storage") }}</NuxtLink>
             <div
               v-show="showBoardStorage"
               v-if="siteNav?.boardStorageMenu">
               <NuxtLink
                 v-for="({slug, title}, index) in siteNav?.boardStorageMenu"
                 :key="index"
-                :to="slug"
+                :to="localeRoute(slug)"
                 class="block">
                 - {{ title }}
               </NuxtLink>
             </div>
           </li>
           <li>
-            <NuxtLink to="/art" class="mr-1">Surf Art</NuxtLink>
+            <NuxtLink :to="localeRoute('/art')" class="mr-1">Surf Art</NuxtLink>
             <div
               v-show="showSurfArt"
               v-if="siteNav?.surfArtMenu"
@@ -30,7 +30,7 @@
               <NuxtLink
                 v-for="({slug, title}, index) in siteNav?.surfArtMenu"
                 :key="index"
-                :to="slug"
+                :to="localeRoute(slug)"
                 class="block">
                 - {{ title }}
               </NuxtLink>
@@ -50,6 +50,7 @@ const showSurfArt = ref(true)
 const showBoardStorage = ref(true)
 const route = useRoute()
 const { siteNav } = useSiteNav()
+const localeRoute = useLocaleRoute()
 
 watch(route, newRoute => {
   if (newRoute.path.includes('art')) {

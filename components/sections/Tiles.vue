@@ -20,17 +20,17 @@ defineProps({
             {{ tile.text }}
           </h2>
         </ScrollTo>
-        <a
+        <NuxtLink
           v-else
           class="tile font-metalsmith"
           :style="{ '--bg': `url(${tile.bg})` }"
-          :href="tile.link"
+          :to="tile.link"
           target="_blank"
         >
           <h2 class="tile__title">
             {{ tile.text}}
           </h2>
-        </a>
+        </NuxtLink>
       </template>
     </div>
   </section>

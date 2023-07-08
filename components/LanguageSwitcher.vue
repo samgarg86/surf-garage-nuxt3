@@ -1,17 +1,19 @@
 <template>
   <div>
     <div class="language-switcher py-1">
-      <nuxt-link
+      <NuxtLink
         :to="switchLocalePath('en')"
-        class="mr-1" :class="theme === 'light' ? 'text-black' : 'text-white'"
-      >
+        class="mr-1"
+        :class="theme === 'light' ? 'text-black' : 'text-white'">
         {{showLanguageName ? 'English' : 'EN'}}
-      </nuxt-link>
-      <nuxt-link :class="theme === 'light' ? 'text-black' : 'text-white'"
-                 :to="switchLocalePath('es')">{{showLanguageName ? 'Español' : 'ES'}}</nuxt-link>
+      </NuxtLink>
+      <NuxtLink
+        :class="theme === 'light' ? 'text-black' : 'text-white'"
+        :to="switchLocalePath('es')">
+        {{showLanguageName ? 'Español' : 'ES'}}
+      </NuxtLink>
     </div>
   </div>
-
 </template>
 
 <script setup>
@@ -19,6 +21,7 @@ defineProps({
   showLanguageName: Boolean,
   theme: String
 })
+const switchLocalePath = useSwitchLocalePath()
 </script>
 
 <style lang="postcss">

@@ -3,9 +3,14 @@
     <div class="md:justify-self-end">
       <nav class="h-[55px]">
         <ol class="list-none flex font-avenir text-1.8 font-bold">
-          <li><span v-if="!from">&lt;</span> <nuxt-link to="/art" class="pr-1 py-1.5 inline-block underline"> Surf Garage Art</nuxt-link></li>
+          <li><span v-if="!from">&lt;</span> <NuxtLink :to="localePath('/art')" class="pr-1 py-1.5 inline-block underline"> Surf Garage Art</NuxtLink></li>
           <li v-if="from" class="py-1.5"> / </li>
-          <li v-if="from" ><nuxt-link :to="from.slug" class="pl-1 pr-2 py-1.5 inline-block underline">{{ from.title }}</nuxt-link></li>
+          <li v-if="from" >
+            <NuxtLink :to="localePath(from.slug)"
+                      class="pl-1 pr-2 py-1.5 inline-block underline">
+              {{ from.title }}
+            </NuxtLink>
+          </li>
         </ol>
       </nav>
       <img :src="`${file.url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
@@ -39,6 +44,7 @@ definePageMeta({ layout: 'art' })
 const { public: { priceTable: { prints } } } = useRuntimeConfig()
 const { client } = useContentful()
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const host = useHost()
 const priceEntries = Object.entries(prints)
 const baseSize = priceEntries[0][0]

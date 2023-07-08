@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="`/art/prints/${id}?f=${f}`"
+    :to="localeRoute(`/art/prints/${id}?f=${f}`)"
     class="masonry-image mb-1 md:mb-2 relative block"
   >
     <img
@@ -26,6 +26,7 @@ defineProps({
   description: String,
   f: String
 })
+const localeRoute = useLocaleRoute()
 </script>
 
 <style lang="postcss">
