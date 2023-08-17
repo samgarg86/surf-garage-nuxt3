@@ -1,20 +1,23 @@
-import {awaitExpression} from "@babel/types";
-
 export const useSiteNav = () => {
   const { locale } = useI18n()
   const { getFirstEntryOfType } = useContentful()
-  let siteNav = useState('siteNav')
+
+  // const key = computed(()=> `siteNav-${locale.value}`)
+  const siteNav = useState('sitenav')
+
+  const forceFetch = async (loc) => {
+    const { fields } = await getFirstEntryOfType('hamburgerMenu', loc)
+    siteNav.value = fields
+    console.log('Fetching site nav for locale', loc)
+  }
 
   const fetchSiteNav = async () => {
-    const { fields } = await getFirstEntryOfType('hamburgerMenu', locale.value)
-    return fields
+    await forceFetch(locale.value)
   }
 
-  if (!siteNav.value || Object.keys(siteNav.value).length === 0) {
-    fetchSiteNav().then((fields) => {
-      siteNav = useState('siteNav', () => fields)
-    })
+  return {
+    siteNav: computed(() => siteNav.value),
+    forceFetch,
+    fetchSiteNav
   }
-
-  return {siteNav: siteNav.value}
 }

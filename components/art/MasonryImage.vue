@@ -11,7 +11,7 @@
     <div class="masonry-image__hover hidden bg-lightYellow/75 flex justify-center items-center">
       <div class="text-center">
         <div class="text-xl font-avenir text-white mb-10">{{title}}</div>
-        <pre class="text-xl font-avenir text-white">{{referrer}}</pre>
+<!--        <pre class="text-xl font-avenir text-white">{{referrer}}</pre>-->
         <span class="px-5 py-1.5 bg-white font-avenir text-sm uppercase">{{ $t('art.order-prints') }}</span>
       </div>
     </div>

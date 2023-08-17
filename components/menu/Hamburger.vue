@@ -1,9 +1,9 @@
 <template>
-<!--  <pre>{{siteNav}}</pre>-->
   <div :class="{
       'hamburger-menu': true,
       'black-bars': showSurfArt
     }">
+<!--      <pre>{{siteNav}}</pre>-->
     <client-only>
       <Push :closeOnNavigation="true" left>
         <ul>
@@ -49,8 +49,10 @@ import { Push } from 'vue3-burger-menu'
 const showSurfArt = ref(true)
 const showBoardStorage = ref(true)
 const route = useRoute()
-const { siteNav } = useSiteNav()
+const { siteNav, forceFetch } = useSiteNav()
+// No need to call fetchSiteNav because Footer does it already
 const localeRoute = useLocaleRoute()
+const i18n = useI18n()
 
 watch(route, newRoute => {
   if (newRoute.path.includes('art')) {
@@ -61,6 +63,8 @@ watch(route, newRoute => {
     showBoardStorage.value = true
   }
 }, { deep: true, immediate: true })
+
+watch(i18n.locale, (newLocale) => forceFetch(newLocale), { deep: true })
 
 </script>
 

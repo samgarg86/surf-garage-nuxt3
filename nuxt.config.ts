@@ -1,3 +1,15 @@
+const locales = [{
+    code: 'es',
+    iso: 'es',
+    file: 'es.json'
+  },
+  {
+    code: 'en',
+    iso: 'en',
+    file: 'en.json'
+  }
+]
+
 export default defineNuxtConfig({
   modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-svgo', 'nuxt-lazy-load'],
   lazyLoad: {
@@ -9,27 +21,25 @@ export default defineNuxtConfig({
   },
   i18n: {
     langDir: "./locales",
-    strategy: "prefix_and_default",
+    strategy: "prefix_except_default",
     defaultLocale: 'es',
-    locales: [{
-      code: 'es',
-      iso: 'es',
-      file: 'es.json'
+    locales,
+    detectBrowserLanguage: {
+      useCookie: true,
+      alwaysRedirect: true
     },
-      {
-        code: 'en',
-        iso: 'en',
-        file: 'en.json'
-      }]
+    lazy: true,
+    types: 'composition',
+    skipSettingLocaleOnNavigate: false
   },
   runtimeConfig: {
+    instaAccessToken: process.env.instaAccessToken,
     public: {
-      enableCommerce: true,
       contentful: {
         space: process.env.contentfulSpace,
         accessToken: process.env.contentfulAccessToken,
       },
-      instaAccessToken: process.env.instaAccessToken,
+      enableCommerce: process.env.enableCommerce || true,
       priceTable: {
         prints: {
           '10x20': 10,

@@ -21,7 +21,8 @@
   </section>
 </template>
 <script setup>
-const { siteNav } = useSiteNav()
+const { siteNav, fetchSiteNav } = useSiteNav()
+if (!siteNav.value) await fetchSiteNav()
 </script>
 
 <style lang="postcss">
