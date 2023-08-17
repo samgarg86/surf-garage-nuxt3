@@ -9,11 +9,12 @@
         <article
           v-for="(icon, index) in icons"
           :key="index"
-          class="about-tile"
+          class="text-center w-16"
         >
-          <div :class="['about-tile__icon']">
-            <img :src="icon.url" data-not-lazy/>
-          </div>
+          <div class="h-16 bg-white" :style="{
+           'mask': `url('${icon.url}') no-repeat center / contain`,
+            '-webkit-mask': `url('${icon.url}') no-repeat center / contain`
+          }"/>
           <h3 class="about-tile__title font-metalsmith">{{ icon.title }}</h3>
         </article>
       </div>
