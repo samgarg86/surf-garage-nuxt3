@@ -6,9 +6,15 @@
     <Footer/>
   </main>
 
+  <!-- Test Mode -->
+<!--  <div hidden-->
+<!--       id="snipcart"-->
+<!--       data-api-key="MjMyM2Q4NjgtZWI4NS00MTFjLThlNTQtOTExNjkwMDE3ZjI2NjM4MjE1NzE4NjM4MjYyMjk0"-->
+<!--       data-config-modal-style="side">-->
+<!--  </div>-->
   <div hidden
        id="snipcart"
-       data-api-key="MjMyM2Q4NjgtZWI4NS00MTFjLThlNTQtOTExNjkwMDE3ZjI2NjM4MjE1NzE4NjM4MjYyMjk0"
+       data-api-key="YWZhYTMyNDUtZWY4Ny00ZDg0LTk1ZjYtMzMzZDFjN2NjNzYxNjM4MjE1NzE4NjM4MjYyMjk0"
        data-config-modal-style="side">
   </div>
 </template>
