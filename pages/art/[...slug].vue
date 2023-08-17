@@ -14,7 +14,7 @@
 </template>
 <script setup>
 definePageMeta({ layout: 'art' })
-const { params } = useRoute()
+const { params, fullPath } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
 const mappedImages = ref([])
@@ -39,6 +39,12 @@ if (tags?.length) {
 } else if (images?.length) {
   mappedImages.value = mapImages(images)
 }
+
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://surfgarage.es' + fullPath }
+  ]
+})
 
 useSeoMeta({
   title: `Surf Garage Art - ${pageTitle}`,

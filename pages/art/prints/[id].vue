@@ -71,7 +71,7 @@ useSeoMeta({
 
 useHead({
   link: [
-    { rel: 'canonical', href: `${host}/art/prints/${id}` }
+    { rel: 'canonical', href: `https://surfgarage.es/art/prints/${id}` }
   ]
 })
 </script>

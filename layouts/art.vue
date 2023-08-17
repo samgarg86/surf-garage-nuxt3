@@ -20,8 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-// const config = useRuntimeConfig()
-// const { snipcartApiKey } = config.public
+const { path } = useRoute()
 
 useHead({
   link: [
@@ -35,6 +34,15 @@ useHead({
   script: [
     { src: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js' }
   ]
+})
+
+useSeoMeta({
+  title: 'Surf Garage Art Co',
+  description: 'A virtual gallery where you can discover and purchase amazing artwork created by a group of photographers and illustrators based in the Canary Islands. From epic wave shots to stunning coastal landscapes, our collection showcases the vibrant surf cultures and the natural beauties of this world.',
+  ogTitle: 'Surf Garage Art Co',
+  ogDescription: 'A virtual gallery where you can discover and purchase amazing artwork created by a group of photographers and illustrators based in the Canary Islands. From epic wave shots to stunning coastal landscapes, our collection showcases the vibrant surf cultures and the natural beauties of this world.',
+  ogImage: 'https://surfgarage.es/logo.png',
+  keywords: 'guardatablas, tablas de surf, tablas segunda mano, board storage, surfboard storage, second hand surfboards, surfboards, surfboard repairs, surf art'
 })
 </script>
 
