@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="footer max-w-full mx-0">
+  <section id="contact" class="footer">
 <!--    <h2 class="section__title font-metalsmith py-5 text-center">-->
 <!--      <span class="color-black px-1 py-0.5">{{ $t("contact.title") }}</span>-->
 <!--    </h2>-->

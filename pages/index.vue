@@ -1,11 +1,9 @@
 <template>
-  <main id="page-wrap">
-    <SectionsHero v-bind="mappedHero"/>
-    <SectionsTiles :tiles="mappedTiles"/>
-    <SectionsBoardStorage v-bind="mappedBoardStorageSection"/>
-    <SectionsBoardSecurity v-bind="mappedBoardSecuritySection"/>
-    <SectionsPricing :plans="mappedMembershipPlans" />
-  </main>
+  <SectionsHero v-bind="mappedHero"/>
+  <SectionsTiles :tiles="mappedTiles"/>
+  <SectionsBoardStorage v-bind="mappedBoardStorageSection"/>
+  <SectionsBoardSecurity v-bind="mappedBoardSecuritySection"/>
+  <SectionsPricing :plans="mappedMembershipPlans" />
 </template>
 
 <script setup>
@@ -63,12 +61,12 @@ const mappedMembershipPlans = membershipPlans.map(plan => ({
 
 <style lang="postcss">
 .section {
-  margin: theme('spacing.1');
+  margin-bottom: theme('spacing.1');
   position: relative;
   scroll-margin-top: theme('spacing.2');
 
   @media screen(md) {
-    margin: theme('spacing.2');
+    margin-bottom: theme('spacing.2');
   }
 
   /** Full width sections (with padding) **/
