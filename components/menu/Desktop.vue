@@ -7,7 +7,8 @@
       <li class="p-1 hidden md:block text-center">
         <ScrollTo to="pricing" class="text-white">{{ $t("nav.pricing") }}</ScrollTo>
       </li>
-      <li class="site-logo m-1 w-25 mx-auto" v-html="logo">
+      <li class="site-logo m-1 w-25 mx-auto">
+        <img src="/logo.svg" alt="Surf Garage" data-not-lazy/>
       </li>
       <li class="p-1 hidden md:block text-center">
         <NuxtLink :to="localeRoute('/art')" class="text-white">Surf Art</NuxtLink>
