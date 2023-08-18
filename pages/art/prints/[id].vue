@@ -55,8 +55,8 @@ const from = ref()
 
 if (query.size) size.value = query.size
 const { siteNav } = useSiteNav()
-if (query.f && siteNav?.surfArtMenu) {
-  from.value = siteNav?.surfArtMenu?.find(({ slug }) => slug === `/${decodeURIComponent(query.f)}`)
+if (query.f && siteNav.value?.surfArtMenu) {
+  from.value = siteNav.value?.surfArtMenu?.find(({ slug }) => slug === `/${decodeURIComponent(query.f)}`)
 }
 
 const { fields: { title, description, file } } = await client.getAsset(id, { locale: locale.value })
