@@ -10,20 +10,6 @@
 }
 
 @font-face {
-  font-family: "Times";
-  font-style: normal;
-  src: local('Times New Roman');
-  text-transform: uppercase;
-}
-
-@font-face {
-  font-family: "Metalsmith fallback";
-  font-style: normal;
-  src: url("~/assets/fonts/Metalsmith-Regular.woff2") format("woff2"),
-  url("~/assets/fonts/Metalsmith-Regular.woff") format("woff");
-}
-
-@font-face {
   font-family: "Avenir Next";
   font-style: normal;
   src: url("~/assets/fonts/AvenirNextLTPro-Regular.woff2") format("woff2"),
