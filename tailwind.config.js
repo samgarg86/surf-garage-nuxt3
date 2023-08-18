@@ -20,7 +20,7 @@ module.exports = {
       yellow: '#fffacd'
     },
     fontFamily: {
-      metalsmith: ['Metalsmith', 'sans-serif'],
+      metalsmith: ['Metalsmith', 'Times'],
       avenir: ['Avenir Next', 'serif'],
       myriad: ['Myriad Pro Regular', 'serif']
     },
