@@ -4,11 +4,11 @@
       <NuxtLink
         :to="switchLocalePath('en')"
         class="mr-1"
-        :class="theme === 'light' ? 'text-black' : 'text-white'">
+        :class="theme === 'light' ? 'text-black' : 'text-white hover:text-amberYellow'">
         {{showLanguageName ? 'English' : 'EN'}}
       </NuxtLink>
       <NuxtLink
-        :class="theme === 'light' ? 'text-black' : 'text-white'"
+        :class="theme === 'light' ? 'text-black' : 'text-white hover:text-amberYellow'"
         :to="switchLocalePath('es')">
         {{showLanguageName ? 'Español' : 'ES'}}
       </NuxtLink>

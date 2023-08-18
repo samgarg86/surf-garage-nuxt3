@@ -2,6 +2,7 @@
   <div :class="['contact-links z-1', onlyIcons ? 'flex m-1' : '']">
     <a
       class="flex items-center mb-0.5"
+      :class="theme !== 'light' ? 'text-white hover:text-amberYellow' : ''"
       href="https://goo.gl/maps/8qRXWmk34xwfq5Hz7"
       target="_blank"
     >
@@ -10,6 +11,7 @@
     </a>
     <a
       class="flex items-center mb-0.5"
+      :class="theme !== 'light' ? 'text-white hover:text-amberYellow' : ''"
       href="https://wa.me/34600273559?text=Hello%2C%20I%27d%20like%20to%20store%20my%20board%20at%20Surf%20Garage"
       target="_blank"
     >
@@ -18,6 +20,7 @@
     </a>
     <a
       class="flex items-center mb-0.5"
+      :class="theme !== 'light' ? 'text-white hover:text-amberYellow' : ''"
       href="https://www.instagram.com/surfgaragelpa/"
       target="_blank"
     >
