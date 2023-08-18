@@ -1,7 +1,7 @@
 <template>
   <div>
     <MenuHamburger/>
-    <main id="page-wrap" class="m-1 md:m-2">
+    <main id="page-wrap" class="m-1 md:m-2 mb-1 md:mb-2">
       <slot/>
       <Footer />
     </main>

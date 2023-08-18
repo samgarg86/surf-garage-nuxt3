@@ -1,4 +1,4 @@
-import contentful from "contentful";
+import contentful from 'contentful'
 
 export default defineNuxtPlugin(() => {
   return {

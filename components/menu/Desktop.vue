@@ -10,7 +10,7 @@
       <li class="site-logo m-1 w-25 mx-auto" v-html="logo">
       </li>
       <li class="p-1 hidden md:block text-center">
-        <NuxtLink to="/art" class="text-white">Surf Art</NuxtLink>
+        <NuxtLink :to="localeRoute('/art')" class="text-white">Surf Art</NuxtLink>
       </li>
       <li class="p-1 hidden md:block text-center">
         <ScrollTo to="contact" class="text-white">{{ $t("nav.contact") }}</ScrollTo>
@@ -20,7 +20,8 @@
 </template>
 
 <script setup>
-import logo from "~/assets/images/logo.svg?raw";
+import logo from '~/assets/images/logo.svg?raw'
+const localeRoute = useLocaleRoute()
 </script>
 
 <style lang="postcss">

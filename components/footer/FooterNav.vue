@@ -2,7 +2,7 @@
   <nav >
     <div>
       <NuxtLink
-        :to="to"
+        :to="localeRoute(to)"
         class="mr-1 mb-1.5 px-1 inline-block font-metalsmith lowercase text-black text-xl">
         {{ title }}
       </NuxtLink>
@@ -10,7 +10,7 @@
     <div v-for="({slug, title}, index) in nav"
          :key="index">
       <NuxtLink
-        :to="slug"
+        :to="scroll? `${localeRoute('/').fullPath}${slug}` : localeRoute(slug)"
         class="inline-block mb-1 px-1 text-black">
         {{ title }}
       </NuxtLink>
@@ -21,6 +21,9 @@
 defineProps({
   title: String,
   to: String,
+  scroll: Boolean,
   nav: Object
 })
+
+const localeRoute = useLocaleRoute()
 </script>

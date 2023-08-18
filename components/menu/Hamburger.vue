@@ -15,7 +15,7 @@
               <NuxtLink
                 v-for="({slug, title}, index) in siteNav?.boardStorageMenu"
                 :key="index"
-                :to="localeRoute(slug)"
+                :to="`${localeRoute('/').fullPath}${slug}`"
                 class="block">
                 - {{ title }}
               </NuxtLink>
@@ -37,7 +37,7 @@
             </div>
           </li>
         </ul>
-        <ContactLinks class="hamburger-menu__links"/>
+        <ContactLinks/>
       </Push>
     </client-only>
   </div>
@@ -55,7 +55,7 @@ const localeRoute = useLocaleRoute()
 const i18n = useI18n()
 
 watch(route, newRoute => {
-  if (newRoute.path.includes('art')) {
+  if (newRoute.path.includes('/art')) {
     showSurfArt.value = true
     showBoardStorage.value = false
   } else {
@@ -75,33 +75,26 @@ watch(i18n.locale, (newLocale) => forceFetch(newLocale), { deep: true })
     position: fixed;
     background: url("@/assets/icons/hamburger.svg") no-repeat;
 
-    @media (max-width: theme('screens.md')) {
-      width: 40px;
-      height: 40px;
-      left: 20px;
-      top: 20px;
+    @apply w-4 h-4 left-2 top-2;
+
+    @media screen(lg) {
+      @apply left-3 top-3;
     }
   }
 
   .bm-burger-bars {
     display: none;
-    background-color: white;
   }
 
   .bm-menu {
-    background-color: theme('colors.black');
+    @apply bg-black pt-1;
     line-height: 2;
-    padding-top: 1rem;
 
     ul {
-      margin-left: 1rem;
+      @apply ml-1;
 
       a {
-        color: theme('colors.white');
-
-        &:hover {
-          color: theme('colors.amberYellow');
-        }
+        @apply text-white hover:text-amberYellow;
       }
     }
 
@@ -118,18 +111,11 @@ watch(i18n.locale, (newLocale) => forceFetch(newLocale), { deep: true })
   }
 
   .contact-links__link {
-    color: theme('colors.white');
-
-    &:hover {
-      color: theme('colors.amberYellow');
-    }
+    @apply text-white hover:text-amberYellow;
   }
 
-  &.black-bars {
-    .bm-burger-bars {
-      display: block;
-      background-color: theme('colors.black');
-    }
+  &.black-bars .bm-burger-button {
+    background: url("@/assets/icons/hamburger-black.svg") no-repeat;
   }
 }
 </style>

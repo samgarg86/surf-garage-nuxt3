@@ -1,9 +1,3 @@
-<script setup>
-defineProps({
-  tiles: Array
-})
-</script>
-
 <template>
   <section id="tiles"
            class="section tiles"
@@ -24,7 +18,7 @@ defineProps({
           v-else
           class="tile font-metalsmith"
           :style="{ '--bg': `url(${tile.bg})` }"
-          :to="tile.link"
+          :to="localeRoute(tile.link)"
           target="_blank"
         >
           <h2 class="tile__title">
@@ -35,6 +29,13 @@ defineProps({
     </div>
   </section>
 </template>
+
+<script setup>
+defineProps({
+  tiles: Array
+})
+const localeRoute = useLocaleRoute()
+</script>
 
 <style lang="postcss">
 .tiles {

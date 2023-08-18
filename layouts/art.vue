@@ -1,6 +1,6 @@
 <template>
   <MenuHamburger black class="hamburger-menu-art"/>
-  <main id="page-wrap" class="mx-1 md:mx-2">
+  <main id="page-wrap" class="mx-1 md:mx-2 mb-1 md:mb-2">
     <ArtHeader/>
     <slot/>
     <Footer/>

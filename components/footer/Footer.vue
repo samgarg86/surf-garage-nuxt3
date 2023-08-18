@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="footer">
+  <section id="contact" class="footer mb-2">
 <!--    <h2 class="section__title font-metalsmith py-5 text-center">-->
 <!--      <span class="color-black px-1 py-0.5">{{ $t("contact.title") }}</span>-->
 <!--    </h2>-->
@@ -9,7 +9,7 @@
     <div class="footer__content text-center md:text-left px-2 py-5 lg:py-10 lg:px-6">
       <LazyFooterNav
         class="footer__nav1"
-        :title="$t('nav.storage')" to="/" :nav="siteNav?.boardStorageMenu || {}"/>
+        :title="$t('nav.storage')" to="/" :nav="siteNav?.boardStorageMenu || {}" scroll/>
       <LazyFooterNav
         class="footer__nav2"
         title="Surf Art" to="/" :nav="siteNav?.surfArtMenu || {}"/>
