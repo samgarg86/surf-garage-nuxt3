@@ -8,13 +8,8 @@
       :alt="`Surf Garage Art Co - ${title}`"
       class="min-h-[20rem] w-full"
       v-lazy-load/>
-    <div class="masonry-image__hover hidden bg-lightYellow/75 flex justify-center items-center">
-      <div class="text-center">
-        <div class="text-xl font-avenir text-white mb-10">{{title}}</div>
-<!--        <pre class="text-xl font-avenir text-white">{{referrer}}</pre>-->
-        <span class="px-5 py-1.5 bg-white font-avenir text-sm uppercase">{{ $t('art.order-prints') }}</span>
-      </div>
-    </div>
+    <div class="masonry-image__title ">{{title}}</div>
+    <div class="masonry-image__buy">{{ $t('art.order-prints') }}</div>
   </NuxtLink>
 </template>
 
@@ -30,14 +25,16 @@ const localeRoute = useLocaleRoute()
 </script>
 
 <style lang="postcss">
-@media (hover: hover) {
-  .masonry-image:hover .masonry-image__hover {
-    display: flex;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
+.masonry-image__title {
+  @apply text-center font-avenir text-2 mb-2 bg-white absolute px-1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100% - 2rem);
+  top: 0;
+}
+
+.masonry-image__buy {
+  @apply bg-white font-avenir text-sm uppercase border text-center p-1 mt-1;
 }
 </style>
