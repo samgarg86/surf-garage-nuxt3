@@ -26,21 +26,18 @@ const localeRoute = useLocaleRoute()
 
 <style lang="postcss">
 .masonry-image__title {
-  @apply text-center font-avenir text-2 mb-2 bg-white absolute px-1;
-  position: absolute;
-  left: 50%;
+  @apply text-center absolute top-2 left-1/2 font-avenir text-1.8 md:text-2 text-white bg-black/40 px-1;
   transform: translateX(-50%);
   max-width: calc(100% - 2rem);
-  top: 0;
 }
 
 .masonry-image__buy {
-  @apply bg-white font-avenir text-sm uppercase border text-center p-1 mt-1;
+  @apply bg-black/40 absolute bottom-0 w-full font-avenir text-sm md:text-1.8 text-white uppercase text-center p-1;
+}
 
-  @media (hover: hover) {
-    &:hover {
-      @apply bg-black border-black text-white;
-    }
+@media (hover: hover) {
+  .masonry-image:hover .masonry-image__buy {
+    @apply bg-black border-black text-white;
   }
 }
 
