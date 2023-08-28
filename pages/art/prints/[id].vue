@@ -5,7 +5,7 @@
       <img :src="`${file.url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
     </div>
     <div>
-      <div class="md:mt-5 mb-3">
+      <div class="md:mt-5 md:mb-3">
         <h1 class="text-2xl mb-1 font-avenir">{{ title }}</h1>
         <h2 v-if="description" class="text-2">{{description}}</h2>
       </div>
@@ -60,8 +60,10 @@ const printTags = computed(() => tags?.map(tag => tag.sys.id.replace('page', '')
 useSeoMeta({
   title: `Surf Garage Art - ${title}`,
   ogTitle: `${title}`,
-  description: `Surf Garage Art - ${description}`,
-  ogDescription: `${description}`,
+  ...(description && {
+    description,
+    ogDescription: `${description}`
+  }),
   ogImage: file?.url
 })
 
