@@ -20,7 +20,7 @@
         </template>
       </ul>
 
-      <select v-model="size" class="py-1 px-3.5 mb-1 text-2 block w-full md:w-30 font-avenir border-2 text-center">
+      <select v-model="size" class="select-size py-1 px-3.5 mb-1 text-2 block w-full md:w-30 font-avenir border-2 text-center">
         <option value="10x20" default>10cm x 20cm (€{{ prints['10x20'] }})</option>
         <option value="20x30">20cm x 30cm (€{{ prints['20x30'] }})</option>
         <option value="30x40">30cm x 40cm (€{{ prints['30x40'] }})</option>
@@ -71,3 +71,10 @@ useHead({
   ]
 })
 </script>
+
+<style lang="postcss">
+.select-size {
+  appearance: none;
+  background: url('~/assets/icons/chevron-down.svg') no-repeat right 1rem top 50% / 2rem;
+}
+</style>
