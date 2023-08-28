@@ -36,5 +36,13 @@ const localeRoute = useLocaleRoute()
 
 .masonry-image__buy {
   @apply bg-white font-avenir text-sm uppercase border text-center p-1 mt-1;
+
+  @media (hover: hover) {
+    &:hover {
+      @apply bg-black border-black text-white;
+    }
+  }
 }
+
+
 </style>

@@ -1,6 +1,6 @@
 <template>
   <button
-    class="snipcart-add-item border-2 border-solid px-5 py-1.5 w-full md:w-auto bg-black text-white font-avenir uppercase text-1.8"
+    class="snipcart-add-item border-2 border-solid px-5 py-1.5 w-full md:w-30 bg-black text-white font-avenir font-bold uppercase text-1.8"
     :class="{
     'bg-grey': !enableCommerce,
     }"
@@ -15,7 +15,7 @@
     :data-item-url="url"
     :disabled="!enableCommerce"
     data-item-quantity="1"
-  >Add to basket
+  >{{$t('art.add-to-cart')}}
   </button>
 </template>
 <script setup>

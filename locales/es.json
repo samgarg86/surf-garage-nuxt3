@@ -27,6 +27,7 @@
   },
   "art": {
     "order-prints": "Pedir Copias",
-    "back-to": "Back to"
+    "back-to": "Back to",
+    "add-to-cart": "Añadir a la cesta"
   }
 }

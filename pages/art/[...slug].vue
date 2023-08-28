@@ -19,7 +19,6 @@ const { client } = useContentful()
 const { locale } = useI18n()
 const mappedImages = ref([])
 const slug = params.slug[0] ? `art/${params.slug[0]}` : 'art/homepage'
-// console.log('Looking for art gallery page with slug', slug)
 
 const entries = await client.getEntries({
   content_type: 'artGalleryPage',
@@ -35,6 +34,7 @@ if (tags?.length) {
     'metadata.tags.sys.id[all]': tags.map(tag => tag.sys.id).join(','),
     locale: locale.value
   })
+
   mappedImages.value = mapImages(items)
 } else if (images?.length) {
   mappedImages.value = mapImages(images)

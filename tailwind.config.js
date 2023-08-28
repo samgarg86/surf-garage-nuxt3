@@ -13,7 +13,7 @@ module.exports = {
       boardRed: '#6B1F15',
       white: '#fff',
       grey: '#adadad',
-      lightGrey: '#fafafa',
+      lightGrey: '#f1f1f1',
       blackSoft: '#444',
       black: '#09090e',
       pink: '#fff0f5',
@@ -46,7 +46,8 @@ module.exports = {
       15: '15rem',
       16: '16rem',
       20: '20rem',
-      25: '25rem'
+      25: '25rem',
+      30: '30rem'
     },
     fontSize:
       {
