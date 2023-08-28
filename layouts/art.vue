@@ -49,7 +49,7 @@ useSeoMeta({
 <style lang="postcss">
 .hamburger-menu-art {
   .bm-burger-button {
-    @apply top-1 left-1 lg:top-2 lg:left-2;
+    @apply top-[1.4rem] left-[1.4rem] lg:top-[2.5rem] lg:left-[2.5rem];
   }
 }
 

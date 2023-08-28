@@ -28,7 +28,7 @@ const switchLocalePath = useSwitchLocalePath()
 .language-switcher {
   a.router-link-active {
     text-decoration: underline;
-    //color: theme('colors.black');
+    /*color: theme('colors.black');*/
   }
 }
 </style>

@@ -74,11 +74,14 @@ watch(i18n.locale, (newLocale) => forceFetch(newLocale), { deep: true })
     z-index: 999;
     position: fixed;
     background: url("@/assets/icons/hamburger.svg") no-repeat;
+    outline: 2px solid white;
+    outline-offset: 6px;
+    border-radius: 2px;
 
-    @apply w-4 h-4 left-2 top-2;
+    @apply w-[3.2rem] h-[3.2rem] left-[2.2rem] top-[2.2rem];
 
     @media screen(lg) {
-      @apply left-3 top-3;
+      @apply left-4 top-4;
     }
   }
 
@@ -116,6 +119,7 @@ watch(i18n.locale, (newLocale) => forceFetch(newLocale), { deep: true })
 
   &.black-bars .bm-burger-button {
     background: url("@/assets/icons/hamburger-black.svg") no-repeat;
+    outline-color: black;
   }
 }
 </style>

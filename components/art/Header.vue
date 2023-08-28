@@ -1,5 +1,5 @@
 <template>
-  <header class="font-metalsmith text-center py-2 text-xl">
+  <header class="font-metalsmith text-center pt-[1.6rem] pb-3 text-xl">
     <NuxtLink :to="localeRoute('/art')">surf garage art co.</NuxtLink>
   </header>
   <button class="snipcart-checkout absolute right-2 top-2 flex items-center">
