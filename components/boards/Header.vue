@@ -5,7 +5,7 @@
 <!--    <img src="/logo.png" class="w-15 mx-auto" alt="Surf Garage - Second Hand Boards" data-not-lazy/>-->
 <!--  </NuxtLink>-->
 
-  <header class="font-metalsmith text-center pt-[1.6rem] pb-3 text-xl">
+  <header class="font-metalsmith text-center pt-[1.6rem] pb-3 text-base md:text-xl">
     <NuxtLink :to="localeRoute('/art')">surf garage surfboards co.</NuxtLink>
   </header>
   <button class="snipcart-checkout absolute right-2 top-2 flex items-center">

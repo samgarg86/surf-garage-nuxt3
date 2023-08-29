@@ -17,6 +17,7 @@
 const { siteNav } = useSiteNav()
 const { query } = useRoute()
 const from = ref()
+const localePath = useLocalePath()
 
 if (query.f && siteNav.value?.surfArtMenu) {
   from.value = siteNav.value?.surfArtMenu?.find(({ slug }) => slug === `/${decodeURIComponent(query.f)}`)

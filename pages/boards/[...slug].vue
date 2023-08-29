@@ -8,8 +8,8 @@
           data-not-lazy/>
     </section>
     <section>
-      <h1 class="text-2xl mb-1 font-avenir font-bold upper">{{ title }}</h1>
-      <p class="font-avenir font-bold text-2xl mb-1">€{{ price }}</p>
+      <h1 class="text-xl md:text-2xl mb-1 font-avenir font-bold upper">{{ title }}</h1>
+      <p class="font-avenir font-bold text-xl md:text-2xl mb-1">€{{ price }}</p>
       <div class="lg:hidden mb-1">
          <BoardsGallery :images="mapImages(images)" :style="{gridArea: 'gallery-mobile'}"/>
       </div>
@@ -38,7 +38,7 @@ definePageMeta({ layout: 'surf-boards' })
 const { params, fullPath } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
-const { public: {socialMedia}} = useRuntimeConfig()
+const { public: { socialMedia }} = useRuntimeConfig()
 
 const slug = params.slug[0] ? `boards/${params.slug[0]}` : 'boards/homepage'
 const entries = await client.getEntries({
