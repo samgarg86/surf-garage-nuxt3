@@ -22,7 +22,10 @@
 </template>
 <script setup>
 const { siteNav, fetchSiteNav } = useSiteNav()
-if (!siteNav.value) await fetchSiteNav()
+if (!siteNav.value) {
+  console.log('...FETCHING SITE NAV FROM FOOTER')
+  await fetchSiteNav()
+}
 </script>
 
 <style lang="postcss">

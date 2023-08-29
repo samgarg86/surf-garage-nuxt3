@@ -3,7 +3,7 @@
     <a
       class="flex items-center mb-0.5"
       :class="theme !== 'light' ? 'text-white hover:text-amberYellow' : ''"
-      href="https://goo.gl/maps/8qRXWmk34xwfq5Hz7"
+      :href="socialMedia.maps"
       target="_blank"
     >
       <div class="w-4" :class="onlyIcons? 'mr-0.5': 'mr-1'" v-html="map"/>
@@ -12,7 +12,7 @@
     <a
       class="flex items-center mb-0.5"
       :class="theme !== 'light' ? 'text-white hover:text-amberYellow' : ''"
-      href="https://wa.me/34600273559?text=Hello%2C%20I%27d%20like%20to%20store%20my%20board%20at%20Surf%20Garage"
+      :href="socialMedia.whatsapp"
       target="_blank"
     >
       <div class="w-4 mr-1" :class="onlyIcons? 'mr-0.5': 'mr-1'" v-html="whatsapp"/>
@@ -21,7 +21,7 @@
     <a
       class="flex items-center mb-0.5"
       :class="theme !== 'light' ? 'text-white hover:text-amberYellow' : ''"
-      href="https://www.instagram.com/surfgaragelpa/"
+      :href="socialMedia.insta"
       target="_blank"
     >
       <div class="w-4 mr-1" :class="onlyIcons? 'mr-0.5': 'mr-1'" v-html="insta"/>
@@ -47,4 +47,5 @@ defineProps({
   onlyIcons: Boolean,
   theme: String
 })
+const { public: {socialMedia}} = useRuntimeConfig()
 </script>

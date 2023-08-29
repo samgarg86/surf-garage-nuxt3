@@ -1,7 +1,7 @@
 <template>
   <div :class="{
       'hamburger-menu': true,
-      'black-bars': showSurfArt
+      'black-bars': black
     }">
 <!--      <pre>{{siteNav}}</pre>-->
     <client-only>
@@ -45,6 +45,10 @@
 
 <script setup>
 import { Push } from 'vue3-burger-menu'
+
+defineProps({
+  black: Boolean
+})
 
 const showSurfArt = ref(true)
 const showBoardStorage = ref(true)

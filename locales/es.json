@@ -29,5 +29,17 @@
     "order-prints": "Pedir Copias",
     "back-to": "Back to",
     "add-to-cart": "Añadir a la cesta"
+  },
+  "boards": {
+    "typeLabel": "Tipo",
+    "type": {
+      "long": "Tablon",
+      "short": "Short",
+      "soft": "Corcho"
+    },
+    "size": "Tamaño",
+    "volume": "Volumen",
+    "brand": "Marca",
+    "contact": "Contáctenos"
   }
 }

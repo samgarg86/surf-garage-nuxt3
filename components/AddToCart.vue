@@ -1,8 +1,8 @@
 <template>
   <button
-    class="snipcart-add-item border-2 border-solid px-5 py-1.5 w-full md:w-30 bg-black text-white font-avenir font-bold uppercase text-1.8"
+    class="snipcart-add-item add-to-cart"
     :class="{
-    'bg-grey': !enableCommerce,
+      'bg-grey': !enableCommerce,
     }"
     :data-item-id="id"
     :data-item-price="price"

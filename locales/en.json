@@ -29,5 +29,17 @@
     "order-prints": "Order Prints",
     "back-to": "Back to",
     "add-to-cart": "Add To Cart"
+  },
+  "boards": {
+    "typeLabel": "Type",
+    "type": {
+      "long": "Longboard",
+      "short": "Shortboard",
+      "soft": "Soft top"
+    },
+    "size": "Size",
+    "volume": "Volume",
+    "brand": "Brand",
+    "contact": "Contact Us"
   }
 }

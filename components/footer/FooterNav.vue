@@ -7,8 +7,8 @@
         {{ title }}
       </NuxtLink>
     </div>
-    <div v-for="({slug, title}, index) in nav"
-         :key="index">
+    <div v-for="{slug, title} in nav"
+         :key="slug">
       <NuxtLink
         :to="scroll? `${localeRoute('/').fullPath}${slug}` : localeRoute(slug)"
         class="inline-block mb-1 px-1 text-black">

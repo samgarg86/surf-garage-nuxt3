@@ -5,7 +5,7 @@
       <img :src="`${file.url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
     </div>
     <div>
-      <div class="md:mt-5 md:mb-3">
+      <div class="md:mt-5 md:mb-1">
         <h1 class="text-2xl mb-1 font-avenir">{{ title }}</h1>
         <h2 v-if="description" class="text-2">{{description}}</h2>
       </div>
