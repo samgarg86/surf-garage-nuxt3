@@ -6,7 +6,9 @@
     "storage": "Guardatablas",
     "security": "Seguridad",
     "pricing": "Precios",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "boards": "Tablas de Segunda Mano",
+    "blog": "Blog"
   },
   "hero": {
     "join-now": "Únete ahora"

@@ -6,7 +6,9 @@
     "security": "Board Security",
     "services": "Services",
     "pricing": "Pricing",
-    "contact": "Contact"
+    "contact": "Contact",
+    "boards": "Secondhand Surf Boards",
+    "blog": "Blog"
   },
   "hero": {
     "join-now": "Join Now"

@@ -3,7 +3,7 @@
     <div>
       <NuxtLink
         :to="localeRoute(to)"
-        class="mr-1 mb-1.5 px-1 inline-block font-metalsmith lowercase text-black text-xl">
+        class="footer__l1">
         {{ title }}
       </NuxtLink>
     </div>
@@ -11,7 +11,7 @@
          :key="slug">
       <NuxtLink
         :to="scroll? `${localeRoute('/').fullPath}${slug}` : localeRoute(slug)"
-        class="inline-block mb-1 px-1 text-black">
+        class="inline-block text-black text-2 leading-loose">
         {{ title }}
       </NuxtLink>
     </div>

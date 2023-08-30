@@ -1,22 +1,27 @@
 <template>
   <section id="contact" class="footer mb-2">
-<!--    <h2 class="section__title font-metalsmith py-5 text-center">-->
-<!--      <span class="color-black px-1 py-0.5">{{ $t("contact.title") }}</span>-->
-<!--    </h2>-->
 <!--    <LazyInstaFeed/>-->
     <!--      <pre class="text-white">{{ siteNav?.boardStorageMenu }}</pre>-->
     <!--      <pre class="text-white">{{ siteNav?.surfArtMenu }}</pre>-->
     <div class="footer__content text-center md:text-left px-2 py-5 lg:py-10 lg:px-6">
-      <LazyFooterNav
-        class="footer__nav1"
-        :title="$t('nav.storage')" to="/" :nav="siteNav?.boardStorageMenu || {}" scroll/>
+      <section style="{gridArea: 'nav1'}">
+        <NuxtLink :to="localeRoute('/')" class="footer__l1">{{ $t('nav.storage') }}</NuxtLink>
+        <NuxtLink :to="localeRoute('/boards')" class="footer__l1">{{ $t('nav.boards') }}</NuxtLink>
+        <NuxtLink :to="localeRoute('/blog')" class="footer__l1">{{ $t('nav.blog') }}</NuxtLink>
+      </section>
       <LazyFooterNav
         class="footer__nav2"
+        style="{gridArea: 'nav2'}"
         title="Surf Art" to="/" :nav="siteNav?.surfArtMenu || {}"/>
-      <LazyContactLinks class="footer__links font-metalsmith lowercase" theme="light"/>
-      <div class="footer__form w-full font-metalsmith lowercase">
+      <LazyContactLinks
+          class="font-metalsmith lowercase md:p-0"
+          style="{gridArea: 'links'}"
+          theme="light"/>
+      <section
+          class="footer__form w-full font-metalsmith lowercase"
+          style="{gridArea: 'form'}">
         <LazyFooterContactForm />
-      </div>
+      </section>
     </div>
   </section>
 </template>
@@ -33,24 +38,17 @@ if (!siteNav.value) {
   background: url('@/assets/images/wave-bg.jpg') no-repeat center center;
   background-size: cover;
 
-  &__nav1 {
-    grid-area: nav1;
-  }
-
-  &__nav2 {
-    grid-area: nav2;
-  }
-
-  &__links {
-    grid-area: links;
-
-    @media screen(md) {
-      padding: 0;
+  @media(hover: hover) {
+    a:hover {
+      text-decoration: underline;
     }
   }
 
+  &__l1 {
+    @apply mr-1 mb-1.5 block font-metalsmith lowercase text-black;
+  }
+
   &__form {
-    grid-area: form;
     margin: 0 auto;
 
     @media screen(md) {

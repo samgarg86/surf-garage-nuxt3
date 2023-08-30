@@ -1,17 +1,17 @@
 <template>
-  <div class="lg:grid grid-cols-4 gap-2">
+  <div class="md:grid grid-cols-2 lg:grid-cols-4 gap-2 mt-1 mb-2">
     <BoardsTile v-for="tile in boards" :key="tile.id" v-bind="tile"/>
   </div>
 </template>
 <script setup>
 const { client } = useContentful()
 const { locale } = useI18n()
-const tiles = await client.getEntries({
+const entries = await client.getEntries({
   content_type: 'surfBoard',
   include: 10,
   locale: locale.value
 })
-const boards = tiles?.items.map(({ sys: { id }, fields }) => ({
+const boards = entries?.items.map(({ sys: { id }, fields }) => ({
   id,
   slug: fields.slug,
   title: fields.title,
