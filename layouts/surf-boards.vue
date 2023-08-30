@@ -16,6 +16,15 @@ useSeoMeta({
   ogImage: 'https://surfgarage.es/logo.png',
   keywords: 'guardatablas, tablas de surf, tablas segunda mano, board storage, surfboard storage, second hand surfboards, surfboards, surfboard repairs, surf art'
 })
+
+const i18nHead = useLocaleHead({
+  addSeoAttributes: true
+})
+
+useHead({
+  meta: [...(i18nHead.value.meta || [])],
+  link: [...(i18nHead.value.link || [])]
+})
 </script>
 
 <style lang="postcss">

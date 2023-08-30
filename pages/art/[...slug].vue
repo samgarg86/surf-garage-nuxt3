@@ -40,12 +40,6 @@ if (tags?.length) {
   mappedImages.value = mapImages(images)
 }
 
-useHead({
-  link: [
-    { rel: 'canonical', href: 'https://surfgarage.es' + fullPath }
-  ]
-})
-
 useSeoMeta({
   title: `Surf Garage Art - ${pageTitle}`,
   ogTitle: `${pageTitle}`,

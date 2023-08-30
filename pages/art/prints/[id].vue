@@ -66,12 +66,6 @@ useSeoMeta({
   }),
   ogImage: file?.url
 })
-
-useHead({
-  link: [
-    { rel: 'canonical', href: `https://surfgarage.es/art/prints/${id}` }
-  ]
-})
 </script>
 
 <style lang="postcss">

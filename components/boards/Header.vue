@@ -6,7 +6,7 @@
 <!--  </NuxtLink>-->
 
   <header class="font-metalsmith text-center pt-[1.6rem] pb-3 text-base md:text-xl">
-    <NuxtLink :to="localeRoute('/art')">surf garage surfboards co.</NuxtLink>
+    <NuxtLink :to="localeRoute('/boards')">surf garage surfboards co.</NuxtLink>
   </header>
   <button class="snipcart-checkout absolute right-2 top-2 flex items-center">
     <div v-html="cart" class="w-2.5 h-2.5 mr-0.5"/>

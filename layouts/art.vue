@@ -22,6 +22,10 @@
 <script lang="ts" setup>
 const { path } = useRoute()
 
+const i18nHead = useLocaleHead({
+  addSeoAttributes: true
+})
+
 useHead({
   link: [
     { rel: 'preconnect', href: 'https://app.snipcart.com' },
@@ -29,8 +33,10 @@ useHead({
     {
       rel: 'stylesheet',
       href: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css'
-    }
+    },
+    ...(i18nHead.value.link || [])
   ],
+  meta: [...(i18nHead.value.meta || [])],
   script: [
     { src: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js' }
   ]
@@ -38,11 +44,11 @@ useHead({
 
 useSeoMeta({
   title: 'Surf Garage Art Co',
-  description: 'A virtual gallery where you can discover and purchase amazing artwork created by a group of photographers and illustrators based in the Canary Islands. From epic wave shots to stunning coastal landscapes, our collection showcases the vibrant surf cultures and the natural beauties of this world.',
+  description: 'A virtual gallery where you can discover and purchase amazing artwork created by a group of photographers and illustrators based in the Canary Islands. Our collection showcases the vibrant surf cultures and the natural beauties of this world.',
   ogTitle: 'Surf Garage Art Co',
-  ogDescription: 'A virtual gallery where you can discover and purchase amazing artwork created by a group of photographers and illustrators based in the Canary Islands. From epic wave shots to stunning coastal landscapes, our collection showcases the vibrant surf cultures and the natural beauties of this world.',
+  ogDescription: 'A virtual gallery where you can discover and purchase amazing artwork created by a group of photographers and illustrators based in the Canary Islands. Our collection showcases the vibrant surf cultures and the natural beauties of this world',
   ogImage: 'https://surfgarage.es/logo.png',
-  keywords: 'guardatablas, tablas de surf, tablas segunda mano, board storage, surfboard storage, second hand surfboards, surfboards, surfboard repairs, surf art'
+  keywords: 'surf art, surf photography, surf illustrations, art, photography, illustrations, photo prints, surfing, art gallery'
 })
 </script>
 

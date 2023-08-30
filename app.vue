@@ -7,18 +7,25 @@
 </template>
 <script setup lang="ts">
 const { fullPath } = useRoute()
+const i18nHead = useLocaleHead({
+  addSeoAttributes: true
+})
 useHead({
   bodyAttrs: {
     class: 'antialiased font-myriad text-base text-black m-0 w-full min-w-full'
   },
+  htmlAttrs: {
+    lang: i18nHead.value.htmlAttrs?.lang
+  },
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { 'http-equiv': 'accept-ch', content: 'width' }
+    { 'http-equiv': 'accept-ch', content: 'width' },
+    ...(i18nHead.value.meta || [])
   ],
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    { rel: 'canonical', href: 'https://surfgarage.es' + fullPath }
+    ...(i18nHead.value.link || [])
   ]
 })
 </script>
