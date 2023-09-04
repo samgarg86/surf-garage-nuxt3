@@ -15,11 +15,11 @@
         title="Surf Art" to="/" :nav="siteNav?.surfArtMenu || {}"/>
       <LazyContactLinks
           class="font-metalsmith lowercase md:p-0"
-          style="{gridArea: 'links'}"
+          :style="{gridArea: 'links'}"
           theme="light"/>
       <section
           class="footer__form w-full font-metalsmith lowercase"
-          style="{gridArea: 'form'}">
+          :style="{gridArea: 'form'}">
         <LazyFooterContactForm />
       </section>
     </div>
@@ -45,7 +45,7 @@ if (!siteNav.value) {
   }
 
   &__l1 {
-    @apply mr-1 mb-1.5 block font-metalsmith lowercase text-black;
+    @apply md:mr-1 mb-1 md:mb-1.5 block font-metalsmith lowercase text-black;
   }
 
   &__form {
@@ -67,9 +67,10 @@ if (!siteNav.value) {
     grid-gap: 2rem;
 
     grid-template-areas:
-      "links links"
-      "form form"
-      "nav1 nav2";
+      "links"
+      "form"
+      "nav1"
+      "nav2";
 
     @media screen(md) {
       grid-gap: 3rem;
