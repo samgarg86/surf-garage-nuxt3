@@ -7,7 +7,7 @@
       <video v-if="item.type == 'video'" class="mb-2 lg:mb-4 w-full max-w-[60rem] mx-auto" controls data-not-lazy>
          <source :src="item.content" :type="item.format" />
       </video>
-      <Gallery v-if="item.type == 'gallery'" class="mb-2 lg:mb-4" :images="mapImages(item.content)" width="600" fillHeight/>
+      <Gallery v-if="item.type == 'gallery'" class="mb-2 lg:mb-4" :images="mapImages(item.content)" :width="600" fillHeight/>
     </template>
 <!--    <pre>{{content}}</pre>-->
   </div>
