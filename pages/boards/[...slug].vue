@@ -11,7 +11,7 @@
       <h1 class="text-base md:text-2xl mb-0.5 lg:mb-1 font-avenir font-bold upper">{{ title }}</h1>
       <p class="font-avenir text-base md:text-2xl mb-1">€{{ price }}</p>
       <div class="lg:hidden mb-1">
-         <BoardsGallery :images="mapImages(images)" :style="{gridArea: 'gallery-mobile'}"/>
+         <Gallery :images="mapImages(images)" :style="{gridArea: 'gallery-mobile'}"/>
       </div>
       <h2 v-if="description" class="whitespace-pre-line mb-2 leading-relaxed text-2 md:text-base" :style="{gridArea: 'desc'}">{{description}}</h2>
       <div class="text-1.8 font-avenir uppercase">
@@ -36,7 +36,7 @@
 import whatsapp from '~/assets/icons/whatsapp.svg?raw'
 
 definePageMeta({ layout: 'surf-boards' })
-const { params, fullPath } = useRoute()
+const { params } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
 const { public: { socialMedia }} = useRuntimeConfig()

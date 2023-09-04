@@ -1,7 +1,7 @@
 <template>
   <section id="about" class="section hero"
            :style="{ '--hero-bg': `url(${bgImage})` }">
-    <MenuDesktop/>
+    <MenuHome/>
     <ContactLinks class="hero__contact-links" :onlyIcons="true"/>
     <div class="hero__foreground">
       <h1 class="hero__title">{{ title }}</h1>

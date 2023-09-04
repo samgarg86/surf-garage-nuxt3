@@ -37,6 +37,7 @@
             </div>
           </li>
           <li><NuxtLink :to="localeRoute('/boards')" class="mr-1">{{$t('nav.boards')}}</NuxtLink></li>
+          <li><NuxtLink :to="localeRoute('/about')" class="mr-1">{{$t('nav.about')}}</NuxtLink></li>
         </ul>
         <ContactLinks/>
       </Push>
