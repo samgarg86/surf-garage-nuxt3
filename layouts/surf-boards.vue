@@ -5,6 +5,11 @@
     <slot/>
     <Footer/>
   </main>
+  <div hidden
+       id="snipcart"
+       data-api-key="YWZhYTMyNDUtZWY4Ny00ZDg0LTk1ZjYtMzMzZDFjN2NjNzYxNjM4MjE1NzE4NjM4MjYyMjk0"
+       data-config-modal-style="side">
+  </div>
 </template>
 
 <script lang="ts" setup>

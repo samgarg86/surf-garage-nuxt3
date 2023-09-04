@@ -1,15 +1,12 @@
 <template>
-<!--  <NuxtLink-->
-<!--      class="block text-center m-2"-->
-<!--      :to="localeRoute('/boards')">-->
-<!--    <img src="/logo.png" class="w-15 mx-auto" alt="Surf Garage - Second Hand Boards" data-not-lazy/>-->
-<!--  </NuxtLink>-->
-
-  <header class="font-metalsmith text-center pt-[1.6rem] pb-3 text-base md:text-xl">
-    <NuxtLink :to="localeRoute('/boards')">surf garage surfboards co.</NuxtLink>
+  <header class="font-metalsmith text-center py-0.5 md:py-1 mb-2 border-b-2">
+    <NuxtLink :to="localeRoute('/boards')">
+      <p class="text-xl md:text-2xl">surf garage</p>
+      <p class="text-sm md:text-1.8 font-myriad uppercase">Second Hand Surfboards</p>
+    </NuxtLink>
   </header>
-  <button class="snipcart-checkout absolute right-2 top-2 flex items-center">
-    <div v-html="cart" class="w-2.5 h-2.5 mr-0.5"/>
+  <button class="snipcart-checkout absolute right-1 md:right-2 top-2 md:top-2.5 flex items-center">
+    <div v-html="cart" class="w-[2.8rem] h-[2.8rem]"/>
     <div class="snipcart-items-count font-myriad font-bold text-base text-black"/>
   </button>
 </template>

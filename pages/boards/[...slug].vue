@@ -8,18 +8,19 @@
           data-not-lazy/>
     </section>
     <section>
-      <h1 class="text-xl md:text-2xl mb-1 font-avenir font-bold upper">{{ title }}</h1>
-      <p class="font-avenir font-bold text-xl md:text-2xl mb-1">€{{ price }}</p>
+      <h1 class="text-base md:text-2xl mb-0.5 lg:mb-1 font-avenir font-bold upper">{{ title }}</h1>
+      <p class="font-avenir text-base md:text-2xl mb-1">€{{ price }}</p>
       <div class="lg:hidden mb-1">
          <BoardsGallery :images="mapImages(images)" :style="{gridArea: 'gallery-mobile'}"/>
       </div>
-      <h2 v-if="description" class="whitespace-pre-line mb-2 leading-relaxed" :style="{gridArea: 'desc'}">{{description}}</h2>
+      <h2 v-if="description" class="whitespace-pre-line mb-2 leading-relaxed text-2 md:text-base" :style="{gridArea: 'desc'}">{{description}}</h2>
       <div class="text-1.8 font-avenir uppercase">
         <p v-if="type" class="mb-0.5"><span class="font-bold text-sm">{{$t('boards.typeLabel')}}:</span> {{$t(`boards.type.${type}`)}}</p>
         <p v-if="size" class="mb-0.5"><span class="font-bold text-sm">{{$t('boards.size')}}:</span> {{size}}</p>
         <p v-if="volume" class="mb-0.5"><span class="font-bold text-sm">{{$t('boards.volume')}}:</span> {{volume}}L</p>
         <p v-if="brand" class="mb-2"><span class="font-bold text-sm">{{$t('boards.brand')}}:</span> {{brand}}</p>
       </div>
+      <p class="text-2 md:text-base">{{$t('boards.message')}}</p>
       <div class="inline-flex w-full lg:w-auto items-center">
         <ScrollTo to="contact" class="flex-1"><button class="add-to-cart">{{$t('boards.contact')}}</button></ScrollTo>
         <a :href="socialMedia.whatsapp"

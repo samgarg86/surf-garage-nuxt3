@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-lg mx-auto my-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-2 lg:gap-5">
+  <div class="max-w-screen-lg mx-auto my-3 md:my-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-2 lg:gap-5">
     <div class="md:justify-self-end">
       <ArtBreadcrumbs class="h-[55px]"/>
       <img :src="`${file.url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>

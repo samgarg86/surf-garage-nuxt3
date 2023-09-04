@@ -20,8 +20,6 @@
 </template>
 
 <script lang="ts" setup>
-const { path } = useRoute()
-
 const i18nHead = useLocaleHead({
   addSeoAttributes: true
 })
