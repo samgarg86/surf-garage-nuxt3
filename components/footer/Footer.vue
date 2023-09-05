@@ -5,9 +5,9 @@
     <!--      <pre class="text-white">{{ siteNav?.surfArtMenu }}</pre>-->
     <div class="footer__content text-center md:text-left px-2 py-5 lg:py-10 lg:px-6">
       <section style="{gridArea: 'nav1'}">
+        <NuxtLink :to="localeRoute('/about')" class="footer__l1">{{ $t('nav.about') }}</NuxtLink>
         <NuxtLink :to="localeRoute('/')" class="footer__l1">{{ $t('nav.storage') }}</NuxtLink>
         <NuxtLink :to="localeRoute('/boards')" class="footer__l1">{{ $t('nav.boards') }}</NuxtLink>
-        <NuxtLink :to="localeRoute('/blog')" class="footer__l1">{{ $t('nav.blog') }}</NuxtLink>
       </section>
       <LazyFooterNav
         class="footer__nav2"
