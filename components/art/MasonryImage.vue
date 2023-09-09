@@ -1,15 +1,19 @@
 <template>
   <NuxtLink
     :to="localeRoute(`/art/prints/${id}?f=${f}`)"
-    class="masonry-image mb-1 md:mb-2 relative block"
+    class="masonry-image mb-1 md:mb-2 relative block border"
   >
     <img
       :src="`${url}?w=600`"
       :alt="`Surf Garage Art Co - ${title}`"
       class="min-h-[20rem] w-full"
       v-lazy-load/>
-    <div class="masonry-image__title ">{{title}}</div>
-    <div class="masonry-image__buy">{{ $t('art.order-prints') }}</div>
+    <div class="masonry-image__buy font-bold">{{ $t('art.order-prints') }}</div>
+    <div
+        class="absolute right-0 top-0 bg-white text-right text-black px-1 pt-0.5 border-l border-b">
+      <p class="font-bold mb-0.5 text-1.8 font-avenir">{{title}}</p>
+      <p class="uppercase text-[1.4rem]">By: {{`${tags.artist}${tags.place ? ', ' : ''}${tags.place || ''}`}}</p>
+    </div>
   </NuxtLink>
 </template>
 
@@ -19,27 +23,22 @@ defineProps({
   title: String,
   url: String,
   description: String,
+  tags: Array,
   f: String
 })
 const localeRoute = useLocaleRoute()
 </script>
 
 <style lang="postcss">
-.masonry-image__title {
-  @apply text-center absolute top-2 left-1/2 font-avenir text-1.8 md:text-2 text-white bg-black/40 px-1;
-  transform: translateX(-50%);
-  max-width: calc(100% - 2rem);
-}
-
 .masonry-image__buy {
-  @apply bg-black/40 absolute bottom-0 w-full font-avenir text-sm md:text-1.8 text-white uppercase text-center p-1;
+  @apply absolute bottom-3 left-5 font-avenir text-sm md:text-1.8 text-white uppercase text-center p-1 border;
+  width: calc(100% - 10rem);
 }
 
 @media (hover: hover) {
   .masonry-image:hover .masonry-image__buy {
-    @apply bg-black border-black text-white;
+    @apply bg-white text-black;
   }
 }
-
 
 </style>

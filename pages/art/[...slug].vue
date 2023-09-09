@@ -6,15 +6,15 @@
       <h2 class="text-2">{{ description }}</h2>
     </div>
     <ArtMasonryImage
-      v-for="{id, title, url} in mappedImages"
-      :key="id"
-      v-bind="{id, title, url, f:encodeURIComponent(slug)}"
+      v-for="img in mappedImages"
+      :key="img.id"
+      v-bind="{...img, f:encodeURIComponent(slug)}"
     />
   </div>
 </template>
 <script setup>
 definePageMeta({ layout: 'art' })
-const { params, fullPath } = useRoute()
+const { params } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
 const mappedImages = ref([])
