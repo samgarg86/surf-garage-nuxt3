@@ -21,9 +21,9 @@
       </ul>
 
       <select v-model="size" class="select-size py-1 px-3.5 mb-1 text-2 block w-full md:w-30 font-avenir border-2 text-center">
-        <option value="10x20" default>10cm x 20cm (€{{ prints['10x20'] }})</option>
-        <option value="20x30">20cm x 30cm (€{{ prints['20x30'] }})</option>
-        <option value="30x40">30cm x 40cm (€{{ prints['30x40'] }})</option>
+        <option value="10x20" default>10x20 cm (€{{ prints['10x20'] }})</option>
+        <option value="20x30">20x30 cm (€{{ prints['20x30'] }})</option>
+        <option value="30x40">30x40 cm (€{{ prints['30x40'] }})</option>
       </select>
       <AddToCart
         :id="`${id}`"
