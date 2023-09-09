@@ -31,7 +31,7 @@ const localeRoute = useLocaleRoute()
 
 <style lang="postcss">
 .masonry-image__buy {
-  @apply absolute bottom-3 left-5 font-avenir font-bold text-sm md:text-1.8 text-white uppercase text-center p-1 border;
+  @apply absolute bottom-3 left-5 font-avenir font-bold text-sm text-white uppercase text-center p-1 border;
   width: calc(100% - 10rem);
 }
 
