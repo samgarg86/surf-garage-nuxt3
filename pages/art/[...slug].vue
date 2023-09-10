@@ -1,5 +1,6 @@
 <template>
-<!--  <pre>Entries for {{slug}}: {{entries}}</pre>-->
+<!--  <pre>Slug: {{slug}}</pre>-->
+<!--  <pre>{{entries}}</pre>-->
   <div class="sm:columns-2 md:columns-3 mb-1 md:mb-2 gap-1 md:gap-2">
     <div class="mb-2">
       <h1 class="text-2xl font-avenir mb-1">{{ pageTitle }}</h1>
@@ -18,13 +19,13 @@ const { params } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
 const mappedImages = ref([])
-const slug = params.slug[0] ? `art/${params.slug[0]}` : 'art/homepage'
+const slug = params.slug[0] ? `art/${params.slug.join('/')}` : 'art'
 
 const entries = await client.getEntries({
   content_type: 'artGalleryPage',
   include: 10,
   locale: locale.value,
-  'fields.slug[match]': slug
+  'fields.slug[in]': slug
 })
 
 const { fields: { title: pageTitle, description, images }, metadata: { tags } } = entries?.items?.[0] || {}

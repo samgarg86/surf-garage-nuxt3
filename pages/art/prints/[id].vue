@@ -4,17 +4,27 @@
       <ArtBreadcrumbs class="h-[55px]"/>
       <img :src="`${file.url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
     </div>
+
     <div>
       <div class="md:mt-5 md:mb-1">
-        <h1 class="text-2xl mb-1 font-avenir">{{ title }}</h1>
+        <h1 class="text-2xl font-avenir">{{ title }}</h1>
+<!--        <pre>{{tags}}</pre>-->
+
+        <p class="text-sm mb-1">
+          <template v-if="printTags.artist">
+            By <NuxtLink :to="localePath(`/art/artist/${printTags.artist.replace(' ','').toLowerCase()}`)" class="underline">{{ printTags.artist }}</NuxtLink>
+          </template>
+          <template v-if="printTags.place">
+            shot in <NuxtLink :to="localePath(`/art/place/${printTags.place.toLowerCase()}`)" class="underline">{{ printTags.place }}</NuxtLink>
+          </template>
+        </p>
+
         <h2 v-if="description" class="text-2">{{description}}</h2>
       </div>
-      <ul class="tags list-none mb-1">
-        <template v-for="(tag, i) in printTags" :key="i">
-          <li
-            v-if="tag !== 'home'"
-            class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey"
-          >
+
+      <ul class="tags list-none mb-2">
+        <template v-for="tag in printTags.page" :key="tag">
+          <li v-if="tag !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
             <NuxtLink :to="localePath(`/art/${tag}`)">{{ tag }}</NuxtLink>
           </li>
         </template>
@@ -25,6 +35,7 @@
         <option value="20x30">20x30 cm (€{{ prints['20x30'] }})</option>
         <option value="30x40">30x40 cm (€{{ prints['30x40'] }})</option>
       </select>
+
       <AddToCart
         :id="`${id}`"
         :price="basePrice"
@@ -39,6 +50,7 @@
   </div>
 </template>
 <script setup>
+
 definePageMeta({ layout: 'art' })
 
 const { public: { priceTable: { prints } } } = useRuntimeConfig()
@@ -55,7 +67,7 @@ const size = ref(baseSize)
 if (query.size) size.value = query.size
 
 const { fields: { title, description, file }, metadata: { tags } } = await client.getAsset(id, { locale: locale.value })
-const printTags = computed(() => tags?.map(tag => tag.sys.id.replace('page', '').replace('place', '').toLowerCase()))
+const printTags = computed(() => imageTags(tags))
 
 useSeoMeta({
   title: `Surf Garage Art - ${title}`,
