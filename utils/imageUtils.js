@@ -1,18 +1,16 @@
-export const mapImages = (images) => images.map(i => {
-  const { metadata: { tags }, sys: { id }, fields } = i
+export const mapImages = (images) => images.map(mapImage)
+
+export const mapImage = (image) => {
+  const { metadata: { tags }, sys: { id }, fields } = image
 
   return {
     id,
+    description: fields.description,
     url: fields.file.url,
     title: fields.title,
     tags: imageTags(tags)
   }
-})
-
-// export const imageTags = (tags) => tags?.map(({ sys: { id } }) => {
-//   const tagName = ['page', 'place', 'artist'].find(key => id.startsWith(key))
-//   return { [tagName]: id.replace(tagName, '') }
-// })
+}
 
 export const imageTags = (tags) => ({
   page: findTags(tags, 'page'),

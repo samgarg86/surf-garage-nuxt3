@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ol class="list-none flex font-avenir text-1.8 font-bold">
-      <li><span v-if="!from">&lt;</span> <NuxtLink :to="localePath('/art')" class="pr-1 py-1.5 inline-block underline">Artwork</NuxtLink></li>
+      <li><span v-if="!from">&lt;</span> <NuxtLink :to="localePath('/art')" class="pr-1 py-1.5 inline-block underline">Art</NuxtLink></li>
       <li v-if="from" class="py-1.5"> / </li>
       <li v-if="from" >
         <NuxtLink :to="localePath(from.slug)"

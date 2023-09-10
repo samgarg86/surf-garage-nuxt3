@@ -2,7 +2,7 @@
   <div class="max-w-screen-lg mx-auto my-3 md:my-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-2 lg:gap-5">
     <div class="md:justify-self-end">
       <ArtBreadcrumbs class="h-[55px]"/>
-      <img :src="`${file.url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
+      <img :src="`${url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
     </div>
 
     <div>
@@ -11,11 +11,12 @@
 <!--        <pre>{{tags}}</pre>-->
 
         <p class="text-sm mb-1">
-          <template v-if="printTags.artist">
-            By <NuxtLink :to="localePath(`/art/artist/${printTags.artist.replace(' ','').toLowerCase()}`)" class="underline">{{ printTags.artist }}</NuxtLink>
+          <template v-if="tags.artist">
+            By <NuxtLink :to="localePath(`/art/artist/${tags.artist.replace(' ','').toLowerCase()}`)" class="underline">{{ tags.artist }}</NuxtLink>
           </template>
-          <template v-if="printTags.place">
-            shot in <NuxtLink :to="localePath(`/art/place/${printTags.place.toLowerCase()}`)" class="underline">{{ printTags.place }}</NuxtLink>
+          <span v-if="tags.artist && tags.place">, </span>
+          <template v-if="tags.place">
+            shot in <NuxtLink :to="localePath(`/art/place/${tags.place.toLowerCase()}`)" class="underline">{{ tags.place }}</NuxtLink>
           </template>
         </p>
 
@@ -23,7 +24,7 @@
       </div>
 
       <ul class="tags list-none mb-2">
-        <template v-for="tag in printTags.page" :key="tag">
+        <template v-for="tag in tags.page" :key="tag">
           <li v-if="tag !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
             <NuxtLink :to="localePath(`/art/${tag}`)">{{ tag }}</NuxtLink>
           </li>
@@ -41,7 +42,7 @@
         :price="basePrice"
         :title="title"
         :decription="size"
-        :image="`${file.url}?w=600`"
+        :image="`${url}?w=600`"
         :sizes="priceOptions(priceEntries)"
         :selectedSize="size"
         :url="validateUrl(id, host)"
@@ -50,6 +51,8 @@
   </div>
 </template>
 <script setup>
+
+import { mapImage, mapImages } from '~/utils/imageUtils.js'
 
 definePageMeta({ layout: 'art' })
 
@@ -66,8 +69,7 @@ const size = ref(baseSize)
 
 if (query.size) size.value = query.size
 
-const { fields: { title, description, file }, metadata: { tags } } = await client.getAsset(id, { locale: locale.value })
-const printTags = computed(() => imageTags(tags))
+const { url, title, description, tags } = mapImage(await client.getAsset(id, { locale: locale.value }))
 
 useSeoMeta({
   title: `Surf Garage Art - ${title}`,
@@ -76,7 +78,7 @@ useSeoMeta({
     description,
     ogDescription: `${description}`
   }),
-  ogImage: file?.url
+  ogImage: url
 })
 </script>
 
