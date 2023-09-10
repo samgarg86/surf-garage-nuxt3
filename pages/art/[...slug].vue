@@ -14,18 +14,13 @@
   </div>
 </template>
 <script setup>
+import { useArtSeo } from '~/composables/useArtSeo.js'
+
 definePageMeta({ layout: 'art' })
 const { params } = useRoute()
 const { getArtGalleryPage } = useContentful()
 const slug = params.slug[0] ? `art/${params.slug.join('/')}` : 'art'
 
 const { title, description, images } = await getArtGalleryPage(slug)
-
-useSeoMeta({
-  title: `Surf Garage Art - ${title}`,
-  ogTitle: `${title}`,
-  ...(description && { description }),
-  ...(description && { ogDescription: description }),
-  ...(images?.length && { ogImage: images?.[0]?.url })
-})
+useArtSeo({ title, description, images })
 </script>
