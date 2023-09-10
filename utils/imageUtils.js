@@ -24,9 +24,9 @@ const findTags = (tags, key) => tags
 
 const findTag = (tags, key) => tags.find(tag => tag.sys.id.startsWith(key))?.sys.id.replace(key, '')
 
-const parseArtist = (rawText) => {
-  switch (rawText) {
-    case 'SamGarg': return 'Sam Garg'
+export const parseArtist = (rawText) => {
+  switch (rawText?.toLowerCase()) {
+    case 'samgarg': return 'Sam Garg'
     default: return ''
   }
 }

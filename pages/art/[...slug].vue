@@ -3,11 +3,11 @@
 <!--  <pre>{{entries}}</pre>-->
   <div class="sm:columns-2 md:columns-3 mb-1 md:mb-2 gap-1 md:gap-2">
     <div class="mb-2">
-      <h1 class="text-2xl font-avenir mb-1">{{ pageTitle }}</h1>
+      <h1 class="text-2xl font-avenir mb-1">{{ title }}</h1>
       <h2 class="text-2">{{ description }}</h2>
     </div>
     <ArtMasonryImage
-      v-for="img in mappedImages"
+      v-for="img in images"
       :key="img.id"
       v-bind="{...img, f:encodeURIComponent(slug)}"
     />
@@ -16,36 +16,16 @@
 <script setup>
 definePageMeta({ layout: 'art' })
 const { params } = useRoute()
-const { client } = useContentful()
-const { locale } = useI18n()
-const mappedImages = ref([])
+const { getArtGalleryPage } = useContentful()
 const slug = params.slug[0] ? `art/${params.slug.join('/')}` : 'art'
 
-const entries = await client.getEntries({
-  content_type: 'artGalleryPage',
-  include: 10,
-  locale: locale.value,
-  'fields.slug[in]': slug
-})
-
-const { fields: { title: pageTitle, description, images }, metadata: { tags } } = entries?.items?.[0] || {}
-
-if (tags?.length) {
-  const { items } = await client.getAssets({
-    'metadata.tags.sys.id[all]': tags.map(tag => tag.sys.id).join(','),
-    locale: locale.value
-  })
-
-  mappedImages.value = mapImages(items)
-} else if (images?.length) {
-  mappedImages.value = mapImages(images)
-}
+const { title, description, images } = await getArtGalleryPage(slug)
 
 useSeoMeta({
-  title: `Surf Garage Art - ${pageTitle}`,
-  ogTitle: `${pageTitle}`,
+  title: `Surf Garage Art - ${title}`,
+  ogTitle: `${title}`,
   ...(description && { description }),
   ...(description && { ogDescription: description }),
-  ...(mappedImages.value?.length && { ogImage: mappedImages.value?.[0]?.url })
+  ...(images?.length && { ogImage: images?.[0]?.url })
 })
 </script>

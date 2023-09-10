@@ -7,11 +7,8 @@
 </template>
 
 <script setup>
-
-const { locale } = useI18n()
-
 const { getFirstEntryOfType } = useContentful()
-const homepage = await getFirstEntryOfType('homepageSections', locale.value)
+const homepage = await getFirstEntryOfType('homepageSections')
 
 const {
   tiles,

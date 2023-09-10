@@ -42,9 +42,9 @@ export default defineNuxtConfig({
       enableCommerce: process.env.enableCommerce || true,
       priceTable: {
         prints: {
-          '10x20': 10,
-          '20x30': 20,
-          '30x40': 30,
+          'A5': 8,
+          'A4': 15,
+          'A3': 20,
         },
       },
       socialMedia: {
