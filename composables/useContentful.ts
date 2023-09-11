@@ -21,6 +21,7 @@ export const useContentful = () => {
   }
 
   return {
+    client,
     getFirstEntryOfType: async (content_type, locale) => {
       const {items} = await client.getEntries({
         content_type,
