@@ -30,7 +30,8 @@ export default defineNuxtConfig({
     },
     lazy: true,
     types: 'composition',
-    skipSettingLocaleOnNavigate: false
+    skipSettingLocaleOnNavigate: false,
+    baseUrl: 'https://surfgarage.es'
   },
   runtimeConfig: {
     instaAccessToken: process.env.instaAccessToken,

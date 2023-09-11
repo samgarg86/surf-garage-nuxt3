@@ -2,11 +2,11 @@
   <!--    <pre>Artist: {{placeSlug[0]}}</pre>-->
   <div class="sm:columns-2 md:columns-3 mb-1 md:mb-2 gap-1 md:gap-2">
     <div class="mb-2">
-      <h1 class="text-2xl font-avenir mb-1">{{ title }}</h1>
-      <h2 class="text-2">{{ description }}</h2>
+      <h1 class="text-2xl font-avenir mb-1">{{ pageTitle }}</h1>
+      <h2 class="text-2">{{ pageDesc }}</h2>
     </div>
     <ArtMasonryImage
-        v-for="img in images"
+        v-for="img in placeImages"
         :key="img.id"
         v-bind="{...img, f:encodeURIComponent(placeSlug[0])}"
     />
@@ -17,11 +17,21 @@
 definePageMeta({ layout: 'art' })
 const { params: { placeSlug } } = useRoute()
 const { getArtGalleryPage, fetchImagesByTags } = useContentful()
-// const artistImages = ref([])
+
+const pageTitle = ref('')
+const pageDesc = ref('')
+const placeImages = ref([])
+
 const { title, description, images } = await getArtGalleryPage(`art/place/${placeSlug[0].toLowerCase()}`, 50)
-useArtSeo({ title, description, images })
-// if (images.length) artistImages.value = images
-// else {
-//   artistImages.value = await fetchImagesByTags(`artist${placeSlug[0]}`)
-// }
+
+if (images?.length) {
+  placeImages.value = images
+  pageTitle.value = title
+  pageDesc.value = description
+} else {
+  const place = placeSlug[0].charAt(0).toUpperCase() + placeSlug[0].slice(1)
+  pageTitle.value = place
+  placeImages.value = mapImages(await fetchImagesByTags(`place${place}`, 25))
+}
+useArtSeo({ pageTitle, pageDesc, placeImages })
 </script>

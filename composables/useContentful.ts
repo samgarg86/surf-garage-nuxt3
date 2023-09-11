@@ -13,10 +13,10 @@ export const useContentful = () => {
 
   const fetchImagesByTags = async (tags, limit) => {
     const {items} = await client.getAssets({
-      'metadata.tags.sys.id[all]': tags.map(tag => tag.sys.id).join(','),
+      'metadata.tags.sys.id[all]': tags,
       locale: locale.value,
       ...(limit && {limit})
-    })
+    }) || {}
     return items || []
   }
 
@@ -45,7 +45,7 @@ export const useContentful = () => {
         return {
           title,
           description,
-          images: mapImages(tags?.length ? await fetchImagesByTags(tags, limit) : images)
+          images: mapImages(tags?.length ? await fetchImagesByTags(tags.map(tag => tag.sys.id).join(','), limit) : images)
         }
       }
 
