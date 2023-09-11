@@ -8,7 +8,7 @@
     <ArtMasonryImage
         v-for="img in images"
         :key="img.id"
-        v-bind="{...img, f:encodeURIComponent(artistSlug[0])}"
+        v-bind="{...img, f:encodeURIComponent(slug)}"
     />
   </div>
 </template>
@@ -16,11 +16,8 @@
 definePageMeta({ layout: 'art' })
 const { params: { artistSlug } } = useRoute()
 const { getArtGalleryPage } = useContentful()
-// const artistImages = ref([])
-const { title, description, images } = await getArtGalleryPage(`art/artist/${artistSlug[0].toLowerCase()}`, 25)
+const slug = computed(() => `art/artist/${artistSlug[0].toLowerCase()}`)
+const { title, description, images } = await getArtGalleryPage(slug.value, 25)
 useArtSeo({ title, description, imageUrl: images?.[0].url })
-// if (images.length) artistImages.value = images
-// else {
-//   artistImages.value = await fetchImagesByTags(`artist${artistSlug[0]}`)
-// }
+
 </script>

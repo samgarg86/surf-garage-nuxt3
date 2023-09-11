@@ -8,7 +8,7 @@
     <ArtMasonryImage
         v-for="img in placeImages"
         :key="img.id"
-        v-bind="{...img, f:encodeURIComponent(placeSlug[0])}"
+        v-bind="{...img, f:encodeURIComponent(slug)}"
     />
   </div>
 </template>
@@ -21,8 +21,8 @@ const { getArtGalleryPage, fetchImagesByTags } = useContentful()
 const pageTitle = ref()
 const pageDesc = ref()
 const placeImages = ref([])
-
-const { title, description, images } = await getArtGalleryPage(`art/place/${placeSlug[0].toLowerCase()}`, 50)
+const slug = computed(() => `art/place/${placeSlug[0].toLowerCase()}`)
+const { title, description, images } = await getArtGalleryPage(slug.value, 50)
 
 if (images?.length) {
   placeImages.value = images
