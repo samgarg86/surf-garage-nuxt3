@@ -26,11 +26,7 @@
   </section>
 </template>
 <script setup>
-const { siteNav, fetchSiteNav } = useSiteNav()
-if (!siteNav.value) {
-  console.log('...FETCHING SITE NAV FROM FOOTER')
-  await fetchSiteNav()
-}
+const { siteNav } = useSiteNav()
 </script>
 
 <style lang="postcss">
