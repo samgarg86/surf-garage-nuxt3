@@ -14,7 +14,6 @@
 </template>
 <script setup>
 import cart from '~/assets/icons/cart.svg?raw'
-import Header from '~/components/art/Header.vue'
 
 const localeRoute = useLocaleRoute()
 </script>

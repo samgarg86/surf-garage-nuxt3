@@ -51,9 +51,6 @@
   </div>
 </template>
 <script setup>
-
-import { mapImage, mapImages } from '~/utils/imageUtils.js'
-
 definePageMeta({ layout: 'art' })
 
 const { public: { priceTable: { prints } } } = useRuntimeConfig()
@@ -71,15 +68,8 @@ if (query.size) size.value = query.size
 
 const { url, title, description, tags } = mapImage(await client.getAsset(id, { locale: locale.value }))
 
-useSeoMeta({
-  title: `Surf Garage Art - ${title}`,
-  ogTitle: `${title}`,
-  ...(description && {
-    description,
-    ogDescription: `${description}`
-  }),
-  ogImage: url
-})
+useArtSeo({ title, description, imageUrl: url })
+
 </script>
 
 <style lang="postcss">

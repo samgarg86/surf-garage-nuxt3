@@ -23,7 +23,7 @@ defineProps({
   title: String,
   url: String,
   description: String,
-  tags: Array,
+  tags: Object,
   f: String
 })
 const localeRoute = useLocaleRoute()

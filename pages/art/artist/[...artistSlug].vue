@@ -15,10 +15,10 @@
 <script setup>
 definePageMeta({ layout: 'art' })
 const { params: { artistSlug } } = useRoute()
-const { getArtGalleryPage, fetchImagesByTags } = useContentful()
+const { getArtGalleryPage } = useContentful()
 // const artistImages = ref([])
 const { title, description, images } = await getArtGalleryPage(`art/artist/${artistSlug[0].toLowerCase()}`, 25)
-useArtSeo({ title, description, images })
+useArtSeo({ title, description, imageUrl: images?.[0].url })
 // if (images.length) artistImages.value = images
 // else {
 //   artistImages.value = await fetchImagesByTags(`artist${artistSlug[0]}`)
