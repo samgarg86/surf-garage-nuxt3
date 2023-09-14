@@ -5,7 +5,7 @@
     }">
 <!--      <pre>{{siteNav}}</pre>-->
     <client-only>
-      <Push :closeOnNavigation="true" left>
+      <Push left noOverlay :closeOnNavigation="true">
         <ul>
           <li>
             <NuxtLink :to="localeRoute('/')" class="mr-1">{{ $t("nav.storage") }}</NuxtLink>
@@ -23,17 +23,27 @@
           </li>
           <li>
             <NuxtLink :to="localeRoute('/art')" class="mr-1">Surf Art</NuxtLink>
-            <div
-              v-show="showSurfArt"
-              v-if="siteNav?.surfArtMenu"
-            >
-              <NuxtLink
-                v-for="({slug, title}, index) in siteNav?.surfArtMenu"
-                :key="index"
-                :to="localeRoute(slug)"
-                class="block">
-                - {{ title }}
-              </NuxtLink>
+            <div v-show="showSurfArt" class="py-1">
+              <UiAccordion>
+                <UiAccordionItem v-if="siteNav?.surfArtCategories" class="pl-1" :title="$t('nav.categories')" :is-open="true">
+                  <NuxtLink
+                      v-for="({slug, title}, index) in siteNav?.surfArtCategories"
+                      :key="index"
+                      :to="localeRoute(slug)"
+                      class="block">
+                    - {{ title }}
+                  </NuxtLink>
+                </UiAccordionItem>
+                <UiAccordionItem v-if="siteNav?.surfArtLocations" class="pl-1" :title="$t('nav.locations')" :is-open="true">
+                  <NuxtLink
+                      v-for="({slug, title}, index) in siteNav?.surfArtLocations"
+                      :key="index"
+                      :to="localeRoute(slug)"
+                      class="block">
+                    - {{ title }}
+                  </NuxtLink>
+                </UiAccordionItem>
+              </UiAccordion>
             </div>
           </li>
           <li><NuxtLink :to="localeRoute('/boards')" class="mr-1">{{$t('nav.boards')}}</NuxtLink></li>

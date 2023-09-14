@@ -5,7 +5,7 @@ export default defineNuxtPlugin(async () => {
     const client = process.env.NODE_ENV == 'production' ?
         defaultContentful.createClient({space, accessToken}) :
         createClient({space, accessToken})
-    const siteNav = useState('siteNav', () => [])
+    const siteNav = useState('siteNav', () => {})
     const siteTags = useState('siteTags', () => {})
 
     const {items} = await client.getEntries({content_type: 'hamburgerMenu', include: 10})

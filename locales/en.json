@@ -7,7 +7,9 @@
     "services": "Services",
     "pricing": "Pricing",
     "contact": "Contact",
-    "boards": "Secondhand Surf Boards"
+    "boards": "Secondhand Surf Boards",
+    "categories": "Popular Categories",
+    "locations": "Popular Locations"
   },
   "hero": {
     "join-now": "Join Now"
