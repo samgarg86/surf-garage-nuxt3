@@ -13,17 +13,17 @@
   </div>
 </template>
 <script setup>
-
+const { mapImages } = useContentfulImages()
 const props = defineProps({
   content: Array
 })
 
-const contentMap = props.content.map(({content, nodeType, data: { target }}) => {
+const contentMap = props.content.map(({ content, nodeType, data: { target } }) => {
   switch (true) {
     case nodeType === 'paragraph':
       return {
         type: 'text',
-        content: content
+        content
       }
     case nodeType.startsWith('heading-'):
       return {

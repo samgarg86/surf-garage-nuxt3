@@ -26,7 +26,7 @@
       <ul class="tags list-none mb-2">
         <template v-for="tag in tags.page" :key="tag">
           <li v-if="tag !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
-            <NuxtLink :to="localePath(`/art/${tag.toLowerCase()}`)">{{ tag }}</NuxtLink>
+            <NuxtLink :to="localePath(`/art/${tag}`)">{{ tag }}</NuxtLink>
           </li>
         </template>
       </ul>
@@ -54,8 +54,7 @@
 definePageMeta({ layout: 'art' })
 
 const { public: { priceTable: { prints } } } = useRuntimeConfig()
-const { client } = useContentful()
-const { locale } = useI18n()
+const { fetchImageById } = useContentfulImages()
 const localePath = useLocalePath()
 const host = useHost()
 const priceEntries = Object.entries(prints)
@@ -66,7 +65,7 @@ const size = ref(baseSize)
 
 if (query.size) size.value = query.size
 
-const { url, title, description, tags } = mapImage(await client.getAsset(id, { locale: locale.value }))
+const { url, title, description, tags } = await fetchImageById(id)
 
 useArtSeo({ title, description, imageUrl: url })
 

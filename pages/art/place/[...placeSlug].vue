@@ -16,7 +16,8 @@
 
 definePageMeta({ layout: 'art' })
 const { params: { placeSlug } } = useRoute()
-const { getArtGalleryPage, fetchImagesByTags } = useContentful()
+const { getArtGalleryPage } = useContentfulImages()
+const { fetchImagesByTags } = useContentfulImages()
 
 const pageTitle = ref()
 const pageDesc = ref()
@@ -31,7 +32,7 @@ if (images?.length) {
 } else {
   const place = placeSlug[0].charAt(0).toUpperCase() + placeSlug[0].slice(1)
   pageTitle.value = place
-  placeImages.value = mapImages(await fetchImagesByTags(`place${place}`, 25))
+  placeImages.value = await fetchImagesByTags(`place${place}`, 25)
 }
 useArtSeo({
   title: pageTitle.value,

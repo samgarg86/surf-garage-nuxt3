@@ -2,7 +2,7 @@
   <div class="boards-gallery lg:grid grid-cols-2 gap-3 mb-2">
     <section class="hidden lg:grid grid-cols-2 gap-2">
       <img
-          v-for="{id, url} in mapImages(images)"
+          v-for="{id, url} in images"
           :key="id"
           :src="`${url}?w=600`"
           data-not-lazy/>
@@ -11,7 +11,7 @@
       <h1 class="text-base md:text-2xl mb-0.5 lg:mb-1 font-avenir font-bold upper">{{ title }}</h1>
       <p class="font-avenir text-base md:text-2xl mb-1">€{{ price }}</p>
       <div class="lg:hidden mb-1">
-         <Gallery :images="mapImages(images)" :style="{gridArea: 'gallery-mobile'}"/>
+         <Gallery :images="images" :style="{gridArea: 'gallery-mobile'}"/>
       </div>
       <h2 v-if="description" class="whitespace-pre-line mb-2 leading-relaxed text-2 md:text-base" :style="{gridArea: 'desc'}">{{description}}</h2>
       <div class="text-1.8 font-avenir uppercase">
@@ -38,8 +38,9 @@ import whatsapp from '~/assets/icons/whatsapp.svg?raw'
 definePageMeta({ layout: 'surf-boards' })
 const { params } = useRoute()
 const { client } = useContentful()
+const { mapImages } = useContentfulImages()
 const { locale } = useI18n()
-const { public: { socialMedia }} = useRuntimeConfig()
+const { public: { socialMedia } } = useRuntimeConfig()
 
 const slug = params.slug[0] ? `boards/${params.slug[0]}` : 'boards/homepage'
 const entries = await client.getEntries({
@@ -49,7 +50,8 @@ const entries = await client.getEntries({
   'fields.slug[match]': slug
 })
 
-const { fields: { title, description, images, price, type, size, volume, brand } } = entries?.items?.[0] || {}
+const { fields: { title, description, images: rawImages, price, type, size, volume, brand } } = entries?.items?.[0] || {}
+const images = mapImages(rawImages)
 </script>
 <style lang="postcss">
 .boards-gallery-x {

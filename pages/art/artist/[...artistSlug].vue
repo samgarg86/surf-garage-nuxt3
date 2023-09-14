@@ -15,7 +15,7 @@
 <script setup>
 definePageMeta({ layout: 'art' })
 const { params: { artistSlug } } = useRoute()
-const { getArtGalleryPage } = useContentful()
+const { getArtGalleryPage } = useContentfulImages()
 const slug = computed(() => `art/artist/${artistSlug[0].toLowerCase()}`)
 const { title, description, images } = await getArtGalleryPage(slug.value, 25)
 useArtSeo({ title, description, imageUrl: images?.[0].url })
