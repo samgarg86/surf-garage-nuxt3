@@ -22,11 +22,11 @@ export const useContentful = () => {
 
   return {
     client,
-    getFirstEntryOfType: async (content_type, locale) => {
+    getFirstEntryOfType: async (content_type, loc) => {
       const {items} = await client.getEntries({
         content_type,
         include: 10,
-        ...(locale && {locale})
+        locale: loc || locale.value
       })
       return items[0]
     },
