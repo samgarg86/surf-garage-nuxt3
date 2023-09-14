@@ -22,9 +22,9 @@ const pageTitle = ref()
 const pageDesc = ref()
 const placeImages = ref([])
 const slug = computed(() => `art/place/${placeSlug[0].toLowerCase()}`)
-const { title, description, images } = await getArtGalleryPage(slug.value, 50)
+const { title, description, images } = await getArtGalleryPage(slug.value)
 
-if (images?.length === 0) {
+if (images?.length) {
   placeImages.value = images
   pageTitle.value = title
   pageDesc.value = description

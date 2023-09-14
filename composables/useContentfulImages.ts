@@ -32,7 +32,7 @@ export const useContentfulImages = () => {
 
     const fetchImagesByTags = async (tags, limit) => {
         const { items } = await client.getAssets({
-            'metadata.tags.sys.id[all]': tags,
+            'metadata.tags.sys.id[in]': tags,
             locale: locale.value,
             ...(limit && {limit})
         }) || {}
@@ -43,12 +43,12 @@ export const useContentfulImages = () => {
         fetchImagesByTags,
         fetchImageById: async (id) => mapImage(await client.getAsset(id, { locale: locale.value })),
         mapImages,
-        getArtGalleryPage: async(slug, limit) => {
+        getArtGalleryPage: async(slug, limit = 50) => {
             const entries = await client.getEntries({
                 content_type: 'artGalleryPage',
                 include: 10,
                 locale: locale.value,
-                'fields.slug[in]': slug
+                'fields.slug': slug
             })
 
             if (entries?.items?.length) {
