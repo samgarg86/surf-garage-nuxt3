@@ -30,7 +30,7 @@ if (images?.length) {
   pageDesc.value = description
 } else {
   const siteTags = useState('siteTags', () => {})
-  const placeTagId = `place${placeSlug[0].charAt(0).toUpperCase()}${placeSlug[0].slice(1)}`
+  const placeTagId = `place${capitalize(placeSlug[0])}`
   const placeTag = siteTags.value[placeTagId]
   pageTitle.value = placeTag?.name
   placeImages.value = await fetchImagesByTags(placeTagId, 25)
