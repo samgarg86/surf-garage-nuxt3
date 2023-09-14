@@ -1,5 +1,3 @@
-import {imageTags} from "~/utils/imageUtils";
-
 export const useContentfulImages = () => {
     const { locale } = useI18n()
     const { client} = useContentful()

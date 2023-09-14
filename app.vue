@@ -7,7 +7,6 @@
   </div>
 </template>
 <script setup lang="ts">
-const { fullPath } = useRoute()
 const i18nHead = useLocaleHead({
   addSeoAttributes: true
 })
