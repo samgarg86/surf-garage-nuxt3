@@ -3,7 +3,6 @@
       'hamburger-menu': true,
       'black-bars': black
     }">
-<!--      <pre>{{siteNav}}</pre>-->
     <client-only>
       <Push left noOverlay :closeOnNavigation="true">
         <ul>
@@ -13,11 +12,11 @@
               v-show="showBoardStorage"
               v-if="siteNav?.boardStorageMenu">
               <NuxtLink
-                v-for="({slug, title}, index) in siteNav?.boardStorageMenu"
+                v-for="(item, index) in siteNav?.boardStorageMenu"
                 :key="index"
-                :to="`${localeRoute('/').fullPath}${slug}`"
+                :to="`${localeRoute('/').fullPath}${item.slug}`"
                 class="block">
-                - {{ title }}
+                - {{ item[locale] }}
               </NuxtLink>
             </div>
           </li>
@@ -27,20 +26,20 @@
               <UiAccordion>
                 <UiAccordionItem v-if="siteNav?.surfArtCategories" class="pl-1" :title="$t('nav.categories')" :is-open="true">
                   <NuxtLink
-                      v-for="({slug, title}, index) in siteNav?.surfArtCategories"
+                      v-for="(cat, index) in siteNav?.surfArtCategories"
                       :key="index"
-                      :to="localeRoute(slug)"
+                      :to="localeRoute(cat.slug)"
                       class="block">
-                    - {{ title }}
+                    - {{ cat[locale] }}
                   </NuxtLink>
                 </UiAccordionItem>
                 <UiAccordionItem v-if="siteNav?.surfArtLocations" class="pl-1" :title="$t('nav.locations')" :is-open="true">
                   <NuxtLink
-                      v-for="({slug, title}, index) in siteNav?.surfArtLocations"
+                      v-for="(item, index) in siteNav?.surfArtLocations"
                       :key="index"
-                      :to="localeRoute(slug)"
+                      :to="localeRoute(item.slug)"
                       class="block">
-                    - {{ title }}
+                    - {{ item[locale] }}
                   </NuxtLink>
                 </UiAccordionItem>
               </UiAccordion>
@@ -65,10 +64,11 @@ defineProps({
 const showSurfArt = ref(true)
 const showBoardStorage = ref(true)
 const route = useRoute()
-const { siteNav, forceFetch } = useSiteNav()
+const { siteNav } = useSiteNav()
 // No need to call fetchSiteNav because Footer does it already
 const localeRoute = useLocaleRoute()
 const i18n = useI18n()
+const locale = ref(i18n.locale)
 
 watch(route, newRoute => {
   if (newRoute.path.includes('/art')) {
@@ -80,7 +80,7 @@ watch(route, newRoute => {
   }
 }, { deep: true, immediate: true })
 
-watch(i18n.locale, (newLocale) => forceFetch(newLocale), { deep: true })
+watch(i18n.locale, (newLocale) => { locale.value = newLocale == 'en' ? 'en' : 'es' }, { deep: true, immediate: true })
 
 </script>
 

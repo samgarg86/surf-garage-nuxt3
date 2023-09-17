@@ -7,12 +7,12 @@
         {{ title }}
       </NuxtLink>
     </div>
-    <div v-for="{slug, title} in nav"
-         :key="slug">
+    <div v-for="item in nav"
+         :key="item.slug">
       <NuxtLink
-        :to="scroll? `${localeRoute('/').fullPath}${slug}` : localeRoute(slug)"
+        :to="scroll? `${localeRoute('/').fullPath}${item.slug}` : localeRoute(item.slug)"
         class="inline-block text-black text-2 leading-loose">
-        {{ title }}
+        {{ item[locale] }}
       </NuxtLink>
     </div>
   </nav>
@@ -26,4 +26,7 @@ defineProps({
 })
 
 const localeRoute = useLocaleRoute()
+const i18n = useI18n()
+const locale = ref(i18n.locale)
+watch(i18n.locale, (newLocale) => { locale.value = newLocale == 'en' ? 'en' : 'es' }, { deep: true, immediate: true })
 </script>

@@ -9,10 +9,15 @@
         <NuxtLink :to="localeRoute('/')" class="footer__l1">{{ $t('nav.storage') }}</NuxtLink>
         <NuxtLink :to="localeRoute('/boards')" class="footer__l1">{{ $t('nav.boards') }}</NuxtLink>
       </section>
-      <LazyFooterNav
-        class="footer__nav2"
-        style="{gridArea: 'nav2'}"
-        title="Surf Art" to="/" :nav="siteNav?.surfArtMenu || {}"/>
+      <section style="{gridArea: 'nav2'}">
+        <LazyFooterNav
+            class="footer__nav2"
+            title="Surf Art Categories" to="/" :nav="siteNav?.surfArtCategories || {}"/>
+        <LazyFooterNav
+            class="footer__nav2"
+            title="Surf Art Locations" to="/" :nav="siteNav?.surfArtLocations || {}"/>
+      </section>
+
       <LazyContactLinks
           class="font-metalsmith lowercase md:p-0"
           :style="{gridArea: 'links'}"
