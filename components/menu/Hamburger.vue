@@ -42,6 +42,15 @@
                     - {{ item[locale] }}
                   </NuxtLink>
                 </UiAccordionItem>
+                <UiAccordionItem v-if="siteNav?.surfArtArtists" class="pl-1" :title="$t('nav.artists')" :is-open="true">
+                  <NuxtLink
+                      v-for="({name, slug}, index) in siteNav?.surfArtArtists"
+                      :key="index"
+                      :to="localeRoute(slug)"
+                      class="block">
+                    - {{ name }}
+                  </NuxtLink>
+                </UiAccordionItem>
               </UiAccordion>
             </div>
           </li>
@@ -65,7 +74,6 @@ const showSurfArt = ref(true)
 const showBoardStorage = ref(true)
 const route = useRoute()
 const { siteNav } = useSiteNav()
-// No need to call fetchSiteNav because Footer does it already
 const localeRoute = useLocaleRoute()
 const i18n = useI18n()
 const locale = ref(i18n.locale)
