@@ -6,7 +6,7 @@
         By <NuxtLink :to="localePath(`/art/artist/${tags.artist.replace(' ','').toLowerCase()}`)" class="underline">{{ tags.artist }}</NuxtLink>
       </p>
     </div>
-    <section class="bg-softGrey">
+    <section class="bg-softGrey mobile:-mx-1">
       <GalleryIllustrations :images="images" class="max-w-[60rem] mx-auto"/>
     </section >
     <section>
