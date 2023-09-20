@@ -75,8 +75,7 @@ const showBoardStorage = ref(true)
 const route = useRoute()
 const { siteNav } = useSiteNav()
 const localeRoute = useLocaleRoute()
-const i18n = useI18n()
-const locale = ref(i18n.locale)
+const { locale } = useI18n()
 
 watch(route, newRoute => {
   if (newRoute.path.includes('/art')) {
@@ -87,8 +86,6 @@ watch(route, newRoute => {
     showBoardStorage.value = true
   }
 }, { deep: true, immediate: true })
-
-watch(i18n.locale, (newLocale) => { locale.value = newLocale == 'en' ? 'en' : 'es' }, { deep: true, immediate: true })
 
 </script>
 

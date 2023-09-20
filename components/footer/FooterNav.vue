@@ -26,7 +26,5 @@ defineProps({
 })
 
 const localeRoute = useLocaleRoute()
-const i18n = useI18n()
-const locale = ref(i18n.locale)
-watch(i18n.locale, (newLocale) => { locale.value = newLocale == 'en' ? 'en' : 'es' }, { deep: true, immediate: true })
+const { locale } = useI18n()
 </script>

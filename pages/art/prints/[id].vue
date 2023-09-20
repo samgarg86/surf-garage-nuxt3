@@ -1,8 +1,10 @@
 <template>
-  <div class="max-w-screen-lg mx-auto my-3 md:my-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-2 lg:gap-5">
+  <div class="max-w-screen-lg mx-auto my-3 md:my-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-1 md:gap-2 lg:gap-5">
     <section class="md:justify-self-end">
       <ArtBreadcrumbs class="h-[55px]"/>
-      <img class="border" :src="`${url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
+      <div class="p-2 md:p-4 bg-softGrey mobile:-mx-1">
+        <img class="bg-white image-frame" :src="`${url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
+      </div>
     </section>
 
     <section>
