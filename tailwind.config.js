@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     screens: {
       sm: '480px',
+      mobile: { max: '1023px' },
       md: '1024px',
       lg: '1440px'
     },
@@ -13,6 +14,7 @@ module.exports = {
       boardRed: '#6B1F15',
       white: '#fff',
       grey: '#adadad',
+      softGrey: '#eee',
       lightGrey: '#f1f1f1',
       blackSoft: '#444',
       black: '#09090e',

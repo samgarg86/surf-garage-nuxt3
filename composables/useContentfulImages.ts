@@ -22,7 +22,8 @@ export const useContentfulImages = () => {
         return fullTags ? {
             page: findTags(fullTags, 'page'),
             place: findTag(fullTags, 'place'),
-            artist: findTag(fullTags, 'artist')
+            artist: findTag(fullTags, 'artist'),
+            settings: findTags(fullTags, 'setting')
         }: {}
     }
 
@@ -64,6 +65,15 @@ export const useContentfulImages = () => {
             }
 
             return {}
+        },
+        getIllustration: async(id) => {
+            const { metadata: {tags}, fields: { title, description, images } } = await client.getEntry(id, { locale: locale.value })
+            return {
+                title,
+                description,
+                images: mapImages(images),
+                tags: imageTags(tags)
+            }
         }
     }
 }

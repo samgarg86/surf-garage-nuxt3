@@ -13,7 +13,7 @@
     :data-item-custom1-options="sizes"
     :data-item-custom1-value="selectedSize"
     :data-item-url="url"
-    :disabled="!enableCommerce"
+    :disabled="!enableCommerce || ecomDisabled"
     data-item-quantity="1"
   >{{$t('art.add-to-cart')}}
   </button>
@@ -27,7 +27,8 @@ defineProps({
   image: String,
   url: String,
   sizes: String,
-  selectedSize: String
+  selectedSize: String,
+  ecomDisabled: Boolean
 })
 const { public: { enableCommerce } } = useRuntimeConfig()
 </script>

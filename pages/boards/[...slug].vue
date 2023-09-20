@@ -1,5 +1,5 @@
 <template>
-  <div class="boards-gallery lg:grid grid-cols-2 gap-3 mb-2">
+  <div class="lg:grid grid-cols-2 gap-3 mb-2">
     <section class="hidden lg:grid grid-cols-2 gap-2">
       <img
           v-for="{id, url} in images"
@@ -53,21 +53,3 @@ const entries = await client.getEntries({
 const { fields: { title, description, images: rawImages, price, type, size, volume, brand } } = entries?.items?.[0] || {}
 const images = mapImages(rawImages)
 </script>
-<style lang="postcss">
-.boards-gallery-x {
-  grid-template-areas:
-      "title"
-      "gallery"
-      "desc"
-      "specs"
-"contact";
-
-  @media screen(lg) {
-    grid-template-areas:
-      "gallery-desktop title"
-      "gallery-desktop desc"
-      "gallery-desktop specs"
-      "gallery-desktop contact";
-  }
-}
-</style>

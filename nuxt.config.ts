@@ -45,8 +45,15 @@ export default defineNuxtConfig({
         prints: {
           'A5': 8,
           'A4': 15,
-          'A3': 20,
+          'A3': 20
         },
+        illustrations: {
+          'Eneri Concept': {
+            'A5': 10,
+            'A4': 20,
+            'A3': 30
+          }
+        }
       },
       socialMedia: {
         insta: 'https://www.instagram.com/surfgaragelpa/',

@@ -1,11 +1,11 @@
 <template>
   <div class="max-w-screen-lg mx-auto my-3 md:my-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-2 lg:gap-5">
-    <div class="md:justify-self-end">
+    <section class="md:justify-self-end">
       <ArtBreadcrumbs class="h-[55px]"/>
       <img class="border" :src="`${url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
-    </div>
+    </section>
 
-    <div>
+    <section>
       <div class="md:mt-5 md:mb-1">
         <h1 class="text-2xl font-avenir">{{ title }}</h1>
 <!--        <pre>{{tags}}</pre>-->
@@ -47,7 +47,7 @@
         :selectedSize="size"
         :url="validateUrl(id, host)"
       />
-    </div>
+    </section>
   </div>
 </template>
 <script setup>
@@ -60,8 +60,8 @@ const host = useHost()
 const priceEntries = Object.entries(prints)
 const baseSize = priceEntries[0][0]
 const basePrice = priceEntries[0][1]
-const { query, params: { id } } = useRoute()
 const size = ref(baseSize)
+const { query, params: { id } } = useRoute()
 
 if (query.size) size.value = query.size
 
