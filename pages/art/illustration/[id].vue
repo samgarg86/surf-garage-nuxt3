@@ -1,5 +1,5 @@
 <template>
-  <div class="grid md:grid-cols-2 gap-2 md:gap-4 mb-2">
+  <div class="grid md:grid-cols-2 gap-1 md:gap-4 mb-2">
     <div class="md:hidden">
       <h1 class="text-2xl font-avenir">{{ title }}</h1>
       <p v-if="tags.artist" class="text-sm" >
