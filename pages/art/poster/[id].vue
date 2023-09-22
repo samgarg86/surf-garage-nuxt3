@@ -11,13 +11,13 @@
     </section >
     <section>
       <div class="lg:mt-3 mb-2">
-        <h1 class="sm:hidden text-2xl font-avenir">{{ title }}</h1>
+        <h1 class="mobile:hidden text-2xl font-avenir">{{ title }}</h1>
 
         <p v-if="tags.artist" class="text-sm mb-1" >
            By <NuxtLink :to="localePath(`/art/artist/${tags.artist.replace(' ','').toLowerCase()}`)" class="underline">{{ tags.artist }}</NuxtLink>
         </p>
 
-        <ul v-if="tags.page.length" class="tags mb-1">
+        <ul v-if="tags.page?.length" class="tags mb-1">
           <template v-for="tag in tags.page" :key="tag">
             <li v-if="tag !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
               <NuxtLink :to="localePath(`/art/${tag}`)">{{ tag }}</NuxtLink>
@@ -50,18 +50,15 @@
 definePageMeta({ layout: 'art' })
 const { params: { id } } = useRoute()
 const { getIllustration } = useContentfulImages()
-const { public: { priceTable: { illustrations } } } = useRuntimeConfig()
 const host = useHost()
 
-const { title, description, images, tags } = await getIllustration(id)
-const ecomDisabled = computed(() => tags?.settings.includes('Ecommerce Disabled'))
-const pricing = computed(() => {
-  // if (special price) return special price
-  if (tags?.artist) return illustrations[tags.artist]
-})
-
-const priceEntries = computed(() => Object.entries(pricing.value))
+const { public: { priceTable: { posters: pricing } } } = useRuntimeConfig()
+const priceEntries = computed(() => Object.entries(pricing))
 const baseSize = computed(() => priceEntries.value[0][0])
 const basePrice = computed(() => priceEntries.value[0][1])
 const size = ref(baseSize.value)
+
+const { title, description, images, tags } = await getIllustration(id)
+const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
+
 </script>

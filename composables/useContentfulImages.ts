@@ -23,13 +23,15 @@ export const useContentfulImages = () => {
             page: findTags(fullTags, 'page'),
             place: findTag(fullTags, 'place'),
             artist: findTag(fullTags, 'artist'),
-            settings: findTags(fullTags, 'setting')
+            settings: findSettings(tags)
         }: {}
     }
 
     const findTags = (tags, type) => tags?.filter(tag => tag.type === type).map(tag => tag.name)
 
     const findTag = (tags, type) => tags.find(tag => tag.type === type)?.name
+
+    const findSettings = (tags) => tags.filter((tag) => tag.sys.id.startsWith('setting')).map((tag) => tag.sys.id)
 
     const fetchImagesByTags = async (tags, limit) => {
         const { items } = await client.getAssets({
@@ -68,12 +70,13 @@ export const useContentfulImages = () => {
         },
         getIllustration: async(id) => {
             const { metadata: {tags}, fields: { title, description, images } } = await client.getEntry(id, { locale: locale.value })
-            return {
+            const x = {
                 title,
                 description,
                 images: mapImages(images),
                 tags: imageTags(tags)
             }
+            return x
         }
     }
 }

@@ -47,12 +47,10 @@ export default defineNuxtConfig({
           'A4': 15,
           'A3': 20
         },
-        illustrations: {
-          'Eneri Concept': {
-            'A5': 10,
-            'A4': 20,
-            'A3': 30
-          }
+        posters: {
+          'A5': 10,
+          'A4': 20,
+          'A3': 30
         }
       },
       socialMedia: {
