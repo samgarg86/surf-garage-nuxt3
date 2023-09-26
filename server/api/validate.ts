@@ -17,7 +17,7 @@ setResponseHeader(event, 'Content-Type', 'application/json')
           "options": priceOptions(priceEntries)
         }
       ],
-      url: validateUrl(id, host)
+      url: validateUrl(id, host, type)
     }
   }
 })

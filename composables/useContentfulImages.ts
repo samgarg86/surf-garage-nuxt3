@@ -47,6 +47,32 @@ export const useContentfulImages = () => {
         fetchImageById: async (id) => mapImage(await client.getAsset(id, { locale: locale.value })),
         mapImages,
         mapImage,
+        getIllustration: async(id) => {
+            const {
+                metadata: {tags},
+                fields: { title, description, images, specialPrice, priceA3, priceA4, priceA5 }
+            } = await client.getEntry(id, { locale: locale.value })
+            return {
+                title,
+                description,
+                images: mapImages(images),
+                tags: imageTags(tags),
+                ...(specialPrice && {
+                    specialPrice: {
+                        A3: priceA3,
+                        A4: priceA4,
+                        A5: priceA5
+                    }
+                })
+            }
+        },
+        getPostersPage: async() => {
+            const entries = await client.getEntries({
+                content_type: 'artwork',
+                include: 10,
+                locale: locale.value,
+            })
+        },
         getArtGalleryPage: async(slug, limit = 50) => {
             const entries = await client.getEntries({
                 content_type: 'artGalleryPage',
@@ -67,16 +93,6 @@ export const useContentfulImages = () => {
             }
 
             return {}
-        },
-        getIllustration: async(id) => {
-            const { metadata: {tags}, fields: { title, description, images } } = await client.getEntry(id, { locale: locale.value })
-            const x = {
-                title,
-                description,
-                images: mapImages(images),
-                tags: imageTags(tags)
-            }
-            return x
         }
     }
 }

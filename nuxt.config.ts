@@ -42,7 +42,7 @@ export default defineNuxtConfig({
       },
       enableCommerce: process.env.enableCommerce || true,
       priceTable: {
-        prints: {
+        photos: {
           'A5': 8,
           'A4': 15,
           'A3': 20

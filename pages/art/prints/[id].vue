@@ -34,9 +34,9 @@
       </ul>
 
       <select v-model="size" class="select-size py-1 px-3.5 mb-1 text-2 block w-full md:w-30 font-avenir border-2 text-center">
-        <option value="A5" default>A5 (15x21 cm): €{{ prints['A5'] }}</option>
-        <option value="A4">A4 (21x30 cm): €{{ prints['A4'] }}</option>
-        <option value="A3">A3 (30x42 cm): €{{ prints['A3'] }}</option>
+        <option value="A5" default>A5 (15x21 cm): €{{ pricing['A5'] }}</option>
+        <option value="A4">A4 (21x30 cm): €{{ pricing['A4'] }}</option>
+        <option value="A3">A3 (30x42 cm): €{{ pricing['A3'] }}</option>
       </select>
 
       <AddToCart
@@ -47,7 +47,7 @@
         :image="`${url}?w=600`"
         :sizes="priceOptions(priceEntries)"
         :selectedSize="size"
-        :url="validateUrl(id, host)"
+        :url="validateUrl(id, host, 'photos')"
       />
     </section>
   </div>
@@ -55,11 +55,11 @@
 <script setup>
 definePageMeta({ layout: 'art' })
 
-const { public: { priceTable: { prints } } } = useRuntimeConfig()
+const { public: { priceTable: { photos: pricing } } } = useRuntimeConfig()
 const { fetchImageById } = useContentfulImages()
 const localePath = useLocalePath()
 const host = useHost()
-const priceEntries = Object.entries(prints)
+const priceEntries = Object.entries(pricing)
 const baseSize = priceEntries[0][0]
 const basePrice = priceEntries[0][1]
 const size = ref(baseSize)

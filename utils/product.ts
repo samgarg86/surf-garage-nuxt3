@@ -1,5 +1,5 @@
-export const validateUrl = (id, host) => {
-  return `https://${host}/api/validate?id=${id}&type=prints`
+export const validateUrl = (id, host, type) => {
+  return `https://${host}/api/validate?id=${id}&type=${type}`
 }
 
 export const priceOptions = (priceEntries) => {

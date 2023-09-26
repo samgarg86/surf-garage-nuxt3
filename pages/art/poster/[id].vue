@@ -7,7 +7,7 @@
       </p>
     </div>
     <section class="bg-softGrey mobile:-mx-1">
-      <GalleryIllustrations :images="images" class="max-w-[60rem] mx-auto"/>
+      <GalleryPosters :images="images" class="max-w-[60rem] mx-auto"/>
     </section >
     <section>
       <div class="lg:mt-3 mb-2">
@@ -40,25 +40,28 @@
           :image="`${images[0].url}?w=600`"
           :sizes="priceOptions(priceEntries)"
           :selectedSize="size"
-          :url="validateUrl(id, host)"
+          :url="validateUrl(id, host, 'posters')"
           :ecomDisabled="ecomDisabled"
       />
     </section>
   </div>
 </template>
 <script setup>
+
 definePageMeta({ layout: 'art' })
 const { params: { id } } = useRoute()
 const { getIllustration } = useContentfulImages()
 const host = useHost()
 
-const { public: { priceTable: { posters: pricing } } } = useRuntimeConfig()
-const priceEntries = computed(() => Object.entries(pricing))
+const { title, description, images, tags, specialPrice } = await getIllustration(id)
+
+const { public: { priceTable: { posters } } } = useRuntimeConfig()
+const pricing = computed(() => specialPrice || posters)
+const priceEntries = computed(() => Object.entries(pricing.value))
 const baseSize = computed(() => priceEntries.value[0][0])
 const basePrice = computed(() => priceEntries.value[0][1])
 const size = ref(baseSize.value)
 
-const { title, description, images, tags } = await getIllustration(id)
 const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
 
 </script>
