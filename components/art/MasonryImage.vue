@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="localeRoute(`/art/prints/${id}?f=${f}`)"
-    class="masonry-image mb-1 md:mb-2 relative block border"
+    class="masonry-image mb-1 md:mb-2 relative block image-frame"
   >
     <img
       :src="`${url}?w=600`"
@@ -9,7 +9,7 @@
       class="min-h-[20rem] w-full"
       v-lazy-load/>
     <div class="masonry-image__buy">{{ $t('art.order-prints') }}</div>
-    <div class="absolute right-0 top-0 bg-white text-right text-black px-1 pt-0.5 border-l border-b">
+    <div class="absolute right-0 top-0 bg-white text-right text-black px-1 pt-0.5">
       <p class="font-bold mb-0.5 text-sm font-avenir">{{title}}</p>
       <p class="uppercase text-[1.3rem]">{{tags.place?.name}}</p>
     </div>
