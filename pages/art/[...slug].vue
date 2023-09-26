@@ -19,7 +19,7 @@ const pageDesc = ref()
 const pageImages = ref([])
 definePageMeta({ layout: 'art' })
 const { params: { slug } } = useRoute()
-const { getArtGalleryPage, fetchImagesByTags } = useContentfulImages()
+const { getArtGalleryPage, fetchImagesByTags } = useContentfulPhotos()
 const pageSlug = slug?.[0] ? `art/${slug.join('/')}` : 'art'
 
 const { title, description, images } = await getArtGalleryPage(pageSlug)

@@ -18,7 +18,7 @@ const props = defineProps({
   image: Object
 })
 
-const { mapImage } = useContentfulImages()
+const { mapImage } = useImages()
 const imageUrl = computed(() => mapImage(props.image)?.url)
 useArtSeo({ title: props.name, description: props.description, imageUrl })
 </script>

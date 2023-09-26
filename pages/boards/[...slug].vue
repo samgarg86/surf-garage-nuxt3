@@ -38,7 +38,7 @@ import whatsapp from '~/assets/icons/whatsapp.svg?raw'
 definePageMeta({ layout: 'surf-boards' })
 const { params } = useRoute()
 const { client } = useContentful()
-const { mapImages } = useContentfulImages()
+const { mapImages } = useImages()
 const { locale } = useI18n()
 const { public: { socialMedia } } = useRuntimeConfig()
 

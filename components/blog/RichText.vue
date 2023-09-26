@@ -13,7 +13,7 @@
   </div>
 </template>
 <script setup>
-const { mapImages } = useContentfulImages()
+const { mapImages } = useImages()
 const props = defineProps({
   content: Array
 })

@@ -50,7 +50,7 @@
 
 definePageMeta({ layout: 'art' })
 const { params: { id } } = useRoute()
-const { getIllustration } = useContentfulImages()
+const { getIllustration } = useContentfulPhotos()
 const host = useHost()
 
 const { title, description, images, tags, specialPrice } = await getIllustration(id)

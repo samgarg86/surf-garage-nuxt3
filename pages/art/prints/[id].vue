@@ -56,7 +56,7 @@
 definePageMeta({ layout: 'art' })
 
 const { public: { priceTable: { photos: pricing } } } = useRuntimeConfig()
-const { fetchImageById } = useContentfulImages()
+const { fetchImageById } = useImages()
 const localePath = useLocalePath()
 const host = useHost()
 const priceEntries = Object.entries(pricing)

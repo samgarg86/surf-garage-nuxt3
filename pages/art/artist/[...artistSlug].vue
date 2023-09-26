@@ -15,7 +15,7 @@
 <script setup>
 definePageMeta({ layout: 'art' })
 const { params: { artistSlug } } = useRoute()
-const { getArtGalleryPage } = useContentfulImages()
+const { getArtGalleryPage } = useContentfulPhotos()
 const slug = computed(() => `art/artist/${artistSlug[0].toLowerCase()}`)
 const { title, description, images, heroBanner } = await getArtGalleryPage(slug.value, 25)
 if (!heroBanner?.fields) {
