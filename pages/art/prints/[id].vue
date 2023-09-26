@@ -14,11 +14,11 @@
 
         <p class="text-sm mb-1">
           <template v-if="tags.artist">
-            By <NuxtLink :to="localePath(`/art/artist/${tags.artist.replace(' ','').toLowerCase()}`)" class="underline">{{ tags.artist }}</NuxtLink>
+            By <NuxtLink :to="localePath(artistSlug(tags.artist))" class="underline">{{ tags.artist.name }}</NuxtLink>
           </template>
           <span v-if="tags.artist && tags.place">, </span>
           <template v-if="tags.place">
-            shot in <NuxtLink :to="localePath(`/art/place/${tags.place.toLowerCase()}`)" class="underline">{{ tags.place }}</NuxtLink>
+            shot in <NuxtLink :to="localePath(placeSlug(tags.place))" class="underline">{{ tags.place.name }}</NuxtLink>
           </template>
         </p>
 
@@ -28,7 +28,7 @@
       <ul class="tags list-none mb-2">
         <template v-for="tag in tags.page" :key="tag">
           <li v-if="tag !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
-            <NuxtLink :to="localePath(`/art/${tag}`)">{{ tag }}</NuxtLink>
+            <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
           </li>
         </template>
       </ul>

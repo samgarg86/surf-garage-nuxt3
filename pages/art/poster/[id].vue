@@ -3,7 +3,7 @@
     <div class="md:hidden">
       <h1 class="text-2xl font-avenir">{{ title }}</h1>
       <p v-if="tags.artist" class="text-sm" >
-        By <NuxtLink :to="localePath(`/art/artist/${tags.artist.replace(' ','').toLowerCase()}`)" class="underline">{{ tags.artist }}</NuxtLink>
+        By <NuxtLink :to="localePath(artistSlug(tags.artist))" class="underline">{{ tags.artist.name }}</NuxtLink>
       </p>
     </div>
     <section class="bg-softGrey mobile:-mx-1">
@@ -14,13 +14,13 @@
         <h1 class="mobile:hidden text-2xl font-avenir">{{ title }}</h1>
 
         <p v-if="tags.artist" class="text-sm mb-1" >
-           By <NuxtLink :to="localePath(`/art/artist/${tags.artist.replace(' ','').toLowerCase()}`)" class="underline">{{ tags.artist }}</NuxtLink>
+           By <NuxtLink :to="localePath(artistSlug(tags.artist))" class="underline">{{ tags.artist.name }}</NuxtLink>
         </p>
 
         <ul v-if="tags.page?.length" class="tags mb-1">
           <template v-for="tag in tags.page" :key="tag">
             <li v-if="tag !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
-              <NuxtLink :to="localePath(`/art/${tag}`)">{{ tag }}</NuxtLink>
+              <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
             </li>
           </template>
         </ul>
