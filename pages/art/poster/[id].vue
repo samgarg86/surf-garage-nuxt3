@@ -50,10 +50,10 @@
 
 definePageMeta({ layout: 'art' })
 const { params: { id } } = useRoute()
-const { getIllustration } = useContentfulPhotos()
+const { getPoster } = useContentfulPosters()
 const host = useHost()
 
-const { title, description, images, tags, specialPrice } = await getIllustration(id)
+const { title, description, images, tags, specialPrice } = await getPoster(id)
 
 const { public: { priceTable: { posters } } } = useRuntimeConfig()
 const pricing = computed(() => specialPrice || posters)

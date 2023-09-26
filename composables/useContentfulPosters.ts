@@ -4,11 +4,11 @@ import {useImages} from "~/composables/useImages";
 export const useContentfulPosters = () => {
     const { locale } = useI18n()
     const { client} = useContentful()
-    const {generateTags} = useTags()
+    const {processTags} = useTags()
     const {mapImages} = useImages()
 
     return {
-        getIllustration: async(id) => {
+        getPoster: async(id) => {
             const {
                 metadata: {tags},
                 fields: { title, description, images, specialPrice, priceA3, priceA4, priceA5 }
@@ -17,7 +17,7 @@ export const useContentfulPosters = () => {
                 title,
                 description,
                 images: mapImages(images),
-                tags: generateTags(tags),
+                tags: processTags(tags),
                 ...(specialPrice && {
                     specialPrice: {
                         A3: priceA3,
