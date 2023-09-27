@@ -1,14 +1,14 @@
 <template>
-  <div class="max-w-screen-lg mx-auto my-3 md:my-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-1 md:gap-2 lg:gap-5">
+  <ArtBreadcrumbs class="h-[55px]"/>
+  <div class="max-w-screen-lg mx-auto mb-3 md:mb-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-1 md:gap-2 lg:gap-5">
     <section class="md:justify-self-end">
-      <ArtBreadcrumbs class="h-[55px]"/>
       <div class="p-2 md:p-4 bg-softGrey mobile:-mx-1">
         <img class="bg-white image-frame" :src="`${url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
       </div>
     </section>
 
     <section>
-      <div class="md:mt-5 md:mb-1">
+      <div class="md:mb-1">
         <h1 class="text-2xl font-avenir">{{ title }}</h1>
 <!--        <pre>{{tags}}</pre>-->
 

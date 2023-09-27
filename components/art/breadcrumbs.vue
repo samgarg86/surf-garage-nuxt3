@@ -21,7 +21,11 @@ const localePath = useLocalePath()
 const { locale } = useI18n()
 
 if (query.f) {
-  const slugs = [...siteNav.value?.surfArtLocations, ...siteNav.value?.surfArtCategories, ...siteNav.value?.surfArtArtists]
+  const slugs = [
+    ...siteNav.value?.surfArtLocations,
+    ...siteNav.value?.surfArtCategories,
+    ...siteNav.value?.surfArtArtists
+  ]
   from.value = slugs.find(({ slug }) => slug === `/${decodeURIComponent(query.f)}`)
 }
 </script>

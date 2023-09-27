@@ -1,7 +1,4 @@
-import {useTags} from "~/composables/useTags";
-
 export const useImages = () => {
-
     const {processTags} = useTags()
     const {client} = useContentful()
     const {locale} = useI18n()
@@ -21,8 +18,8 @@ export const useImages = () => {
     const mapImages = (images) => images.map(mapImage)
 
     return {
-        mapImage,
-        mapImages,
+       mapImage,
+       mapImages,
        fetchImagesByTags: async (tags, limit) => {
             const { items } = await client.getAssets({
                 'metadata.tags.sys.id[in]': tags,

@@ -7,12 +7,18 @@ export const useTags = () => {
     return {
         processTags: (tags) => {
             const fullTags = tags?.map(tag => ({id: tag.sys.id, ...siteTags.value[tag.sys.id]}))
-
             return fullTags ? {
                 page: findTags(fullTags, 'page'),
                 place: findTags(fullTags, 'place')?.[0],
                 artist: findTags(fullTags, 'artist')?.[0],
                 settings: findSettings(tags)
+            }: {}
+        },
+        processPlpTags: (tags) => {
+            const fullTags = tags?.map(tag => ({id: tag.sys.id, ...siteTags.value[tag.sys.id]}))
+            return fullTags ? {
+                place: findTags(fullTags, 'place')?.[0],
+                artist: findTags(fullTags, 'artist')?.[0]
             }: {}
         }
     }

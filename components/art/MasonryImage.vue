@@ -11,7 +11,7 @@
     <div class="masonry-image__buy">{{ $t('art.order-prints') }}</div>
     <div class="absolute right-0 top-0 bg-white text-right text-black px-1 pt-0.5">
       <p class="font-bold mb-0.5 text-sm font-avenir">{{title}}</p>
-      <p class="uppercase text-[1.3rem]">{{tags.place?.name}}</p>
+      <p v-if="tags?.place" class="uppercase text-[1.3rem]">{{tags.place.name}}</p>
     </div>
   </NuxtLink>
 </template>
@@ -21,7 +21,6 @@ defineProps({
   id: String,
   title: String,
   url: String,
-  description: String,
   tags: Object,
   f: String
 })
