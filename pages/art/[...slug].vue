@@ -1,17 +1,11 @@
 <template>
 <!--  <pre>Slug: {{slug}}</pre>-->
 <!--  <pre>{{entries}}</pre>-->
-  <div class="sm:columns-2 md:columns-3 mb-1 md:mb-2 gap-1 md:gap-2">
-    <div class="mb-2">
-      <h1 class="text-2xl font-avenir mb-1">{{ pageTitle }}</h1>
-      <h2 class="text-2">{{ pageDesc }}</h2>
-    </div>
-    <ArtMasonryImage
-      v-for="img in pageImages"
-      :key="img.id"
-      v-bind="{...img, f:encodeURIComponent(pageSlug)}"
-    />
-  </div>
+  <ArtMasonryImageGallery
+      :title="pageTitle"
+      :description="pageDesc"
+      :show-title-desc="true"
+      :images="pageImages"/>
 </template>
 <script setup>
 const pageTitle = ref()

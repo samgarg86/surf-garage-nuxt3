@@ -15,7 +15,7 @@ export const useImages = () => {
         }
     }
 
-    const mapImages = (images) => images.map(mapImage)
+    const mapImages = (images) => images?.map(mapImage)
 
     return {
        mapImage,

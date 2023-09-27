@@ -1,16 +1,10 @@
 <template>
   <!--    <pre>Artist: {{placeSlug[0]}}</pre>-->
-  <div class="sm:columns-2 md:columns-3 mb-1 md:mb-2 gap-1 md:gap-2">
-    <div class="mb-2">
-      <h1 class="text-2xl font-avenir mb-1">{{ pageTitle }}</h1>
-      <h2 class="text-2">{{ pageDesc }}</h2>
-    </div>
-    <ArtMasonryImage
-        v-for="img in placeImages"
-        :key="img.id"
-        v-bind="{...img, f:encodeURIComponent(slug)}"
-    />
-  </div>
+  <ArtMasonryImageGallery
+      :title="pageTitle"
+      :description="pageDesc"
+      :show-title-desc="true"
+      :images="placeImages"/>
 </template>
 <script setup>
 

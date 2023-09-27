@@ -1,25 +1,23 @@
 <template>
   <ArtistBanner v-if="heroBanner" v-bind="heroBanner.fields" class="max-w-screen-md mx-auto"/>
-  <div class="sm:columns-2 md:columns-3 mb-1 md:mb-2 gap-1 md:gap-2">
-    <div class="mb-2" v-if="!heroBanner">
-      <h1 class="text-2xl font-avenir mb-1">{{ title }}</h1>
-      <h2 class="text-2">{{ description }}</h2>
-    </div>
-    <ArtMasonryImage
-        v-for="img in images"
-        :key="img.id"
-        v-bind="{...img, f:encodeURIComponent(slug)}"
-    />
-  </div>
+  <ArtMasonryImageGallery
+    :title="title"
+    :description="description"
+    :show-title-desc="!heroBanner"
+    :images="images"/>
+  <ArtMasonryPosterGallery :posters="posters" :slug="slug"/>
 </template>
 <script setup>
+
 definePageMeta({ layout: 'art' })
 const { params: { artistSlug } } = useRoute()
 const { getArtGalleryPage } = useContentfulPhotos()
+const { getPostersByTags } = useContentfulPosters()
 const slug = computed(() => `art/artist/${artistSlug[0].toLowerCase()}`)
 const { title, description, images, heroBanner } = await getArtGalleryPage(slug.value, 25)
 if (!heroBanner?.fields) {
   useArtSeo({ title, description, imageUrl: images?.[0].url })
 }
+const posters = await getPostersByTags([`artist${capitalize(artistSlug[0])}`])
 
 </script>

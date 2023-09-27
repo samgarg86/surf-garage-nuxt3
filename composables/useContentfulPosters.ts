@@ -52,6 +52,24 @@ export const useContentfulPosters = () => {
                 tags: processPlpTags(tags),
                 image: mapImage(images?.[0])
             }))
+        },
+        getPostersByTags: async(tags) => {
+            const entries = await client.getEntries({
+                content_type: 'artwork',
+                include: 10,
+                locale: locale.value,
+                'metadata.tags.sys.id[in]': tags
+            })
+            return entries.items.map(({
+                  sys: { id },
+                  metadata: { tags },
+                  fields: { title, images }
+              }) => ({
+                id,
+                title,
+                tags: processPlpTags(tags),
+                image: mapImage(images?.[0])
+            }))
         }
     }
 }
