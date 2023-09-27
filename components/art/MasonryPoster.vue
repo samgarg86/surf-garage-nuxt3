@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-5">
+  <div class="mb-3 lg:mb-5">
     <NuxtLink
       :to="localeRoute(`/art/posters/${id}?f=${f}`)"
       class="masonry-poster mb-1 md:mb-2 relative block image-frame"

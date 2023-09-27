@@ -8,7 +8,7 @@
     </section>
 
     <section>
-      <div class="md:mb-1">
+      <div class="md:mt-3 md:mb-1">
         <h1 class="text-2xl font-avenir">{{ title }}</h1>
 <!--        <pre>{{tags}}</pre>-->
 

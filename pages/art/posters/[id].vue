@@ -11,7 +11,7 @@
       <GalleryPosters :images="images" class="max-w-[60rem] mx-auto"/>
     </section >
     <section>
-      <div class="lg:mt-3 mb-2">
+      <div class="md:mt-3 mb-2">
         <h1 class="mobile:hidden text-2xl font-avenir">{{ title }}</h1>
 
         <p v-if="tags.artist" class="text-sm mb-1 mobile:hidden" >
