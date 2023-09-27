@@ -4,7 +4,9 @@
       :title="pageTitle"
       :description="pageDesc"
       :show-title-desc="true"
-      :images="placeImages"/>
+      :images="placeImages"
+      :slug="slug"
+  />
 </template>
 <script setup>
 

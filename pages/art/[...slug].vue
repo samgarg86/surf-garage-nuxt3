@@ -5,7 +5,9 @@
       :title="pageTitle"
       :description="pageDesc"
       :show-title-desc="true"
-      :images="pageImages"/>
+      :images="pageImages"
+      :slug="pageSlug"
+  />
 </template>
 <script setup>
 const pageTitle = ref()

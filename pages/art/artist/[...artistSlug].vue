@@ -4,7 +4,9 @@
     :title="title"
     :description="description"
     :show-title-desc="!heroBanner"
-    :images="images"/>
+    :images="images"
+    :slug="slug"
+  />
   <ArtMasonryPosterGallery :posters="posters" :slug="slug"/>
 </template>
 <script setup>

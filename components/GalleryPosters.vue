@@ -13,6 +13,7 @@
   }">
     <SplideSlide v-for="img in images" :key="img.id">
       <img
+          class="image-frame"
         :src="`${img.url}?w=${600}`"
         :alt="img.title"
         data-not-lazy/>
@@ -43,6 +44,6 @@ defineProps({
 }
 
 .splide__slide img {
-  @apply w-full h-full object-contain bg-white image-frame;
+  @apply w-full h-full object-contain bg-white;
 }
 </style>

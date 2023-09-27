@@ -6,7 +6,7 @@
       <li v-if="from" >
         <NuxtLink :to="localePath(from.slug)"
                   class="pl-1 pr-2 py-1.5 inline-block underline">
-          {{ from[locale] }}
+          {{ from[locale] || from.name }}
         </NuxtLink>
       </li>
     </ol>
@@ -19,13 +19,13 @@ const { query } = useRoute()
 const from = ref()
 const localePath = useLocalePath()
 const { locale } = useI18n()
+const slugs = [
+  ...siteNav.value?.surfArtLocations,
+  ...siteNav.value?.surfArtCategories,
+  ...siteNav.value?.surfArtArtists
+]
 
 if (query.f) {
-  const slugs = [
-    ...siteNav.value?.surfArtLocations,
-    ...siteNav.value?.surfArtCategories,
-    ...siteNav.value?.surfArtArtists
-  ]
-  from.value = slugs.find(({ slug }) => slug === `/${decodeURIComponent(query.f)}`)
+  from.value = slugs.find(({ slug }) => slug === `/${query.f}`)
 }
 </script>
