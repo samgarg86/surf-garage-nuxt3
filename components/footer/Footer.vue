@@ -9,15 +9,6 @@
         <NuxtLink :to="localeRoute('/')" class="footer__l1">{{ $t('nav.storage') }}</NuxtLink>
         <NuxtLink :to="localeRoute('/boards')" class="footer__l1">{{ $t('nav.boards') }}</NuxtLink>
       </section>
-      <section style="{gridArea: 'nav2'}">
-        <LazyFooterNav
-            class="footer__nav2"
-            title="Surf Art Categories" to="/" :nav="siteNav?.surfArtCategories || {}"/>
-        <LazyFooterNav
-            class="footer__nav2"
-            title="Surf Art Locations" to="/" :nav="siteNav?.surfArtLocations || {}"/>
-      </section>
-
       <LazyContactLinks
           class="font-metalsmith lowercase md:p-0"
           :style="{gridArea: 'links'}"
@@ -26,6 +17,20 @@
           class="footer__form w-full font-metalsmith lowercase"
           :style="{gridArea: 'form'}">
         <LazyFooterContactForm />
+      </section>
+      <section :style="{gridArea: 'art'}" class="grid grid-cols-1 md:grid-cols-3 w-full gap-2">
+        <NuxtLink :to="localeRoute('/art')" class="footer__l1 leading-none">Surf Art</NuxtLink>
+        <LazyFooterNav
+            class="footer__nav2"
+            :title="$t('nav.categories')" to="/" :nav="siteNav?.surfArtCategories || {}"/>
+        <div>
+          <LazyFooterNav
+              class="footer__nav2 mb-2"
+              :title="$t('nav.locations')" to="/" :nav="siteNav?.surfArtLocations || {}"/>
+          <LazyFooterNav
+              class="footer__nav2"
+              :title="$t('nav.artists')" to="/" :nav="siteNav?.surfArtArtists || {}"/>
+        </div>
       </section>
     </div>
   </section>
@@ -71,19 +76,21 @@ const { siteNav } = useSiteNav()
       "links"
       "form"
       "nav1"
-      "nav2";
+      "art";
 
     @media screen(md) {
       grid-gap: 3rem;
       grid-template-areas:
-        "links links nav1 nav2"
-        "form form form form";
+        "links links nav1"
+        "form form form"
+      "art art art"
     }
 
     @media screen(lg) {
       grid-gap: 5rem;
       grid-template-areas:
-        "nav1 nav2 links form form"
+        "nav1 links form form"
+        "art art form form"
     }
   }
 }
