@@ -11,9 +11,13 @@
         wheelSleep: 300
      }}
   }">
-    <SplideSlide v-for="img in images" :key="img.id">
+    <SplideSlide
+        v-for="(img, i) in images"
+        :key="img.id"
+        :class="{'slide-first': i === 0}"
+    >
       <img
-          class="image-frame"
+        :class="{'image-frame': i === 0}"
         :src="`${img.url}?w=${600}`"
         :alt="img.title"
         data-not-lazy/>
@@ -39,11 +43,11 @@ defineProps({
     background: theme('colors.black');
   }
 }
-.splide__slide {
-  @apply bg-softGrey p-2 md:p-4;
+.slide-first {
+  @apply p-2 md:p-4;
 }
 
 .splide__slide img {
-  @apply w-full h-full object-contain bg-white;
+  @apply w-full h-full object-contain;
 }
 </style>
