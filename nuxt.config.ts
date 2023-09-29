@@ -11,7 +11,7 @@ const locales = [{
 ]
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-svgo', 'nuxt-lazy-load', '@nuxtjs/robots'],
+  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-svgo', 'nuxt-lazy-load'],
   lazyLoad: {
     directiveOnly: true,
     defaultImage: '/placeholder.jpg'
