@@ -27,7 +27,7 @@
 
       <ul class="tags list-none mb-2">
         <template v-for="tag in tags.page" :key="tag">
-          <li v-if="tag !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
+          <li v-if="tag.name !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
             <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
           </li>
         </template>
