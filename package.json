@@ -32,6 +32,7 @@
     "typescript": "*"
   },
   "dependencies": {
+    "@nuxtjs/robots": "^3.0.0",
     "@splidejs/vue-splide": "^0.6.12",
     "contentful": "^10.2.3",
     "eslint-plugin-nuxt": "^4.0.0",
