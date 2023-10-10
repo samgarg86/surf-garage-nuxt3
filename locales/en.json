@@ -44,6 +44,11 @@
         "title": "Materials",
         "descPhotos": "Printed on high quality photo paper with a matt finish",
         "descPosters": "Printed on art paper (220 g/m2) with a cotton texture"
+      },
+      "contact": {
+        "title": "Contact",
+        "desc": "For ordering bigger sizes than A3 or anything else, please ",
+        "link": "get in touch"
       }
     }
   },

@@ -10,7 +10,7 @@
     <section class="bg-softGrey mobile:-mx-1">
       <GalleryPosters :images="images" class="max-w-[60rem] mx-auto"/>
     </section >
-    <section>
+    <section class="md:mr-2">
       <div class="md:mt-3 mb-2">
         <h1 class="mobile:hidden text-2xl font-avenir">{{ title }}</h1>
 
@@ -51,6 +51,11 @@
         </UiAccordionItem>
         <UiAccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black">
           <p class="text-sm text-justify">{{$t('art.accordion.materials.descPosters')}}</p>
+        </UiAccordionItem>
+        <UiAccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black">
+          <p class="text-sm text-justify">
+            {{$t('art.accordion.contact.desc')}} <ScrollTo to="contact" class="underline">{{$t('art.accordion.contact.link')}}</ScrollTo>
+          </p>
         </UiAccordionItem>
       </UiAccordion>
     </section>
