@@ -73,5 +73,6 @@ const basePrice = computed(() => priceEntries.value[0][1])
 const size = ref(baseSize.value)
 
 const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
+useArtSeo({ title, description, imageUrl: images[0].url })
 
 </script>
