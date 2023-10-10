@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 const props = defineProps({
   title: String,
-  isOpen: Boolean
+  isOpen: Boolean,
+  titleClass: String
 })
 
 const isExpanded = ref()
@@ -41,7 +42,11 @@ onMounted(() => {
 
 <template>
   <section class="border-t">
-    <button class="py-0.5 w-full flex justify-between items-center leading-none text-lightYellow font-bold hover:outline-0"
+    <button class="py-0.5 w-full flex justify-between items-center leading-none font-bold hover:outline-0"
+            :class="{
+              titleClass,
+              'text-lightYellow': !titleClass
+            }"
             @click.prevent="toggleSection()"
             :aria-expanded="isExpanded">
       <span class="font-avenir text-sm uppercase">{{ title }}</span>

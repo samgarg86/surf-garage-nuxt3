@@ -49,6 +49,16 @@
         :selectedSize="size"
         :url="validateUrl(id, host, 'photos')"
       />
+
+      <UiAccordion class="mt-3 md:mt-5">
+        <UiAccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black">
+            <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line1')}}</p>
+            <p class="text-sm text-justify">{{$t('art.accordion.shipping.line2')}}</p>
+        </UiAccordionItem>
+        <UiAccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black">
+            <p class="text-sm text-justify">{{$t('art.accordion.materials.descPhotos')}}</p>
+        </UiAccordionItem>
+      </UiAccordion>
     </section>
   </div>
 </template>

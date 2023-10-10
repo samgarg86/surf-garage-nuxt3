@@ -33,7 +33,19 @@
     "order-prints": "Pedir Copias",
     "back-to": "Back to",
     "add-to-cart": "Añadir a la cesta",
-    "artwork": "Obras de Arte"
+    "artwork": "Obras de Arte",
+    "accordion": {
+      "shipping": {
+        "title": "Envíos",
+        "line1": "Su obra de arte se imprime bajo pedido en las Islas Canarias y se envía en un plazo de 5 a 7 días. Somos una pequeña empresa consciente del medio ambiente. Imprimimos nuestras obras de arte solo después de recibir los pedidos para evitar desperdiciar papel y espacio de almacenamiento.",
+        "line2": "Realizamos envíos a todas partes de Canarias y Europa continental. Los tiempos de envío pueden variar según su ubicación. Normalmente, la mayoría de los pedidos estarán en su puerta entre 2 y 3 semanas."
+      },
+      "materials": {
+        "title": "Materiales",
+        "descPhotos": "Impreso en papel fotográfico de alta calidad con acabado mate",
+        "descPosters": "Impreso en papel artístico (220 g/m2) con textura de algodón"
+      }
+    }
   },
   "boards": {
     "typeLabel": "Tipo",
