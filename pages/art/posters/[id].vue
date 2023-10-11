@@ -1,14 +1,14 @@
 <template>
   <ArtBreadcrumbs class="h-[55px]"/>
-  <div class="grid md:grid-cols-2 gap-1 md:gap-4 mb-2">
+  <div class="grid md:grid-cols-2 gap-1 md:gap-4 mb-2 max-w-screen-lg mx-auto">
     <div class="md:hidden">
       <h1 class="text-2xl font-avenir">{{ title }}</h1>
       <p v-if="tags.artist" class="text-sm" >
         By <NuxtLink :to="localePath(artistSlug(tags.artist))" class="underline">{{ tags.artist.name }}</NuxtLink>
       </p>
     </div>
-    <section class="bg-softGrey mobile:-mx-1">
-      <GalleryPosters :images="images" class="max-w-[60rem] mx-auto"/>
+    <section class="mobile:-mx-1">
+      <GalleryPosters :images="images" />
     </section >
     <section class="md:mr-2">
       <div class="md:mt-3 mb-2">
@@ -45,12 +45,12 @@
           :ecomDisabled="ecomDisabled"
       />
       <UiAccordion class="mt-3 md:mt-5">
+        <UiAccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black">
+          <p class="text-sm text-justify">{{$t('art.accordion.materials.descPosters')}}</p>
+        </UiAccordionItem>
         <UiAccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black">
           <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line1')}}</p>
           <p class="text-sm text-justify">{{$t('art.accordion.shipping.line2')}}</p>
-        </UiAccordionItem>
-        <UiAccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black">
-          <p class="text-sm text-justify">{{$t('art.accordion.materials.descPosters')}}</p>
         </UiAccordionItem>
         <UiAccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black">
           <p class="text-sm text-justify">

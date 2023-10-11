@@ -1,9 +1,9 @@
 <template>
   <ArtBreadcrumbs class="h-[55px]"/>
-  <div class="max-w-screen-lg mx-auto mb-3 md:mb-5 grid md:grid-cols-[minmax(50%,max-content)_auto] gap-1 md:gap-2 lg:gap-5">
-    <section class="md:justify-self-end">
-      <div class="p-2 md:p-4 bg-softGrey mobile:-mx-1">
-        <img class="bg-white image-frame" :src="`${url}?w=800`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
+  <div class="max-w-screen-lg mx-auto mb-3 md:mb-5 grid md:grid-cols-[60%_auto] gap-1 md:gap-4">
+    <section class="w-full bg-softGrey ">
+      <div class="p-2 md:p-4 mobile:-mx-1">
+        <img class="bg-white image-frame mx-auto" :src="`${url}?w=700`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
       </div>
     </section>
 
@@ -51,13 +51,18 @@
       />
 
       <UiAccordion class="mt-3 md:mt-5">
-        <UiAccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black">
-            <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line1')}}</p>
-            <p class="text-sm text-justify">{{$t('art.accordion.shipping.line2')}}</p>
-        </UiAccordionItem>
-        <UiAccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black">
-            <p class="text-sm text-justify">{{$t('art.accordion.materials.descPhotos')}}</p>
-        </UiAccordionItem>
+          <UiAccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black">
+              <p class="text-sm text-justify">{{$t('art.accordion.materials.descPhotos')}}</p>
+          </UiAccordionItem>
+          <UiAccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black">
+              <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line1')}}</p>
+              <p class="text-sm text-justify">{{$t('art.accordion.shipping.line2')}}</p>
+          </UiAccordionItem>
+          <UiAccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black">
+              <p class="text-sm text-justify">
+                  {{$t('art.accordion.contact.desc')}} <ScrollTo to="contact" class="underline">{{$t('art.accordion.contact.link')}}</ScrollTo>
+              </p>
+          </UiAccordionItem>
       </UiAccordion>
     </section>
   </div>

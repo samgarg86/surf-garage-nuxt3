@@ -2,11 +2,11 @@
   <Splide :options="{
     pagination: true,
     arrows: false,
-    heightRatio: 1.414,
     mediaQuery: 'min',
     breakpoints: {
       1024: {
         direction: 'ttb',
+        heightRatio: 1.414,
         wheel: true,
         wheelSleep: 300
      }}
@@ -18,6 +18,7 @@
     >
       <img
         :class="{'image-frame': i === 0}"
+        class="w-full h-full object-contain object-top"
         :src="`${img.url}?w=${600}`"
         :alt="img.title"
         data-not-lazy/>
@@ -43,11 +44,12 @@ defineProps({
     background: theme('colors.black');
   }
 }
-.slide-first {
-  @apply p-2 md:p-4;
-}
 
-.splide__slide img {
-  @apply w-full h-full object-contain;
+.slide-first {
+  @apply grid items-center justify-center;
+  @apply bg-softGrey p-2;
+  img {
+    @apply md:max-w-[57rem] md:h-auto;
+  }
 }
 </style>
