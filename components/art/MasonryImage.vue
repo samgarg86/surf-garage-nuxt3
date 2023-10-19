@@ -2,7 +2,7 @@
   <div class="flex flex-col">
     <NuxtLink
       :to="localeRoute(`/art/prints/${id}?f=${f}`)"
-      class="masonry-image mb-1 md:mb-2 p-3 bg-softGrey flex items-center flex-1 -mx-1 sm:mx-0"
+      class="masonry-image mb-1 md:mb-2 px-2 md:px-3 py-3 bg-softGrey flex items-center flex-1 -mx-1 sm:mx-0"
     >
       <img
         :src="`${url}?w=600`"
