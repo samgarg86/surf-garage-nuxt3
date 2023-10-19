@@ -1,9 +1,9 @@
 <template>
   <ArtBreadcrumbs class="h-[55px]"/>
-  <div class="max-w-screen-lg mx-auto mb-3 md:mb-5 grid md:grid-cols-[60%_auto] gap-1 md:gap-4">
+  <div class="max-w-screen-lg mx-auto mb-3 md:mb-5 grid md:grid-cols-[60%_auto] gap-1 md:gap-8">
     <section class="bg-softGrey mobile:-mx-1">
-      <div class="p-2 md:p-4">
-        <img class="bg-white image-frame mx-auto" :src="`${url}?w=700`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
+      <div class="p-2 md:px-4 md:py-6">
+        <img class="bg-white image-frame mx-auto border-[1rem] md:border-[3rem] border-white max-h-[70rem]" :src="`${url}?w=700`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
       </div>
     </section>
 
