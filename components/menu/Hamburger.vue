@@ -99,7 +99,7 @@ watch(route, newRoute => {
     outline-offset: 6px;
     border-radius: 2px;
 
-    @apply w-[3.2rem] h-[3.2rem] left-[2.2rem] top-[2.2rem];
+    @apply w-[2.6rem] h-[2.6rem] left-[2.2rem] top-[2.2rem];
 
     @media screen(lg) {
       @apply left-4 top-4;

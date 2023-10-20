@@ -15,7 +15,7 @@
       :href="socialMedia.whatsapp"
       target="_blank"
     >
-      <div class="w-4 mr-1" :class="onlyIcons? 'mr-0.5': 'mr-1'" v-html="whatsapp"/>
+      <div class="w-4" :class="onlyIcons? 'mr-0.5': 'mr-1'" v-html="whatsapp"/>
       <span v-if="!onlyIcons">+34600273559</span>
     </a>
     <a
@@ -24,7 +24,7 @@
       :href="socialMedia.insta"
       target="_blank"
     >
-      <div class="w-4 mr-1" :class="onlyIcons? 'mr-0.5': 'mr-1'" v-html="insta"/>
+      <div class="w-4" v-html="insta"/>
       <span v-if="!onlyIcons">@surfgaragelpa</span>
     </a>
 
@@ -47,5 +47,5 @@ defineProps({
   onlyIcons: Boolean,
   theme: String
 })
-const { public: {socialMedia}} = useRuntimeConfig()
+const { public: { socialMedia } } = useRuntimeConfig()
 </script>
