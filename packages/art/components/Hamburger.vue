@@ -74,15 +74,11 @@ const { locale } = useI18n()
     z-index: 999;
     position: fixed;
     background: url("@core/assets/icons/hamburger.svg") no-repeat;
-    outline: 2px solid white;
+    outline: 1px solid;
     outline-offset: 6px;
     border-radius: 2px;
 
-    @apply w-[2.6rem] h-[2.6rem] left-[2.2rem] top-[2.2rem];
-
-    @media screen(lg) {
-      @apply left-4 top-4;
-    }
+    @apply w-[2.6rem] h-[2.6rem] top-[1.8rem] left-[1.6rem] md:left-[2.2rem];
   }
 
   .bm-burger-bars {

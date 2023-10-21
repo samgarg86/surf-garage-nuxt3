@@ -1,8 +1,10 @@
 <template>
   <Hamburger black class="hamburger-menu-art"/>
-  <main id="page-wrap" class="mx-1 md:mx-2 mb-1 md:mb-2">
+  <main id="page-wrap">
     <Header/>
-    <slot/>
+    <div class="mx-1 md:mx-2">
+      <slot/>
+    </div>
     <Footer/>
   </main>
 
@@ -51,12 +53,6 @@ useSeoMeta({
 </script>
 
 <style lang="postcss">
-.hamburger-menu-art {
-  .bm-burger-button {
-    @apply top-[2rem] left-[1.6rem] lg:top-[2.5rem] lg:left-[2.5rem];
-  }
-}
-
 /* Snipcart theme overrides */
 
 /* Tailwind css sets this to transparent so checkout button isn't visible */

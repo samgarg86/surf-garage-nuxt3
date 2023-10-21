@@ -91,6 +91,6 @@ useArtSeo({ title, description, imageUrl: url })
 <style lang="postcss">
 .select-size {
   appearance: none;
-  background: url('~/assets/icons/chevron-down.svg') no-repeat right 1rem top 50% / 2rem;
+  background: url('@core/assets/icons/chevron-down.svg') no-repeat right 1rem top 50% / 2rem;
 }
 </style>
