@@ -17,13 +17,5 @@ export default defineNuxtConfig({
                 maps: 'https://goo.gl/maps/8qRXWmk34xwfq5Hz7'
             }
         },
-    },
-    postcss: {
-        parser: require('postcss-comment'),
-        plugins: {
-            "postcss-simple-vars": {},
-            'postcss-import': {},
-            'postcss-nested': {},
-        },
     }
 });

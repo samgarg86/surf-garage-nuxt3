@@ -34,6 +34,7 @@
   "dependencies": {
     "@nuxtjs/robots": "^3.0.0",
     "eslint-plugin-nuxt": "^4.0.0",
+    "contentful": "^10.2.3",
     "postcss-simple-vars": "^7.0.1",
     "swiper": "^10.2.0",
     "vue-gtag": "^2.0.1",

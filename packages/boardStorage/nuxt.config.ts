@@ -36,4 +36,12 @@ export default defineNuxtConfig({
       }
     },
   },
+  postcss: {
+    parser: require('postcss-comment'),
+    plugins: {
+      "postcss-simple-vars": {},
+      'postcss-import': {},
+      'postcss-nested': {},
+    },
+  }
 })

@@ -52,5 +52,13 @@ export default defineNuxtConfig({
     types: 'composition',
     skipSettingLocaleOnNavigate: false,
     baseUrl: 'https://surfgarage.art'
+  },
+  postcss: {
+    parser: require('postcss-comment'),
+    plugins: {
+      "postcss-simple-vars": {},
+      'postcss-import': {},
+      'postcss-nested': {},
+    },
   }
 })
