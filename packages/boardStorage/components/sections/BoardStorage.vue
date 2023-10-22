@@ -115,7 +115,7 @@ defineProps({
 }
 
 .about-storage {
-  background: url("assets/images/surf-pattern.svg") repeat,
+  background: url("@core/assets/images/surf-pattern.svg") repeat,
   theme('colors.amberYellow');
   background-size: 200px;
   background-attachment: fixed;

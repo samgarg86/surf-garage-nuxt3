@@ -1,7 +1,8 @@
 export default defineNuxtConfig({
   extends: [
-    './core'
+    '../core'
   ],
+  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-svgo', '@nuxtjs/robots'],
   i18n: {
     langDir: "../../locales",
     strategy: "prefix_except_default",
@@ -26,5 +27,13 @@ export default defineNuxtConfig({
     types: 'composition',
     skipSettingLocaleOnNavigate: false,
     baseUrl: 'https://surfgarage.es'
+  },
+  runtimeConfig: {
+    public: {
+      contentful: {
+        space: process.env.contentfulSpace,
+        accessToken: process.env.contentfulAccessToken,
+      }
+    },
   },
 })

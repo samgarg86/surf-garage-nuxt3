@@ -61,8 +61,6 @@ const youtubeCommand = (func) => {
   height: calc(100vh - 2 * theme('spacing.1'));
   overflow: hidden;
   position: relative;
-  /* TODO: Find a way to do mixins in postcss
-  @include bg-fixed("@/assets/images/lpa1.jpg"); */
   background-image: linear-gradient(
     rgba(0, 0, 0, 0.4),
     rgba(0, 0, 0, 0.4)
