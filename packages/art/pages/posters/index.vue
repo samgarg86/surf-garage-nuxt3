@@ -3,7 +3,7 @@
   <div class="mb-2">
     <h1 class="text-2xl font-avenir mb-1">Posters</h1>
   </div>
-  <MasonryPosterGallery :posters="posters" slug="art/posters"/>
+  <MasonryPosterGallery :posters="posters" slug="posters"/>
 </template>
 <script setup>
 
