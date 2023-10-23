@@ -1,10 +1,10 @@
 <template>
   <nav >
-    <div class="font-bold text-sm mb-1 uppercase">{{ title }}</div>
+    <div class="font-bold mb-1 uppercase">{{ title }}</div>
     <div v-for="item in nav" :key="item.slug">
       <NuxtLink
         :to="scroll? `${localeRoute('/').fullPath}${item.slug}` : localeRoute(item.slug)"
-        class="inline-block text-black text-1.8 leading-loose font-avenir">
+        class="inline-block text-black leading-loose font-avenir">
         {{ item[locale] || item.name }}
       </NuxtLink>
     </div>

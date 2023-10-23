@@ -21,7 +21,7 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
 </script>
 
 <template>
-  <form class="contact-form w-full grid gap-1 mb-1 content-stretch" :action="endpoint" method="POST">
+  <form class="contact-form w-full grid gap-1 mb-1" :action="endpoint" method="POST">
     <input
         class="contact-form__input"
         :placeholder="$t('contact.form.name')"
@@ -67,7 +67,6 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
   grid-template-rows: 1fr 1fr 1fr 3fr 1fr;
 
   @media screen(md) {
-    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 3fr 1fr;
     grid-template-areas:
       "name name name"
@@ -77,39 +76,18 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
   }
 
   &__input {
-    width: 100%;
-    padding: 1rem 2rem;
-    background: theme('colors.white');
-    border: none;
-    text-transform: lowercase;
+    @apply w-full py-1 px-2 bg-white border-0;
   }
 
   &__textarea {
-    width: 100%;
-    height: 100%;
-    padding: 1rem 2rem;
-    background: theme('colors.white');
-    border: none;
-    outline: none;
-    outline-offset: 0;
-    text-transform: lowercase;
+    @apply w-full h-full py-1 px-2 bg-white border-0 outline-0 outline-offset-0;
   }
 
   &__send {
-    text-align: right;
+    @apply text-right;
 
     button {
-      border: none;
-      background: theme('colors.white');
-      color: theme('colors.black');
-      padding: 1rem 2rem;
-      cursor: pointer;
-      text-transform: lowercase;
-      width: 100%;
-
-      @media screen(md) {
-        width: auto;
-      }
+      @apply border-0 bg-white text-black py-1 px-2 cursor-pointer w-full md:w-auto
     }
   }
 }
