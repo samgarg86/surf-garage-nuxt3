@@ -7,10 +7,6 @@
       <Push left noOverlay :closeOnNavigation="true">
         <ul>
           <li>
-            <NuxtLink to="https://surfgarage.es" class="mr-1">{{ $t("nav.storage") }}</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink :to="localeRoute('/')" class="mr-1">Surf Art</NuxtLink>
             <div class="py-1">
               <Accordion>
                 <AccordionItem v-if="siteNav?.surfArtCategories" class="pl-1" :title="$t('nav.categories')" :is-open="true">
@@ -43,7 +39,9 @@
               </Accordion>
             </div>
           </li>
-          <li><NuxtLink :to="localeRoute('/boards')" class="mr-1">{{$t('nav.boards')}}</NuxtLink></li>
+          <li>
+            <NuxtLink to="https://surfgarage.es" class="mr-1">{{ $t("nav.storage") }}</NuxtLink>
+          </li>
           <li><NuxtLink :to="localeRoute('/about')" class="mr-1">{{$t('nav.about')}}</NuxtLink></li>
         </ul>
         <ContactLinks/>
@@ -59,9 +57,6 @@ defineProps({
   black: Boolean
 })
 
-const showSurfArt = ref(true)
-const showBoardStorage = ref(true)
-const route = useRoute()
 const { siteNav } = useSiteNav()
 const localeRoute = useLocaleRoute()
 const { locale } = useI18n()

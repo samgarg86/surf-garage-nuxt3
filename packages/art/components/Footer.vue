@@ -24,7 +24,7 @@
           :title="$t('nav.artists')" to="/" :nav="siteNav?.surfArtArtists || {}"/>
 <!--        <NuxtLink :to="localeRoute('/about')" class="uppercase text-sm font-bold">{{ $t('nav.about') }}</NuxtLink>-->
     </div>
-    <section :style="{gridArea: 'copyright'}" class="text-center text-sm">Copyright © 2023 Surf Garage Art Co. All Rights Reserved.</section>
+    <section :style="{gridArea: 'copyright'}" class="text-center text-sm pb-1">Copyright © 2023 Surf Garage Art Co. All Rights Reserved.</section>
   </section>
 </template>
 <script setup>
