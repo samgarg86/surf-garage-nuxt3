@@ -7,7 +7,7 @@
     <MasonryImage
         v-for="img in images"
         :key="img.id"
-        v-bind="{...img, f:encodeURIComponent(slug)}"
+        v-bind="{...img, f:encodeURIComponent(slug.replace('art/', ''))}"
     />
   </div>
 </template>

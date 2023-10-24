@@ -7,7 +7,7 @@
         :url="image.url"
         :title="title"
         :tags="tags"
-        :f="encodeURIComponent(slug)"
+        :f="encodeURIComponent(slug.replace('art/', ''))"
     />
   </div>
 </template>

@@ -12,7 +12,8 @@
 
 definePageMeta({ layout: 'art' })
 const { params: { placeSlug } } = useRoute()
-const { getArtGalleryPage, fetchImagesByTags } = useContentfulPhotos()
+const { getArtGalleryPage } = useContentfulPhotos()
+const { fetchImagesByTags } = useImages()
 
 const pageTitle = ref()
 const pageDesc = ref()

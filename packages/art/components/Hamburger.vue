@@ -9,31 +9,31 @@
           <li>
             <div class="py-1">
               <Accordion>
-                <AccordionItem v-if="siteNav?.surfArtCategories" class="pl-1" :title="$t('nav.categories')" :is-open="true">
+                <AccordionItem v-if="siteNav?.surfArtCategories" :title="$t('nav.categories')" :is-open="true">
                   <NuxtLink
                       v-for="(cat, index) in siteNav?.surfArtCategories"
                       :key="index"
                       :to="localeRoute(cat.slug)"
                       class="block">
-                    - {{ cat[locale] }}
+                    {{ cat[locale] }}
                   </NuxtLink>
                 </AccordionItem>
-                <AccordionItem v-if="siteNav?.surfArtLocations" class="pl-1" :title="$t('nav.locations')" :is-open="true">
+                <AccordionItem v-if="siteNav?.surfArtLocations" :title="$t('nav.locations')" :is-open="false">
                   <NuxtLink
                       v-for="(item, index) in siteNav?.surfArtLocations"
                       :key="index"
                       :to="localeRoute(item.slug)"
                       class="block">
-                    - {{ item[locale] }}
+                    {{ item[locale] }}
                   </NuxtLink>
                 </AccordionItem>
-                <AccordionItem v-if="siteNav?.surfArtArtists" class="pl-1" :title="$t('nav.artists')" :is-open="true">
+                <AccordionItem v-if="siteNav?.surfArtArtists" :title="$t('nav.artists')" :is-open="false">
                   <NuxtLink
                       v-for="({name, slug}, index) in siteNav?.surfArtArtists"
                       :key="index"
                       :to="localeRoute(slug)"
                       class="block">
-                    - {{ name }}
+                    {{ name }}
                   </NuxtLink>
                 </AccordionItem>
               </Accordion>
