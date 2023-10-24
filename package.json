@@ -8,6 +8,7 @@
   "scripts": {
     "dev:art": "yarn workspace surf-garage-art dev",
     "dev:board": "yarn workspace surf-garage dev",
+    "build": "yarn build packages/art && yarn build packages/boardStorage",
     "deploy": "sh deployToOcean.sh"
   }
 }
