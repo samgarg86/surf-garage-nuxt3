@@ -11,7 +11,7 @@
         <img src="/logo.png" alt="Surf Garage" data-not-lazy/>
       </li>
       <li class="p-1 hidden md:block text-center">
-        <NuxtLink :to="localeRoute('/art')" class="text-white">Surf Art</NuxtLink>
+        <NuxtLink to="https://surfgarage.art" class="text-white">Surf Art</NuxtLink>
       </li>
       <li class="p-1 hidden md:block text-center">
         <ScrollTo to="contact" class="text-white">{{ $t("nav.contact") }}</ScrollTo>

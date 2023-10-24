@@ -6,7 +6,6 @@
         <NuxtLink :to="localeRoute('/about')" class="footer__l1">{{ $t('nav.about') }}</NuxtLink>
         <NuxtLink :to="localeRoute('/')" class="footer__l1">{{ $t('nav.storage') }}</NuxtLink>
         <NuxtLink :to="localeRoute('/boards')" class="footer__l1">{{ $t('nav.boards') }}</NuxtLink>
-        <NuxtLink :to="localeRoute('/art')" class="footer__l1">Surf Art</NuxtLink>
       </section>
       <LazyContactLinks
           class="font-metalsmith lowercase md:p-0"

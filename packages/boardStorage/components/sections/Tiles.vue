@@ -18,7 +18,7 @@
           v-else
           class="tile font-metalsmith"
           :style="{ '--bg': `url(${tile.bg})` }"
-          :to="localeRoute(tile.link)"
+          :to="tile.link.startsWith('/') ? localeRoute(tile.link) : tile.link"
           target="_blank"
         >
           <h2 class="tile__title">
