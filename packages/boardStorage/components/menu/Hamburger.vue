@@ -6,9 +6,9 @@
     <client-only>
       <Push left noOverlay :closeOnNavigation="true">
         <ul>
-          <li><scroll-to to="storage" class="block">{{$t('nav.storage')}}</scroll-to></li>
-          <li><scroll-to to="pricing" class="block">{{$t('nav.pricing')}}</scroll-to></li>
-          <li><scroll-to to="security" class="block">{{$t('nav.storage')}}</scroll-to></li>
+          <li><NuxtLink :to="`${localeRoute('/').fullPath}#storage`" class="block">{{$t('nav.storage')}}</NuxtLink></li>
+          <li><NuxtLink :to="`${localeRoute('/').fullPath}#pricing`" class="block">{{$t('nav.pricing')}}</NuxtLink></li>
+          <li><NuxtLink :to="`${localeRoute('/').fullPath}#security`" class="block">{{$t('nav.security')}}</NuxtLink></li>
           <li><NuxtLink to="https://surfgarage.art" class="mr-1">Surf Art</NuxtLink></li>
           <li><NuxtLink :to="localeRoute('/boards')" class="mr-1">{{$t('nav.boards')}}</NuxtLink></li>
           <li><NuxtLink :to="localeRoute('/about')" class="mr-1">{{$t('nav.about')}}</NuxtLink></li>
@@ -22,6 +22,10 @@
 
 <script setup>
 import { Push } from 'vue3-burger-menu'
+
+defineProps({
+  black: Boolean
+})
 
 const route = useRoute()
 const { siteNav } = useSiteNav()
