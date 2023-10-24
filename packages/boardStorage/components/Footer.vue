@@ -1,13 +1,12 @@
 <template>
   <section id="contact" class="footer mb-2">
 <!--    <LazyInstaFeed/>-->
-    <!--      <pre class="text-white">{{ siteNav?.boardStorageMenu }}</pre>-->
-    <!--      <pre class="text-white">{{ siteNav?.surfArtMenu }}</pre>-->
     <div class="footer__content text-center md:text-left px-2 py-5 lg:py-10 lg:px-6">
       <section style="{gridArea: 'nav1'}">
         <NuxtLink :to="localeRoute('/about')" class="footer__l1">{{ $t('nav.about') }}</NuxtLink>
         <NuxtLink :to="localeRoute('/')" class="footer__l1">{{ $t('nav.storage') }}</NuxtLink>
         <NuxtLink :to="localeRoute('/boards')" class="footer__l1">{{ $t('nav.boards') }}</NuxtLink>
+        <NuxtLink :to="localeRoute('/art')" class="footer__l1">Surf Art</NuxtLink>
       </section>
       <LazyContactLinks
           class="font-metalsmith lowercase md:p-0"
@@ -16,28 +15,11 @@
       <section
           class="footer__form w-full font-metalsmith lowercase"
           :style="{gridArea: 'form'}">
-        <LazyFooterContactForm />
-      </section>
-      <section :style="{gridArea: 'art'}" class="grid grid-cols-1 md:grid-cols-3 w-full gap-2">
-        <NuxtLink :to="localeRoute('/art')" class="footer__l1 leading-none">Surf Art</NuxtLink>
-        <LazyFooterNav
-            class="footer__nav2"
-            :title="$t('nav.categories')" to="/" :nav="siteNav?.surfArtCategories || {}"/>
-        <div>
-          <LazyFooterNav
-              class="footer__nav2 mb-2"
-              :title="$t('nav.locations')" to="/" :nav="siteNav?.surfArtLocations || {}"/>
-          <LazyFooterNav
-              class="footer__nav2"
-              :title="$t('nav.artists')" to="/" :nav="siteNav?.surfArtArtists || {}"/>
-        </div>
+        <LazyFooterContactForm class="lowercase"/>
       </section>
     </div>
   </section>
 </template>
-<script setup>
-const { siteNav } = useSiteNav()
-</script>
 
 <style lang="postcss">
 .footer {
@@ -75,15 +57,13 @@ const { siteNav } = useSiteNav()
     grid-template-areas:
       "links"
       "form"
-      "nav1"
-      "art";
+      "nav1";
 
     @media screen(md) {
       grid-gap: 3rem;
       grid-template-areas:
         "links links nav1"
-        "form form form"
-      "art art art"
+        "form form form";
     }
 
     @media screen(lg) {

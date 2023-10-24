@@ -6,25 +6,13 @@
     <client-only>
       <Push left noOverlay :closeOnNavigation="true">
         <ul>
-          <li>
-            <NuxtLink :to="localeRoute('/')" class="mr-1">{{ $t("nav.storage") }}</NuxtLink>
-            <div
-              v-show="showBoardStorage"
-              v-if="siteNav?.boardStorageMenu">
-              <NuxtLink
-                v-for="(item, index) in siteNav?.boardStorageMenu"
-                :key="index"
-                :to="`${localeRoute('/').fullPath}${item.slug}`"
-                class="block">
-                - {{ item[locale] }}
-              </NuxtLink>
-            </div>
-          </li>
-          <li>
-            <NuxtLink to="https://surfgarage.art" class="mr-1">Surf Art</NuxtLink>
-          </li>
+          <li><scroll-to to="storage" class="block">{{$t('nav.storage')}}</scroll-to></li>
+          <li><scroll-to to="pricing" class="block">{{$t('nav.pricing')}}</scroll-to></li>
+          <li><scroll-to to="security" class="block">{{$t('nav.storage')}}</scroll-to></li>
+          <li><NuxtLink to="https://surfgarage.art" class="mr-1">Surf Art</NuxtLink></li>
           <li><NuxtLink :to="localeRoute('/boards')" class="mr-1">{{$t('nav.boards')}}</NuxtLink></li>
           <li><NuxtLink :to="localeRoute('/about')" class="mr-1">{{$t('nav.about')}}</NuxtLink></li>
+          <li><scroll-to to="contact" class="block">{{$t('nav.contact')}}</scroll-to></li>
         </ul>
         <ContactLinks/>
       </Push>

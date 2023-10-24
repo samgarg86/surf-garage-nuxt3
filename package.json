@@ -6,14 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "nuxt build",
     "dev:art": "yarn workspace surf-garage-art dev",
     "dev:board": "yarn workspace surf-garage dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "lint": "eslint --fix",
-    "start": "nuxt start",
     "deploy": "sh deployToOcean.sh"
   }
 }

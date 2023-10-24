@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   extends: [
     '../core'
   ],
-  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-svgo', 'nuxt-lazy-load', '@nuxtjs/robots'],
+  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-lazy-load', '@nuxtjs/robots'],
   lazyLoad: {
     directiveOnly: true,
     defaultImage: '/placeholder.jpg'
@@ -60,5 +60,8 @@ export default defineNuxtConfig({
       'postcss-import': {},
       'postcss-nested': {},
     },
+  },
+  server: {
+    port: 3001
   }
 })

@@ -45,8 +45,8 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
         class="contact-form__textarea"
         :placeholder="$t('contact.form.message')"
         name="message"
-        style="grid-area: message"
-    ></textarea>
+        style="grid-area: message">
+    </textarea>
     <div class="contact-form__send" style="grid-area: send">
       <button type="submit" class="contact-form__btn-send">
         {{ $t("contact.form.send") }}
@@ -88,6 +88,12 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
 
     button {
       @apply border-0 bg-white text-black py-1 px-2 cursor-pointer w-full md:w-auto
+    }
+  }
+
+  &.lowercase {
+    input, textarea, button {
+      text-transform: lowercase;
     }
   }
 }

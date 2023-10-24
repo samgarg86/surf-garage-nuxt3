@@ -10,7 +10,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint --fix",
-    "start": "nuxt start",
+    "start": "nuxt start --hostname '0.0.0.0' --port 3002",
     "deploy": "sh deployToOcean.sh"
   },
   "devDependencies": {
@@ -26,7 +26,6 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^9.14.1",
     "nuxt": "^3.5.1",
-    "nuxt-svgo": "^3.1.0",
     "postcss-comment": "^2.0.0",
     "postcss-nested": "^6.0.1",
     "sass": "^1.63.2",

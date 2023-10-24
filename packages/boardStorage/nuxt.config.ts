@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   extends: [
     '../core'
   ],
-  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-svgo', '@nuxtjs/robots'],
+  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", '@nuxtjs/robots'],
   i18n: {
     langDir: "../../locales",
     strategy: "prefix_except_default",
@@ -43,5 +43,8 @@ export default defineNuxtConfig({
       'postcss-import': {},
       'postcss-nested': {},
     },
+  },
+  server: {
+    port: 3000
   }
 })
