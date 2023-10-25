@@ -1,6 +1,6 @@
 <template>
   <header class="font-metalsmith text-center py-1.5 border-b mb-3">
-    <NuxtLink :to="localeRoute('/art')">surf garage art co.</NuxtLink>
+    <NuxtLink :to="localeRoute('/')">surf garage art co.</NuxtLink>
   </header>
   <button class="snipcart-checkout absolute right-1 md:right-2 top-1.5 flex items-center">
     <div v-html="cart" class="w-[2.5rem] h-[2.5rem]"/>

@@ -2,7 +2,13 @@ export default defineNuxtConfig({
   extends: [
     '../core'
   ],
-  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-lazy-load', '@nuxtjs/robots'],
+  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-lazy-load', '@nuxtjs/robots', 'nuxt-simple-sitemap'],
+  site: {
+    url: 'https://surfgarage.art'
+  },
+  sitemap: {
+    inferStaticPagesAsRoutes: false
+  },
   lazyLoad: {
     directiveOnly: true,
     defaultImage: '/placeholder.jpg'
@@ -60,8 +66,5 @@ export default defineNuxtConfig({
       'postcss-import': {},
       'postcss-nested': {},
     },
-  },
-  server: {
-    port: 3001
   }
 })

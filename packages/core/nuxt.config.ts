@@ -1,13 +1,8 @@
-import {resolve} from "node:path";
-
 export default defineNuxtConfig({
     alias:{
         '@core': __dirname
     },
     css: ['@core/assets/css/tailwind.css'],
-    svgo: {
-        svgo: false
-    },
     runtimeConfig: {
         instaAccessToken: process.env.instaAccessToken,
         public: {
