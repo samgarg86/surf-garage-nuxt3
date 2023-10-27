@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="absolute z-50" style="text-align: left">
+    <div class="absolute z-50 text-left">
       <button class="toggle" @click="drawerVisible = true">
         <!-- <img src="~/assets/icons/hamburger.svg" class="w-15 mx-auto" /> -->
         <div class="flex flex-col gap-1 mx-4">

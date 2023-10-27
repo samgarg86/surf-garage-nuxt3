@@ -1,4 +1,28 @@
 <template>
+   <div class="absolute z-50 text-left">
+      <button class="toggle" @click="drawerVisible = true">
+        <!-- <img src="~/assets/icons/hamburger.svg" class="w-15 mx-auto" /> -->
+        <div class="flex flex-col gap-1 mx-4">
+          <span class="w-4.5 h-0.5 block bg-black"></span>
+          <span class="w-4.5 h-0.5 block bg-black"></span>
+          <span class="w-4.5 h-0.5 block bg-black"></span>
+        </div>
+      </button>
+      <MenuHamburger2 :close="toggle" :drawerVisible="drawerVisible" />
+      <div
+        @click="toggle"
+        class="drawer-mask"
+        :style="{
+          width: drawerVisible ? '100vw' : '0',
+          opacity: drawerVisible ? '0.6' : '0',
+        }"
+      ></div>
+      <!-- <div :class="drawerVisible?'absolute top-0 right-0 w-full text-right':''" style="text-align: right; margin: 5px">
+        <button class="close relative z-[300]">
+          <i class="las la-times" style="font-size: 24px"></i> Closse
+        </button>
+      </div> -->
+    </div>
   <!-- <MenuHamburger black class="hamburger-menu-art"/> -->
   <main id="page-wrap" class="mx-1 md:mx-2 mb-1 md:mb-2">
     <ArtHeader/>
@@ -20,6 +44,12 @@
 </template>
 
 <script lang="ts" setup>
+
+const drawerVisible = ref(false);
+const toggle = () => {
+  drawerVisible.value = false;
+};
+
 const i18nHead = useLocaleHead({
   addSeoAttributes: true
 })

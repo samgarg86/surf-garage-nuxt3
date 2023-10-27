@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div :class="{
       'hamburger-menu': true,
       'black-bars': black
@@ -143,4 +143,4 @@ watch(route, newRoute => {
     outline-color: black;
   }
 }
-</style> -->
+</style>
