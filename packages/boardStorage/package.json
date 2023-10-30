@@ -1,0 +1,43 @@
+{
+  "name": "surf-garage",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --fix",
+    "start": "nuxt start",
+    "deploy": "sh deployToOcean.sh"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@nuxtjs/i18n": "^8.0.0-rc.3",
+    "@nuxtjs/tailwindcss": "^6.7.0",
+    "@types/node": "^18",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "eslint": "^8.0.1",
+    "eslint-config-standard-with-typescript": "^35.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^9.14.1",
+    "nuxt": "^3.8.0",
+    "postcss-comment": "^2.0.0",
+    "postcss-nested": "^6.0.1",
+    "sass": "^1.63.2",
+    "typescript": "*"
+  },
+  "dependencies": {
+    "@nuxtjs/robots": "^3.0.0",
+    "contentful": "^10.2.3",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "postcss-simple-vars": "^7.0.1",
+    "swiper": "^10.2.0",
+    "vue-gtag": "^2.0.1",
+    "vue3-burger-menu": "^1.1.1"
+  }
+}
