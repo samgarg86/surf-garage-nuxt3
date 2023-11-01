@@ -1,6 +1,11 @@
 <template>
-  <Hamburger black class="hamburger-menu-art"/>
-  <main id="page-wrap">
+  <Hamburger
+      :isOpen="isOpenHamburger"
+      @hamburger:open="onOpenHamburger"
+      @hamburger:close="onCloseHamburger">
+    <ArtHamburger @hamburger:click="isOpenHamburger = false"/>
+  </Hamburger>
+  <main id="page-wrap" :class="{ 'slide': isOpenHamburger }">
     <Header/>
     <div class="mx-1 md:mx-2">
       <slot/>
@@ -8,12 +13,6 @@
     <Footer/>
   </main>
 
-  <!-- Test Mode -->
-<!--  <div hidden-->
-<!--       id="snipcart"-->
-<!--       data-api-key="MjMyM2Q4NjgtZWI4NS00MTFjLThlNTQtOTExNjkwMDE3ZjI2NjM4MjE1NzE4NjM4MjYyMjk0"-->
-<!--       data-config-modal-style="side">-->
-<!--  </div>-->
   <div hidden
        id="snipcart"
        data-api-key="YWZhYTMyNDUtZWY4Ny00ZDg0LTk1ZjYtMzMzZDFjN2NjNzYxNjM4MjE1NzE4NjM4MjYyMjk0"
@@ -22,9 +21,13 @@
 </template>
 
 <script lang="ts" setup>
+
 const i18nHead = useLocaleHead({
   addSeoAttributes: true
 })
+const isOpenHamburger = ref(false)
+const onOpenHamburger = () => { isOpenHamburger.value = true }
+const onCloseHamburger = () => { isOpenHamburger.value = false }
 
 useHead({
   link: [
