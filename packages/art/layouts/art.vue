@@ -1,11 +1,11 @@
 <template>
   <Hamburger
-      :isOpen="isOpenHamburger"
-      @hamburger:open="onOpenHamburger"
-      @hamburger:close="onCloseHamburger">
-    <ArtHamburger @hamburger:click="isOpenHamburger = false"/>
+      :isOpen="isHamburgerOpen"
+      @hamburger:open="onHamburgerOpen"
+      @hamburger:close="onHamburgerClose">
+    <ArtHamburger @hamburger:click="onHamburgerClose"/>
   </Hamburger>
-  <main id="page-wrap" :class="{ 'slide': isOpenHamburger }">
+  <main id="page-wrap" :class="{ 'slide': isHamburgerOpen }">
     <Header/>
     <div class="mx-1 md:mx-2">
       <slot/>
@@ -22,12 +22,17 @@
 
 <script lang="ts" setup>
 
+import { useHamburgerMenu } from '#imports'
+
 const i18nHead = useLocaleHead({
   addSeoAttributes: true
 })
-const isOpenHamburger = ref(false)
-const onOpenHamburger = () => { isOpenHamburger.value = true }
-const onCloseHamburger = () => { isOpenHamburger.value = false }
+
+const { isHamburgerOpen, onHamburgerOpen, onHamburgerClose } = useHamburgerMenu()
+
+// const isHamburgerOpen = ref(false)
+// const onHamburgerOpen = () => { isHamburgerOpen.value = true }
+// const onHamburgerClose = () => { isHamburgerOpen.value = false }
 
 useHead({
   link: [
@@ -56,57 +61,5 @@ useSeoMeta({
 </script>
 
 <style lang="postcss">
-/* Snipcart theme overrides */
-
-/* Tailwind css sets this to transparent so checkout button isn't visible */
-.snipcart-button-primary {
-  background-color: theme('colors.waveBlue');
-}
-
-/* hamburger menu is above the back button on mobile */
-.snipcart-modal__container {
-  z-index: 1000;
-}
-
-/* Images are too small */
-/* Desktop */
-.snipcart-item-line__media {
-  width: 30rem;
-}
-/* Mobile */
-.snipcart-item-line__media--small {
-  width: 20rem;
-  margin-right: 1rem;
-  height: auto;
-}
-
-.snipcart-item-line__image {
-  width: 100%;
-}
-
-.snipcart-item-line--cart-edit .snipcart-item-line__image {
-  width: 100%;
-}
-
-.snipcart-item-line--cart-edit .snipcart-item-line__image {
-  max-width: none;
-}
-
-.snipcart-item-line__container {
-  padding: 2rem 1rem;
-}
-
-@media (min-width: 768px) {
-  .snipcart-cart-summary--edit.snipcart-modal__container {
-    max-width: 60rem;
-    width: 50%;
-  }
-}
-
-@media screen(lg) {
-  .snipcart-cart-summary--edit.snipcart-modal__container {
-    width: 35%;
-  }
-}
-
+@import "~/assets/css/snipcart.css";
 </style>
