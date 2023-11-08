@@ -1,11 +1,9 @@
 <template>
   <div class="fixed z-50 text-left left-1 top-1">
     <button class="toggle bg-white p-1" @click="open">
-      <div>
-        <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
-        <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
-        <span class="w-3.5 h-[3px] block bg-black"></span>
-      </div>
+      <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
+      <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
+      <span class="w-3.5 h-[3px] block bg-black"></span>
     </button>
     <div class="right-drawer bg-black"
          :style="{
@@ -14,14 +12,13 @@
       <button @click="close" class="text-white ml-2 mt-2">
         <SvgoClose class="text-xl"/>
       </button>
-        <div class="p-2">
-          <slot/>
-        </div>
+      <div class="p-2">
+        <slot/>
+      </div>
     </div>
 
     <div v-if="isOpen" @click="close" class="drawer-mask bg-black"/>
   </div>
-
 </template>
 
 <script setup lang="ts">
@@ -33,11 +30,9 @@ defineProps({
 // const isHamburgerOpen = ref(false)
 const open = () => {
   emit('hamburger:open')
-  // isHamburgerOpen.value = true
 }
 
 const close = () => {
-  // isHamburgerOpen.value = false
   emit('hamburger:close')
 }
 </script>
