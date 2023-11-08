@@ -42,7 +42,7 @@ onMounted(() => {
 
 <template>
   <section>
-    <button class="py-0.5 w-full flex justify-between items-center leading-none font-bold hover:outline-0"
+    <button class="py-[0.7rem] w-full flex justify-between items-center leading-none font-bold hover:outline-0"
             :class="{
               titleClass,
               'text-lightYellow': !titleClass

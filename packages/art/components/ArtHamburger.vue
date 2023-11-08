@@ -12,7 +12,7 @@
                 :key="index"
                 :to="localeRoute(cat.slug)"
                 @click="$emit('hamburger:click')"
-                class="block text-white text-1.8 leading-relaxed hover:underline">
+                class="art-menu-link">
               {{ cat[locale] }}
             </NuxtLink>
           </AccordionItem>
@@ -26,7 +26,7 @@
                 :key="index"
                 :to="localeRoute(item.slug)"
                 @click="$emit('hamburger:click')"
-                class="block text-white text-1.8 leading-relaxed hover:underline">
+                class="art-menu-link">
               {{ item[locale] }}
             </NuxtLink>
           </AccordionItem>
@@ -40,14 +40,14 @@
                 :key="index"
                 :to="localeRoute(slug)"
                 @click="$emit('hamburger:click')"
-                class="block text-white text-1.8 leading-relaxed hover:underline">
+                class="art-menu-link">
               {{ name }}
             </NuxtLink>
           </AccordionItem>
         </Accordion>
       </li>
       <li>
-        <NuxtLink to="https://surfgarage.es" class="mr-1 text-1.8">{{ $t("nav.storage") }}</NuxtLink>
+        <a href="https://surfgarage.es" target="_blank" class="art-menu-link">{{ $t("nav.storage") }}</a>
       </li>
 <!--      <li>-->
 <!--        <NuxtLink :to="localeRoute('/about')" class="mr-1" @click="$emit('hamburger:click')">-->
@@ -61,10 +61,6 @@
 
 <script setup>
 
-defineProps({
-  black: Boolean
-})
-
 const { siteNav } = useSiteNav()
 const localeRoute = useLocaleRoute()
 const { locale } = useI18n()
@@ -72,4 +68,8 @@ const { locale } = useI18n()
 </script>
 
 <style lang="postcss">
+.art-menu-link {
+  @apply block text-1.8 hover:underline;
+  line-height: 1.9;
+}
 </style>

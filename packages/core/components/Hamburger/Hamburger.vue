@@ -1,14 +1,13 @@
 <template>
-  <div class="fixed z-50 text-left left-1 top-1">
-    <button class="toggle bg-white p-1" @click="open">
-      <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
-      <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
-      <span class="w-3.5 h-[3px] block bg-black"></span>
-    </button>
+    <slot name="hamburger-icon">
+      <button class="fixed z-50 text-left left-1 top-1 toggle bg-white p-1" @click="open">
+        <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
+        <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
+        <span class="w-3.5 h-[3px] block bg-black"></span>
+      </button>
+    </slot>
     <div class="right-drawer bg-black"
-         :style="{
-            width: isOpen ? '300px' : 0
-         }">
+         :class="{slide: isOpen}">
       <button @click="close" class="text-white ml-2 mt-2">
         <SvgoClose class="text-xl"/>
       </button>
@@ -18,7 +17,6 @@
     </div>
 
     <div v-if="isOpen" @click="close" class="drawer-mask bg-black"/>
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -47,11 +45,10 @@ const close = () => {
   overflow-x: hidden;
   height: 100%;
   padding-left: 0; /* initially */
-  border-left: 1px solid whitesmoke;
   background: #000;
   transition: width 0.5s; /* for the animation */
   &.slide {
-    width: 300px;
+    width: 330px;
   }
 }
 .drawer-mask {
@@ -76,7 +73,7 @@ const close = () => {
 #page-wrap {
   transition: all 0.5s; /* for the animation */
   &.slide {
-    transform: translate3d(300px, 0px, 0px);
+    transform: translate3d(330px, 0px, 0px);
   }
 }
 

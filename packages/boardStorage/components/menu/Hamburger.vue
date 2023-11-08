@@ -1,48 +1,54 @@
 <template>
-    <ul class="text-white">
+    <ul class="text-white text-2 mb-2">
       <li>
-        <NuxtLink
-          :to="`${localeRoute('/').fullPath}#storage`"
+        <scroll-to
+          to="storage"
           @click="$emit('hamburger:click')"
-          class="block leading-relaxed hover:underline">
+          class="menu-link">
           {{$t('nav.storage')}}
-        </NuxtLink>
+        </scroll-to>
       </li>
       <li>
-        <NuxtLink
-            :to="`${localeRoute('/').fullPath}#pricing`"
+        <scroll-to
+            to="pricing"
             @click="$emit('hamburger:click')"
-            class="block leading-relaxed hover:underline">
+            class="menu-link">
           {{$t('nav.pricing')}}
-        </NuxtLink>
+        </scroll-to>
       </li>
       <li>
-        <NuxtLink
-            :to="`${localeRoute('/').fullPath}#security`"
+        <scroll-to
+            to="security"
             @click="$emit('hamburger:click')"
-            class="block leading-relaxed hover:underline">
+            class="menu-link">
           {{$t('nav.security')}}
-        </NuxtLink>
+        </scroll-to>
       </li>
       <li>
         <NuxtLink
           :to="localeRoute('/boards')"
           @click="$emit('hamburger:click')"
-          class="mr-1 leading-relaxed hover:underline">
+          class="menu-link">
           {{$t('nav.boards')}}
         </NuxtLink>
       </li>
-      <li><a href="https://surfgarage.art" class="leading-relaxed hover:underline" target="_blank">Surf Art</a></li>
+      <li><a href="https://surfgarage.art" class="menu-link" target="_blank">Surf Art</a></li>
       <li>
         <NuxtLink
           :to="localeRoute('/about')"
           @click="$emit('hamburger:click')"
-          class="leading-relaxed hover:underline">{{$t('nav.about')}}
+          class="menu-link">
+          {{$t('nav.about')}}
         </NuxtLink>
       </li>
       <li>
-        <scroll-to to="contact" @click="$emit('hamburger:click')"
-                   class="block leading-relaxed hover:underline">{{$t('nav.contact')}}</scroll-to></li>
+        <scroll-to
+            to="contact"
+            @click="$emit('hamburger:click')"
+            class="menu-link">
+          {{$t('nav.contact')}}
+        </scroll-to>
+      </li>
     </ul>
     <ContactLinks/>
 </template>
@@ -57,9 +63,8 @@ const localeRoute = useLocaleRoute()
 </script>
 
 <style lang="postcss">
-.hamburger-menu {
-  .contact-links__link {
-    @apply text-white hover:text-amberYellow;
-  }
+.menu-link {
+  @apply block hover:underline;
+  line-height: 2.2;
 }
 </style>
