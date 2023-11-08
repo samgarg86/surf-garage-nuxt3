@@ -21,18 +21,11 @@
 </template>
 
 <script lang="ts" setup>
-
-import { useHamburgerMenu } from '#imports'
-
 const i18nHead = useLocaleHead({
   addSeoAttributes: true
 })
 
 const { isHamburgerOpen, onHamburgerOpen, onHamburgerClose } = useHamburgerMenu()
-
-// const isHamburgerOpen = ref(false)
-// const onHamburgerOpen = () => { isHamburgerOpen.value = true }
-// const onHamburgerClose = () => { isHamburgerOpen.value = false }
 
 useHead({
   link: [
