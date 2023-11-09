@@ -10,7 +10,6 @@
     <section class="md:mr-2">
       <div class="md:mt-3 md:mb-1">
         <h1 class="text-2xl font-avenir">{{ title }}</h1>
-<!--        <pre>{{tags}}</pre>-->
 
         <p class="text-sm mb-1">
           <template v-if="tags.artist">
@@ -25,20 +24,16 @@
         <h2 v-if="description" class="text-2">{{description}}</h2>
       </div>
 
-      <ul class="tags list-none mb-2">
+      <ul class="tags list-none mb-1">
         <template v-for="tag in tags.page" :key="tag">
-          <li v-if="tag.name !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
+          <li v-if="tag.name !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 bg-lightGrey">
             <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
           </li>
         </template>
       </ul>
 
-      <select v-model="size" class="select-size py-1 px-3.5 mb-1 text-2 block w-full md:w-30 font-avenir border-2 text-center">
-        <option value="A5" default>A5 (15x21 cm): €{{ pricing['A5'] }}</option>
-        <option value="A4">A4 (21x30 cm): €{{ pricing['A4'] }}</option>
-        <option value="A3">A3 (30x42 cm): €{{ pricing['A3'] }}</option>
-      </select>
-
+      <div class="text-xl mb-1 font-avenir font-bold">€{{pricing[size]}}</div>
+      <SizeSelector v-model="size" class="mb-2"/>
       <AddToCart
         :id="`${id}`"
         :price="basePrice"
