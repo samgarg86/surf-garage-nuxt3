@@ -2,7 +2,7 @@
     <slot name="hamburger-icon">
       <HamburgerIcon class="left-1 top-2 md:left-2" @click="open"/>
     </slot>
-    <div class="right-drawer bg-black"
+    <div class="hamburger-menu bg-black"
          :class="{slide: isOpen}">
       <button @click="close" class="text-white ml-2 mt-2">
         <SvgoClose class="text-xl"/>
@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div v-if="isOpen" @click="close" class="drawer-mask bg-black"/>
+    <div v-if="isOpen" @click="close" class="hamburger-menu-mask bg-black"/>
 </template>
 
 <script setup lang="ts">
@@ -32,7 +32,7 @@ const close = () => {
 </script>
 
 <style lang="postcss">
-.right-drawer {
+.hamburger-menu {
   position: fixed;
   z-index: 1000;
   top: 0;
@@ -47,7 +47,7 @@ const close = () => {
     width: 330px;
   }
 }
-.drawer-mask {
+.hamburger-menu-mask {
   position: fixed;
   left: 0;
   top: 0;
@@ -58,12 +58,13 @@ const close = () => {
 }
 .hamburger-menu.contact-links__link {
   @apply text-white hover:text-amberYellow;
-}
-.accordion button {
-  background: #000;
-}
-.accordion {
-  margin-right: 10px;
+
+  .accordion button {
+    background: #000;
+  }
+  .accordion {
+    margin-right: 10px;
+  }
 }
 
 #page-wrap {

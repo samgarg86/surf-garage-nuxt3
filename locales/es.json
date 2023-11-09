@@ -38,7 +38,8 @@
       "shipping": {
         "title": "Envíos",
         "line1": "Imprimimos su obra de arte bajo pedido en las Islas Canarias y se envía en un plazo de 5 a 7 días. Somos una pequeña empresa consciente del medio ambiente. Imprimimos nuestras obras de arte solo después de recibir los pedidos para evitar desperdiciar papel y espacio de almacenamiento.",
-        "line2": "Realizamos envíos a todas partes de Canarias y Europa continental. Los tiempos de envío pueden variar según su ubicación. Normalmente, la mayoría de los pedidos llegarán entre 2 y 3 semanas."
+        "line2": "Realizamos envíos a todas partes de Canarias y Europa continental. Los tiempos de envío pueden variar según su ubicación. Normalmente, la mayoría de los pedidos llegarán entre 2 y 3 semanas.",
+        "free": "El envío es gratuito en pedidos superiores a 50€!"
       },
       "materials": {
         "title": "Materiales",

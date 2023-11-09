@@ -38,7 +38,8 @@
       "shipping": {
         "title": "Shipping",
         "line1": "Your artwork is printed to order in the Canary Islands and shipped within 5-7 days. We are a small environmentally conscious company. We print our artwork only after we receive orders to avoid wasting paper and storage space.",
-        "line2": "We ship to everywhere in Canary Islands and mainland Europe. The shipping times can vary based on your location. Normally most orders will be at your doorstep between 2-3 weeks."
+        "line2": "We ship to everywhere in Canary Islands and mainland Europe. The shipping times can vary based on your location. Normally most orders will be at your doorstep between 2-3 weeks.",
+        "free": "Free shipping on orders over €50!"
       },
       "materials": {
         "title": "Materials",

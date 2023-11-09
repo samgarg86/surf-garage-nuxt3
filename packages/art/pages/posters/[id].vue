@@ -45,14 +45,15 @@
           :ecomDisabled="ecomDisabled"
       />
       <Accordion class="mt-3 md:mt-5">
-        <AccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black">
+        <AccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black" class="border-t">
           <p class="text-sm text-justify">{{$t('art.accordion.materials.descPosters')}}</p>
         </AccordionItem>
-        <AccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black">
+        <AccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black" class="border-t">
           <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line1')}}</p>
-          <p class="text-sm text-justify">{{$t('art.accordion.shipping.line2')}}</p>
+          <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line2')}}</p>
+          <p class="text-sm text-justify font-bold">{{$t('art.accordion.shipping.free')}}</p>
         </AccordionItem>
-        <AccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black">
+        <AccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black" class="border-t">
           <p class="text-sm text-justify">
             {{$t('art.accordion.contact.desc')}} <ScrollTo to="contact" class="underline">{{$t('art.accordion.contact.link')}}</ScrollTo>
           </p>
