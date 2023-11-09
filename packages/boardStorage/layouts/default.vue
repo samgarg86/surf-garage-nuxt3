@@ -3,13 +3,11 @@
     <Hamburger
         :isOpen="isHamburgerOpen"
         @hamburger:open="onHamburgerOpen"
-        @hamburger:close="onHamburgerClose">
+        @hamburger:close="onHamburgerClose"
+        invert
+    >
       <template #hamburger-icon>
-        <button class="fixed z-50 toggle p-1 left-2" @click="onHamburgerOpen">
-          <span class="w-3.5 h-[3px] block bg-white mb-0.5"></span>
-          <span class="w-3.5 h-[3px] block bg-white mb-0.5"></span>
-          <span class="w-3.5 h-[3px] block bg-white"></span>
-        </button>
+        <HamburgerIcon invert class="left-2 top-2.5 md:left-3 md:top-3" @click="onHamburgerOpen"/>
       </template>
       <MenuHamburger @hamburger:click="onHamburgerClose"/>
     </Hamburger>

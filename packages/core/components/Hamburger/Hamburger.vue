@@ -1,10 +1,6 @@
 <template>
     <slot name="hamburger-icon">
-      <button class="fixed z-50 text-left left-1 top-1 toggle bg-white p-1" @click="open">
-        <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
-        <span class="w-3.5 h-[3px] block bg-black mb-0.5"></span>
-        <span class="w-3.5 h-[3px] block bg-black"></span>
-      </button>
+      <HamburgerIcon class="left-1 top-2 md:left-2" @click="open"/>
     </slot>
     <div class="right-drawer bg-black"
          :class="{slide: isOpen}">
@@ -22,7 +18,8 @@
 <script setup lang="ts">
 const emit = defineEmits(['hamburger:open', 'hamburger:close'])
 defineProps({
-  isOpen: Boolean
+  isOpen: Boolean,
+  invert: Boolean
 })
 
 // const isHamburgerOpen = ref(false)
