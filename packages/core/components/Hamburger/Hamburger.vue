@@ -18,8 +18,7 @@
 <script setup lang="ts">
 const emit = defineEmits(['hamburger:open', 'hamburger:close'])
 defineProps({
-  isOpen: Boolean,
-  invert: Boolean
+  isOpen: Boolean
 })
 
 // const isHamburgerOpen = ref(false)
