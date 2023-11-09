@@ -1,28 +1,28 @@
 <template>
     <ul class="text-white text-2 mb-2">
       <li>
-        <scroll-to
-          to="storage"
+        <NuxtLink
+          :to="`${localeRoute('/').fullPath}#storage`"
           @click="$emit('hamburger:click')"
           class="menu-link">
           {{$t('nav.storage')}}
-        </scroll-to>
+        </NuxtLink>
       </li>
       <li>
-        <scroll-to
-            to="pricing"
+        <NuxtLink
+            :to="`${localeRoute('/').fullPath}#pricing`"
             @click="$emit('hamburger:click')"
             class="menu-link">
           {{$t('nav.pricing')}}
-        </scroll-to>
+        </NuxtLink>
       </li>
       <li>
-        <scroll-to
-            to="security"
+        <NuxtLink
+            :to="`${localeRoute('/').fullPath}#security`"
             @click="$emit('hamburger:click')"
             class="menu-link">
           {{$t('nav.security')}}
-        </scroll-to>
+        </NuxtLink>
       </li>
       <li>
         <NuxtLink
