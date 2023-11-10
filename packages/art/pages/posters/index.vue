@@ -6,8 +6,6 @@
   <MasonryPosterGallery :posters="posters" slug="posters"/>
 </template>
 <script setup>
-
-definePageMeta({ layout: 'art' })
 const { getAllPosters } = useContentfulPosters()
 const posters = await getAllPosters()
 </script>

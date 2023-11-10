@@ -3,7 +3,7 @@
     <ul>
       <li class="pb-2">
         <Accordion>
-          <AccordionItem
+          <LazyAccordionItem
               v-if="siteNav?.surfArtCategories"
               :title="$t('nav.categories')"
               :is-open="true">
@@ -15,8 +15,8 @@
                 class="art-menu-link">
               {{ cat[locale] }}
             </NuxtLink>
-          </AccordionItem>
-          <AccordionItem
+          </LazyAccordionItem>
+          <LazyAccordionItem
               v-if="siteNav?.surfArtLocations"
               class="border-t"
               :title="$t('nav.locations')"
@@ -29,8 +29,8 @@
                 class="art-menu-link">
               {{ item[locale] }}
             </NuxtLink>
-          </AccordionItem>
-          <AccordionItem
+          </LazyAccordionItem>
+          <LazyAccordionItem
               v-if="siteNav?.surfArtArtists"
               class="border-t"
               :title="$t('nav.artists')"
@@ -43,7 +43,7 @@
                 class="art-menu-link">
               {{ name }}
             </NuxtLink>
-          </AccordionItem>
+          </LazyAccordionItem>
         </Accordion>
       </li>
       <li>

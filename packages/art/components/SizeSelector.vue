@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="text-sm mb-0.5">{{ $t('art.select-size') }}</p>
-    <div class="text-2 size-selector-grid flex flex-wrap gap-1 font-avenir">
+    <div class="text-2 size-selector-grid flex flex-wrap gap-0.5 md:gap-1 font-avenir">
       <div class="size-selector-item">
         <input type="radio" id="A5" value="A5" class="size-selector-input" @change="$emit('update:modelValue', 'A5')" :checked="modelValue==='A5'"/>
         <label for="A5" class="size-selector-label">A5 | 15x20 cm</label>

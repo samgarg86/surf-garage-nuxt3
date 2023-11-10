@@ -60,7 +60,6 @@
   </div>
 </template>
 <script setup>
-definePageMeta({ layout: 'art' })
 const { params: { id } } = useRoute()
 const { getPoster } = useContentfulPosters()
 const host = useHost()

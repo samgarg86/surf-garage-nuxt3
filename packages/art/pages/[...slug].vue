@@ -1,19 +1,18 @@
 <template>
-<!--  <pre>Slug: {{slug}}</pre>-->
-<!--  <pre>{{entries}}</pre>-->
   <MasonryImageGallery
       :title="pageTitle"
       :description="pageDesc"
       :show-title-desc="true"
       :images="pageImages"
       :slug="pageSlug"
+      class="mt-3"
   />
 </template>
 <script setup>
 const pageTitle = ref()
 const pageDesc = ref()
 const pageImages = ref([])
-definePageMeta({ layout: 'art' })
+
 const { params: { slug } } = useRoute()
 const { getArtGalleryPage } = useContentfulPhotos()
 const { fetchImagesByTags } = useImages()

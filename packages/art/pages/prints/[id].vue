@@ -64,8 +64,6 @@
   </div>
 </template>
 <script setup>
-definePageMeta({ layout: 'art' })
-
 const { public: { priceTable: { photos: pricing } } } = useRuntimeConfig()
 const { fetchImageById } = useImages()
 const localePath = useLocalePath()

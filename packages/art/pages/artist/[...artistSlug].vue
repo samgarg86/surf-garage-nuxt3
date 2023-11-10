@@ -1,17 +1,21 @@
 <template>
-  <ArtistBanner v-if="heroBanner" v-bind="heroBanner.fields" class="max-w-screen-md mx-auto"/>
-  <MasonryImageGallery
-    :title="title"
-    :description="description"
-    :show-title-desc="!heroBanner"
-    :images="images"
-    :slug="slug"
-  />
-  <MasonryPosterGallery :posters="posters" :slug="slug"/>
+  <div class="mt-3">
+    <LazyArtistBanner v-if="heroBanner" v-bind="heroBanner.fields" class="max-w-screen-md mx-auto"/>
+    <LazyMasonryImageGallery
+        v-if="images?.length"
+      :title="title"
+      :description="description"
+      :show-title-desc="!heroBanner"
+      :images="images"
+      :slug="slug"
+    />
+    <LazyMasonryPosterGallery
+        v-if="posters?.length"
+        :posters="posters" :slug="slug"/>
+  </div>
 </template>
 <script setup>
 
-definePageMeta({ layout: 'art' })
 const { params: { artistSlug } } = useRoute()
 const { getArtGalleryPage } = useContentfulPhotos()
 const { getPostersByTags } = useContentfulPosters()
