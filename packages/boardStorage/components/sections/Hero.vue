@@ -11,7 +11,9 @@
         }}
       </ScrollTo>
     </div>
-    <ScrollTo to="tiles" class="hero__arrow" v-html="arrowDown"/>
+    <ScrollTo to="tiles" class="hero__arrow">
+      <SvgoChevronDown class="text-white text-2xl"/>
+    </ScrollTo>
     <VolumeIcon
       class="absolute bottom-1 right-1 z-10 hidden md:block"
       @click="isMute = !isMute" :animate="!isMute"/>
@@ -31,7 +33,6 @@
   </section>
 </template>
 <script setup>
-import arrowDown from '@core/assets/icons/chevron-down.svg?raw'
 defineProps({
   title: String,
   subtitle: String,

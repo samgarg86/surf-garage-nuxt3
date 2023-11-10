@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="language-switcher py-1">
+    <div class="language-switcher flex gap-1">
       <NuxtLink
         :to="switchLocalePath('en')"
-        class="mr-1"
-        :class="theme === 'light' ? 'text-black' : 'text-white hover:text-amberYellow'">
+        :class="theme === 'light' ? 'text-black' : 'text-white hover:text-lightYellow'">
         {{showLanguageName ? 'English' : 'EN'}}
       </NuxtLink>
+      <span v-if="!showLanguageName" :class="theme === 'light' ? 'text-black' : 'text-white'">|</span>
       <NuxtLink
-        :class="theme === 'light' ? 'text-black' : 'text-white hover:text-amberYellow'"
+        :class="theme === 'light' ? 'text-black' : 'text-white hover:text-lightYellow'"
         :to="switchLocalePath('es')">
         {{showLanguageName ? 'Español' : 'ES'}}
       </NuxtLink>
@@ -28,7 +28,6 @@ const switchLocalePath = useSwitchLocalePath()
 .language-switcher {
   a.router-link-active {
     text-decoration: underline;
-    /*color: theme('colors.black');*/
   }
 }
 </style>

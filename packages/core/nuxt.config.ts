@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     css: ['@core/assets/css/tailwind.css'],
     modules: ['nuxt-svgo'],
     svgo: {
-        autoImportPath: '@core/assets/icons/'
+        autoImportPath: '@core/assets/icons/',
+        customComponent: 'SvgoIcon'
     },
     runtimeConfig: {
         instaAccessToken: process.env.instaAccessToken,

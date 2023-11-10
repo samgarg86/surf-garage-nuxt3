@@ -2,12 +2,14 @@
     <slot name="hamburger-icon">
       <HamburgerIcon class="left-1 top-2 md:left-2" @click="open"/>
     </slot>
-    <div class="hamburger-menu bg-black"
-         :class="{slide: isOpen}">
-      <button @click="close" class="text-white ml-2 mt-2">
-        <SvgoClose class="text-xl"/>
-      </button>
-      <div class="p-2">
+    <div class="hamburger-menu bg-black" :class="{slide: isOpen}">
+      <div class="flex justify-between items-center p-2">
+        <button @click="close" class="text-white">
+          <SvgoClose class="text-xl"/>
+        </button>
+        <LazyLanguageSwitcher :showLanguageName="false" theme="dark" class="text-1.8"/>
+      </div>
+      <div class="px-2">
         <slot/>
       </div>
     </div>
@@ -56,7 +58,7 @@ const close = () => {
   opacity: 0.6;
   z-index: 199;
 }
-.hamburger-menu.contact-links__link {
+/*.hamburger-menu.contact-links__link {
   @apply text-white hover:text-amberYellow;
 
   .accordion button {
@@ -65,7 +67,7 @@ const close = () => {
   .accordion {
     margin-right: 10px;
   }
-}
+}*/
 
 #page-wrap {
   transition: all 0.5s; /* for the animation */

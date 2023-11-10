@@ -13,7 +13,7 @@
       <div class="lg:hidden mb-1">
          <Gallery :images="images" :style="{gridArea: 'gallery-mobile'}"/>
       </div>
-      <h2 v-if="description" class="whitespace-pre-line mb-2 leading-relaxed text-2 md:text-base" :style="{gridArea: 'desc'}">{{description}}</h2>
+      <h2 v-if="description" class="whitespace-pre-line mb-2 leading-relaxed text-2" :style="{gridArea: 'desc'}">{{description}}</h2>
       <div class="text-1.8 font-avenir uppercase">
         <p v-if="type" class="mb-0.5"><span class="font-bold text-sm">{{$t('boards.typeLabel')}}:</span> {{$t(`boards.type.${type}`)}}</p>
         <p v-if="size" class="mb-0.5"><span class="font-bold text-sm">{{$t('boards.size')}}:</span> {{size}}</p>
@@ -25,16 +25,14 @@
         <ScrollTo to="contact" class="flex-1"><button class="add-to-cart">{{$t('boards.contact')}}</button></ScrollTo>
         <a :href="socialMedia.whatsapp"
            class="border-2 p-0.5"
-           v-html="whatsapp"
             target="_blank">
+          <SvgoWhatsapp filled class="text-2xl"/>
         </a>
       </div>
     </section>
   </div>
 </template>
 <script setup>
-import whatsapp from '@core/assets/icons/whatsapp.svg?raw'
-
 definePageMeta({ layout: 'surf-boards' })
 const { params } = useRoute()
 const { client } = useContentful()

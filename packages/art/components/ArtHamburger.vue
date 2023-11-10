@@ -55,7 +55,7 @@
 <!--        </NuxtLink>-->
 <!--      </li>-->
     </ul>
-    <LazyLanguageSwitcher :showLanguageName="true" theme="dark" class="text-1.8"/>
+
   </div>
 </template>
 
