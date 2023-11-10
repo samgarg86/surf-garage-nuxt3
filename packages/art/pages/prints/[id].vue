@@ -1,7 +1,7 @@
 <template>
   <Breadcrumbs class="h-[55px]"/>
   <div class="max-w-screen-lg mx-auto mb-3 md:mb-5 grid md:grid-cols-[60%_auto] gap-1 md:gap-8">
-    <section class="bg-softGrey mobile:-mx-1">
+    <section class="bg-grey-30 mobile:-mx-1">
       <div class="px-2 py-3 md:px-5 md:py-6">
         <img class="bg-white image-frame mx-auto border-[2rem] md:border-[3rem] border-white max-h-[70rem]" :src="`${url}?w=700`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
       </div>
@@ -10,7 +10,6 @@
     <section class="md:mr-2">
       <div class="md:mt-3 md:mb-1">
         <h1 class="text-2xl font-avenir">{{ title }}</h1>
-<!--        <pre>{{tags}}</pre>-->
 
         <p class="text-sm mb-1">
           <template v-if="tags.artist">
@@ -25,20 +24,16 @@
         <h2 v-if="description" class="text-2">{{description}}</h2>
       </div>
 
-      <ul class="tags list-none mb-2">
+      <ul class="tags list-none mb-1">
         <template v-for="tag in tags.page" :key="tag">
-          <li v-if="tag.name !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 bg-lightGrey">
+          <li v-if="tag.name !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 bg-grey-10">
             <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
           </li>
         </template>
       </ul>
 
-      <select v-model="size" class="select-size py-1 px-3.5 mb-1 text-2 block w-full md:w-30 font-avenir border-2 text-center">
-        <option value="A5" default>A5 (15x21 cm): €{{ pricing['A5'] }}</option>
-        <option value="A4">A4 (21x30 cm): €{{ pricing['A4'] }}</option>
-        <option value="A3">A3 (30x42 cm): €{{ pricing['A3'] }}</option>
-      </select>
-
+      <div class="text-xl mb-1 font-avenir font-bold">€{{pricing[size]}}</div>
+      <SizeSelector v-model="size" class="mb-2"/>
       <AddToCart
         :id="`${id}`"
         :price="basePrice"
@@ -51,14 +46,15 @@
       />
 
       <Accordion class="mt-3 md:mt-5">
-          <AccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black">
+          <AccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black" class="border-t">
               <p class="text-sm text-justify">{{$t('art.accordion.materials.descPhotos')}}</p>
           </AccordionItem>
-          <AccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black">
+          <AccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black" class="border-t">
               <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line1')}}</p>
-              <p class="text-sm text-justify">{{$t('art.accordion.shipping.line2')}}</p>
+              <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line2')}}</p>
+            <p class="text-sm text-justify font-bold">{{$t('art.accordion.shipping.free')}}</p>
           </AccordionItem>
-          <AccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black">
+          <AccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black" class="border-t">
               <p class="text-sm text-justify">
                   {{$t('art.accordion.contact.desc')}} <ScrollTo to="contact" class="underline">{{$t('art.accordion.contact.link')}}</ScrollTo>
               </p>
@@ -68,8 +64,6 @@
   </div>
 </template>
 <script setup>
-definePageMeta({ layout: 'art' })
-
 const { public: { priceTable: { photos: pricing } } } = useRuntimeConfig()
 const { fetchImageById } = useImages()
 const localePath = useLocalePath()

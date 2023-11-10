@@ -20,19 +20,16 @@
 
         <ul v-if="tags.page?.length" class="tags mb-1 text-right md:text-left">
           <template v-for="tag in tags.page" :key="tag">
-            <li v-if="tag !== 'Home'" class="inline-block text-1.8 px-1 leading-9 mr-1 last:mr-0 bg-lightGrey">
+            <li v-if="tag !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 last:mr-0 bg-grey-10">
               <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
             </li>
           </template>
         </ul>
         <h2 v-if="description" class="text-2">{{description}}</h2>
       </div>
+      <div class="text-xl mb-1 font-avenir font-bold">€{{pricing[size]}}</div>
+      <SizeSelector v-model="size" class="mb-2"/>
 
-      <select v-model="size" class="select-size py-1 px-3.5 mb-1 text-2 block w-full md:w-30 font-avenir border-2 text-center">
-        <option value="A5" default>A5 (15x21 cm): €{{ pricing['A5'] }}</option>
-        <option value="A4">A4 (21x30 cm): €{{ pricing['A4'] }}</option>
-        <option value="A3">A3 (30x42 cm): €{{ pricing['A3'] }}</option>
-      </select>
       <AddToCart
           :id="`${id}`"
           :price="basePrice"
@@ -45,14 +42,15 @@
           :ecomDisabled="ecomDisabled"
       />
       <Accordion class="mt-3 md:mt-5">
-        <AccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black">
+        <AccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black" class="border-t">
           <p class="text-sm text-justify">{{$t('art.accordion.materials.descPosters')}}</p>
         </AccordionItem>
-        <AccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black">
+        <AccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black" class="border-t">
           <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line1')}}</p>
-          <p class="text-sm text-justify">{{$t('art.accordion.shipping.line2')}}</p>
+          <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line2')}}</p>
+          <p class="text-sm text-justify font-bold">{{$t('art.accordion.shipping.free')}}</p>
         </AccordionItem>
-        <AccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black">
+        <AccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black" class="border-t">
           <p class="text-sm text-justify">
             {{$t('art.accordion.contact.desc')}} <ScrollTo to="contact" class="underline">{{$t('art.accordion.contact.link')}}</ScrollTo>
           </p>
@@ -62,8 +60,6 @@
   </div>
 </template>
 <script setup>
-
-definePageMeta({ layout: 'art' })
 const { params: { id } } = useRoute()
 const { getPoster } = useContentfulPosters()
 const host = useHost()

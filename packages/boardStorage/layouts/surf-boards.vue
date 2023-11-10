@@ -1,5 +1,12 @@
 <template>
-  <MenuHamburger black class="hamburger-menu-boards"/>
+  <Hamburger
+      :isOpen="isHamburgerOpen"
+      @hamburger:open="onHamburgerOpen"
+      @hamburger:close="onHamburgerClose"
+      invert
+  >
+    <MenuHamburger @hamburger:click="onHamburgerClose"/>
+  </Hamburger>
   <main id="page-wrap" class="mx-1 md:mx-2 mb-1 md:mb-2">
     <BoardsHeader/>
     <slot/>
@@ -30,6 +37,8 @@ useHead({
   meta: [...(i18nHead.value.meta || [])],
   link: [...(i18nHead.value.link || [])]
 })
+
+const { isHamburgerOpen, onHamburgerOpen, onHamburgerClose } = useHamburgerMenu()
 </script>
 
 <style lang="postcss">

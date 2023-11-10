@@ -3,6 +3,10 @@ export default defineNuxtConfig({
         '@core': __dirname
     },
     css: ['@core/assets/css/tailwind.css'],
+    modules: ['nuxt-svgo'],
+    svgo: {
+        autoImportPath: '@core/assets/icons/'
+    },
     runtimeConfig: {
         instaAccessToken: process.env.instaAccessToken,
         public: {

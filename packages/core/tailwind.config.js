@@ -13,9 +13,12 @@ module.exports = {
       waveBlue: '#1A304E',
       boardRed: '#6B1F15',
       white: '#fff',
-      grey: '#adadad',
-      softGrey: '#eee',
-      lightGrey: '#f1f1f1',
+      grey: {
+        10: '#f1f1f1',
+        20: '#d7d7d7',
+        30: '#eee',
+        100: '#adadad'
+      },
       blackSoft: '#444',
       black: '#09090e',
       pink: '#fff0f5',

@@ -1,16 +1,15 @@
 <template>
-  <!--    <pre>Artist: {{placeSlug[0]}}</pre>-->
   <MasonryImageGallery
       :title="pageTitle"
       :description="pageDesc"
       :show-title-desc="true"
       :images="placeImages"
       :slug="slug"
+      class="mt-3"
   />
 </template>
 <script setup>
 
-definePageMeta({ layout: 'art' })
 const { params: { placeSlug } } = useRoute()
 const { getArtGalleryPage } = useContentfulPhotos()
 const { fetchImagesByTags } = useImages()

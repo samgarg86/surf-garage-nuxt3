@@ -21,7 +21,6 @@
 </template>
 
 <script setup>
-import logo from '@core/assets/images/logo.svg?raw'
 const localeRoute = useLocaleRoute()
 </script>
 

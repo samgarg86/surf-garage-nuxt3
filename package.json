@@ -6,10 +6,14 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "concurrently  \"yarn dev:board\" \"yarn dev:art\"",
     "dev:art": "yarn workspace surf-garage-art dev",
     "dev:board": "yarn workspace surf-garage dev",
     "build:art": "yarn workspace surf-garage-art build",
     "build:board": "yarn workspace surf-garage build",
     "deploy": "sh deployToOcean.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

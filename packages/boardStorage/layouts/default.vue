@@ -1,13 +1,25 @@
 <template>
   <div>
-    <MenuHamburger/>
-    <main id="page-wrap" class="m-1 md:m-2 mb-1 md:mb-2">
+    <Hamburger
+        :isOpen="isHamburgerOpen"
+        @hamburger:open="onHamburgerOpen"
+        @hamburger:close="onHamburgerClose"
+        invert
+    >
+      <template #hamburger-icon>
+        <HamburgerIcon invert class="left-2 top-2.5 md:left-3 md:top-3" @click="onHamburgerOpen"/>
+      </template>
+      <MenuHamburger @hamburger:click="onHamburgerClose"/>
+    </Hamburger>
+
+    <main id="page-wrap" class="m-1 md:m-2 mb-1 md:mb-2" :class="{ 'slide': isHamburgerOpen }">
       <slot/>
       <Footer />
     </main>
   </div>
 </template>
 <script setup>
+const { isHamburgerOpen, onHamburgerOpen, onHamburgerClose } = useHamburgerMenu()
 useSeoMeta({
   title: 'Surf Garage Guardatablas LPA',
   description: 'Surf Garage - Un Club Premio Para Surfistas. Board Storage, GuardaTablas, Second Hand Boards, Surf Art, Surf Board Repairs',

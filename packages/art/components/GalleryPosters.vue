@@ -47,7 +47,7 @@ defineProps({
 
 .slide-first {
   @apply grid items-center justify-center;
-  @apply bg-softGrey p-2;
+  @apply bg-grey-30 p-2;
   img {
     @apply md:max-w-[57rem] md:h-auto;
   }

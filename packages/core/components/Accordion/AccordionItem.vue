@@ -41,22 +41,22 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="border-t">
-    <button class="py-0.5 w-full flex justify-between items-center leading-none font-bold hover:outline-0"
+  <section>
+    <button class="py-[0.7rem] w-full flex justify-between items-center leading-none font-bold hover:outline-0"
             :class="{
-              titleClass,
+              titleClass: !!titleClass,
               'text-lightYellow': !titleClass
             }"
             @click.prevent="toggleSection()"
             :aria-expanded="isExpanded">
       <span class="font-avenir text-sm uppercase">{{ title }}</span>
-      <span class="font-avenir text-xl leading-none">
+      <span class="font-avenir leading-none">
         {{ isExpanded ? '-' : '+'}}
       </span>
     </button>
 
     <Transition name="expand" @after-enter="onAfterEnter" @enter="onEnter" @leave="onLeave">
-      <div class="accordion-item__content pb-1" v-show="isExpanded" :aria-hidden="!isExpanded">
+      <div class="accordion-item__content py-1" v-show="isExpanded" :aria-hidden="!isExpanded">
         <slot />
       </div>
     </Transition>
