@@ -1,5 +1,5 @@
 <template>
-  <header class="font-metalsmith fixed left-0 top-0 w-full text-center py-1.5 border-b border-lightGrey2 bg-white">
+  <header class="font-metalsmith fixed left-0 top-0 w-full text-center py-1.5 border-b border-grey-20 bg-white">
     <NuxtLink :to="localeRoute('/')">surf garage art co.</NuxtLink>
     <button class="snipcart-checkout absolute right-1 md:right-2 top-1.5 flex items-center">
       <div v-html="cart" class="w-2 h-2"/>

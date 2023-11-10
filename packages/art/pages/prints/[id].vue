@@ -1,7 +1,7 @@
 <template>
   <Breadcrumbs class="h-[55px]"/>
   <div class="max-w-screen-lg mx-auto mb-3 md:mb-5 grid md:grid-cols-[60%_auto] gap-1 md:gap-8">
-    <section class="bg-softGrey mobile:-mx-1">
+    <section class="bg-grey-30 mobile:-mx-1">
       <div class="px-2 py-3 md:px-5 md:py-6">
         <img class="bg-white image-frame mx-auto border-[2rem] md:border-[3rem] border-white max-h-[70rem]" :src="`${url}?w=700`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
       </div>
@@ -26,7 +26,7 @@
 
       <ul class="tags list-none mb-1">
         <template v-for="tag in tags.page" :key="tag">
-          <li v-if="tag.name !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 bg-lightGrey">
+          <li v-if="tag.name !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 bg-grey-10">
             <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
           </li>
         </template>

@@ -26,11 +26,11 @@ defineEmits(['update:modelValue'])
 </script>
 <style lang="postcss">
 .size-selector-label {
-  @apply border-[1.5px] p-1 py-0.5 block text-1.8 border-lightGrey2 text-center;
+  @apply border-[1.5px] p-1 py-0.5 block text-1.8 border-grey-20 text-blackSoft text-center;
 }
 
 input:checked+.size-selector-label {
-  @apply border-black;
+  @apply border-black text-black;
 }
 
 .size-selector-item {
