@@ -8,7 +8,7 @@
         <ScrollTo to="pricing" class="text-white">{{ $t("nav.pricing") }}</ScrollTo>
       </li>
       <li class="site-logo m-1 w-25 mx-auto">
-        <img src="/logo.png" alt="Surf Garage" data-not-lazy/>
+        <img src="/logo.png" alt="Surf Garage"/>
       </li>
       <li class="p-1 hidden md:block text-center">
         <NuxtLink to="https://surfgarage.art" class="text-white">Surf Art</NuxtLink>

@@ -3,7 +3,12 @@
   <div class="max-w-screen-lg mx-auto mb-3 md:mb-5 grid md:grid-cols-[60%_auto] gap-1 md:gap-8">
     <section class="bg-grey-30 mobile:-mx-1">
       <div class="px-2 py-3 md:px-5 md:py-6">
-        <img class="bg-white image-frame mx-auto border-[2rem] md:border-[3rem] border-white max-h-[70rem]" :src="`${url}?w=700`" :alt="`Surf Garage - ${title}`" data-not-lazy/>
+        <Image
+          :src="`${url}?w=700`"
+          :alt="`Surf Garage - ${title}`"
+          class="bg-white image-frame mx-auto border-[2rem] md:border-[3rem] border-white max-h-[70rem]"
+          fetch-priority="high"
+        />
       </div>
     </section>
 

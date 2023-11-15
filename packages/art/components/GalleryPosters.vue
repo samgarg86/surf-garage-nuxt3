@@ -16,12 +16,12 @@
         :key="img.id"
         :class="{'slide-first': i === 0}"
     >
-      <img
-        :class="{'image-frame': i === 0}"
-        class="w-full h-full object-contain object-top"
+      <Image
         :src="`${img.url}?w=${600}`"
         :alt="img.title"
-        data-not-lazy/>
+        :class="{'image-frame': i === 0}"
+        class="w-full h-full object-contain object-top"
+      />
     </SplideSlide>
   </Splide>
 </template>

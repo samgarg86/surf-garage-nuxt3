@@ -5,7 +5,7 @@
           v-for="{id, url} in images"
           :key="id"
           :src="`${url}?w=600`"
-          data-not-lazy/>
+          />
     </section>
     <section>
       <h1 class="text-base md:text-2xl mb-0.5 lg:mb-1 font-avenir font-bold upper">{{ title }}</h1>

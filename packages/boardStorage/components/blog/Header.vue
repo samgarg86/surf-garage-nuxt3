@@ -4,7 +4,7 @@
       <NuxtLink
           class="block text-center"
           :to="localeRoute('/')">
-        <img src="/logo.png" class="w-15 mx-auto" alt="Surf Garage - Second Hand Boards" data-not-lazy/>
+        <img src="/logo.png" class="w-15 mx-auto" alt="Surf Garage - Second Hand Boards" />
       </NuxtLink>
   </header>
 </template>
