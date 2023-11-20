@@ -3,8 +3,8 @@
     <template v-for="(item, i) in contentMap" :key="i">
       <BlogRichTextParagraph v-if="item.type == 'text'" class="mb-2 lg:mb-4 text-justify" :content="item.content"/>
       <BlogRichTextHeading v-if="item.type === 'heading'" class="mb-2" :format="item.format" :text="item.content"/>
-      <img v-if="item.type == 'image'" class="mb-2 lg:mb-4 mx-auto" :src="`${item.content}?w=600`" data-not-lazy/>
-      <video v-if="item.type == 'video'" class="mb-2 lg:mb-4 w-full max-w-[60rem] mx-auto" controls data-not-lazy>
+      <img v-if="item.type == 'image'" class="mb-2 lg:mb-4 mx-auto" :src="`${item.content}?w=600`" />
+      <video v-if="item.type == 'video'" class="mb-2 lg:mb-4 w-full max-w-[60rem] mx-auto" controls >
          <source :src="item.content" :type="item.format" />
       </video>
       <Gallery v-if="item.type == 'gallery'" class="mb-2 lg:mb-4" :images="mapImages(item.content)" :width="600" fillHeight/>

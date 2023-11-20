@@ -5,7 +5,7 @@
 <!--           ref="videoPlayer">-->
 <!--      <source :src="src" type="video/mp4">-->
 <!--    </video>-->
-    <img :src="src" class="object-cover w-full h-full" data-not-lazy/>
+    <img :src="src" class="object-cover w-full h-full" />
     <div class="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center">
       <svg
         class="w-4 h-4 fill-white"

@@ -5,7 +5,11 @@
         <h1 class="font-avenir text-3xl mb-2">{{name}}</h1>
         <p class="whitespace-pre-wrap text-2">{{description}}</p>
       </div>
-      <img :src="imageUrl" :alt="`Artist: ${name}`" data-not-lazy>
+      <Image
+        :src="imageUrl"
+        :alt="`Artist: ${name}`"
+        fetch-priority="high"
+      />
     </div>
   </div>
   <p class="font-bold text-center font-avenir mt-3 mb-2 pb-1 border-b ">{{`${name}'s ${$t('art.artwork')}`}}</p>

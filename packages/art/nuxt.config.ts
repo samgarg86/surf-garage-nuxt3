@@ -1,17 +1,16 @@
 export default defineNuxtConfig({
-  extends: [
-    '../core'
+  extends: ["../core"],
+  modules: [
+    "@nuxtjs/i18n",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/robots",
+    "nuxt-simple-sitemap",
   ],
-  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", 'nuxt-lazy-load', '@nuxtjs/robots', 'nuxt-simple-sitemap'],
   site: {
-    url: 'https://surfgarage.art'
+    url: "https://surfgarage.art",
   },
   sitemap: {
-    inferStaticPagesAsRoutes: false
-  },
-  lazyLoad: {
-    directiveOnly: true,
-    defaultImage: '/placeholder.jpg'
+    inferStaticPagesAsRoutes: false,
   },
   runtimeConfig: {
     public: {
@@ -22,49 +21,49 @@ export default defineNuxtConfig({
       enableCommerce: process.env.enableCommerce || true,
       priceTable: {
         photos: {
-          'A5': 8,
-          'A4': 15,
-          'A3': 20
+          A5: 8,
+          A4: 15,
+          A3: 20,
         },
         posters: {
-          'A5': 10,
-          'A4': 20,
-          'A3': 30
-        }
-      }
+          A5: 10,
+          A4: 20,
+          A3: 30,
+        },
+      },
     },
   },
   i18n: {
     langDir: "../../locales",
     strategy: "prefix_except_default",
-    defaultLocale: 'es',
+    defaultLocale: "es",
     locales: [
       {
-        code: 'es',
-        iso: 'es',
-        file: 'es.json'
+        code: "es",
+        iso: "es",
+        file: "es.json",
       },
       {
-        code: 'en',
-        iso: 'en',
-        file: 'en.json'
-      }
+        code: "en",
+        iso: "en",
+        file: "en.json",
+      },
     ],
     detectBrowserLanguage: {
       useCookie: true,
-      alwaysRedirect: true
+      alwaysRedirect: true,
     },
     lazy: true,
-    types: 'composition',
+    types: "composition",
     skipSettingLocaleOnNavigate: false,
-    baseUrl: 'https://surfgarage.art'
+    baseUrl: "https://surfgarage.art",
   },
   postcss: {
-    parser: require('postcss-comment'),
+    parser: require("postcss-comment"),
     plugins: {
       "postcss-simple-vars": {},
-      'postcss-import': {},
-      'postcss-nested': {},
+      "postcss-import": {},
+      "postcss-nested": {},
     },
-  }
-})
+  },
+});

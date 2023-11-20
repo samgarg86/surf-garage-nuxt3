@@ -21,7 +21,7 @@
             v-else
             class="mb-1 w-15 h-15 object-cover"
             :src="post.media_url"
-            data-not-lazy/>
+            />
         </NuxtLink>
       </template>
     </div>
