@@ -10,19 +10,50 @@
       <section :style="{gridArea: 'form'}">
         <LazyFooterContactForm class="text-sm font-avenir"/>
       </section>
+
+      <Accordion class="footer__accordion">
+        <LazyAccordionItem
+          v-if="siteNav?.surfArtCategories"
+          class="footer__accordion-item"
+          :title="$t('nav.categories')"
+          :is-open="true">
+          <LazyFooterNav
+            class="footer__nav2"
+            to="/" :nav="siteNav?.surfArtCategories || {}"/>
+        </LazyAccordionItem>
+        <LazyAccordionItem
+          v-if="siteNav?.surfArtLocations"
+          class="footer__accordion-item"
+          :title="$t('nav.locations')"
+          :is-open="false">
+          <LazyFooterNav
+            class="footer__nav2"
+            to="/" :nav="siteNav?.surfArtLocations || {}"/>
+        </LazyAccordionItem>
+        <LazyAccordionItem
+          v-if="siteNav?.surfArtArtists"
+          class="footer__accordion-item"
+          :title="$t('nav.artists')"
+          :is-open="false">
+          <LazyFooterNav
+            class="footer__nav2"
+            to="/" :nav="siteNav?.surfArtArtists || {}"/>
+        </LazyAccordionItem>
+      </Accordion>
+
       <LazyFooterNav
           :style="{gridArea: 'categories'}"
-          class="footer__nav2 text-sm"
+          class="footer__nav2 footer__desktop-nav"
           :title="$t('nav.categories')" to="/" :nav="siteNav?.surfArtCategories || {}"/>
       <LazyFooterNav
           :style="{gridArea: 'locations'}"
-          class="footer__nav2 mb-2 text-sm"
+          class="footer__nav2 footer__desktop-nav mb-2"
           :title="$t('nav.locations')" to="/" :nav="siteNav?.surfArtLocations || {}"/>
       <LazyFooterNav
           :style="{gridArea: 'artists'}"
-          class="footer__nav2 text-sm"
+          class="footer__nav2 footer__desktop-nav"
           :title="$t('nav.artists')" to="/" :nav="siteNav?.surfArtArtists || {}"/>
-<!--        <NuxtLink :to="localeRoute('/about')" class="uppercase text-sm font-bold">{{ $t('nav.about') }}</NuxtLink>-->
+       <!-- <NuxtLink :to="localeRoute('/about')" class="uppercase text-sm font-bold">{{ $t('nav.about') }}</NuxtLink> -->
     </div>
     <section :style="{gridArea: 'copyright'}" class="text-center text-sm pb-1">Copyright © 2023 Surf Garage Art Co. All Rights Reserved.</section>
   </section>
@@ -66,6 +97,26 @@ const { siteNav } = useSiteNav()
       grid-template-columns: 1fr 1fr 1fr 1.5fr 3fr;
       grid-template-areas: "categories locations artists contact form";
     }
+  }
+
+  &__accordion {
+    @apply text-left border-0 md:hidden;
+
+    .accordion-item__title {
+      @apply text-black;
+    }
+  }
+
+  &__accordion-item {
+    @apply mb-1;
+  }
+
+  &__desktop-nav {
+    @apply mobile:hidden;
+  }
+
+  &__nav2 {
+    @apply text-sm;
   }
 }
 </style>
