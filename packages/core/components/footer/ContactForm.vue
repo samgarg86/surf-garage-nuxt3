@@ -42,11 +42,11 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
         style="grid-area: email"
     />
     <textarea
-        class="contact-form__textarea"
-        :placeholder="$t('contact.form.message')"
-        name="message"
-        style="grid-area: message">
-    </textarea>
+      class="contact-form__textarea"
+      :placeholder="$t('contact.form.message')"
+      name="message"
+      style="grid-area: message"
+    />
     <div class="contact-form__send" style="grid-area: send">
       <button type="submit" class="contact-form__btn-send">
         {{ $t("contact.form.send") }}
