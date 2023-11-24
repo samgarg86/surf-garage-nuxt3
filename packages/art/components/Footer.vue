@@ -11,47 +11,47 @@
         <LazyFooterContactForm class="text-sm font-avenir"/>
       </section>
 
-      <Accordion class="footer__accordion">
+      <Accordion class="footer__accordion text-left border-none md:hidden">
         <LazyAccordionItem
           v-if="siteNav?.surfArtCategories"
-          class="footer__accordion-item"
+          class="mb-1"
           :title="$t('nav.categories')"
           :is-open="true">
           <LazyFooterNav
-            class="footer__nav2"
+            class="text-sm"
             to="/" :nav="siteNav?.surfArtCategories || {}"/>
         </LazyAccordionItem>
         <LazyAccordionItem
           v-if="siteNav?.surfArtLocations"
-          class="footer__accordion-item"
+          class="mb-1"
           :title="$t('nav.locations')"
           :is-open="false">
           <LazyFooterNav
-            class="footer__nav2"
+            class="text-sm"
             to="/" :nav="siteNav?.surfArtLocations || {}"/>
         </LazyAccordionItem>
         <LazyAccordionItem
           v-if="siteNav?.surfArtArtists"
-          class="footer__accordion-item"
+          class="mb-1"
           :title="$t('nav.artists')"
           :is-open="false">
           <LazyFooterNav
-            class="footer__nav2"
+            class="text-sm"
             to="/" :nav="siteNav?.surfArtArtists || {}"/>
         </LazyAccordionItem>
       </Accordion>
 
       <LazyFooterNav
           :style="{gridArea: 'categories'}"
-          class="footer__nav2 footer__desktop-nav"
+          class="text-sm mobile:hidden"
           :title="$t('nav.categories')" to="/" :nav="siteNav?.surfArtCategories || {}"/>
       <LazyFooterNav
           :style="{gridArea: 'locations'}"
-          class="footer__nav2 footer__desktop-nav mb-2"
+          class="text-sm mobile:hidden mb-2"
           :title="$t('nav.locations')" to="/" :nav="siteNav?.surfArtLocations || {}"/>
       <LazyFooterNav
           :style="{gridArea: 'artists'}"
-          class="footer__nav2 footer__desktop-nav"
+          class="text-sm mobile:hidden"
           :title="$t('nav.artists')" to="/" :nav="siteNav?.surfArtArtists || {}"/>
        <!-- <NuxtLink :to="localeRoute('/about')" class="uppercase text-sm font-bold">{{ $t('nav.about') }}</NuxtLink> -->
     </div>
@@ -99,24 +99,8 @@ const { siteNav } = useSiteNav()
     }
   }
 
-  &__accordion {
-    @apply text-left border-0 md:hidden;
-
-    .accordion-item__title {
-      @apply text-black;
-    }
-  }
-
-  &__accordion-item {
-    @apply mb-1;
-  }
-
-  &__desktop-nav {
-    @apply mobile:hidden;
-  }
-
-  &__nav2 {
-    @apply text-sm;
+  &__accordion .accordion-item__title {
+    @apply text-black;
   }
 }
 </style>
