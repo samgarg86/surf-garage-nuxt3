@@ -13,7 +13,7 @@
           :src="`${img.url}?w=${width || 600}`"
           alt="Gallery Image"
           :class="{'h-full object-cover' : fillHeight }"
-          data-not-lazy/>
+          />
     </swiper-slide>
   </swiper>
 </template>
