@@ -11,10 +11,10 @@
         <LazyFooterContactForm class="text-sm font-avenir"/>
       </section>
 
-      <Accordion class="footer__accordion text-left border-none md:hidden">
+      <Accordion class="footer__accordion md:hidden">
         <LazyAccordionItem
           v-if="siteNav?.surfArtCategories"
-          class="mb-1"
+          class="border-t"
           :title="$t('nav.categories')"
           :is-open="true">
           <LazyFooterNav
@@ -23,7 +23,7 @@
         </LazyAccordionItem>
         <LazyAccordionItem
           v-if="siteNav?.surfArtLocations"
-          class="mb-1"
+          class="border-t"
           :title="$t('nav.locations')"
           :is-open="false">
           <LazyFooterNav
@@ -32,7 +32,7 @@
         </LazyAccordionItem>
         <LazyAccordionItem
           v-if="siteNav?.surfArtArtists"
-          class="mb-1"
+          class="border-t"
           :title="$t('nav.artists')"
           :is-open="false">
           <LazyFooterNav
@@ -97,6 +97,10 @@ const { siteNav } = useSiteNav()
       grid-template-columns: 1fr 1fr 1fr 1.5fr 3fr;
       grid-template-areas: "categories locations artists contact form";
     }
+  }
+
+  &__accordion .accordion-item__text {
+    @apply mx-auto;
   }
 
   &__accordion .accordion-item__title {
