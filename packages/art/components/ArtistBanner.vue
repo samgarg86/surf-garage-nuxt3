@@ -6,7 +6,7 @@
         <p class="whitespace-pre-wrap text-2">{{description}}</p>
       </div>
       <Image
-        :src="imageUrl"
+        :src="`${imageUrl}?fm=webp`"
         :alt="`Artist: ${name}`"
         fetch-priority="high"
       />

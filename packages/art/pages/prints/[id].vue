@@ -4,7 +4,7 @@
     <section class="bg-grey-30 mobile:-mx-1">
       <div class="px-2 py-3 md:px-5 md:py-6">
         <Image
-          :src="`${url}?w=700`"
+          :src="`${url}?w=700&fm=webp`"
           :alt="`Surf Garage - ${title}`"
           class="bg-white image-frame mx-auto border-[2rem] md:border-[3rem] border-white max-h-[70rem]"
           fetch-priority="high"
