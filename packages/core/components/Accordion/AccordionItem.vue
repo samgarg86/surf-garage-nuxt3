@@ -42,15 +42,12 @@ onMounted(() => {
 
 <template>
   <section>
-    <button class="py-[0.7rem] w-full flex justify-between items-center leading-none font-bold hover:outline-0"
-            :class="{
-              titleClass: !!titleClass,
-              'text-lightYellow': !titleClass
-            }"
+    <button class="accordion-item__title py-[0.7rem] w-full flex justify-between items-center leading-none font-bold hover:outline-0"
+            :class="titleClass"
             @click.prevent="toggleSection()"
             :aria-expanded="isExpanded">
-      <span class="font-avenir text-sm uppercase">{{ title }}</span>
-      <span class="font-avenir leading-none">
+      <span class="text-sm uppercase accordion-item__text">{{ title }}</span>
+      <span class="leading-none">
         {{ isExpanded ? '-' : '+'}}
       </span>
     </button>

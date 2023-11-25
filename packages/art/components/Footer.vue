@@ -1,28 +1,53 @@
 <template>
   <section id="contact" class="footer mb-2">
-    <div class="footer__content text-center md:text-left px-2 py-5 lg:py-10 lg:px-6">
-      <section :style="{gridArea: 'contact'}">
-        <p class="text-sm font-bold uppercase mb-1">{{$t('nav.contact')}}</p>
-        <LazyContactLinks
-            class="md:p-0 text-sm"
-            theme="light"/>
-      </section>
+    <div class="footer__content md:text-left px-2 py-5 lg:py-10 lg:px-6">
       <section :style="{gridArea: 'form'}">
+        <p class="text-sm font-bold uppercase mb-2">{{$t('nav.contact')}}</p>
         <LazyFooterContactForm class="text-sm font-avenir"/>
       </section>
+
+      <Accordion class="footer__accordion md:hidden">
+        <LazyAccordionItem
+          v-if="siteNav?.surfArtCategories"
+          :title="$t('nav.categories')"
+          :is-open="true">
+          <LazyFooterNav
+            class="text-sm"
+            to="/" :nav="siteNav?.surfArtCategories || {}"/>
+        </LazyAccordionItem>
+        <LazyAccordionItem
+          v-if="siteNav?.surfArtLocations"
+          class="border-t"
+          :title="$t('nav.locations')"
+          :is-open="false">
+          <LazyFooterNav
+            class="text-sm"
+            to="/" :nav="siteNav?.surfArtLocations || {}"/>
+        </LazyAccordionItem>
+        <LazyAccordionItem
+          v-if="siteNav?.surfArtArtists"
+          class="border-t"
+          :title="$t('nav.artists')"
+          :is-open="false">
+          <LazyFooterNav
+            class="text-sm"
+            to="/" :nav="siteNav?.surfArtArtists || {}"/>
+        </LazyAccordionItem>
+      </Accordion>
+
       <LazyFooterNav
           :style="{gridArea: 'categories'}"
-          class="footer__nav2 text-sm"
+          class="text-sm mobile:hidden"
           :title="$t('nav.categories')" to="/" :nav="siteNav?.surfArtCategories || {}"/>
       <LazyFooterNav
           :style="{gridArea: 'locations'}"
-          class="footer__nav2 mb-2 text-sm"
+          class="text-sm mobile:hidden mb-2"
           :title="$t('nav.locations')" to="/" :nav="siteNav?.surfArtLocations || {}"/>
       <LazyFooterNav
           :style="{gridArea: 'artists'}"
-          class="footer__nav2 text-sm"
+          class="text-sm mobile:hidden"
           :title="$t('nav.artists')" to="/" :nav="siteNav?.surfArtArtists || {}"/>
-<!--        <NuxtLink :to="localeRoute('/about')" class="uppercase text-sm font-bold">{{ $t('nav.about') }}</NuxtLink>-->
+       <!-- <NuxtLink :to="localeRoute('/about')" class="uppercase text-sm font-bold">{{ $t('nav.about') }}</NuxtLink> -->
     </div>
     <section :style="{gridArea: 'copyright'}" class="text-center text-sm pb-1">Copyright © 2023 Surf Garage Art Co. All Rights Reserved.</section>
   </section>
@@ -50,21 +75,20 @@ const { siteNav } = useSiteNav()
       "categories"
       "locations"
       "artists"
-      "form"
-      "contact";
+      "form";
 
    @media screen(md) {
       grid-gap: 3rem;
-     grid-template-columns: 1fr 1.2fr 1fr 2fr;
+     grid-template-columns: 1fr 1.2fr 2fr;
       grid-template-areas:
-          "categories locations contact form"
-          "categories artists contact form";
+          "categories locations form"
+          "categories artists form";
     }
 
     @media screen(lg) {
       grid-gap: 3rem;
-      grid-template-columns: 1fr 1fr 1fr 1.5fr 3fr;
-      grid-template-areas: "categories locations artists contact form";
+      grid-template-columns: 1fr 1fr 1fr 2fr;
+      grid-template-areas: "categories locations artists form";
     }
   }
 }
