@@ -5,6 +5,7 @@
         <Accordion>
           <LazyAccordionItem
               v-if="siteNav?.surfArtCategories"
+              title-class="text-lightYellow font-avenir"
               :title="$t('nav.categories')"
               :is-open="true">
             <NuxtLink
@@ -19,6 +20,7 @@
           <LazyAccordionItem
               v-if="siteNav?.surfArtLocations"
               class="border-t"
+              title-class="text-lightYellow font-avenir"
               :title="$t('nav.locations')"
               :is-open="false">
             <NuxtLink
@@ -33,6 +35,7 @@
           <LazyAccordionItem
               v-if="siteNav?.surfArtArtists"
               class="border-t"
+              title-class="text-lightYellow font-avenir"
               :title="$t('nav.artists')"
               :is-open="false">
             <NuxtLink
