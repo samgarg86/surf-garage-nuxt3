@@ -4,7 +4,7 @@
       <img
           v-for="{id, url} in images"
           :key="id"
-          :src="`${url}?w=600`"
+          :src="`${url}?w=600&fm=webp`"
           />
     </section>
     <section>

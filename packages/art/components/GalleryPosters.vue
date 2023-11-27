@@ -17,7 +17,7 @@
         :class="{'slide-first': i === 0}"
     >
       <Image
-        :src="`${img.url}?w=${600}`"
+        :src="`${img.url}?w=${600}&fm=webp`"
         :alt="img.title"
         :class="{'image-frame': i === 0}"
         class="w-full h-full object-contain object-top"
