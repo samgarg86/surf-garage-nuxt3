@@ -22,10 +22,10 @@
   "contact": {
     "title": "Contacto",
     "form": {
-      "name": "Nombre",
+      "name": "Nombre*",
       "email": "Email",
       "phone": "Telefono",
-      "message": "Mensaje",
+      "message": "Mensaje*",
       "send": "Enviar"
     }
   },

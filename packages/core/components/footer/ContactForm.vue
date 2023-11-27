@@ -26,6 +26,7 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
         class="contact-form__input"
         :placeholder="$t('contact.form.name')"
         name="name"
+        required
         style="grid-area: name"
     />
     <input
@@ -45,6 +46,7 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
       class="contact-form__textarea"
       :placeholder="$t('contact.form.message')"
       name="message"
+      required
       style="grid-area: message"
     />
     <div class="contact-form__send" style="grid-area: send">
