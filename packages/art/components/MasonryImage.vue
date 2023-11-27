@@ -5,7 +5,7 @@
       class="mb-1 md:mb-2 px-2 md:px-3 py-3 bg-grey-30 flex items-center flex-1 -mx-1 sm:mx-0"
     >
       <Image
-        :src="`${url}?w=600`"
+        :src="`${url}?w=600&fm=webp`"
         :alt="`Surf Garage Art Co - ${title}`"
         class="min-h-[20rem] w-full bg-white image-frame border-[2rem] border-white"
         :fetch-priority="fetchPriority"

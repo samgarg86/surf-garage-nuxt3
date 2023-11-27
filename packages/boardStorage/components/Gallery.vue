@@ -10,7 +10,7 @@
         v-for="img in images"
         :key="img.id">
       <img
-          :src="`${img.url}?w=${width || 600}`"
+          :src="`${img.url}?w=${width || 600}&fm=webp`"
           alt="Gallery Image"
           :class="{'h-full object-cover' : fillHeight }"
           />
