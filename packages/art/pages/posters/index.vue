@@ -1,11 +1,11 @@
 <template>
 <!--<pre>{{posters}}</pre>-->
-  <div class="mb-2">
-    <h1 class="text-2xl font-avenir mb-1">Posters</h1>
-  </div>
+  <CategoryBanner title="Posters" />
   <MasonryPosterGallery :posters="posters" slug="posters"/>
 </template>
 <script setup>
+import CategoryBanner from '~/components/CategoryBanner.vue'
+
 const { getAllPosters } = useContentfulPosters()
 const posters = await getAllPosters()
 </script>

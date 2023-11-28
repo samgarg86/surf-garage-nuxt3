@@ -2,7 +2,7 @@
   <div class="mb-2">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 lg:py-2 max-w-screen-md mx-auto">
       <div>
-        <h1 class="font-avenir text-3xl mb-2">{{name}}</h1>
+        <h1 class="font-avenir text-[6rem] mb-2 leading-[8rem] overflow-hidden overflow-ellipsis">{{name}}</h1>
         <p class="whitespace-pre-wrap text-2">{{description}}</p>
       </div>
       <Image

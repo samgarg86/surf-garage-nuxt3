@@ -1,12 +1,6 @@
 <template>
-  <MasonryImageGallery
-      :title="pageTitle"
-      :description="pageDesc"
-      :show-title-desc="true"
-      :images="placeImages"
-      :slug="slug"
-      class="mt-3"
-  />
+  <CategoryBanner :title="pageTitle" :description="pageDesc" />
+  <MasonryImageGallery :images="placeImages" :slug="slug"/>
 </template>
 <script setup>
 

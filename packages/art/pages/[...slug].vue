@@ -1,12 +1,6 @@
 <template>
-  <MasonryImageGallery
-      :title="pageTitle"
-      :description="pageDesc"
-      :show-title-desc="true"
-      :images="pageImages"
-      :slug="pageSlug"
-      class="mt-3"
-  />
+  <CategoryBanner :title="pageTitle" :description="pageDesc" />
+  <MasonryImageGallery :images="pageImages" :slug="pageSlug"/>
 </template>
 <script setup>
 const pageTitle = ref()
