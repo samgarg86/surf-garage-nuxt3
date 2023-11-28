@@ -3,7 +3,7 @@
     <NuxtLink :to="localeRoute('/')" class="font-avenir font-bold text-xl">surf garage art co.</NuxtLink>
     <button class="snipcart-checkout absolute right-1 md:right-2 top-1.5 flex items-center">
       <SvgoCart class="w-2 h-2"/>
-      <div class="snipcart-items-count font-myriad text-1.8 text-black"/>
+      <div class="snipcart-items-count text-1.8 text-black"/>
     </button>
   </header>
 </template>

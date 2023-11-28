@@ -12,7 +12,7 @@ defineProps({
 </script>
 <style lang="postcss">
 .menu-bar {
-  @apply w-3 h-[3px] md:w-3.5 md:h-[3.5px] block bg-black;
+  @apply w-3 h-[3px] md:w-[3.2rem] md:h-[3.5px] block bg-black;
 }
 
 .color-invert .menu-bar {
