@@ -1,8 +1,8 @@
 <template>
   <div>
     <template v-for="(item, i) in contentMap" :key="i">
-      <BlogRichTextParagraph v-if="item.type == 'text'" class="mb-2 lg:mb-4 text-justify" :content="item.content"/>
       <BlogRichTextHeading v-if="item.type === 'heading'" class="mb-2" :format="item.format" :text="item.content"/>
+      <BlogRichTextParagraph v-if="item.type == 'text'" class="mb-2 lg:mb-4 text-justify" :content="item.content"/>
       <img v-if="item.type == 'image'" class="mb-2 lg:mb-4 mx-auto" :src="`${item.content}?w=600&fm=webp`" />
       <video v-if="item.type == 'video'" class="mb-2 lg:mb-4 w-full max-w-[60rem] mx-auto" controls >
          <source :src="item.content" :type="item.format" />

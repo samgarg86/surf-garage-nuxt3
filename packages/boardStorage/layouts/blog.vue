@@ -7,7 +7,7 @@
   >
     <MenuHamburger @hamburger:click="onHamburgerClose"/>
   </Hamburger>
-  <main id="page-wrap" class="mx-1 md:mx-2 mb-1 md:mb-2">
+  <main id="page-wrap" class="mb-1 md:mb-2">
     <BlogHeader/>
     <slot/>
     <Footer/>

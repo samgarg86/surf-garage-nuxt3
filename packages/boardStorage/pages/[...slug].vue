@@ -1,7 +1,15 @@
 <template>
-  <div class="max-w-[90rem] mx-auto">
-  <h1 class="font-avenir text-3xl font-bold mb-2">{{title}}</h1>
-  <BlogRichText v-bind="text" />
+  <div class="py-5 md:py-10 bg-grey-30 px-1 md:px-2 blog-banner"
+       :class="{'text-white bg-image': !!bannerImage?.fields.file.url}"
+       :style="{'--bg-img': `url(${bannerImage?.fields.file.url})`}">
+
+    <div class="max-w-[70rem] mx-auto">
+      <h1 class="text-4xl md:text-[6rem] text-center mx-auto leading-none">{{title}}</h1>
+      <h2 v-if="description" class="font-avenir text-center text-2 md:text-base mt-2">{{description}}</h2>
+    </div>
+  </div>
+  <div class="max-w-[80rem] mx-auto mt-5 text-center px-1 md:px-2">
+    <BlogRichText v-bind="text" />
   </div>
 <!--  <pre>{{entries.items[0]}}</pre>-->
 </template>
@@ -18,5 +26,14 @@ const entries = await client.getEntries({
   locale: locale.value,
   'fields.slug[match]': slug
 })
-const { title, text } = entries?.items?.[0]?.fields || {}
+const { title, description, text, bannerImage } = entries?.items?.[0]?.fields || {}
 </script>
+<style lang="postcss">
+.blog-banner.bg-image {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+  ), var(--bg-img) no-repeat center center;
+  background-size: cover;
+}
+</style>
