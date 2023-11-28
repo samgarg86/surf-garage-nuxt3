@@ -1,22 +1,15 @@
 <template>
   <Breadcrumbs class="h-[55px]"/>
   <div class="grid md:grid-cols-2 gap-1 md:gap-4 mb-2 max-w-screen-lg mx-auto">
-    <div class="md:hidden">
-      <h1 class="text-2xl font-avenir">{{ title }}</h1>
-      <p v-if="tags.artist" class="text-sm" >
-        By <NuxtLink :to="localePath(artistSlug(tags.artist))" class="underline">{{ tags.artist.name }}</NuxtLink>
-      </p>
-    </div>
     <section class="mobile:-mx-1">
       <GalleryPosters :images="images" />
     </section >
     <section class="md:mr-2">
-      <div class="md:mt-3 mb-2">
-        <h1 class="mobile:hidden text-2xl font-avenir">{{ title }}</h1>
+      <div class="md:mt-3 mb-1">
+        <h1 class="text-3xl md:text-4xl font-avenir">{{ title }}</h1>
 
-        <p v-if="tags.artist" class="text-sm mb-1 mobile:hidden" >
-           By <NuxtLink :to="localePath(artistSlug(tags.artist))" class="underline">{{ tags.artist.name }}</NuxtLink>
-        </p>
+        <LazyArtistPlaceTag v-if="tags.artist" class="mb-1" :artist="tags.artist"/>
+        <h2 v-if="description" class="text-2">{{description}}</h2>
 
         <ul v-if="tags.page?.length" class="tags mb-1 text-right md:text-left">
           <template v-for="tag in tags.page" :key="tag">
@@ -25,11 +18,11 @@
             </li>
           </template>
         </ul>
-        <h2 v-if="description" class="text-2">{{description}}</h2>
-      </div>
-      <div class="text-xl mb-1 font-avenir font-bold">€{{pricing[size]}}</div>
-      <SizeSelector v-model="size" class="mb-2"/>
 
+      </div>
+
+      <div class="text-2xl font-bold font-avenir mb-1">€{{pricing[size]}}</div>
+      <SizeSelector v-model="size" class="mb-1"/>
       <AddToCart
           :id="`${id}`"
           :price="basePrice"
@@ -62,6 +55,7 @@
 <script setup>
 const { params: { id } } = useRoute()
 const { getPoster } = useContentfulPosters()
+const localePath = useLocalePath()
 const host = useHost()
 
 const { title, description, images, tags, specialPrice } = await getPoster(id)

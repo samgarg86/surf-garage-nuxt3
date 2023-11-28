@@ -35,6 +35,8 @@
     "add-to-cart": "Add To Cart",
     "artwork": "Artwork",
     "select-size": "Select Size",
+    "by": "By",
+    "shot-in": "shot in",
     "accordion": {
       "shipping": {
         "title": "Shipping",
