@@ -39,6 +39,7 @@ const { client } = useContentful()
 const { mapImages } = useImages()
 const { locale } = useI18n()
 const { public: { socialMedia } } = useRuntimeConfig()
+const { gtag } = useGtag()
 
 const slug = params.slug[0] ? `boards/${params.slug[0]}` : 'boards/homepage'
 const entries = await client.getEntries({
@@ -50,4 +51,9 @@ const entries = await client.getEntries({
 
 const { fields: { title, description, images: rawImages, price, type, size, volume, brand } } = entries?.items?.[0] || {}
 const images = mapImages(rawImages)
+
+gtag('event', 'page_view', {
+  app_name: 'Surfgarage Board',
+  screen_name: `Page - ${slug}`
+})
 </script>

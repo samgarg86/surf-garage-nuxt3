@@ -10,6 +10,7 @@ definePageMeta({ layout: 'blog' })
 const { params } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
+const { gtag } = useGtag()
 
 const slug = params.slug[0]
 const entries = await client.getEntries({
@@ -19,4 +20,9 @@ const entries = await client.getEntries({
   'fields.slug[match]': slug
 })
 const { title, text } = entries?.items?.[0]?.fields || {}
+
+gtag('event', 'page_view', {
+  app_name: 'Surfgarage Board',
+  screen_name: `Page - ${slug}`
+})
 </script>

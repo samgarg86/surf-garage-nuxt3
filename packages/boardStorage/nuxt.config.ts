@@ -2,7 +2,8 @@ export default defineNuxtConfig({
   extends: [
     '../core'
   ],
-  modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", '@nuxtjs/robots'],
+    
+    modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", '@nuxtjs/robots', "nuxt-gtag"],
   i18n: {
     langDir: "../../locales",
     strategy: "prefix_except_default",
@@ -46,5 +47,8 @@ export default defineNuxtConfig({
   },
   server: {
     port: 3000
+  },
+  gtag: {
+    id: 'G-X2753YKFNC'
   }
 })

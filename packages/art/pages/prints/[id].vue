@@ -73,6 +73,7 @@ const { public: { priceTable: { photos: pricing } } } = useRuntimeConfig()
 const { fetchImageById } = useImages()
 const localePath = useLocalePath()
 const host = useHost()
+const { gtag } = useGtag()
 const priceEntries = Object.entries(pricing)
 const baseSize = priceEntries[0][0]
 const basePrice = priceEntries[0][1]
@@ -84,6 +85,11 @@ if (query.size) size.value = query.size
 const { url, title, description, tags } = await fetchImageById(id)
 
 useArtSeo({ title, description, imageUrl: url })
+
+gtag('event', 'page_view', {
+  app_name: 'Surfgarage Art',
+  screen_name: `Prints Page - ${id}`
+})
 
 </script>
 

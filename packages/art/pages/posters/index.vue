@@ -8,4 +8,10 @@
 <script setup>
 const { getAllPosters } = useContentfulPosters()
 const posters = await getAllPosters()
+const { gtag } = useGtag()
+
+gtag('event', 'page_view', {
+  app_name: 'Surfgarage Art',
+  screen_name: 'Posters PLP'
+})
 </script>
