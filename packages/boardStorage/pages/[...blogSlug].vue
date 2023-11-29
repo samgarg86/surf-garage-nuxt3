@@ -19,7 +19,7 @@ const { params } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
 
-const slug = params.slug[0]
+const slug = params.blogSlug.join('/')
 const entries = await client.getEntries({
   content_type: 'contentPage',
   include: 10,

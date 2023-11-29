@@ -7,11 +7,14 @@
             :class="node.marks.map(mapMark).join(' ')">
         {{node.value}}
       </span>
-      <a v-if="node.nodeType === 'hyperlink'" :href="node.data.uri" target="_blank" class="underline inline-block">{{node.content[0].value}}</a>
+      <a v-if="node.nodeType === 'hyperlink'"
+         :href="node.data.uri.includes('https://') ? node.data.uri : localePath(node.data.uri)" :target="node.data.uri.includes('https://') ? '_blank' : ''"
+         class="underline inline-block">{{node.content[0].value}}</a>
     </template>
   </p>
 </template>
 <script setup>
+const localePath = useLocalePath()
 defineProps({
   content: Array
 })
