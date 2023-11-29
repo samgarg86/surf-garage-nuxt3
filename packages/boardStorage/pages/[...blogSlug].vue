@@ -32,8 +32,8 @@ const image = computed(() => bannerImage?.fields.file.url ? `${bannerImage?.fiel
 useBlogSeo({ title, description, imageUrl: image.value, keywords })
 
 gtag('event', 'page_view', {
-  app_name: 'Surfgarage Blog',
-  screen_name: `Page - ${slug}`
+  app_name: 'Surfgarage',
+  screen_name: `Blog Page - ${slug}`
 })
 </script>
 <style lang="postcss">

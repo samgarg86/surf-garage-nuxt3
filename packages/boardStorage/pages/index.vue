@@ -57,7 +57,7 @@ const mappedMembershipPlans = membershipPlans.map(plan => ({
 })) || []
 
 gtag('event', 'page_view', {
-  app_name: 'Surfgarage Board',
+  app_name: 'Surfgarage',
   screen_name: 'Homepage'
 })
 </script>

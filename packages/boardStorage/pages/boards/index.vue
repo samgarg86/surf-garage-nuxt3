@@ -22,7 +22,7 @@ const boards = entries?.items.map(({ sys: { id }, fields }) => ({
 definePageMeta({ layout: 'surf-boards' })
 
 gtag('event', 'page_view', {
-  app_name: 'Surfgarage Board',
-  screen_name: 'Boards'
+  app_name: 'Surfgarage',
+  screen_name: 'Secondhand Boards Homepage'
 })
 </script>

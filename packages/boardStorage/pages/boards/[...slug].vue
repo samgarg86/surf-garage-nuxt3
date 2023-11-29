@@ -53,7 +53,7 @@ const { fields: { title, description, images: rawImages, price, type, size, volu
 const images = mapImages(rawImages)
 
 gtag('event', 'page_view', {
-  app_name: 'Surfgarage Board',
-  screen_name: `Page - ${slug}`
+  app_name: 'Surfgarage',
+  screen_name: `Secondhand Boards Page - ${slug}`
 })
 </script>
