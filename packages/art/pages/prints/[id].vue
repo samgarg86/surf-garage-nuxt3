@@ -14,31 +14,23 @@
 
     <section class="md:mr-2">
       <div class="md:mt-3 md:mb-1">
-        <h1 class="text-2xl font-avenir">{{ title }}</h1>
+        <h1 class="text-3xl md:text-4xl font-avenir">{{ title }}</h1>
 
-        <p class="text-sm mb-1">
-          <template v-if="tags.artist">
-            By <NuxtLink :to="localePath(artistSlug(tags.artist))" class="underline">{{ tags.artist.name }}</NuxtLink>
-          </template>
-          <span v-if="tags.artist && tags.place">, </span>
-          <template v-if="tags.place">
-            shot in <NuxtLink :to="localePath(placeSlug(tags.place))" class="underline">{{ tags.place.name }}</NuxtLink>
-          </template>
-        </p>
-
+        <LazyArtistPlaceTag v-if="tags.artist" class="mb-1" :artist="tags.artist" :place="tags.place"/>
         <h2 v-if="description" class="text-2">{{description}}</h2>
+
+        <ul v-if="tags.page?.length" class="tags list-none mb-1">
+          <template v-for="tag in tags.page" :key="tag">
+            <li v-if="tag.name !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 bg-grey-10">
+              <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
+            </li>
+          </template>
+        </ul>
+
       </div>
 
-      <ul class="tags list-none mb-1">
-        <template v-for="tag in tags.page" :key="tag">
-          <li v-if="tag.name !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 bg-grey-10">
-            <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
-          </li>
-        </template>
-      </ul>
-
-      <div class="text-xl mb-1 font-avenir font-bold">€{{pricing[size]}}</div>
-      <SizeSelector v-model="size" class="mb-2"/>
+      <div class="text-2xl font-bold font-avenir mb-1">€{{pricing[size]}}</div>
+      <SizeSelector v-model="size" class="mb-1"/>
       <AddToCart
         :id="`${id}`"
         :price="basePrice"

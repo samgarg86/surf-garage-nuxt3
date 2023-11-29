@@ -42,6 +42,14 @@
         </NuxtLink>
       </li>
       <li>
+        <NuxtLink
+            :to="localeRoute('/surf-gran-canaria')"
+            @click="$emit('hamburger:click')"
+            class="menu-link">
+          Surf Gran Canaria
+        </NuxtLink>
+      </li>
+      <li>
         <scroll-to
             to="contact"
             @click="$emit('hamburger:click')"
