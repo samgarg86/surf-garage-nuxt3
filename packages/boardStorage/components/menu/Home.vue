@@ -11,7 +11,7 @@
         <img src="/logo.png" alt="Surf Garage"/>
       </li>
       <li class="p-1 hidden md:block text-center">
-        <NuxtLink to="https://surfgarage.art" class="text-white">Surf Art</NuxtLink>
+        <a href="https://surfgarage.art" target="_blank">Surf Art</a>
       </li>
       <li class="p-1 hidden md:block text-center">
         <ScrollTo to="contact" class="text-white">{{ $t("nav.contact") }}</ScrollTo>
