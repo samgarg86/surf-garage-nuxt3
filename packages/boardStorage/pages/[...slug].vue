@@ -1,14 +1,14 @@
 <template>
   <div class="py-5 md:py-10 bg-grey-30 px-1 md:px-2 blog-banner"
-       :class="{'text-white bg-image': !!bannerImage?.fields.file.url}"
-       :style="{'--bg-img': `url(${bannerImage?.fields.file.url})`}">
+       :class="{'text-white bg-image': !!image}"
+       :style="{'--bg-img': `url(${image})`}">
 
     <div class="max-w-[70rem] mx-auto">
       <h1 class="text-4xl md:text-[6rem] text-center mx-auto leading-none">{{title}}</h1>
-      <h2 v-if="description" class="font-avenir text-center text-2 md:text-base mt-2">{{description}}</h2>
+      <p v-if="description" class="font-avenir text-center text-base mt-2">{{description}}</p>
     </div>
   </div>
-  <div class="max-w-[80rem] mx-auto mt-5 text-center px-1 md:px-2">
+  <div class="max-w-[80rem] mx-auto mt-5 px-1 md:px-2">
     <BlogRichText v-bind="text" />
   </div>
 <!--  <pre>{{entries.items[0]}}</pre>-->
@@ -26,7 +26,9 @@ const entries = await client.getEntries({
   locale: locale.value,
   'fields.slug[match]': slug
 })
-const { title, description, text, bannerImage } = entries?.items?.[0]?.fields || {}
+const { title, description, text, bannerImage, keywords } = entries?.items?.[0]?.fields || {}
+const image = computed(() => bannerImage?.fields.file.url || '')
+useBlogSeo({ title, description, imageUrl: image.value, keywords })
 </script>
 <style lang="postcss">
 .blog-banner.bg-image {
