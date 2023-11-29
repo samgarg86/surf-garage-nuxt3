@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/robots",
     "nuxt-simple-sitemap",
+    "nuxt-gtag"
   ],
   site: {
     url: "https://surfgarage.art",
@@ -66,4 +67,7 @@ export default defineNuxtConfig({
       "postcss-nested": {},
     },
   },
+  gtag: {
+    id: 'G-KQ9XVBCK1R'
+  }
 });

@@ -57,6 +57,7 @@ const { params: { id } } = useRoute()
 const { getPoster } = useContentfulPosters()
 const localePath = useLocalePath()
 const host = useHost()
+const { gtag } = useGtag()
 
 const { title, description, images, tags, specialPrice } = await getPoster(id)
 
@@ -69,5 +70,11 @@ const size = ref(baseSize.value)
 
 const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
 useArtSeo({ title, description, imageUrl: images[0].url })
+
+
+gtag('event', 'page_view', {
+  app_name: 'Surfgarage Art',
+  screen_name: `Poster Page - ${title}`
+})
 
 </script>

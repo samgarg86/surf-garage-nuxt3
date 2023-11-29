@@ -6,6 +6,7 @@
 <script setup>
 const { client } = useContentful()
 const { locale } = useI18n()
+const { gtag } = useGtag()
 const entries = await client.getEntries({
   content_type: 'surfBoard',
   include: 10,
@@ -19,4 +20,9 @@ const boards = entries?.items.map(({ sys: { id }, fields }) => ({
   image: fields.images[0].fields.file.url
 }))
 definePageMeta({ layout: 'surf-boards' })
+
+gtag('event', 'page_view', {
+  app_name: 'Surfgarage',
+  screen_name: 'Secondhand Boards Homepage'
+})
 </script>

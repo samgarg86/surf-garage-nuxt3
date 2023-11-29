@@ -18,6 +18,7 @@ definePageMeta({ layout: 'blog' })
 const { params } = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
+const { gtag } = useGtag()
 
 const slug = params.blogSlug.join('/')
 const entries = await client.getEntries({
@@ -29,6 +30,11 @@ const entries = await client.getEntries({
 const { title, description, text, bannerImage, keywords } = entries?.items?.[0]?.fields || {}
 const image = computed(() => bannerImage?.fields.file.url ? `${bannerImage?.fields.file.url}?w=1000&fm=webp` : '')
 useBlogSeo({ title, description, imageUrl: image.value, keywords })
+
+gtag('event', 'page_view', {
+  app_name: 'Surfgarage',
+  screen_name: `Blog Page - ${slug}`
+})
 </script>
 <style lang="postcss">
 .blog-banner.bg-image {

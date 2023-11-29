@@ -8,6 +8,7 @@
 
 <script setup>
 const { getFirstEntryOfType } = useContentful()
+const { gtag } = useGtag()
 const homepage = await getFirstEntryOfType('homepageSections')
 
 const {
@@ -54,6 +55,11 @@ const mappedMembershipPlans = membershipPlans.map(plan => ({
   monthlyPrice: plan.fields.monthlyPrice,
   priceDescription: plan.fields.priceDescription
 })) || []
+
+gtag('event', 'page_view', {
+  app_name: 'Surfgarage',
+  screen_name: 'Homepage'
+})
 </script>
 
 <style lang="postcss">

@@ -7,6 +7,7 @@
 const { params: { placeSlug } } = useRoute()
 const { getArtGalleryPage } = useContentfulPhotos()
 const { fetchImagesByTags } = useImages()
+const { gtag } = useGtag()
 
 const pageTitle = ref()
 const pageDesc = ref()
@@ -29,5 +30,10 @@ useArtSeo({
   title: pageTitle.value,
   description: pageDesc.value,
   imageUrl: placeImages.value?.[0]?.url
+})
+
+gtag('event', 'page_view', {
+  app_name: 'Surfgarage Art',
+  screen_name: `Place Page - ${slug.value}`
 })
 </script>
