@@ -5,7 +5,7 @@
 
     <div class="max-w-[70rem] mx-auto">
       <h1 class="text-4xl md:text-[6rem] text-center mx-auto leading-none">{{title}}</h1>
-      <p v-if="description" class="font-avenir text-center text-base mt-2">{{description}}</p>
+      <p v-if="description" class="font-avenir text-center text-base mt-2 leading-relaxed">{{description}}</p>
     </div>
   </div>
   <div class="max-w-[80rem] mx-auto mt-5 px-1 md:px-2">
@@ -27,7 +27,7 @@ const entries = await client.getEntries({
   'fields.slug[match]': slug
 })
 const { title, description, text, bannerImage, keywords } = entries?.items?.[0]?.fields || {}
-const image = computed(() => bannerImage?.fields.file.url || '')
+const image = computed(() => bannerImage?.fields.file.url ? `${bannerImage?.fields.file.url}?w=1000&fm=webp` : '')
 useBlogSeo({ title, description, imageUrl: image.value, keywords })
 </script>
 <style lang="postcss">
