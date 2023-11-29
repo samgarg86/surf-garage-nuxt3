@@ -1,14 +1,13 @@
 <template>
-  <p class="text-2 font-avenir">
+  <p class="text-2 font-avenir text-justify ">
 <!--    <pre>{{content}}</pre>-->
     <template v-for="(node, i) in content" :key="i">
       <span v-if="node.nodeType === 'text' && node.value"
-            class="text-justify whitespace-pre-wrap"
-            :class="node.marks.map(mapMark).join(' ')"
-      >
+            class="whitespace-pre-wrap"
+            :class="node.marks.map(mapMark).join(' ')">
         {{node.value}}
       </span>
-      <a v-if="node.nodeType === 'hyperlink'" :href="node.data.uri" target="_blank" class="underline">{{node.content[0].value}}</a>
+      <a v-if="node.nodeType === 'hyperlink'" :href="node.data.uri" target="_blank" class="underline inline-block">{{node.content[0].value}}</a>
     </template>
   </p>
 </template>
