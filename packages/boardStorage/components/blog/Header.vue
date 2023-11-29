@@ -8,8 +8,8 @@
         <ScrollTo to="pricing" class="">{{ $t("nav.pricing") }}</ScrollTo>
       </li>
       <li class="site-logo justify-self-center">
-        <NuxtLink :to="localeRoute('/')">
-          <img src="/logo.png" alt="Surf Garage" class="w-10 md:w-16 mx-auto"/>
+        <NuxtLink :to="localeRoute('/')" class="block w-10 md:w-16 mx-auto">
+          <img src="/logo.png" alt="Surf Garage"/>
         </NuxtLink>
       </li>
       <li class="p-1 hidden md:block text-center">
