@@ -25,7 +25,7 @@ const entries = await client.getEntries({
   content_type: 'contentPage',
   include: 10,
   locale: locale.value,
-  'fields.slug[match]': slug
+  'fields.slug': slug
 })
 const { title, description, text, bannerImage, keywords } = entries?.items?.[0]?.fields || {}
 const image = computed(() => bannerImage?.fields.file.url ? `${bannerImage?.fields.file.url}?w=1000&fm=webp` : '')
