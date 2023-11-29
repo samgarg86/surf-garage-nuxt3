@@ -88,7 +88,7 @@ useArtSeo({ title, description, imageUrl: url })
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',
-  screen_name: `Prints Page - ${id}`
+  screen_name: `Prints Page - ${title}`
 })
 
 </script>
