@@ -1,24 +1,29 @@
 <template>
   <CategoryBanner :title="pageTitle" :description="pageDesc" />
   <MasonryImageGallery :images="placeImages" :slug="slug"/>
+  <div ref="endOfScroller"></div>
 </template>
 <script setup>
 
 const { params: { placeSlug } } = useRoute()
-const { getArtGalleryPage } = useContentfulPhotos()
 const { fetchImagesByTags } = useImages()
 const { gtag } = useGtag()
+const { images, pageTitle: pTitle, pageDescription, getArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
+const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
 const pageTitle = ref()
 const pageDesc = ref()
 const placeImages = ref([])
 const slug = computed(() => `art/place/${placeSlug[0].toLowerCase()}`)
-const { title, description, images } = await getArtGalleryPage(slug.value)
+const endOfScroller = ref(null)
+const page = ref(1)
 
-if (images?.length) {
-  placeImages.value = images
-  pageTitle.value = title
-  pageDesc.value = description
+await Promise.all([getArtGalleryPage(slug.value)])
+
+if (images.value?.length) {
+  placeImages.value = images.value
+  pageTitle.value = pTitle.value
+  pageDesc.value = pageDescription.value
 } else {
   const siteTags = useState('siteTags', () => {})
   const placeTagId = `place${capitalize(placeSlug[0])}`
@@ -35,5 +40,16 @@ useArtSeo({
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',
   screen_name: `Place Page - ${slug.value}`
+})
+
+onMounted(async () => {
+  const observer = new IntersectionObserver((entries) => {
+    const entry = entries[0]
+    if (entry.intersectionRatio > 0) {
+      loadMoreArtGalleryImages(page.value * pageSize)
+      page.value++
+    }
+  }, { rootMargin: '100px' })
+  observer.observe(endOfScroller.value)
 })
 </script>
