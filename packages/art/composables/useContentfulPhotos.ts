@@ -11,7 +11,7 @@ export const useContentfulPhotos = () => {
     const pageImages = ref([])
     const endReached = ref(false)
 
-    const getArtGalleryPage = async(slug, limit = 12) => {
+    const fetchArtGalleryPage = async(slug, limit = 12) => {
         const entries = await client.getEntries({
             content_type: 'artGalleryPage',
             include: 10,
@@ -35,18 +35,14 @@ export const useContentfulPhotos = () => {
         if (endReached.value) return;
         const newImages =  await fetchImagesByTags(pageTag.value, pageSize, skip)
 
-        if(!newImages.length) {
+        if (newImages.length > 0)
+            pageImages.value.push(...newImages)
+        else
             endReached.value = true
-            return;
-        }
-
-        newImages.forEach((entry) => {
-            pageImages.value.push(entry)
-        })
     }
 
     return {
-        getArtGalleryPage,
+        fetchArtGalleryPage,
         loadMoreArtGalleryImages,
         images: computed(() => pageImages.value),
         pageTitle: computed(() => pageTitle.value),

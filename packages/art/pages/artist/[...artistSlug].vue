@@ -20,14 +20,14 @@
 const { params: { artistSlug } } = useRoute()
 const { getPostersByTags } = useContentfulPosters()
 const { gtag } = useGtag()
-const { images, pageHeroBanner, pageTitle, pageDescription, getArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
+const { images, pageHeroBanner, pageTitle, pageDescription, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
 const slug = computed(() => `art/artist/${artistSlug[0].toLowerCase()}`)
 const endOfScroller = ref(null)
 const page = ref(1)
 
-await Promise.all([getArtGalleryPage(slug.value)])
+await Promise.all([fetchArtGalleryPage(slug.value)])
 
 if (!pageHeroBanner.value?.fields) {
   useArtSeo({ title: pageTitle.value, description: pageDescription.value, imageUrl: images.value?.at(0).url })

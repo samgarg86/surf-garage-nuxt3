@@ -4,12 +4,11 @@
   <div ref="endOfScroller"></div>
 </template>
 <script setup>
-import CategoryBanner from '~/components/CategoryBanner.vue'
 const { gtag } = useGtag()
-const { posters, loadInitialProducts, loadMoreItems } = useContentfulPosters()
+const { posters, loadInitialPosters, loadMoreItems } = useContentfulPosters()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
-await Promise.all([loadInitialProducts()])
+await Promise.all([loadInitialPosters()])
 
 const endOfScroller = ref(null)
 const page = ref(1)

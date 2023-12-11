@@ -8,7 +8,7 @@
 const { params: { placeSlug } } = useRoute()
 const { fetchImagesByTags } = useImages()
 const { gtag } = useGtag()
-const { images, pageTitle: pTitle, pageDescription, getArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
+const { images, pageTitle: pTitle, pageDescription, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
 const pageTitle = ref()
@@ -18,7 +18,7 @@ const slug = computed(() => `art/place/${placeSlug[0].toLowerCase()}`)
 const endOfScroller = ref(null)
 const page = ref(1)
 
-await Promise.all([getArtGalleryPage(slug.value)])
+await Promise.all([fetchArtGalleryPage(slug.value)])
 
 if (images.value?.length) {
   placeImages.value = images.value

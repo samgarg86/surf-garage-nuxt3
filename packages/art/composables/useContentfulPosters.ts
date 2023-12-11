@@ -20,7 +20,7 @@ export const useContentfulPosters = () => {
       }))
     }
 
-    const loadInitialProducts = async() => {
+    const loadInitialPosters = async() => {
       const entries = await client.getEntries({
         content_type: 'artwork',
         include: 10,
@@ -43,14 +43,10 @@ export const useContentfulPosters = () => {
       })
 
       const updatedEntries = mapEntries(entries)
-
-      updatedEntries.forEach((entry) => {
-        posters.value.push(entry)
-      })
-
-      if(!updatedEntries.length) {
-        endReached.value = true
-      }
+        if (updatedEntries.length)
+            posters.value.push(...updatedEntries)
+        else
+            endReached.value = true
     }
 
     return {
@@ -74,19 +70,10 @@ export const useContentfulPosters = () => {
               locale: locale.value,
               'metadata.tags.sys.id[in]': tags
           })
-          return entries.items.map(({
-                sys: { id },
-                metadata: { tags },
-                fields: { title, images }
-            }) => ({
-              id,
-              title,
-              tags: processPlpTags(tags),
-              image: mapImage(images?.[0])
-          }))
+          return mapEntries(entries)
       },
       posters: computed(() => posters.value),
       loadMoreItems,
-      loadInitialProducts
+      loadInitialPosters
     }
 }
