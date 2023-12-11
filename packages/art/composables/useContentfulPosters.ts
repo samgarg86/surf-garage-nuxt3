@@ -7,25 +7,7 @@ export const useContentfulPosters = () => {
     const posters = ref([])
     const endReached = ref(false)
 
-    const mapPoster = (
-      {
-        fields: { title, description, images, specialPrice, priceA3, priceA4, priceA5 },
-        metadata: { tags }
-      }) => ({
-        title,
-        description,
-        images: mapImages(images),
-        tags: processTags(tags),
-        ...(specialPrice && {
-            specialPrice: {
-                A3: priceA3,
-                A4: priceA4,
-                A5: priceA5
-            }
-        })
-    })
-
-    const remapEntries = (entries) => {
+    const mapEntries = (entries) => {
       return entries.items.map(({
         sys: { id },
         metadata: { tags },
@@ -46,7 +28,7 @@ export const useContentfulPosters = () => {
         locale: locale.value
       })
 
-      posters.value = remapEntries(entries)
+      posters.value = mapEntries(entries)
     }
 
     const loadMoreItems =  async(skip = 0) => {
@@ -60,7 +42,7 @@ export const useContentfulPosters = () => {
           locale: locale.value
       })
 
-      const updatedEntries = remapEntries(entries)
+      const updatedEntries = mapEntries(entries)
 
       updatedEntries.forEach((entry) => {
         posters.value.push(entry)
