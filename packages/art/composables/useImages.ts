@@ -20,11 +20,12 @@ export const useImages = () => {
     return {
        mapImage,
        mapImages,
-       fetchImagesByTags: async (tags, limit) => {
+       fetchImagesByTags: async (tags, limit = 0, skip = 0) => {
             const { items } = await client.getAssets({
                 'metadata.tags.sys.id[in]': tags,
                 locale: locale.value,
-                ...(limit && {limit})
+                limit,
+                skip
             }) || {}
             return mapImages(items || [])
         },

@@ -32,6 +32,9 @@ export default defineNuxtConfig({
           A3: 30,
         },
       },
+      infiniteScrolling: {
+        pageSize: 12
+      }
     },
   },
   i18n: {
