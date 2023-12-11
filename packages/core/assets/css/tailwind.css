@@ -7,6 +7,7 @@
   font-style: normal;
   src: url("@core/assets/fonts/Metalsmith-Regular.woff2") format("woff2"),
        url("@core/assets/fonts/Metalsmith-Regular.woff") format("woff");
+  font-display: swap;
 }
 
 @font-face {
@@ -14,6 +15,7 @@
   font-style: normal;
   src: url("@core/assets/fonts/AvenirNextLTPro-Regular.woff2") format("woff2"),
        url("@core/assets/fonts/AvenirNextLTPro-Regular.woff") format("woff");
+  font-display: swap;
 }
 
 @font-face {
@@ -22,6 +24,7 @@
   font-weight: normal;
   src: url('@core/assets/fonts/MyriadPro-Regular.woff2') format('woff2'),
        url('@core/assets/fonts/MyriadPro-Regular.woff') format('woff');
+  font-display: swap;
 }
 
 *::selection {
