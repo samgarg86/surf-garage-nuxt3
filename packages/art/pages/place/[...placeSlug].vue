@@ -1,5 +1,5 @@
 <template>
-  <CategoryBanner :title="pageTitle" :description="pageDesc" />
+  <PageHeader :title="pageTitle" :description="pageDesc" />
   <MasonryImageGallery :images="placeImages" :slug="slug"/>
   <div ref="endOfScroller"></div>
 </template>

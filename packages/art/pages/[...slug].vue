@@ -1,5 +1,5 @@
 <template>
-  <CategoryBanner :title="pageTitle" :description="pageDesc" />
+  <PageHeader :title="pageTitle" :description="pageDesc" />
   <MasonryImageGallery :images="pageImages" :slug="pageSlug"/>
   <div ref="endOfScroller"></div>
 </template>
@@ -18,7 +18,7 @@ const pageSlug = slug?.[0] ? `art/${slug.join('/')}` : 'art'
 const endOfScroller = ref(null)
 const page = ref(1)
 
-await Promise.all([fetchArtGalleryPage(pageSlug)])
+await fetchArtGalleryPage(pageSlug)
 
 if (images.value?.length) {
   pageImages.value = images.value

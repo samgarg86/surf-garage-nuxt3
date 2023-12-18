@@ -1,3 +1,5 @@
+import {create} from "domain";
+
 export const useContentfulPhotos = () => {
     const { locale } = useI18n()
     const { client} = useContentful()
@@ -8,6 +10,7 @@ export const useContentfulPhotos = () => {
     const pageTitle = ref('')
     const pageDescription = ref('')
     const pageHeroBanner = ref('')
+    const pageContent = ref()
     const pageImages = ref([])
     const endReached = ref(false)
 
@@ -41,12 +44,32 @@ export const useContentfulPhotos = () => {
             endReached.value = true
     }
 
+    const fetchHomepage = async () => {
+        const entries = await client.getEntries({
+            content_type: 'artHomepage',
+            include: 10,
+            locale: locale.value
+        })
+
+        if (!entries?.items) {
+            throw createError("Uhh you caught us at a wrong time. We're out either surfing or shooting. Please check back in a few minutes")
+        }
+
+        const homepage = entries.items[0]
+        const {title, description, components} = homepage.fields
+        pageTitle.value = title
+        pageDescription.value = description
+        pageContent.value = components
+    }
+
     return {
         fetchArtGalleryPage,
+        fetchHomepage,
         loadMoreArtGalleryImages,
         images: computed(() => pageImages.value),
         pageTitle: computed(() => pageTitle.value),
         pageDescription: computed(() => pageDescription.value),
-        pageHeroBanner: computed(() => pageHeroBanner.value)
+        pageHeroBanner: computed(() => pageHeroBanner.value),
+        pageContent: computed(() => pageContent.value)
     }
 }
