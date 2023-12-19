@@ -8,42 +8,29 @@
     pagination: true,
     arrows: true,
     mediaQuery: 'min',
-    perPage: 1.2,
+    perPage: 1,
+    padding: { right: '5rem'},
     gap: '1rem',
     breakpoints: {
       1024: {
         perPage: 3,
-        gap: '2rem'
+        gap: '2rem',
+        padding: 0
      }}
   }">
     <SplideSlide
         v-for="{id, title, description, link, image} in mappedArtists"
-        :key="id"
-        :class="{'slide-first': i === 0}"
-    >
+        :key="id">
       <nuxt-link
           :to="link"
           class="art-category-grid-item aspect-square text-center">
         <Image :src="`${image}?w=600&fm=webp`" :alt="`Artist | ${title}`" class="aspect-square object-cover object-top"/>
         <p class="font-avenir my-1">{{title}}</p>
-              <p class="text-1.8">{{description}}</p>
+        <p class="text-1.8">{{description}}</p>
       </nuxt-link>
 
     </SplideSlide>
   </Splide>
-
-<!--  <div class="grid md:grid-cols-4 gap-2">-->
-<!--    <nuxt-link-->
-<!--        v-for="{id, title, description, link, image} in mappedArtists"-->
-<!--        :key="id"-->
-<!--        :to="link"-->
-<!--        class="art-category-grid-item aspect-square text-center"-->
-<!--    >-->
-<!--      <Image :src="`${image}?w=600&fm=webp`" :alt="`Artist | ${title}`" class="aspect-square object-cover object-top"/>-->
-<!--      <p class="font-avenir my-1">{{title}}</p>-->
-<!--&lt;!&ndash;      <p class="text-1.8">{{description}}</p>&ndash;&gt;-->
-<!--    </nuxt-link>-->
-<!--  </div>-->
 </template>
 <script setup>
 import { Splide, SplideSlide } from '@splidejs/vue-splide'

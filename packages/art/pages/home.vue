@@ -9,7 +9,8 @@
 const homepageComponent = {
   artHeroBanner: resolveComponent('LazyHeroBanner'),
   artCategoryGrid: resolveComponent('LazyCategoryGrid'),
-  artistsSlider: resolveComponent('LazyArtistsSlider')
+  artistsSlider: resolveComponent('LazyArtistsSlider'),
+  artPrintsSlider: resolveComponent('LazyPrintsSlider')
 }
 const { fetchHomepage, pageTitle, pageDescription, pageContent } = useContentfulPhotos()
 fetchHomepage()

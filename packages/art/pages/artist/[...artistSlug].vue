@@ -2,16 +2,12 @@
   <div class="mt-3">
     <LazyArtistBanner v-if="pageHeroBanner" v-bind="pageHeroBanner.fields" class="max-w-screen-md mx-auto"/>
     <LazyMasonryImageGallery
-        v-if="images?.length"
-      :title="title"
-      :description="description"
-      :show-title-desc="!pageHeroBanner"
+      v-if="images?.length"
       :images="images"
       :slug="slug"
+      show-place
     />
-    <LazyMasonryPosterGallery
-        v-if="posters?.length"
-        :posters="posters" :slug="slug"/>
+    <LazyMasonryPosterGallery v-if="posters?.length" :posters="posters" :slug="slug"/>
     <div ref="endOfScroller"></div>
   </div>
 </template>

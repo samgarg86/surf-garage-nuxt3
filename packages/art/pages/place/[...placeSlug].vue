@@ -1,6 +1,6 @@
 <template>
   <PageHeader :title="pageTitle" :description="pageDesc" />
-  <MasonryImageGallery :images="placeImages" :slug="slug"/>
+  <MasonryImageGallery :images="placeImages" :slug="slug" show-artist/>
   <div ref="endOfScroller"></div>
 </template>
 <script setup>

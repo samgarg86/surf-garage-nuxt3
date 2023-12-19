@@ -6,6 +6,8 @@
       v-for="(img, index) in images"
       :key="img.id"
       :fetch-priority="index <= ABOVE_THE_FOLD_IMAGES ? 'high' : 'low'"
+      :show-artist="showArtist"
+      :show-place="showPlace"
       v-bind="{ ...img, f: encodeURIComponent(slug.replace('art/', '')) }"
     />
   </div>
@@ -17,6 +19,8 @@ defineProps({
   title: String,
   description: String,
   images: Array,
-  slug: String
+  slug: String,
+  showArtist: Boolean,
+  showPlace: Boolean
 })
 </script>

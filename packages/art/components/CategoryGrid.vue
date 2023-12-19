@@ -27,7 +27,7 @@ const mappedCategories = computed(() => props.categories.map(mapCategory))
 .art-category-grid-item {
   background-image: linear-gradient(
       rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.2)
   ),
   var(--cat-bg);
