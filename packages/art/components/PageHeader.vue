@@ -1,6 +1,6 @@
 <template>
   <div class="py-4 md:py-6 text-center max-w-screen-md mx-auto">
-    <h1 class="text-[6rem] md:text-[10rem] font-avenir leading-none overflow-hidden overflow-ellipsis">{{ title }}</h1>
+    <h1 class="text-[6rem] md:text-[10rem] font-avenir leading-none tracking-tight overflow-hidden overflow-ellipsis">{{ title }}</h1>
     <h2 v-if="description" class="text-2 mt-2">{{ description }}</h2>
   </div>
 </template>
