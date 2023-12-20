@@ -6,8 +6,9 @@
         <p class="whitespace-pre-wrap text-2">{{description}}</p>
       </div>
       <Image
-        :src="`${imageUrl}?fm=webp`"
-        :alt="`Artist: ${name}`"
+        :src="`${image}?w=800&fm=webp`"
+        :alt="`Artist | ${name}`"
+        class="aspect-square object-cover object-center"
         fetch-priority="high"
       />
     </div>
@@ -19,10 +20,8 @@
 const props = defineProps({
   name: String,
   description: String,
-  image: Object
+  image: String
 })
 
-const { mapImage } = useImages()
-const imageUrl = computed(() => mapImage(props.image)?.url)
-useArtSeo({ title: props.name, description: props.description, imageUrl })
+useArtSeo({ title: props.name, description: props.description, image: props.image })
 </script>

@@ -6,10 +6,10 @@ export const useContentfulPhotos = () => {
     const { mapImages, fetchImagesByTags } = useImages()
     const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
-    const pageTag = ref([])
+    const pageTags = ref([])
     const pageTitle = ref('')
     const pageDescription = ref('')
-    const pageHeroBanner = ref('')
+    const pageMainImage = ref('')
     const pageContent = ref()
     const pageImages = ref([])
     const endReached = ref(false)
@@ -23,20 +23,20 @@ export const useContentfulPhotos = () => {
         })
 
         if (entries?.items?.length) {
-            const { fields: { title, description, images, heroBanner}, metadata: {tags}} = entries.items[0]
+            const { fields: { title, description, images, bannerImage}, metadata: {tags}} = entries.items[0]
 
-            pageTag.value = tags.map(tag => tag.sys.id).join(',')
+            pageTags.value = tags.map(tag => tag.sys.id).join(',')
 
-            pageImages.value = tags?.length ? await fetchImagesByTags(pageTag.value, limit) : mapImages(images)
+            pageImages.value = tags?.length ? await fetchImagesByTags(pageTags.value, limit) : mapImages(images)
             pageTitle.value = title
             pageDescription.value = description
-            pageHeroBanner.value = heroBanner
+            pageMainImage.value = bannerImage?.fields?.file?.url
         }
     }
 
     const loadMoreArtGalleryImages = async(skip) => {
         if (endReached.value) return;
-        const newImages =  await fetchImagesByTags(pageTag.value, pageSize, skip)
+        const newImages =  await fetchImagesByTags(pageTags.value, pageSize, skip)
 
         if (newImages.length > 0)
             pageImages.value.push(...newImages)
@@ -69,7 +69,7 @@ export const useContentfulPhotos = () => {
         images: computed(() => pageImages.value),
         pageTitle: computed(() => pageTitle.value),
         pageDescription: computed(() => pageDescription.value),
-        pageHeroBanner: computed(() => pageHeroBanner.value),
+        pageMainImage: computed(() => pageMainImage.value),
         pageContent: computed(() => pageContent.value)
     }
 }
