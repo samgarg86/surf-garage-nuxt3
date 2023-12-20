@@ -60,9 +60,9 @@ onMounted(async () => {
 })
 
 const sliderMoved = async (instance, index) => {
-  console.log('slider moved..', index, images.value?.length)
+  // console.log('slider moved..', index, images.value?.length)
   if (index > images.value?.length - 5 && !endReached.value) {
-    console.log('fetching more images', index)
+    // console.log('fetching more images', index)
     const newImages = await fetchImagesByTags(props.tag, PAGE_SIZE, images.value.length)
     if (newImages.length > 0) { images.value.push(...newImages) } else { endReached.value = true }
   }

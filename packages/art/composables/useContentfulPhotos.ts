@@ -1,12 +1,10 @@
-import {create} from "domain";
-
 export const useContentfulPhotos = () => {
     const { locale } = useI18n()
     const { client} = useContentful()
     const { mapImages, fetchImagesByTags } = useImages()
     const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
-    const pageTags = ref([])
+    const pageTags = ref('')
     const pageTitle = ref('')
     const pageDescription = ref('')
     const pageMainImage = ref('')
@@ -38,8 +36,9 @@ export const useContentfulPhotos = () => {
         if (endReached.value) return;
         const newImages =  await fetchImagesByTags(pageTags.value, pageSize, skip)
 
-        if (newImages.length > 0)
+        if (newImages.length > 0) {
             pageImages.value.push(...newImages)
+        }
         else
             endReached.value = true
     }
@@ -62,10 +61,17 @@ export const useContentfulPhotos = () => {
         pageContent.value = components
     }
 
+    const fetchAllArtworkPage = async(limit = 12) => {
+        pageImages.value = await fetchImagesByTags('', limit)
+        pageMainImage.value = pageImages.value?.[0]?.url || ''
+        pageTags.value = ''
+    }
+
     return {
         fetchArtGalleryPage,
         fetchHomepage,
         loadMoreArtGalleryImages,
+        fetchAllArtworkPage,
         images: computed(() => pageImages.value),
         pageTitle: computed(() => pageTitle.value),
         pageDescription: computed(() => pageDescription.value),

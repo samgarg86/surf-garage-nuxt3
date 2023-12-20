@@ -54,6 +54,10 @@
         "desc": "For ordering bigger sizes than A3 or anything else, please ",
         "link": "get in touch"
       }
+    },
+    "all": {
+      "title": "All Artwork",
+      "description": "Explore all our artwork"
     }
   },
   "boards": {

@@ -54,6 +54,10 @@
         "desc": "Para pedir tamaños mas grande que A3 o para cualquier otra pregunta, por favor ",
         "link": "contáctenos"
       }
+    },
+    "all": {
+      "title": "Todas las Obras de Arte ",
+      "description": "Explora toda nuestra obra de arte"
     }
   },
   "boards": {

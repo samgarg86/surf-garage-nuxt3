@@ -22,7 +22,7 @@ export const useImages = () => {
        mapImages,
        fetchImagesByTags: async (tags, limit = 12, skip = 0) => {
             const { items } = await client.getAssets({
-                'metadata.tags.sys.id[in]': tags,
+                ...(tags ? {'metadata.tags.sys.id[in]': tags} : {'metadata.tags.sys.id[nin]': 'settingNotArtwork,posters'}),
                 locale: locale.value,
                 order: '-sys.createdAt',
                 limit,
