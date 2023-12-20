@@ -3,8 +3,8 @@
        :style="{ '--art-hero-bg': `url(${backgroundImage.fields.file.url}?w=1200&fm=webp)` }"
   >
     <div class="max-w-[80rem] mx-auto">
-      <h1 class="text-[6rem] md:text-[8rem] font-avenir leading-tight tracking-tight">{{ title }}</h1>
-      <h2 v-if="description" class="mt-2 leading-relaxed mb-4 text-2">{{ description }}</h2>
+      <h1 class="text-[5rem] md:text-[8rem] font-avenir leading-tight tracking-tight">{{ title }}</h1>
+      <h2 v-if="description" class="mt-2 leading-relaxed mb-4 text-1.8 md:text-2">{{ description }}</h2>
       <nuxt-link
           :to="localeRoute('/')"
           class="font-avenir text-sm uppercase border-2 px-4 md:px-8 py-1.5 inline-block">

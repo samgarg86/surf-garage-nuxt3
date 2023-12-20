@@ -3,7 +3,7 @@
     :src="src"
     :alt="alt || ''"
     loading="lazy"
-    :@native:fetchPriority="fetchPriority ? fetchPriority : 'auto'"
+    :fetchPriority="fetchPriority ? fetchPriority : 'auto'"
     @error="showNoImage"
   />
 </template>

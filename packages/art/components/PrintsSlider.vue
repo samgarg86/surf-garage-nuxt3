@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="pt-4 py-3 text-center">
     <h3 class="text-3xl md:text-[6rem] font-avenir">{{  title }}</h3>
     <p v-if="description" class="text-center text-1.8">{{  description }}</p>
@@ -12,7 +13,7 @@
     perPage: 1,
     perMove: 1,
     padding: { right: '6rem'},
-    gap: '2rem',
+    gap: '1rem',
     breakpoints: {
       800: {
         perPage: 2,
@@ -31,13 +32,14 @@
      }}}"
           @splide:moved="sliderMoved"
   >
-      <SplideSlide v-for="({id, title, url, tags}, index) in images" :key="id">
+      <SplideSlide v-for="{id, title, url, tags} in images" :key="id">
         <LazyMasonryImageTile
             :id="id" :title="title" :url="url" :tags="tags"
             fetch-priority="high"
             show-artist/>
       </SplideSlide>
     </Splide>
+  </div>
 </template>
 <script setup>
 import { Splide, SplideSlide } from '@splidejs/vue-splide'

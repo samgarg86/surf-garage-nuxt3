@@ -15,9 +15,6 @@
 <script setup lang="ts">
 const ABOVE_THE_FOLD_IMAGES = 6
 defineProps<{
-  showTitleDesc: string,
-  title: string,
-  description: string,
   images: Array<any>,
   slug: string,
   showArtist?: boolean,

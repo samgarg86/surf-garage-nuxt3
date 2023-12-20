@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-for="cmp in pageContent" :key="cmp.sys.id">
-      <component :is="homepageComponent[cmp.sys.contentType.sys.id]" v-bind="cmp.fields" />
+      <component :is="homepageComponent[cmp.sys.contentType.sys.id]" v-bind="cmp.fields" class="mb-4"/>
     </template>
   </div>
 </template>
