@@ -14,7 +14,7 @@
     gap: '2rem',
     breakpoints: {
       1024: {
-        perPage: 3,
+        fixedWidth: '40rem',
         padding: { right: '10rem'},
         gap: '2rem'
      }}
@@ -36,6 +36,6 @@ const props = defineProps({
 const images = ref([])
 onMounted(async () => {
   const { fetchImagesByTags } = useImages()
-  images.value = await fetchImagesByTags(props.tag, 10)
+  images.value = await fetchImagesByTags(props.tag, 20)
 })
 </script>

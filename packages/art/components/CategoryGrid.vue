@@ -1,6 +1,6 @@
 <template>
 <!--  <pre>{{categories[0].fields}}</pre>-->
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2 py-1 md:py-2">
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-4 py-1 md:py-4 max-w-screen-lg mx-auto">
     <nuxt-link
         v-for="{id, title, description, link, image} in mappedCategories"
         :key="id"
