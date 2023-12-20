@@ -30,10 +30,10 @@ defineProps<{
   title: string,
   url: string,
   tags: Object,
-  f: string,
-  fetchPriority: string,
-  showArtist: boolean,
-  showPlace: boolean
+  f?: string,
+  fetchPriority?: string,
+  showArtist?: boolean,
+  showPlace?: boolean
 }>()
 const localeRoute = useLocaleRoute()
 </script>

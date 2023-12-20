@@ -18,7 +18,7 @@ defineProps<{
   showTitleDesc: string,
   title: string,
   description: string,
-  images: Array,
+  images: Array<any>,
   slug: string,
   showArtist?: boolean,
   showPlace?: boolean

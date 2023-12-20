@@ -5,14 +5,13 @@
   </div>
 
   <Splide :options="{
-    pagination: true,
+    pagination: false,
     arrows: true,
     mediaQuery: 'min',
     perPage: 1,
     perMove: 1,
     padding: { right: '6rem'},
     gap: '2rem',
-    pagination: false,
     breakpoints: {
       800: {
         perPage: 2,

@@ -5,7 +5,7 @@
   </div>
 
   <Splide :options="{
-    pagination: true,
+    pagination: false,
     arrows: true,
     mediaQuery: 'min',
     drag: true,
@@ -13,7 +13,6 @@
     perMove: 1,
     padding: { right: '6rem'},
     gap: '2rem',
-    pagination: false,
     breakpoints: {
       800: {
         perPage: 2,
@@ -32,8 +31,11 @@
      }}}"
           @splide:moved="sliderMoved"
   >
-      <SplideSlide v-for="{id, title, url, tags} in images" :key="id">
-        <LazyMasonryImageTile :id="id" :title="title" :url="url" :tags="tags" show-artist/>
+      <SplideSlide v-for="({id, title, url, tags}, index) in images" :key="id">
+        <LazyMasonryImageTile
+            :id="id" :title="title" :url="url" :tags="tags"
+            fetch-priority="high"
+            show-artist/>
       </SplideSlide>
     </Splide>
 </template>
@@ -56,9 +58,9 @@ onMounted(async () => {
 })
 
 const sliderMoved = async (instance, index) => {
-  // console.log('slider moved..', index, images.value?.length)
+  console.log('slider moved..', index, images.value?.length)
   if (index > images.value?.length - 5 && !endReached.value) {
-    // console.log('fetching more images', index)
+    console.log('fetching more images', index)
     const newImages = await fetchImagesByTags(props.tag, PAGE_SIZE, images.value.length)
     if (newImages.length > 0) { images.value.push(...newImages) } else { endReached.value = true }
   }
