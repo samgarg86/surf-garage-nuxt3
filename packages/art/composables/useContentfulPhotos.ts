@@ -30,7 +30,7 @@ export const useContentfulPhotos = () => {
             pageImages.value = tags?.length ? await fetchImagesByTags(pageTags.value, limit) : mapImages(images)
             pageTitle.value = title
             pageDescription.value = description
-            pageMainImage.value = bannerImage?.fields?.file?.url
+            pageMainImage.value = bannerImage?.fields?.file?.url || pageImages.value?.[0]?.url || ''
         }
     }
 
