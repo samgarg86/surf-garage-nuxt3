@@ -18,3 +18,6 @@ const { fetchHomepage, pageTitle, pageDescription, pageContent } = useContentful
 fetchHomepage()
 useArtSeo({ title: pageTitle, description: pageDescription })
 </script>
+<style>
+@import '@splidejs/vue-splide/css';
+</style>

@@ -52,6 +52,3 @@ const { mapCategory } = useCategory()
 
 const mappedArtists = computed(() => props.artists?.map(mapCategory))
 </script>
-<style lang="postcss">
-@import '@splidejs/vue-splide/css';
-</style>
