@@ -14,7 +14,7 @@
     <div class="flex justify-between items-start">
       <div class="font-avenir mr-2 flex-1">
         <p class="text-2 font-bold">{{title}}</p>
-        <p v-if="tags?.artist" class="text-sm">By {{tags.artist.name}}</p>
+        <p v-if="tags?.artist" class="text-sm">{{$t('art.by')}} {{tags.artist.name}}</p>
       </div>
       <NuxtLink class="underline text-1.8" :to="localeRoute(`/posters/${id}?f=${f}`)">
         {{ $t('art.order-prints') }}

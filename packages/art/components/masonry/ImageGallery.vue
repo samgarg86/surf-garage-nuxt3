@@ -12,15 +12,15 @@
     />
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 const ABOVE_THE_FOLD_IMAGES = 6
-defineProps({
-  showTitleDesc: Boolean,
-  title: String,
-  description: String,
+defineProps<{
+  showTitleDesc: string,
+  title: string,
+  description: string,
   images: Array,
-  slug: String,
-  showArtist: Boolean,
-  showPlace: Boolean
-})
+  slug: string,
+  showArtist?: boolean,
+  showPlace?: boolean
+}>()
 </script>

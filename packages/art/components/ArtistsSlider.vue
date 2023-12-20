@@ -12,6 +12,7 @@
       perPage: 1,
       padding: { right: '5rem'},
       gap: '1rem',
+      pagination: false,
       breakpoints: {
         1024: {
           perPage: 3,

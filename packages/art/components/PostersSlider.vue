@@ -30,8 +30,8 @@
         gap: '2rem'
      }}
   }">
-      <SplideSlide v-for="{id, title, url, tags} in images" :key="id">
-        <LazyMasonryImageTile :id="id" :title="title" :url="url" :tags="tags" show-artist/>
+      <SplideSlide v-for="{id, title, image, tags} in posters" :key="id">
+        <LazyMasonryPosterTile :id="id" :title="title" :url="image.url" :tags="tags"/>
       </SplideSlide>
     </Splide>
 </template>
@@ -44,9 +44,9 @@ const props = defineProps({
   tag: String,
   slidesPerPage: Number
 })
-const images = ref([])
+const posters = ref([])
 onMounted(async () => {
-  const { fetchImagesByTags } = useImages()
-  images.value = await fetchImagesByTags(props.tag, 20)
+  const { getPostersByTags } = useContentfulPosters()
+  posters.value = await getPostersByTags(props.tag)
 })
 </script>
