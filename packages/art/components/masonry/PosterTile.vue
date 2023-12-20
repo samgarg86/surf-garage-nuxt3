@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <NuxtLink
-      :to="localeRoute(`/posters/${id}?f=${f}`)"
+      :to="localeRoute(`/posters/${id}?f=${f || ''}`)"
       class="mb-1 md:mb-2 p-3 md:p-5 bg-grey-30 flex items-center flex-1 -mx-1 sm:mx-0"
     >
       <Image
