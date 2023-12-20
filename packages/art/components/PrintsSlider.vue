@@ -13,14 +13,24 @@
     padding: { right: '6rem'},
     gap: '2rem',
     breakpoints: {
-      1024: {
-        fixedWidth: '40rem',
+      800: {
+        perPage: 2,
         padding: { right: '10rem'},
+        gap: '2rem'
+      },
+      1200: {
+        perPage: 3,
+        padding: { right: '10rem'},
+        gap: '2rem'
+      },
+      1440: {
+        fixedWidth: '40rem',
+        padding: 0,
         gap: '2rem'
      }}
   }">
       <SplideSlide v-for="{id, title, url, tags} in images" :key="id">
-        <LazyMasonryImage :id="id" :title="title" :url="url" :tags="tags" show-artist/>
+        <LazyMasonryImageTile :id="id" :title="title" :url="url" :tags="tags" show-artist/>
       </SplideSlide>
     </Splide>
 </template>

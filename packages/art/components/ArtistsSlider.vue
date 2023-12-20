@@ -17,19 +17,19 @@
           perPage: 3,
           gap: '2rem',
           padding: 0
-         },
-         1200: {
-            perPage: 4,
-            gap: '2rem',
-            padding: 0
-         }
-      }}" class="artist-slider">
+        },
+       1200: {
+          perPage: 4,
+          gap: '2rem',
+          padding: 0
+       }
+      }}">
       <SplideSlide
           v-for="{id, title, description, link, image} in mappedArtists"
           :key="id">
         <nuxt-link
             :to="link"
-            class="art-category-grid-item aspect-square text-center">
+            class="art-category-grid-item text-center">
           <Image :src="`${image}?w=600&fm=webp`" :alt="`Artist | ${title}`" class="aspect-square object-cover object-top"/>
           <p class="font-avenir my-1">{{title}}</p>
   <!--        <p class="text-1.8">{{description}}</p>-->
@@ -53,9 +53,4 @@ const mappedArtists = computed(() => props.artists?.map(mapCategory))
 </script>
 <style lang="postcss">
 @import '@splidejs/vue-splide/css';
-.artist-slider .splide__list {
-  @media screen(lg) {
-    @apply flex gap-2;
-  }
-}
 </style>

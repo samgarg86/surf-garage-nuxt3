@@ -2,7 +2,7 @@
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-1 md:mb-2 gap-4 md:gap-y-6"
   >
-    <MasonryImage
+    <MasonryImageTile
       v-for="(img, index) in images"
       :key="img.id"
       :fetch-priority="index <= ABOVE_THE_FOLD_IMAGES ? 'high' : 'low'"

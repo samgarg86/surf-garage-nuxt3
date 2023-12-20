@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-1 md:mb-2 gap-4 md:gap-y-6">
-    <MasonryPoster
+    <MasonryPosterTile
         v-for="({id, title, image, tags}, index) in [...posters]"
         :key="id"
         :id="id"

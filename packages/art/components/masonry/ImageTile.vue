@@ -7,7 +7,7 @@
       <Image
         :src="`${url}?w=600&fm=webp`"
         :alt="`Surf Garage Art Co - ${title}`"
-        class="min-h-[20rem] w-full bg-white image-frame border-[2rem] border-white"
+        class="w-full bg-white image-frame border-[2rem] border-white"
         :fetch-priority="fetchPriority"
       />
     </NuxtLink>
