@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <template v-for="cmp in pageContent" :key="cmp.sys.id">
-      <component :is="homepageComponent[cmp.sys.contentType.sys.id]" v-bind="cmp.fields" class="mb-4"/>
-    </template>
-  </div>
+  <template v-for="cmp in pageContent" :key="cmp.sys.id">
+    <component :is="homepageComponent[cmp.sys.contentType.sys.id]" v-bind="cmp.fields" class="mb-4"/>
+  </template>
 </template>
 <script setup>
 
@@ -15,8 +13,8 @@ const homepageComponent = {
   artPosterSlider: resolveComponent('LazyPostersSlider')
 }
 const { fetchHomepage, pageTitle, pageDescription, pageContent } = useContentfulPhotos()
-fetchHomepage()
-useArtSeo({ title: pageTitle, description: pageDescription })
+await fetchHomepage()
+useArtSeo({ title: pageTitle.value, description: pageDescription.value })
 </script>
 <style>
 @import '@splidejs/vue-splide/css';

@@ -17,11 +17,9 @@
 </template>
 <script setup>
 
-const props = defineProps({
+defineProps({
   name: String,
   description: String,
   image: String
 })
-
-useArtSeo({ title: props.name, description: props.description, image: props.image })
 </script>

@@ -16,7 +16,7 @@
 const { params: { artistSlug } } = useRoute()
 const { getPostersByTags } = useContentfulPosters()
 const { gtag } = useGtag()
-const { images, pageHeroBanner, pageTitle, pageDescription, pageMainImage, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
+const { images, pageTitle, pageDescription, pageMainImage, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
 const slug = computed(() => `art/artist/${artistSlug[0].toLowerCase()}`)
@@ -45,4 +45,6 @@ onMounted(async () => {
   }, { rootMargin: '100px' })
   observer.observe(endOfScroller.value)
 })
+
+useArtSeo({ title: pageTitle.value, description: pageDescription.value, imageUrl: pageMainImage.value })
 </script>

@@ -34,7 +34,7 @@ if (images.value?.length) {
 useArtSeo({
   title: pageTitle.value,
   description: pageDesc.value,
-  imageUrl: pageImages.value?.[0]?.url
+  imageUrl: pageImages.value?.[0]?.url || ''
 })
 
 gtag('event', 'page_view', {
