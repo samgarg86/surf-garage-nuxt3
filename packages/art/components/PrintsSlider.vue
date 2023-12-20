@@ -8,6 +8,7 @@
     pagination: true,
     arrows: true,
     mediaQuery: 'min',
+    drag: true,
     perPage: 1,
     perMove: 1,
     padding: { right: '6rem'},
@@ -28,8 +29,9 @@
         fixedWidth: '40rem',
         padding: 0,
         gap: '2rem'
-     }}
-  }">
+     }}}"
+          @splide:moved="sliderMoved"
+  >
       <SplideSlide v-for="{id, title, url, tags} in images" :key="id">
         <LazyMasonryImageTile :id="id" :title="title" :url="url" :tags="tags" show-artist/>
       </SplideSlide>
@@ -44,9 +46,21 @@ const props = defineProps({
   tag: String,
   slidesPerPage: Number
 })
+const PAGE_SIZE = 10
 const images = ref([])
+const endReached = ref(false)
+const { fetchImagesByTags } = useImages()
+
 onMounted(async () => {
-  const { fetchImagesByTags } = useImages()
-  images.value = await fetchImagesByTags(props.tag, 20)
+  images.value = await fetchImagesByTags(props.tag, PAGE_SIZE)
 })
+
+const sliderMoved = async (instance, index) => {
+  // console.log('slider moved..', index, images.value?.length)
+  if (index > images.value?.length - 5 && !endReached.value) {
+    // console.log('fetching more images', index)
+    const newImages = await fetchImagesByTags(props.tag, PAGE_SIZE, images.value.length)
+    if (newImages.length > 0) { images.value.push(...newImages) } else { endReached.value = true }
+  }
+}
 </script>
