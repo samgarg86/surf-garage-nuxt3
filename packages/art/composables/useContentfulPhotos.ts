@@ -76,6 +76,7 @@ export const useContentfulPhotos = () => {
         pageTitle: computed(() => pageTitle.value),
         pageDescription: computed(() => pageDescription.value),
         pageMainImage: computed(() => pageMainImage.value),
-        pageContent: computed(() => pageContent.value)
+        pageContent: computed(() => pageContent.value),
+        pageTags: computed(() => pageTags.value)
     }
 }
