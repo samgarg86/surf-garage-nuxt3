@@ -1,6 +1,10 @@
 <template>
   <template v-for="cmp in pageContent" :key="cmp.sys.id">
-    <component :is="homepageComponent[cmp.sys.contentType.sys.id]" v-bind="cmp.fields" class="mb-4"/>
+    <component
+        v-if="cmp.metadata.tags"
+        :is="homepageComponent[cmp.sys.contentType.sys.id]"
+        v-bind="{...cmp.fields, tag: cmp.metadata.tags.map(tag => tag.sys.id).join(',')}"
+        class="mb-4"/>
   </template>
 </template>
 <script setup>
