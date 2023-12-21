@@ -5,10 +5,10 @@
         v-for="{id, title, description, link, image} in mappedCategories"
         :key="id"
         :to="link"
-        class="art-category-grid-item aspect-square px-2 md:px-8 text-center text-white grid grid-rows-2"
+        class="art-category-grid-item aspect-square px-2 md:px-8 text-center text-white grid content-center md:grid-rows-2"
         :style="{ '--cat-bg': `url(${image}?w=600&fm=webp)` }"
     >
-      <p class="text-2xl font-avenir font-bold mb-1 self-end">{{title}}</p>
+      <p class="md:text-2xl font-avenir font-bold mb-1 self-end">{{title}}</p>
       <p v-if="description" class="text-1.8 mobile:hidden">{{description}}</p>
     </nuxt-link>
   </div>
