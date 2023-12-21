@@ -28,6 +28,14 @@
 }
 
 @font-face {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 800;
+  src: url("@core/assets/fonts/AvenirNextLTPro-Bold.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Myriad Pro Regular';
   font-style: normal;
   font-weight: normal;
