@@ -4,13 +4,13 @@
       @hamburger:open="onHamburgerOpen"
       @hamburger:close="onHamburgerClose">
     <template #hamburger-icon>
-      <HamburgerIcon class="left-1 top-2 md:left-2" invert @click="open"/>
+      <HamburgerIcon class="left-1 top-2 md:left-2" invert @click="onHamburgerOpen"/>
     </template>
     <ArtHamburger @hamburger:click="onHamburgerClose"/>
   </Hamburger>
   <main id="page-wrap" :class="{ 'slide': isHamburgerOpen }" class="pt-6">
     <Header/>
-    <div class="mx-1 md:mx-2 mt-1 mb-4">
+    <div class="mx-1 md:mx-2 mb-4">
       <slot/>
     </div>
     <Footer/>
