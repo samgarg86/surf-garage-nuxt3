@@ -59,8 +59,7 @@ const localePath = useLocalePath()
 const host = useHost()
 const { gtag } = useGtag()
 
-const entry = await getPoster(id)
-const { title, description, images, tags, specialPrice } = entry.value || {}
+const { title, description, images, tags, specialPrice } = await getPoster(id)
 
 const { public: { priceTable: { posters } } } = useRuntimeConfig()
 const pricing = computed(() => specialPrice || posters)
@@ -70,7 +69,7 @@ const basePrice = computed(() => priceEntries.value[0][1])
 const size = ref(baseSize.value)
 
 const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
-useArtSeo({ title, description, imageUrl: images[0].url })
+useArtSeo({ title, description, imageUrl: images?.[0].url })
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',
