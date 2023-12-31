@@ -22,6 +22,15 @@
 @font-face {
   font-family: "Avenir Next";
   font-style: normal;
+  font-weight: 500;
+  src: url("@core/assets/fonts/AvenirNextLTPro-Medium.woff2") format("woff2"),
+  url("@core/assets/fonts/AvenirNextLTPro-Medium.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-style: normal;
   font-weight: 700;
   src: url("@core/assets/fonts/AvenirNextLTPro-Demi.woff") format("woff");
   font-display: swap;
