@@ -12,10 +12,10 @@
       />
     </NuxtLink>
     <div class="flex justify-between items-start px-1">
-      <div class="font-avenir mr-2 flex-1">
-        <p class="text-1.8 md:text-2 font-bold">{{ title }}</p>
-        <p v-if="showArtist && tags?.artist?.name" class="text-[1.3rem] uppercase leading-loose">{{$t('art.by')}} {{tags.artist.name}}</p>
-        <p v-if="showPlace && tags?.place" class="text-[1.3rem] uppercase leading-loose">{{ tags.place.name }}</p>
+      <div class="mr-2 flex-1 font-avenir">
+        <p class="text-1.8 font-medium">{{ title }}</p>
+        <p v-if="showArtist && tags?.artist?.name" class="text-[1.2rem] uppercase leading-loose">{{$t('art.by')}} {{tags.artist.name}}</p>
+        <p v-if="showPlace && tags?.place" class="text-[1.2rem] uppercase leading-loose">{{ tags.place.name }}</p>
       </div>
       <NuxtLink class="underline text-1.8" :to="localeRoute(`/prints/${id}?f=${f}`)">
         {{ $t("art.order-prints") }}

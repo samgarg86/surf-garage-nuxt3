@@ -27,7 +27,8 @@ module.exports = {
     fontFamily: {
       metalsmith: ['Metalsmith', 'sans-serif'],
       avenir: ['Avenir Next', 'serif'],
-      myriad: ['Myriad Pro Regular', 'serif']
+      myriad: ['Myriad Pro', 'serif'],
+      modelica: ['Modelica', 'serif']
     },
     spacing: {
       px: '1px',

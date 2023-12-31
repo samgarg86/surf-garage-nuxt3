@@ -13,7 +13,7 @@
       />
     </div>
   </div>
-  <p class="font-medium text-center font-avenir mt-3 mb-2 pb-1 border-b text-2">{{`${name}'s ${$t('art.artwork')}`}}</p>
+  <p class="text-center font-avenir font-medium mt-3 mb-2 pb-1 border-b text-1.8">{{`${name}'s ${$t('art.artwork')}`}}</p>
 </template>
 <script setup>
 
