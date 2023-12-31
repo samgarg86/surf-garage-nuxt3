@@ -1,6 +1,6 @@
 export const useContentfulPosters = () => {
     const { locale } = useI18n()
-    const { client} = useContentful()
+    const { getEntries, getEntry} = useContentful()
     const {processTags, processPlpTags} = useTags()
     const {mapImages, mapImage} = useImages()
     const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
@@ -8,7 +8,7 @@ export const useContentfulPosters = () => {
     const endReached = ref(false)
 
     const mapEntries = (entries) => {
-      return entries.items.map(({
+      return entries?.items.map(({
         sys: { id },
         metadata: { tags },
         fields: { title, images }
@@ -21,28 +21,26 @@ export const useContentfulPosters = () => {
     }
 
     const loadInitialPosters = async() => {
-      const entries = await client.getEntries({
+      const entries = await getEntries({
+        uniqueId: 'artwork-all',
         content_type: 'artwork',
-        include: 10,
-        limit: pageSize,
-        locale: locale.value
+        limit: pageSize
       })
 
-      posters.value = mapEntries(entries)
+      posters.value = mapEntries(entries.value)
     }
 
     const loadMoreItems =  async(skip = 0) => {
-      if (endReached.value) return;
+        if (endReached.value) return;
 
-      const entries = await client.getEntries({
-          content_type: 'artwork',
-          include: 10,
-          limit: pageSize,
-          skip,
-          locale: locale.value
-      })
+        const entries = await getEntries({
+            uniqueId: `artwork-all-${pageSize}-${skip}`,
+            content_type: 'artwork',
+            limit: pageSize,
+            skip
+        })
 
-      const updatedEntries = mapEntries(entries)
+        const updatedEntries = mapEntries(entries.value)
         if (updatedEntries.length)
             posters.value.push(...updatedEntries)
         else
@@ -51,26 +49,26 @@ export const useContentfulPosters = () => {
 
     return {
       getPoster: async(id) => {
+          const entry = await getEntry(id)
           const {
-              fields: { title, description, images, specialPrice, priceA3, priceA4, priceA5 },
-              metadata: { tags }
-          } = await client.getEntry(id, { locale: locale.value })
+              fields: {title, description, images, specialPrice, priceA3, priceA4, priceA5},
+              metadata: {tags}
+          } = entry.value
           return {
               title,
               description,
               images: mapImages(images),
               tags: processTags(tags),
-              ...(specialPrice && { specialPrice: {A3: priceA3, A4: priceA4, A5: priceA5 }})
+              ...(specialPrice && {specialPrice: {A3: priceA3, A4: priceA4, A5: priceA5}})
           }
       },
       getPostersByTags: async(tags) => {
-          const entries = await client.getEntries({
+          const entries = await getEntries({
+              uniqueId: `artwork-${tags}`,
               content_type: 'artwork',
-              include: 10,
-              locale: locale.value,
               'metadata.tags.sys.id[in]': tags
           })
-          return mapEntries(entries)
+          return mapEntries(entries.value)
       },
       posters: computed(() => posters.value),
       loadMoreItems,
