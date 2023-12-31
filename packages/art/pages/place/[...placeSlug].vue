@@ -27,6 +27,7 @@ if (images.value?.length) {
 } else {
   const siteTags = useState('siteTags', () => {})
   const placeTagId = `place${capitalize(placeSlug[0])}`
+  console.log(`Tag page doesn't exist, fetching images for tag ${placeTagId}`)
   const placeTag = siteTags.value[placeTagId]
   pageTitle.value = placeTag?.name
   placeImages.value = await fetchImagesByTags(placeTagId, 25)
