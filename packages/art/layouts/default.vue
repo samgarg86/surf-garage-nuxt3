@@ -48,9 +48,9 @@ useHead({
 
 useSeoMeta({
   title: 'Surf Garage Art Co',
-  description: 'A virtual gallery where you can discover and purchase amazing artwork created by a group of photographers and illustrators based in the Canary Islands. Our collection showcases the vibrant surf cultures and the natural beauties of this world.',
+  description: 'Discover artwork created by photographers and illustrators based in the Canary Islands who bring to life their travels, experiences, emotions and surf vibes through prints and posters.',
   ogTitle: 'Surf Garage Art Co',
-  ogDescription: 'A virtual gallery where you can discover and purchase amazing artwork created by a group of photographers and illustrators based in the Canary Islands. Our collection showcases the vibrant surf cultures and the natural beauties of this world',
+  ogDescription: 'Discover artwork created by photographers and illustrators based in the Canary Islands who bring to life their travels, experiences, emotions and surf vibes through prints and posters.',
   ogImage: 'https://surfgarage.es/logo.png',
   keywords: 'surf art, surf photography, surf illustrations, art, photography, illustrations, photo prints, surfing, art gallery'
 })
