@@ -1,15 +1,16 @@
 <template>
-  <CategoryBanner :title="pageTitle" :description="pageDesc" />
-  <MasonryImageGallery :images="pageImages" :slug="pageSlug"/>
+  <PageHeader :title="pageTitle" :description="pageDesc" />
+  <MasonryImageGallery :images="pageImages" :slug="pageSlug" show-artist/>
   <div ref="endOfScroller"></div>
 </template>
 <script setup>
 const pageTitle = ref()
 const pageDesc = ref()
 const pageImages = ref([])
+const pageMainImg = ref('')
 
 const { params: { slug } } = useRoute()
-const { images, pageTitle: pTitle, pageDescription, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
+const { images, pageTitle: pTitle, pageDescription, pageMainImage, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
 const { fetchImagesByTags } = useImages()
 const { gtag } = useGtag()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
@@ -18,23 +19,26 @@ const pageSlug = slug?.[0] ? `art/${slug.join('/')}` : 'art'
 const endOfScroller = ref(null)
 const page = ref(1)
 
-await Promise.all([fetchArtGalleryPage(pageSlug)])
+await fetchArtGalleryPage(pageSlug)
 
 if (images.value?.length) {
   pageImages.value = images.value
   pageTitle.value = pTitle.value
   pageDesc.value = pageDescription.value
+  pageMainImg.value = pageMainImage.value
 } else {
   const siteTags = useState('siteTags', () => {})
   const pageTagId = `page${capitalize(slug[0])}`
-  const placeTag = siteTags.value[pageTagId]
-  pageTitle.value = placeTag?.name
+  console.log(`Tag page doesn't exist, fetching images for tag ${pageTagId}`)
+  const pageTag = siteTags.value[pageTagId]
+  pageTitle.value = pageTag?.name
   pageImages.value = await fetchImagesByTags(pageTagId, 25)
+  pageMainImg.value = pageImages.value?.[0]?.url || ''
 }
 useArtSeo({
   title: pageTitle.value,
   description: pageDesc.value,
-  imageUrl: pageImages.value?.[0]?.url
+  imageUrl: pageMainImg.value
 })
 
 gtag('event', 'page_view', {

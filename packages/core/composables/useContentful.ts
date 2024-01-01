@@ -14,13 +14,54 @@ export const useContentful = () => {
 
   return {
     client,
+    getEntries: async(params) => {
+      const {uniqueId, ...rest} = params
+      await new Promise((resolve) => setTimeout(resolve))
+      const { data, error: responseError } = await useAsyncData(
+          `getEntries-${uniqueId || ''}`,
+          () => client.getEntries({...rest, include: params.include || 10, order: params.order || '-sys.createdAt', locale: locale.value})
+      )
+      if (responseError.value) console.error(responseError.value)
+      return data
+
+      // return await fetchFromContentful({...params, include: 10, locale: locale.value}, 'getEntries')
+    },
+    getEntry: async(id) => {
+      await new Promise((resolve) => setTimeout(resolve))
+      const { data, error: responseError } = await useAsyncData(
+          `getEntry-${id}`,
+          () => client.getEntry(id, {include: 10, locale: locale.value})
+      )
+      if (responseError.value) console.error(responseError.value)
+      return data
+    },
+    getAssets: async(params) => {
+      const {uniqueId, ...rest} = params
+      await new Promise((resolve) => setTimeout(resolve))
+      const { data, error: responseError } = await useAsyncData(
+          `getAssets-${uniqueId || ''}`,
+          async () => await client.getAssets({...rest, order: rest.order || '-sys.createdAt', locale: locale.value})
+      )
+      if (responseError.value) console.error(responseError.value)
+      return data
+    },
+    getAsset: async(id) => {
+      await new Promise((resolve) => setTimeout(resolve))
+      const { data, error: responseError } = await useAsyncData(
+          `getAsset-${id}`,
+          () => client.getAsset(id, {locale: locale.value})
+      )
+      if (responseError.value) console.error(responseError.value)
+      return data
+    },
     getFirstEntryOfType: async (content_type, loc) => {
-      const {items} = await client.getEntries({
-        content_type,
-        include: 10,
-        locale: loc || locale.value
-      })
-      return items[0]
+      await new Promise((resolve) => setTimeout(resolve))
+      const { data, error: responseError } = await useAsyncData(
+          `getFirstEntryOfType-${content_type}`,
+          () => client.getEntries({content_type, include: 10, locale: loc || locale.value})
+      )
+      if (responseError.value) console.error(responseError.value)
+      return data.value.items?.[0]
     }
   }
 }

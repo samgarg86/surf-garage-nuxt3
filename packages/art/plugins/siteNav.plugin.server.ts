@@ -18,5 +18,5 @@ export default defineNuxtPlugin(async () => {
         acc[tag.sys.id] = { type: type?.toLowerCase(), name }
         return acc
     }, {})
-    console.log('Fetching site nav and tags for EN in plugin')
+    console.log('Fetching site nav and tags in server plugin')
 })

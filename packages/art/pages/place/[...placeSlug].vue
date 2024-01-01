@@ -1,6 +1,6 @@
 <template>
-  <CategoryBanner :title="pageTitle" :description="pageDesc" />
-  <MasonryImageGallery :images="placeImages" :slug="slug"/>
+  <PageHeader :title="pageTitle" :description="pageDesc" />
+  <MasonryImageGallery :images="placeImages" :slug="slug" show-artist/>
   <div ref="endOfScroller"></div>
 </template>
 <script setup>
@@ -27,6 +27,7 @@ if (images.value?.length) {
 } else {
   const siteTags = useState('siteTags', () => {})
   const placeTagId = `place${capitalize(placeSlug[0])}`
+  console.log(`Tag page doesn't exist, fetching images for tag ${placeTagId}`)
   const placeTag = siteTags.value[placeTagId]
   pageTitle.value = placeTag?.name
   placeImages.value = await fetchImagesByTags(placeTagId, 25)

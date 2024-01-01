@@ -1,5 +1,5 @@
 <template>
-  <CategoryBanner title="Posters" />
+  <PageHeader title="Posters" />
   <MasonryPosterGallery v-if="posters.length" :posters="posters" slug="posters"/>
   <div ref="endOfScroller"></div>
 </template>

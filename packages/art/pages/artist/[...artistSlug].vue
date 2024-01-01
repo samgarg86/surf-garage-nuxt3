@@ -1,17 +1,13 @@
 <template>
   <div class="mt-3">
-    <LazyArtistBanner v-if="pageHeroBanner" v-bind="pageHeroBanner.fields" class="max-w-screen-md mx-auto"/>
+    <LazyArtistBanner :name="pageTitle" :description="pageDescription" :image="pageMainImage" class="max-w-screen-md mx-auto"/>
     <LazyMasonryImageGallery
-        v-if="images?.length"
-      :title="title"
-      :description="description"
-      :show-title-desc="!pageHeroBanner"
+      v-if="images?.length"
       :images="images"
       :slug="slug"
+      show-place
     />
-    <LazyMasonryPosterGallery
-        v-if="posters?.length"
-        :posters="posters" :slug="slug"/>
+    <LazyMasonryPosterGallery v-if="posters?.length" :posters="posters" :slug="slug"/>
     <div ref="endOfScroller"></div>
   </div>
 </template>
@@ -20,19 +16,16 @@
 const { params: { artistSlug } } = useRoute()
 const { getPostersByTags } = useContentfulPosters()
 const { gtag } = useGtag()
-const { images, pageHeroBanner, pageTitle, pageDescription, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
+const { images, pageTitle, pageDescription, pageMainImage, pageTags, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
 const slug = computed(() => `art/artist/${artistSlug[0].toLowerCase()}`)
 const endOfScroller = ref(null)
 const page = ref(1)
 
-await Promise.all([fetchArtGalleryPage(slug.value)])
+await fetchArtGalleryPage(slug.value)
 
-if (!pageHeroBanner.value?.fields) {
-  useArtSeo({ title: pageTitle.value, description: pageDescription.value, imageUrl: images.value?.at(0).url })
-}
-const posters = await getPostersByTags([`artist${capitalize(artistSlug[0])}`])
+const posters = await getPostersByTags(pageTags.value)
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',
@@ -40,6 +33,7 @@ gtag('event', 'page_view', {
 })
 
 onMounted(async () => {
+  if (images.value.length === 0) return
   const observer = new IntersectionObserver((entries) => {
     const entry = entries[0]
     if (entry.intersectionRatio > 0) {
@@ -49,4 +43,6 @@ onMounted(async () => {
   }, { rootMargin: '100px' })
   observer.observe(endOfScroller.value)
 })
+
+useArtSeo({ title: pageTitle.value, description: pageDescription.value, imageUrl: pageMainImage.value })
 </script>

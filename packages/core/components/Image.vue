@@ -1,18 +1,18 @@
 <template>
   <img
     :src="src"
-    :alt="alt"
+    :alt="alt || ''"
     loading="lazy"
-    :fetchPriority="fetchPriority ? fetchPriority : undefined"
+    :fetchPriority="fetchPriority ? fetchPriority : 'auto'"
     @error="showNoImage"
   />
 </template>
-<script setup>
-defineProps({
-  src: String,
-  alt: String,
-  fetchPriority: String
-})
+<script setup lang="ts">
+defineProps<{
+  src: string,
+  alt?: string,
+  fetchPriority?: 'low' | 'high' | 'auto'
+}>()
 const noImage = '/placeholder.jpg'
 
 const showNoImage = (event) => {

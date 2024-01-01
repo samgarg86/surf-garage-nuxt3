@@ -1,6 +1,6 @@
 export const useImages = () => {
     const {processTags} = useTags()
-    const {client} = useContentful()
+    const {getAssets, getAsset} = useContentful()
     const {locale} = useI18n()
 
     const mapImage = (image) => {
@@ -20,15 +20,19 @@ export const useImages = () => {
     return {
        mapImage,
        mapImages,
-       fetchImagesByTags: async (tags, limit = 0, skip = 0) => {
-            const { items } = await client.getAssets({
-                'metadata.tags.sys.id[in]': tags,
-                locale: locale.value,
+       fetchImagesByTags: async (tags, limit = 12, skip = 0) => {
+            const assets = await getAssets({
+                uniqueId: `${tags || 'all'}-${limit}-${skip}`,
+                ...(tags ? {'metadata.tags.sys.id[in]': tags} : {'metadata.tags.sys.id[nin]': 'settingNotArtwork,posters'}),
+                order: '-sys.createdAt',
                 limit,
                 skip
-            }) || {}
-            return mapImages(items || [])
+            })
+            return mapImages(assets.value?.items || [])
         },
-        fetchImageById: async (id) => mapImage(await client.getAsset(id, { locale: locale.value }))
+        fetchImageById: async (id) => {
+            const asset = await getAsset(id)
+            return asset.value ? mapImage(asset.value) : {}
+        }
     }
 }

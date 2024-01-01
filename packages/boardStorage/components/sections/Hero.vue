@@ -69,6 +69,7 @@ const youtubeCommand = (func) => {
   var(--hero-bg);
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
 
   @media screen(md) {
     height: calc(70vh - theme('spacing[2.5]'));

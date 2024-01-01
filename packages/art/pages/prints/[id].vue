@@ -29,7 +29,7 @@
 
       </div>
 
-      <div class="text-2xl font-bold font-avenir mb-1">€{{pricing[size]}}</div>
+      <div class="text-2xl mb-1 font-avenir font-medium">€{{pricing[size]}}</div>
       <SizeSelector v-model="size" class="mb-1"/>
       <AddToCart
         :id="`${id}`"

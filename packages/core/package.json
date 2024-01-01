@@ -1,0 +1,9 @@
+{
+  "name": "surf-garage-core",
+  "version": "0.1.0",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5.2.2"
+  }
+}
