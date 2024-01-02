@@ -11,7 +11,7 @@ export default defineNuxtPlugin(async () => {
     const {items} = await client.getEntries({content_type: 'hamburgerMenu', include: 10})
     const {items: tags} = await client.getTags()
 
-    siteNav.value = items?.[1]?.fields
+    siteNav.value = items?.[0]?.fields
     // siteTags.value = tags?.map(({sys: {id}, name}) => ({ id, name }) )
     siteTags.value = tags?.reduce((acc, tag) => {
         const [type, name] = tag.name.split(': ')
