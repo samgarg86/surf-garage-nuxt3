@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-1 md:mb-2 gap-4 md:gap-y-6"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-1 md:mb-2 gap-4 md:gap-y-6 lg:grid-cols-4 lg:max-w-[192rem] lg:mx-auto"
   >
     <MasonryImageTile
       v-for="(img, index) in images"
