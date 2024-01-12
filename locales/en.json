@@ -58,7 +58,8 @@
     "all": {
       "title": "All Artwork",
       "description": "Explore all our artwork"
-    }
+    },
+    "viewAll": "View All"
   },
   "boards": {
     "typeLabel": "Type",

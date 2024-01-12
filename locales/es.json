@@ -58,7 +58,8 @@
     "all": {
       "title": "Todas las Obras de Arte ",
       "description": "Explora toda nuestra obra de arte"
-    }
+    },
+    "viewAll": "Ver Todo"
   },
   "boards": {
     "typeLabel": "Tipo",

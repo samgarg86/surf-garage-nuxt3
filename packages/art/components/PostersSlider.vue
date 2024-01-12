@@ -5,8 +5,8 @@
     <p v-if="description" class="text-center text-1.8">{{  description }}</p>
   </div>
 
-  <Splide :options="{
-    pagination: false,
+  <Splide class="home-slider" :options="{
+    pagination: true,
     arrows: true,
     mediaQuery: 'min',
     perPage: 1,
@@ -30,14 +30,22 @@
         gap: '2rem'
      }}
   }">
-      <SplideSlide v-for="{id, title, image, tags} in posters" :key="id">
-        <LazyMasonryPosterTile :id="id" :title="title" :url="image.url" :tags="tags"/>
-      </SplideSlide>
-    </Splide>
+    <SplideSlide v-for="{id, title, image, tags} in posters" :key="id">
+      <LazyMasonryPosterTile :id="id" :title="title" :url="image.url" :tags="tags"/>
+    </SplideSlide>
+  </Splide>
+  <div class="text-center mt-4">
+    <NuxtLink
+      :to="localeRoute('/posters')"
+      class="underline">
+        {{ $t('art.viewAll') }}
+    </NuxtLink>
+  </div>
   </div>
 </template>
 <script setup>
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
+const localeRoute = useLocaleRoute()
 
 const props = defineProps({
   title: String,

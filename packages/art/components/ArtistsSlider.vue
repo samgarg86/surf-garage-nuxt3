@@ -5,8 +5,8 @@
       <p v-if="description" class="text-center text-1.8">{{  description }}</p>
     </div>
 
-    <Splide :options="{
-      pagination: false,
+    <Splide class="home-slider" :options="{
+      pagination: true,
       arrows: true,
       mediaQuery: 'min',
       perPage: 1,
@@ -36,6 +36,14 @@
         </nuxt-link>
       </SplideSlide>
     </Splide>
+
+    <div class="text-center mt-4">
+      <NuxtLink
+        :to="localeRoute('/artists/')"
+        class="underline">
+          {{ $t('art.viewAll') }}
+      </NuxtLink>
+    </div>
   </div>
 </template>
 <script setup>
