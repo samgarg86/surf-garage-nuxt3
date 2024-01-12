@@ -5,7 +5,8 @@ module.exports = {
       sm: '480px',
       mobile: { max: '1023px' },
       md: '1024px',
-      lg: '1440px'
+      lg: '1440px',
+      xl: '1920px'
     },
     colors: {
       amberYellow: '#ba8723',
