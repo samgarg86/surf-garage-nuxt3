@@ -1,16 +1,19 @@
 <template>
   <PageHeader :title="pageTitle" :description="pageDesc" />
-  <MasonryImageGallery :images="pageImages" :slug="pageSlug" show-artist/>
+  <LazyMasonryImageGallery v-if="pageImages?.length" :images="pageImages" :slug="pageSlug" show-artist/>
+  <LazyMasonryPosterGallery v-if="posters?.length" :posters="posters" :slug="pageSlug"/>
   <div ref="endOfScroller"></div>
 </template>
 <script setup>
+
 const pageTitle = ref()
 const pageDesc = ref()
 const pageImages = ref([])
 const pageMainImg = ref('')
 
 const { params: { slug } } = useRoute()
-const { images, pageTitle: pTitle, pageDescription, pageMainImage, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
+const { images, pageTitle: pTitle, pageDescription, pageMainImage, fetchArtGalleryPage, loadMoreArtGalleryImages, pageTags } = useContentfulPhotos()
+const { getPostersByTags } = useContentfulPosters()
 const { fetchImagesByTags } = useImages()
 const { gtag } = useGtag()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
@@ -21,7 +24,9 @@ const page = ref(1)
 
 await fetchArtGalleryPage(pageSlug)
 
-if (images.value?.length) {
+const posters = await getPostersByTags(pageTags.value)
+
+if (images.value?.length || posters?.length) {
   pageImages.value = images.value
   pageTitle.value = pTitle.value
   pageDesc.value = pageDescription.value
@@ -31,7 +36,7 @@ if (images.value?.length) {
   const pageTagId = `page${capitalize(slug[0])}`
   console.log(`Tag page doesn't exist, fetching images for tag ${pageTagId}`)
   const pageTag = siteTags.value[pageTagId]
-  pageTitle.value = pageTag?.name
+  pageTitle.value = pageTag?.name || ''
   pageImages.value = await fetchImagesByTags(pageTagId, 25)
   pageMainImg.value = pageImages.value?.[0]?.url || ''
 }
