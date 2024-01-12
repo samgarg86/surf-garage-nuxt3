@@ -1,17 +1,12 @@
 <template>
   <div class="max-w-screen-lg mx-auto">
     <div class="pt-4 py-3 text-center">
-      <h3 class="text-3xl md:text-[6rem] font-avenir">{{  title }}</h3>
+      <h3 class="text-3xl md:text-[5rem] font-avenir">{{  title }}</h3>
       <p v-if="description" class="text-center text-1.8">{{  description }}</p>
     </div>
 
-    <Splide class="home-slider" :options="{
-      pagination: true,
-      arrows: true,
-      mediaQuery: 'min',
-      perPage: 1,
+    <Slider :options="{
       padding: { right: '5rem'},
-      gap: '1rem',
       breakpoints: {
         1024: {
           perPage: 3,
@@ -35,19 +30,11 @@
   <!--        <p class="text-1.8">{{description}}</p>-->
         </nuxt-link>
       </SplideSlide>
-    </Splide>
-
-    <div class="text-center mt-4">
-      <NuxtLink
-        :to="localeRoute('/artists/')"
-        class="underline">
-          {{ $t('art.viewAll') }}
-      </NuxtLink>
-    </div>
+    </Slider>
   </div>
 </template>
 <script setup>
-import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import { SplideSlide } from '@splidejs/vue-splide'
 
 const props = defineProps({
   title: String,

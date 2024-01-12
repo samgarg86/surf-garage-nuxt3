@@ -33,6 +33,7 @@ module.exports = {
     spacing: {
       px: '1px',
       0: '0',
+      0.25: '0.25rem',
       0.5: '0.5rem',
       1: '1rem',
       1.5: '1.5rem',
@@ -57,6 +58,7 @@ module.exports = {
     },
     fontSize:
       {
+        xxs: '1.2rem',
         xs: '1.4rem',
         sm: '1.6rem',
         1.8: '1.8rem',

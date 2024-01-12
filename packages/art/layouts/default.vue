@@ -58,13 +58,4 @@ useSeoMeta({
 
 <style lang="postcss">
 @import "~/assets/css/snipcart.css";
-
-.home-slider .splide__slide > div {
-  height: 100%;
-}
-
-.home-slider .splide__pagination {
-  position: relative;
-  margin-top: 3rem;
-}
 </style>
