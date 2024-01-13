@@ -9,6 +9,7 @@
         :alt="`Surf Garage Art Co - ${title}`"
         class="min-h-[20rem] w-full image-frame"
         :fetch-priority="fetchPriority"
+        :loading="loading"
       />
     </NuxtLink>
     <div class="flex justify-between items-start px-1">
@@ -23,14 +24,15 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
+<script setup lang="ts">
+defineProps<{
   id: String,
   url: String,
   title: String,
   tags: Object,
   f: String,
-  fetchPriority: String
-})
+  fetchPriority: String,
+  loading?: 'lazy' | 'eager'
+}>()
 const localeRoute = useLocaleRoute()
 </script>

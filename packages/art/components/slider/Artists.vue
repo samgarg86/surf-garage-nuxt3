@@ -25,7 +25,7 @@
         <nuxt-link
             :to="link"
             class="art-category-grid-item text-center">
-          <Image :src="`${image}?w=600&fm=webp`" :alt="`Artist | ${title}`" class="aspect-square object-cover object-top w-full"/>
+          <Image :src="`${image}?w=600&fm=webp`" :alt="`Artist | ${title}`" loading="eager" class="aspect-square object-cover object-top w-full"/>
           <p class="font-avenir my-1">{{title}}</p>
   <!--        <p class="text-1.8">{{description}}</p>-->
         </nuxt-link>

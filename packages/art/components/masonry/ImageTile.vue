@@ -9,6 +9,7 @@
         :alt="`Surf Garage Art Co - ${title}`"
         class="w-full bg-white image-frame border-[1.5rem] border-white"
         :fetch-priority="fetchPriority"
+        :loading="loading"
       />
     </NuxtLink>
     <div class="flex justify-between items-start px-1">
@@ -34,6 +35,7 @@ defineProps<{
   fetchPriority?: string,
   showArtist?: boolean,
   showPlace?: boolean
+  loading?: 'lazy' | 'eager'
 }>()
 const localeRoute = useLocaleRoute()
 </script>

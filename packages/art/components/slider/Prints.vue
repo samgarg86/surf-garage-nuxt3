@@ -26,6 +26,7 @@
           <LazyMasonryImageTile
               :id="id" :title="title" :url="url" :tags="tags"
               fetch-priority="high"
+              loading="eager"
               show-artist/>
         </SplideSlide>
     </Slider>
