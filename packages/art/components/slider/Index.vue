@@ -1,5 +1,9 @@
 <template>
-  <Splide class="horizontal-slider" :options="{...defaultOptions, ...options}" :has-track="false" >
+  <Splide class="horizontal-slider" 
+      :options="{...defaultOptions, ...options}" 
+      :has-track="false" 
+      @splide:mounted="updateProgress"
+      @splide:move="updateProgress">
     <SplideTrack>
       <slot/>
     </SplideTrack>
@@ -12,13 +16,18 @@
         <svgo-chevron-down class="inline-block text-xs"/>
       </button>
     </div>
+
+    <div class="horizontal-slider__progress">
+      <div class="horizontal-slider__progress-bar" ref="progress"></div>
+    </div>
   </Splide>
+
 </template>
 
 <script setup lang="ts">
 import { Splide, SplideTrack } from '@splidejs/vue-splide'
 const defaultOptions = {
-  pagination: true,
+  pagination: false,
   arrows: true,
   mediaQuery: 'min',
   drag: true,
@@ -30,6 +39,15 @@ const defaultOptions = {
 defineProps({
   options: Object
 })
+
+const progress = ref(null)
+
+const updateProgress = (splide) => {
+  const end = splide.Components.Controller.getEnd() + 1
+  const rate = Math.min((splide.index + 1) / end, 1)
+  progress.value.style.width = end === 0 ? '10%' : String(100 * rate) + '%'
+}
+
 </script>
 <style lang="postcss">
 .horizontal-slider {
@@ -57,4 +75,15 @@ defineProps({
   }
 }
 
+.horizontal-slider__progress {
+  background: #ccc;
+  margin-top: 4rem;
+}
+
+.horizontal-slider__progress-bar {
+  background: #1a1a1a;
+  height: 2px;
+  transition: width 400ms ease;
+  width: 0;
+}
 </style>
