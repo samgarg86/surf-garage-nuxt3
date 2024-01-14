@@ -17,12 +17,12 @@
           class="w-full"
           fetch-priority="high"
       />
-      <div class="absolute top-3 md:top-6 left-1/2 -translate-x-1/2">
+      <div class="absolute top-4 md:top-10 left-1/2 -translate-x-1/2">
         <div class="image-frame image-frame__living-room mx-auto">
           <Image
               :src="`${url}?w=700&fm=webp`"
               :alt="`Surf Garage - ${title}`"
-              class="bg-white mx-auto max-h-15 sm:max-h-20 md:max-h-25 "
+              class="bg-white mx-auto max-h-[12rem] sm:max-h-20"
               fetch-priority="high"
           />
         </div>
@@ -30,7 +30,7 @@
     </SplideSlide>
     <SplideSlide>
       <Image
-          :src="`${url}?w=700&fm=webp`"
+          :src="`${url}?w=1000&fm=webp`"
           :alt="`Surf Garage - ${title}`"
           class="w-full mx-auto"
           fetch-priority="high"

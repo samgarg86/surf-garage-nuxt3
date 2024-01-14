@@ -138,7 +138,7 @@ ul {
   }
 }
 .image-frame__living-room{
-    @apply p-0.5 bg-[#352626];
+  @apply p-0.5 bg-brownFrame;
   box-shadow: 4px 2px 6px rgba(0,0,0,.3);
 
     &::after {
@@ -147,7 +147,7 @@ ul {
     }
 
   img {
-    @apply border-[0.8rem] md:border-[1.5rem] border-white;
+    @apply border-[0.8rem] md:border-[1rem] border-white;
   }
 }
 
