@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
   extends: ["../core"],
+  alias:{
+    '@art': __dirname
+  },
   modules: [
     "@nuxtjs/i18n",
     "@nuxtjs/tailwindcss",

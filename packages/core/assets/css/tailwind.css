@@ -137,5 +137,20 @@ ul {
     box-sizing: border-box;
   }
 }
+.image-frame__living-room{
+    @apply p-0.5 bg-[#352626];
+  box-shadow: 4px 2px 6px rgba(0,0,0,.3);
+
+    &::after {
+      @apply m-0.5;
+      box-shadow: inset 2px 0 3px rgba(0,0,0,0.3);
+    }
+
+  img {
+    @apply border-[0.8rem] md:border-[1.5rem] border-white;
+  }
+}
+
+
 
 

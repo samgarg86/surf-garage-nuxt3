@@ -5,6 +5,7 @@ module.exports = {
       sm: '480px',
       mobile: { max: '1023px' },
       md: '1024px',
+      container: '1300px',
       lg: '1440px',
       xl: '1920px'
     },
