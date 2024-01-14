@@ -20,14 +20,13 @@
           padding: 0,
           gap: '2rem'
        }}}"
-            @splide:moved="sliderMoved"
     >
-        <SplideSlide v-for="{id, title, url, tags} in images" :key="id">
-          <LazyMasonryImageTile
-              :id="id" :title="title" :url="url" :tags="tags"
-              fetch-priority="high"
-              show-artist/>
-        </SplideSlide>
+      <SplideSlide v-for="{id, title, url, tags} in images" :key="id">
+        <LazyMasonryImageTile
+            :id="id" :title="title" :url="url" :tags="tags"
+            fetch-priority="high"
+            show-artist/>
+      </SplideSlide>
     </Slider>
   </div>
 </template>
@@ -40,7 +39,7 @@ const props = defineProps({
   tag: String,
   slidesPerPage: Number
 })
-const PAGE_SIZE = 10
+const PAGE_SIZE = 12
 const images = ref([])
 const endReached = ref(false)
 const { fetchImagesByTags } = useImages()
@@ -49,12 +48,13 @@ onMounted(async () => {
   images.value = await fetchImagesByTags(props.tag, PAGE_SIZE)
 })
 
-const sliderMoved = async (instance, index) => {
-  // console.log('slider moved..', index, images.value?.length)
-  if (index > images.value?.length - 5 && !endReached.value) {
-    // console.log('fetching more images', index)
-    const newImages = await fetchImagesByTags(props.tag, PAGE_SIZE, images.value.length)
-    if (newImages.length > 0) { images.value.push(...newImages) } else { endReached.value = true }
-  }
-}
+// const sliderMoved = async (instance, index) => {
+//   // console.log('slider moved..', index, images.value?.length)
+//   if (index > images.value?.length - 5 && !endReached.value) {
+//     // console.log('fetching more images', index)
+//     const newImages = await fetchImagesByTags(props.tag, PAGE_SIZE, images.value.length)
+//     if (newImages.length > 0) { images.value.push(...newImages) } else { endReached.value = true }
+//   }
+// }
+
 </script>
