@@ -4,12 +4,14 @@
       :to="localeRoute(`/posters/${id}?f=${f || ''}`)"
       class="mb-1 md:mb-2 p-3 md:p-5 bg-grey-30 flex items-center flex-1"
     >
-      <Image
-        :src="`${url}?w=600&fm=webp`"
-        :alt="`Surf Garage Art Co - ${title}`"
-        class="min-h-[20rem] w-full image-frame"
-        :fetch-priority="fetchPriority"
-      />
+      <div class="image-frame">
+          <Image
+            :src="`${url}?w=600&fm=webp`"
+            :alt="`Surf Garage Art Co - ${title}`"
+            class="min-h-[20rem] w-full"
+            :fetch-priority="fetchPriority"
+          />
+      </div>
     </NuxtLink>
     <div class="flex justify-between items-start px-1">
       <div class="font-avenir mr-2 flex-1">

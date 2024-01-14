@@ -20,6 +20,7 @@ module.exports = {
         30: '#eee',
         100: '#adadad'
       },
+      blackFrame: '#323232',
       blackSoft: '#444',
       black: '#09090e',
       pink: '#fff0f5',
