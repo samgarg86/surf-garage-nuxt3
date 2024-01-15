@@ -7,6 +7,7 @@ export const useContentfulPhotos = () => {
     const pageTags = ref('')
     const pageTitle = ref('')
     const pageDescription = ref('')
+    const pageShortDescription = ref('')
     const pageMainImage = ref('')
     const pageContent = ref()
     const pageImages = ref([])
@@ -19,13 +20,14 @@ export const useContentfulPhotos = () => {
         })
 
         if (entries.value.items?.length) {
-            const { fields: { title, description, bannerImage}, metadata: {tags}} = entries.value.items[0]
+            const { fields: { title, description, shortDescription, bannerImage}, metadata: {tags}} = entries.value.items[0]
 
             pageTags.value = tags.map(tag => tag.sys.id).join(',')
 
             pageImages.value = pageTags.value ? await fetchImagesByTags(pageTags.value, limit) : []
             pageTitle.value = title
             pageDescription.value = description
+            pageShortDescription.value = shortDescription
             pageMainImage.value = bannerImage?.fields?.file?.url || pageImages.value?.[0]?.url || ''
         }
         return entries
@@ -74,6 +76,7 @@ export const useContentfulPhotos = () => {
         images: computed(() => pageImages.value),
         pageTitle: computed(() => pageTitle.value),
         pageDescription: computed(() => pageDescription.value),
+        pageShortDescription: computed(() => pageShortDescription.value),
         pageMainImage: computed(() => pageMainImage.value),
         pageContent: computed(() => pageContent.value),
         pageTags: computed(() => pageTags.value)

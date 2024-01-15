@@ -15,8 +15,8 @@
           padding: { right: '10rem'}
         },
         1400: {
-          perPage: slidesPerPage,
-          padding: { right: '10rem'}
+          perPage: slidesPerPage || 3,
+          padding: { right: '20rem'}
         },
         1600: {
           fixedWidth: `${slideWidthXlScreen || 40}rem`,

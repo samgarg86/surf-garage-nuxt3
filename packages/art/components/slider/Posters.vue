@@ -37,7 +37,7 @@ const localeRoute = useLocaleRoute()
 const posters = ref([])
 onMounted(async () => {
   const { posters: fetchedPosters, getPostersByTags } = useContentfulPosters()
-  await getPostersByTags(props.tag)
+  await getPostersByTags(props.tag, 10)
   posters.value = fetchedPosters.value
 })
 </script>

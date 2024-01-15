@@ -62,12 +62,12 @@ export const useContentfulPosters = () => {
               ...(specialPrice && {specialPrice: {A3: priceA3, A4: priceA4, A5: priceA5}})
           }
       },
-      getPostersByTags: async(tags) => {
+      getPostersByTags: async(tags, limit = pageSize) => {
           const entries = await getEntries({
               uniqueId: `artwork-${tags}`,
               content_type: 'artwork',
               'metadata.tags.sys.id[in]': tags,
-              limit: pageSize
+              limit
           })
           posters.value = mapEntries(entries.value)
       },
