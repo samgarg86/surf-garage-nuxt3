@@ -5,7 +5,7 @@
           :key="img.id"
           :class="{'slide-first': i === 0}"
       >
-        <div :class="{'image-frame': i === 0}">
+        <div :class="{'image-frame image-frame__pdp': i === 0}">
           <Image
             :src="`${img.url}?w=${600}&fm=webp`"
             :alt="img.title"

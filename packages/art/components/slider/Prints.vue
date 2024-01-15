@@ -34,29 +34,30 @@
     </Slider>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { SplideSlide } from '@splidejs/vue-splide'
-const props = defineProps({
+const props = defineProps<{
   title: String,
   description: String,
   tag: String,
   slidesPerPage: Number,
-  slideWidthXlScreen: Number
-})
+  slideWidthXlScreen: Number,
+  order: 'created' | 'updated'
+}>()
 const PAGE_SIZE = 10
 const images = ref([])
 const endReached = ref(false)
 const { fetchImagesByTags } = useImages()
 
 onMounted(async () => {
-  images.value = await fetchImagesByTags(props.tag, PAGE_SIZE)
+  images.value = await fetchImagesByTags(props.tag, PAGE_SIZE, 0, props.order)
 })
 
 const sliderMoved = async (instance, index) => {
   // console.log('slider moved..', index, images.value?.length)
   if (index > images.value?.length - 5 && !endReached.value) {
     // console.log('fetching more images', index)
-    const newImages = await fetchImagesByTags(props.tag, PAGE_SIZE, images.value.length)
+    const newImages = await fetchImagesByTags(props.tag, PAGE_SIZE, images.value.length, props.order)
     if (newImages.length > 0) { images.value.push(...newImages) } else { endReached.value = true }
   }
 }

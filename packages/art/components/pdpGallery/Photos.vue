@@ -1,7 +1,7 @@
 <template>
   <PdpGallery>
     <SplideSlide class="bg-grey-30 px-2 py-3 md:px-5 md:py-6">
-      <div class="image-frame max-w-[50rem] mx-auto">
+      <div class="image-frame image-frame__pdp max-w-[50rem] mx-auto">
         <Image
             :src="`${url}?w=700&fm=webp`"
             :alt="`Surf Garage - ${title}`"
