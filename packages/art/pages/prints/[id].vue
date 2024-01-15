@@ -1,15 +1,8 @@
 <template>
   <Breadcrumbs class="h-[55px]"/>
-  <div class="max-w-screen-lg mx-auto mb-3 md:mb-5 grid md:grid-cols-[60%_auto] gap-1 md:gap-8">
-    <section class="bg-grey-30 mobile:-mx-1">
-      <div class="px-2 py-3 md:px-5 md:py-6">
-        <Image
-          :src="`${url}?w=700&fm=webp`"
-          :alt="`Surf Garage - ${title}`"
-          class="bg-white image-frame mx-auto border-[2rem] md:border-[3rem] border-white max-h-[70rem]"
-          fetch-priority="high"
-        />
-      </div>
+  <div class="mb-3 md:mb-5 grid md:grid-cols-[55%_auto] gap-1 md:gap-6 max-w-screen-container mx-auto">
+    <section class="mobile:-mx-1">
+      <PdpGalleryPhotos :url="url" :title="title" />
     </section>
 
     <section class="md:mr-2">
@@ -22,7 +15,7 @@
         <ul v-if="tags.page?.length" class="tags list-none mb-1">
           <template v-for="tag in tags.page" :key="tag">
             <li v-if="tag.name !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 bg-grey-10">
-              <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
+              <NuxtLink :to="localePath(collectionSlug(tag))">{{ tag.name }}</NuxtLink>
             </li>
           </template>
         </ul>

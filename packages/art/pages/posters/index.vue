@@ -5,10 +5,10 @@
 </template>
 <script setup>
 const { gtag } = useGtag()
-const { posters, loadInitialPosters, loadMoreItems } = useContentfulPosters()
+const { posters, loadInitialAllPosters, loadMorePosters } = useContentfulPosters()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
-await Promise.all([loadInitialPosters()])
+await loadInitialAllPosters()
 
 const endOfScroller = ref(null)
 const page = ref(1)
@@ -17,7 +17,7 @@ onMounted(async () => {
   const observer = new IntersectionObserver((entries) => {
     const entry = entries[0]
     if (entry.intersectionRatio > 0) {
-      loadMoreItems(page.value * pageSize)
+      loadMorePosters(page.value * pageSize)
       page.value++
     }
   }, { rootMargin: '100px' })

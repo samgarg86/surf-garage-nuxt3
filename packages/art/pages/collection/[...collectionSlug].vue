@@ -1,32 +1,27 @@
 <template>
   <PageHeader :title="pageTitle" :description="pageDesc" />
   <LazyMasonryImageGallery v-if="pageImages?.length" :images="pageImages" :slug="pageSlug" show-artist/>
-  <LazyMasonryPosterGallery v-if="posters?.length" :posters="posters" :slug="pageSlug"/>
   <div ref="endOfScroller"></div>
 </template>
-<script setup>
-
+<script setup lang="ts">
 const pageTitle = ref()
 const pageDesc = ref()
 const pageImages = ref([])
 const pageMainImg = ref('')
 
-const { params: { slug } } = useRoute()
+const { params: { collectionSlug: slug } } = useRoute()
 const { images, pageTitle: pTitle, pageDescription, pageMainImage, fetchArtGalleryPage, loadMoreArtGalleryImages, pageTags } = useContentfulPhotos()
-const { getPostersByTags } = useContentfulPosters()
 const { fetchImagesByTags } = useImages()
 const { gtag } = useGtag()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
-const pageSlug = slug?.[0] ? `art/${slug.join('/')}` : 'art'
+const pageSlug = computed(() => `art/collection/${Array.isArray(slug) ? slug.join('/') : slug}`)
 const endOfScroller = ref(null)
 const page = ref(1)
 
-await fetchArtGalleryPage(pageSlug)
+await fetchArtGalleryPage(pageSlug.value)
 
-const posters = await getPostersByTags(pageTags.value)
-
-if (images.value?.length || posters?.length) {
+if (images.value?.length) {
   pageImages.value = images.value
   pageTitle.value = pTitle.value
   pageDesc.value = pageDescription.value

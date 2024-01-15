@@ -1,8 +1,8 @@
 <template>
   <Breadcrumbs class="h-[55px]"/>
-  <div class="grid md:grid-cols-2 gap-1 md:gap-4 mb-2 max-w-screen-lg mx-auto">
+  <div class="grid md:grid-cols-[55%_auto] gap-1 md:gap-6 mb-2 max-w-screen-container mx-auto">
     <section class="mobile:-mx-1">
-      <GalleryPosters :images="images" />
+      <PdpGalleryPosters :images="images" />
     </section >
     <section class="md:mr-2">
       <div class="md:mt-3 mb-1">
@@ -14,14 +14,14 @@
         <ul v-if="tags.page?.length" class="tags mb-1 text-right md:text-left">
           <template v-for="tag in tags.page" :key="tag">
             <li v-if="tag !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 last:mr-0 bg-grey-10">
-              <NuxtLink :to="localePath(categorySlug(tag))">{{ tag.name }}</NuxtLink>
+              <NuxtLink :to="localePath(collectionSlug(tag))">{{ tag.name }}</NuxtLink>
             </li>
           </template>
         </ul>
 
       </div>
 
-      <div class="text-2xl font-bold font-avenir mb-1">€{{pricing[size]}}</div>
+      <div class="text-2xl mb-1 font-avenir font-medium">€{{pricing[size]}}</div>
       <SizeSelector v-model="size" class="mb-1"/>
       <AddToCart
           :id="`${id}`"

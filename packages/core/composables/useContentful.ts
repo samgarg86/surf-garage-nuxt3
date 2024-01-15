@@ -19,7 +19,7 @@ export const useContentful = () => {
       await new Promise((resolve) => setTimeout(resolve))
       const { data, error: responseError } = await useAsyncData(
           `getEntries-${uniqueId || ''}`,
-          () => client.getEntries({...rest, include: params.include || 10, order: params.order || '-sys.createdAt', locale: locale.value})
+          () => client.getEntries({...rest, include: params.include || 10, order: params.order || '-sys.updatedAt', locale: locale.value})
       )
       if (responseError.value) console.error(responseError.value)
       return data

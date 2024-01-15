@@ -10,7 +10,8 @@
     "boards": "Secondhand Surf Boards",
     "categories": "Collections",
     "locations": "Locations",
-    "artists": "Artists"
+    "artists": "Artists",
+    "posters": "Posters"
   },
   "hero": {
     "join-now": "Join Now"

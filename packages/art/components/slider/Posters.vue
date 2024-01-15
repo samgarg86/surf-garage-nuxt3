@@ -1,24 +1,22 @@
 <template>
   <div>
-    <SliderTitleViewAll :tag="tag" :title="title" />
+    <SliderTitleViewAll :link="postersSlug(tag)" :title="title" />
 
     <Slider :options="{
       padding: { right: '6rem'},
+      gap: '2rem',
       breakpoints: {
         800: {
           perPage: 2,
-          padding: { right: '10rem'},
-          gap: '2rem'
+          padding: { right: '10rem'}
         },
         1200: {
           perPage: 3,
-          padding: { right: '10rem'},
-          gap: '2rem'
+          padding: { right: '10rem'}
         },
         1440: {
           fixedWidth: '40rem',
-          padding: 0,
-          gap: '2rem'
+          padding: 0
        }}
     }">
       <SplideSlide v-for="{id, title, image, tags} in posters" :key="id">
@@ -37,7 +35,8 @@ const props = defineProps({
 })
 const posters = ref([])
 onMounted(async () => {
-  const { getPostersByTags } = useContentfulPosters()
-  posters.value = await getPostersByTags(props.tag)
+  const { posters: fetchedPosters, getPostersByTags } = useContentfulPosters()
+  await getPostersByTags(props.tag, 10)
+  posters.value = fetchedPosters.value
 })
 </script>
