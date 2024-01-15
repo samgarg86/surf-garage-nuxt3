@@ -1,24 +1,22 @@
 <template>
   <div>
-    <SliderTitleViewAll :tag="tag" :title="title" />
+    <SliderTitleViewAll :link="localeRoute(`/posters${getLinkFromTag(tag)}`)" :title="title" />
 
     <Slider :options="{
       padding: { right: '6rem'},
+      gap: '2rem',
       breakpoints: {
         800: {
           perPage: 2,
-          padding: { right: '10rem'},
-          gap: '2rem'
+          padding: { right: '10rem'}
         },
         1200: {
           perPage: 3,
-          padding: { right: '10rem'},
-          gap: '2rem'
+          padding: { right: '10rem'}
         },
         1440: {
           fixedWidth: '40rem',
-          padding: 0,
-          gap: '2rem'
+          padding: 0
        }}
     }">
       <SplideSlide v-for="{id, title, image, tags} in posters" :key="id">
@@ -35,6 +33,7 @@ const props = defineProps({
   tag: String,
   slidesPerPage: Number
 })
+const localeRoute = useLocaleRoute()
 const posters = ref([])
 onMounted(async () => {
   const { posters: fetchedPosters, getPostersByTags } = useContentfulPosters()
