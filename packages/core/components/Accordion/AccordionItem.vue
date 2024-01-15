@@ -42,18 +42,18 @@ onMounted(() => {
 
 <template>
   <section>
-    <button class="accordion-item__title py-[0.7rem] w-full flex justify-between items-center leading-none font-bold hover:outline-0"
+    <button class="py-[0.7rem] w-full flex justify-between items-center leading-none font-bold hover:outline-0"
             :class="titleClass"
             @click.prevent="toggleSection()"
             :aria-expanded="isExpanded">
-      <span class="text-sm uppercase accordion-item__text">{{ title }}</span>
+      <span class="text-xs uppercase">{{ title }}</span>
       <span class="leading-none">
         {{ isExpanded ? '-' : '+'}}
       </span>
     </button>
 
     <Transition name="expand" @after-enter="onAfterEnter" @enter="onEnter" @leave="onLeave">
-      <div class="accordion-item__content py-1" v-show="isExpanded" :aria-hidden="!isExpanded">
+      <div class="pb-1" v-show="isExpanded" :aria-hidden="!isExpanded">
         <slot />
       </div>
     </Transition>

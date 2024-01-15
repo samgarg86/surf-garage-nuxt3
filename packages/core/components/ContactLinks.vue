@@ -43,10 +43,6 @@
 </template>
 
 <script setup>
-import whatsapp from '@core/assets/icons/whatsapp.svg?raw'
-import insta from '@core/assets/icons/insta.svg?raw'
-import map from '@core/assets/icons/map.svg?raw'
-import language from '@core/assets/icons/language.svg?raw'
 defineProps({
   onlyIcons: Boolean,
   theme: String

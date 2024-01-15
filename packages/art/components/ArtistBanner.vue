@@ -8,7 +8,7 @@
       <Image
         :src="`${image}?w=800&fm=webp`"
         :alt="`Artist | ${name}`"
-        class="aspect-square object-cover object-center mx-auto"
+        class="aspect-square object-cover object-top mx-auto"
         fetch-priority="high"
       />
     </div>

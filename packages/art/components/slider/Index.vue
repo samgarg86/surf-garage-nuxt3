@@ -23,7 +23,6 @@ const defaultOptions = {
   mediaQuery: 'min',
   drag: true,
   perPage: 1,
-  perMove: 1,
   gap: '1rem'
 }
 

@@ -5,6 +5,7 @@ module.exports = {
       sm: '480px',
       mobile: { max: '1023px' },
       md: '1024px',
+      container: '1300px',
       lg: '1440px',
       xl: '1920px'
     },
@@ -20,6 +21,8 @@ module.exports = {
         30: '#eee',
         100: '#adadad'
       },
+      blackFrame: '#323232',
+      brownFrame: '#5b4832',
       blackSoft: '#444',
       black: '#09090e',
       pink: '#fff0f5',

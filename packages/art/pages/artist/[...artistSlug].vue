@@ -14,7 +14,7 @@
 <script setup>
 
 const { params: { artistSlug } } = useRoute()
-const { getPostersByTags } = useContentfulPosters()
+const { getPostersByTags, posters, loadMorePosters } = useContentfulPosters()
 const { gtag } = useGtag()
 const { images, pageTitle, pageDescription, pageMainImage, pageTags, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
@@ -25,7 +25,7 @@ const page = ref(1)
 
 await fetchArtGalleryPage(slug.value)
 
-const posters = await getPostersByTags(pageTags.value)
+await getPostersByTags(pageTags.value)
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',
@@ -33,11 +33,14 @@ gtag('event', 'page_view', {
 })
 
 onMounted(async () => {
-  if (images.value.length === 0) return
   const observer = new IntersectionObserver((entries) => {
     const entry = entries[0]
     if (entry.intersectionRatio > 0) {
-      loadMoreArtGalleryImages(page.value * pageSize)
+      if (images.value.length) {
+        loadMoreArtGalleryImages(page.value * pageSize)
+      } else if (posters.value.length) {
+        loadMorePosters(page.value * pageSize, pageTags.value)
+      }
       page.value++
     }
   }, { rootMargin: '100px' })

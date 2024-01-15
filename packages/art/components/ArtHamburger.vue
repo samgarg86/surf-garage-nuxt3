@@ -18,6 +18,21 @@
             </NuxtLink>
           </LazyAccordionItem>
           <LazyAccordionItem
+              v-if="siteNav?.surfArtPosters"
+              class="border-t"
+              title-class="text-lightYellow font-avenir"
+              :title="$t('nav.posters')"
+              :is-open="true">
+            <NuxtLink
+                v-for="(item, index) in siteNav?.surfArtPosters"
+                :key="index"
+                :to="localeRoute(item.slug)"
+                @click="$emit('hamburger:click')"
+                class="art-menu-link">
+              {{ item[locale] }}
+            </NuxtLink>
+          </LazyAccordionItem>
+          <LazyAccordionItem
               v-if="siteNav?.surfArtLocations"
               class="border-t"
               title-class="text-lightYellow font-avenir"
@@ -72,7 +87,7 @@ const { locale } = useI18n()
 
 <style lang="postcss">
 .art-menu-link {
-  @apply block text-1.8 hover:underline;
+  @apply block text-sm md:text-1.8 hover:underline;
   line-height: 1.9;
 }
 </style>
