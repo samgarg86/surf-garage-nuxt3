@@ -87,7 +87,7 @@ const { locale } = useI18n()
 
 <style lang="postcss">
 .art-menu-link {
-  @apply block text-1.8 hover:underline;
+  @apply block text-sm md:text-1.8 hover:underline;
   line-height: 1.9;
 }
 </style>
