@@ -10,7 +10,8 @@
     "boards": "Tablas de Segunda Mano",
     "categories": "Colecciónes",
     "locations": "Lugares",
-    "artists": "Artistas"
+    "artists": "Artistas",
+    "posters": "Posters"
   },
   "hero": {
     "join-now": "Únete ahora"

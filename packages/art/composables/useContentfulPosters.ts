@@ -1,5 +1,4 @@
 export const useContentfulPosters = () => {
-    const { locale } = useI18n()
     const { getEntries, getEntry} = useContentful()
     const {processTags, processPlpTags} = useTags()
     const {mapImages, mapImage} = useImages()
@@ -20,7 +19,7 @@ export const useContentfulPosters = () => {
       }))
     }
 
-    const loadInitialPosters = async() => {
+    const loadInitialAllPosters = async() => {
       const entries = await getEntries({
         uniqueId: 'artwork-all',
         content_type: 'artwork',
@@ -30,12 +29,13 @@ export const useContentfulPosters = () => {
       posters.value = mapEntries(entries.value)
     }
 
-    const loadMoreItems =  async(skip = 0) => {
+    const loadMorePosters =  async(skip = 0, tags = '') => {
         if (endReached.value) return;
 
         const entries = await getEntries({
             uniqueId: `artwork-all-${pageSize}-${skip}`,
             content_type: 'artwork',
+            ...(tags && {'metadata.tags.sys.id[in]': tags}),
             limit: pageSize,
             skip
         })
@@ -66,12 +66,13 @@ export const useContentfulPosters = () => {
           const entries = await getEntries({
               uniqueId: `artwork-${tags}`,
               content_type: 'artwork',
-              'metadata.tags.sys.id[in]': tags
+              'metadata.tags.sys.id[in]': tags,
+              limit: pageSize
           })
-          return mapEntries(entries.value)
+          posters.value = mapEntries(entries.value)
       },
       posters: computed(() => posters.value),
-      loadMoreItems,
-      loadInitialPosters
+      loadInitialAllPosters,
+      loadMorePosters
     }
 }

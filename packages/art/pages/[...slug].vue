@@ -4,8 +4,7 @@
   <LazyMasonryPosterGallery v-if="posters?.length" :posters="posters" :slug="pageSlug"/>
   <div ref="endOfScroller"></div>
 </template>
-<script setup>
-
+<script setup lang="ts">
 const pageTitle = ref()
 const pageDesc = ref()
 const pageImages = ref([])

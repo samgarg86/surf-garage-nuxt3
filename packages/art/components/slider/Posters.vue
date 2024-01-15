@@ -37,7 +37,8 @@ const props = defineProps({
 })
 const posters = ref([])
 onMounted(async () => {
-  const { getPostersByTags } = useContentfulPosters()
-  posters.value = await getPostersByTags(props.tag)
+  const { posters: fetchedPosters, getPostersByTags } = useContentfulPosters()
+  await getPostersByTags(props.tag)
+  posters.value = fetchedPosters.value
 })
 </script>
