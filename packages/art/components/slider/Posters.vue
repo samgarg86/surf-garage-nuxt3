@@ -20,7 +20,7 @@
        }}
     }">
       <SplideSlide v-for="{id, title, image, tags} in posters" :key="id">
-        <LazyMasonryPosterTile :id="id" :title="title" :url="image.url" :tags="tags"/>
+        <LazyMasonryPosterTile :id="id" :title="title" :url="image.url" :tags="tags" loading="eager"/>
       </SplideSlide>
     </Slider>
   </div>

@@ -1,16 +1,17 @@
 <template>
   <div class="flex flex-col">
     <NuxtLink
-      :to="localeRoute(`/poster/${id}?f=${f || ''}`)"
-      class="mb-1 md:mb-2 p-3 md:p-5 bg-grey-30 flex items-center flex-1"
+        :to="localeRoute(`/poster/${id}?f=${f || ''}`)"
+        class="mb-1 md:mb-2 p-3 md:p-5 bg-grey-30 flex items-center flex-1"
     >
       <div class="image-frame">
-          <Image
+        <Image
             :src="`${url}?w=600&fm=webp`"
             :alt="`Surf Garage Art Co - ${title}`"
             class="min-h-[20rem] w-full"
             :fetch-priority="fetchPriority"
-          />
+            :loading="loading"
+        />
       </div>
     </NuxtLink>
     <div class="flex justify-between items-start px-1">
@@ -25,14 +26,15 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
+<script setup lang="ts">
+defineProps<{
   id: String,
   url: String,
   title: String,
   tags: Object,
   f: String,
-  fetchPriority: String
-})
+  fetchPriority: String,
+  loading?: 'lazy' | 'eager'
+}>()
 const localeRoute = useLocaleRoute()
 </script>
