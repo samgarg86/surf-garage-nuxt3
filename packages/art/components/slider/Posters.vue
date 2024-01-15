@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SliderTitleViewAll :link="localeRoute(`/posters${getLinkFromTag(tag)}`)" :title="title" />
+    <SliderTitleViewAll :link="localeRoute(postersSlug(tag))" :title="title" />
 
     <Slider :options="{
       padding: { right: '6rem'},

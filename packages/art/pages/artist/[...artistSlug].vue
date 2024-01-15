@@ -25,7 +25,9 @@ const page = ref(1)
 
 await fetchArtGalleryPage(slug.value)
 
-await getPostersByTags(pageTags.value)
+if (pageTags.value) {
+  await getPostersByTags(pageTags.value)
+}
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',
