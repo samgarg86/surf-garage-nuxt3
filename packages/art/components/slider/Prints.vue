@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SliderTitleViewAll :link="localeRoute(getLinkFromTag(tag))" :title="title" />
+    <SliderTitleViewAll :link="getLinkFromTag(tag)" :title="title" />
 
     <Slider :options="{
       padding: { right: '6rem'},
@@ -35,7 +35,6 @@
 </template>
 <script setup>
 import { SplideSlide } from '@splidejs/vue-splide'
-const localeRoute = useLocaleRoute()
 const props = defineProps({
   title: String,
   description: String,

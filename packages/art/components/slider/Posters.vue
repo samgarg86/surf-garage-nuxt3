@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SliderTitleViewAll :link="localeRoute(postersSlug(tag))" :title="title" />
+    <SliderTitleViewAll :link="postersSlug(tag)" :title="title" />
 
     <Slider :options="{
       padding: { right: '6rem'},
@@ -33,7 +33,6 @@ const props = defineProps({
   tag: String,
   slidesPerPage: Number
 })
-const localeRoute = useLocaleRoute()
 const posters = ref([])
 onMounted(async () => {
   const { posters: fetchedPosters, getPostersByTags } = useContentfulPosters()

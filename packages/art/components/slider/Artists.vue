@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-screen-container mx-auto">
     <div class="pt-4 py-3 text-center">
-      <h3 class="text-3xl md:text-[5rem] font-avenir">{{  title }}</h3>
-      <p v-if="description" class="text-center text-1.8">{{  description }}</p>
+      <h3 class="text-xl md:text-2xl font-extrabold font-avenir">{{  title }}</h3>
+      <p v-if="description" class="text-center text-sm md:text-1.8">{{  description }}</p>
     </div>
 
     <Slider :options="{
@@ -27,8 +27,8 @@
             :to="link"
             class="art-category-grid-item">
           <Image :src="`${image}?w=600&fm=webp`" :alt="`Artist | ${title}`" class="aspect-square object-cover object-top w-full"/>
-          <p class="font-avenir font-medium text-2 my-1">{{title}}</p>
-          <p class="text-sm">{{shortDescription}}</p>
+          <p class="font-avenir font-extrabold text-1.8 md:text-2 my-1">{{title}}</p>
+          <p class="text-xs md:text-sm">{{shortDescription}}</p>
         </nuxt-link>
       </SplideSlide>
     </Slider>
