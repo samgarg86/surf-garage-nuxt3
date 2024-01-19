@@ -6,7 +6,7 @@
         :class="theme === 'light' ? 'text-black' : 'text-white hover:text-lightYellow'">
         {{showLanguageName ? 'English' : 'EN'}}
       </NuxtLink>
-      <span v-if="!showLanguageName" :class="theme === 'light' ? 'text-black' : 'text-white'">|</span>
+      <span v-if="!showLanguageName" class="language-switcher__separator" :class="theme === 'light' ? 'text-black' : 'text-white'">|</span>
       <NuxtLink
         :class="theme === 'light' ? 'text-black' : 'text-white hover:text-lightYellow'"
         :to="switchLocalePath('es')">
