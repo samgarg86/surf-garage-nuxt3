@@ -5,7 +5,7 @@
     </h2>
     <ul class="section__content pricing__content">
       <li
-        v-for="({title, monthlyPrice, priceDescription}, index) in plans"
+        v-for="({fields: {title, monthlyPrice, priceDescription}}, index) in plans"
         :key="index"
         class="pricing__content-item">
         <h3 class="pricing__title font-metalsmith lowercase">{{ title }}</h3>

@@ -7,15 +7,15 @@
       </div>
       <div class="about-storage__tiles about-tiles">
         <article
-          v-for="(icon, index) in icons"
+          v-for="({fields: {file, title}}, index) in icons"
           :key="index"
           class="text-center w-16"
         >
           <div class="h-16 bg-white" :style="{
-           'mask': `url('${icon.url}') no-repeat center / contain`,
-            '-webkit-mask': `url('${icon.url}') no-repeat center / contain`
+           'mask': `url('${file.url}') no-repeat center / contain`,
+            '-webkit-mask': `url('${file.url}') no-repeat center / contain`
           }"/>
-          <h3 class="about-tile__title font-metalsmith">{{ icon.title }}</h3>
+          <h3 class="about-tile__title font-metalsmith">{{ title }}</h3>
         </article>
       </div>
     </div>
