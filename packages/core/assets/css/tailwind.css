@@ -161,6 +161,16 @@ ul {
   }
 }
 
+.button {
+  border: 2px solid white;
+  color: theme('colors.white');
+  font-family: theme('fontFamily.avenir');
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
 
 
 

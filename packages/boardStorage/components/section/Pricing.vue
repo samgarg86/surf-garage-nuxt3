@@ -9,8 +9,8 @@
         :key="index"
         class="pricing__content-item">
         <h3 class="pricing__title font-metalsmith lowercase">{{ title }}</h3>
-        <h4 class="pricing__perMonth">€{{ monthlyPrice }}/{{$t("pricing.month")}}</h4>
-        <div v-if="priceDescription" class="pricing__price">{{ priceDescription }}</div>
+        <h4 class="text-2">€{{ monthlyPrice }}/{{$t("pricing.month")}}</h4>
+        <div v-if="priceDescription" class="text-xs font-avenir font-medium mt-1">{{ priceDescription }}</div>
       </li>
     </ul>
   </section>
@@ -34,6 +34,7 @@ defineProps({
 
   &__content.section__content {
     padding-top: 5rem;
+
     @media screen(md) {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -54,7 +55,7 @@ defineProps({
     }
 
     @media screen(md) {
-      outline: 2px solid #fff;
+      outline: 1px solid #fff;
       outline-offset: 1rem;
       margin-bottom: 0;
       padding: 5rem;
@@ -64,9 +65,7 @@ defineProps({
   &__title {
     margin-bottom: 1rem;
   }
-  &__perMonth {
-    font-size: 1.8rem;
-  }
+
   &__price {
     margin-top: 0.6rem;
     font-size: 1.8rem;

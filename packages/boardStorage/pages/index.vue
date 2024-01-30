@@ -29,7 +29,8 @@ const {
 const homepageComponents = {
   boardStorageSection: resolveComponent('LazySectionBoardStorage'),
   boardSecuritySection: resolveComponent('LazySectionBoardSecurity'),
-  boardStorageMembershipSection: resolveComponent('LazySectionPricing')
+  boardStorageMembershipSection: resolveComponent('LazySectionPricing'),
+  storageArtSection: resolveComponent('LazySectionSurfArt')
 }
 
 const mappedHero = {
