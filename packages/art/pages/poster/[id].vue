@@ -67,9 +67,16 @@ const priceEntries = computed(() => Object.entries(pricing.value))
 const baseSize = computed(() => priceEntries.value[0][0])
 const basePrice = computed(() => priceEntries.value[0][1])
 const size = ref(baseSize.value)
-
 const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
-useArtSeo({ title, description, imageUrl: images?.[0].url })
+const seoDescription = ref('')
+const { t } = useI18n()
+
+if (description) seoDescription.value = description
+else if (tags.artist) {
+  seoDescription.value = `Poster ${t('art.by').toLowerCase()} ${tags.artist?.name}`
+}
+
+useArtSeo({ title, description: seoDescription, imageUrl: images?.[0].url })
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',

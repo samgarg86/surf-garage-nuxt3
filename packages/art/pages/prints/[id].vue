@@ -33,6 +33,7 @@
         :sizes="priceOptions(priceEntries)"
         :selectedSize="size"
         :url="validateUrl(id, host, 'photos')"
+        :ecomDisabled="ecomDisabled"
       />
 
       <Accordion class="mt-3 md:mt-5">
@@ -64,12 +65,19 @@ const baseSize = priceEntries[0][0]
 const basePrice = priceEntries[0][1]
 const size = ref(baseSize)
 const { query, params: { id } } = useRoute()
+const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
+const { t } = useI18n()
 
 if (query.size) size.value = query.size
+const seoDescription = ref('')
 
 const { url, title, description, tags } = await fetchImageById(id)
+if (description) seoDescription.value = description
+else if (tags.artist || tags.place) {
+  seoDescription.value = `${t('art.photo')} ${t('art.by').toLowerCase()} ${tags.artist?.name}${tags.place ? `, ${t('art.shot-in')} ${tags.place.name}` : ''}`
+}
 
-useArtSeo({ title, description, imageUrl: url })
+useArtSeo({ title, description: seoDescription, imageUrl: url })
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',

@@ -10,7 +10,7 @@
   </p>
 </template>
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   artist: {
     name: String
   },
@@ -19,12 +19,5 @@ const props = defineProps<{
   }
 }>()
 const localePath = useLocalePath()
-const { t } = useI18n()
-
-const seoDescr = `${t('art.by')} ${props.artist.name}${props.place ? `, ${t('art.shot-in')} ${props.place.name}` : ''}`
-useSeoMeta({
-  description: seoDescr,
-  ogDescription: seoDescr
-})
 
 </script>
