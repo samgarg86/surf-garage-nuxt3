@@ -37,6 +37,7 @@
     "artwork": "Obras de Arte",
     "select-size": "Seleccionar tamaño",
     "by": "Por",
+    "moreBy": "Más por {name}",
     "shot-in": "tomada en",
     "accordion": {
       "shipping": {
