@@ -19,4 +19,5 @@ defineProps<{
   }
 }>()
 const localePath = useLocalePath()
+
 </script>
