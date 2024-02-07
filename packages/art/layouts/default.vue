@@ -24,10 +24,6 @@
 </template>
 
 <script lang="ts" setup>
-const i18nHead = useLocaleHead({
-  addSeoAttributes: true
-})
-
 const { isHamburgerOpen, onHamburgerOpen, onHamburgerClose } = useHamburgerMenu()
 
 useHead({
@@ -37,8 +33,7 @@ useHead({
     {
       rel: 'stylesheet',
       href: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css'
-    },
-    ...(i18nHead.value.link || [])
+    }
   ],
   script: [
     { src: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js', async: true }

@@ -7,4 +7,10 @@ export const useArtSeo = ({title, description, imageUrl, siteUrl}) => {
         ...(description && { ogDescription: description }),
         ...(imageUrl && { ogImage: imageUrl })
     })
+    const i18nHead = useLocaleHead({
+        addSeoAttributes: true
+    })
+    useHead({
+        link: i18nHead.value.link
+    })
 }

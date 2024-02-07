@@ -24,8 +24,7 @@ useHead({
     { name: 'google-site-verification', content: 'zFkorbR5IM4CttFNPeqBdq-iNibbkw_c032veRnXwE4' }
   ],
   link: [
-    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    ...(i18nHead.value.link || [])
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
   ]
 })
 </script>
