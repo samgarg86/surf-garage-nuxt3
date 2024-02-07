@@ -11,12 +11,15 @@
         }}
       </ScrollTo>
     </div>
+
     <ScrollTo to="tiles" class="hero__arrow">
       <SvgoChevronDown class="text-white text-2xl"/>
     </ScrollTo>
+
     <VolumeIcon
       class="absolute bottom-1 right-1 z-10 hidden md:block"
       @click="isMute = !isMute" :animate="!isMute"/>
+
     <div class="hero__video-bg">
       <div class="hero__dark-bg"></div>
       <iframe
@@ -174,5 +177,9 @@ const youtubeCommand = (func) => {
 
 .button__join {
   margin: 2rem auto 0;
+  display: block;
+  min-width: 20rem;
+  max-width: 25rem;
+  padding: 12px 50px;
 }
 </style>
