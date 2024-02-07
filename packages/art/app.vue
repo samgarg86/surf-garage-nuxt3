@@ -22,7 +22,6 @@ useHead({
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { 'http-equiv': 'accept-ch', content: 'width' },
     { name: 'google-site-verification', content: 'zFkorbR5IM4CttFNPeqBdq-iNibbkw_c032veRnXwE4' }
-    // ...(i18nHead.value.meta || [])
   ],
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

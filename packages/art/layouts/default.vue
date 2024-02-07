@@ -40,7 +40,6 @@ useHead({
     },
     ...(i18nHead.value.link || [])
   ],
-  // meta: [...(i18nHead.value.meta || [])],
   script: [
     { src: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js', async: true }
   ]
