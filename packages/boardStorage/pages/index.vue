@@ -1,9 +1,15 @@
 <template>
-  <SectionsHero v-bind="mappedHero"/>
-  <SectionsTiles :tiles="mappedTiles"/>
-  <SectionsBoardStorage v-bind="mappedBoardStorageSection"/>
-  <SectionsBoardSecurity v-bind="mappedBoardSecuritySection"/>
-  <SectionsPricing :plans="mappedMembershipPlans" />
+<!--  <pre>{{components.map(c => c.fields)}}</pre>-->
+  <SectionHero v-bind="mappedHero"/>
+  <SectionTiles :tiles="mappedTiles"/>
+
+  <template v-for="cmp in components" :key="cmp.sys.id">
+    <component
+        v-if="cmp.metadata.tags"
+        :is="homepageComponents[cmp.sys.contentType.sys.id]"
+        v-bind="{...cmp.fields}"
+        class="mb-4"/>
+  </template>
 </template>
 
 <script setup>
@@ -17,9 +23,15 @@ const {
   heroSubtitle,
   heroBgImage,
   heroYoutubeVideo,
-  iconSections,
-  membershipPlans
+  components
 } = homepage.fields || {}
+
+const homepageComponents = {
+  boardStorageSection: resolveComponent('LazySectionBoardStorage'),
+  boardSecuritySection: resolveComponent('LazySectionBoardSecurity'),
+  boardStorageMembershipSection: resolveComponent('LazySectionPricing'),
+  storageArtSection: resolveComponent('LazySectionSurfArt')
+}
 
 const mappedHero = {
   title: heroTitle,
@@ -33,27 +45,6 @@ const mappedTiles = tiles.map(t => ({
   bg: t.fields.backgroundImage.fields.file.url,
   type: t.fields.type,
   link: t.fields.link
-})) || []
-
-const boardStorageSection = iconSections.find(section => section.sys.contentType.sys.id === 'boardStorageSection')
-const mappedBoardStorageSection = {
-  title: boardStorageSection.fields.title,
-  subtitle: boardStorageSection.fields.subtitle,
-  icons: boardStorageSection.fields.icons.map(icon => ({ title: icon.fields.title, url: icon.fields.file.url }))
-}
-
-const boardSecuritySection = iconSections.find(section => section.sys.contentType.sys.id === 'boardSecuritySection')
-const mappedBoardSecuritySection = {
-  title: boardSecuritySection.fields.title,
-  subtitle: boardSecuritySection.fields.subtitle,
-  icons: boardSecuritySection.fields.icons.map(icon => ({ title: icon.fields.title, url: icon.fields.file.url })),
-  bgImage: boardSecuritySection.fields.backgroundImage.fields.file.url
-}
-
-const mappedMembershipPlans = membershipPlans.map(plan => ({
-  title: plan.fields.title,
-  monthlyPrice: plan.fields.monthlyPrice,
-  priceDescription: plan.fields.priceDescription
 })) || []
 
 gtag('event', 'page_view', {
