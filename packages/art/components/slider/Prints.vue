@@ -38,11 +38,10 @@
 import { SplideSlide } from '@splidejs/vue-splide'
 const props = defineProps<{
   title: String,
-  description: String,
   tag: String,
-  slidesPerPage: Number,
-  slideWidthXlScreen: Number,
-  order: 'created' | 'updated'
+  slidesPerPage?: Number,
+  slideWidthXlScreen?: Number,
+  order?: 'created' | 'updated'
 }>()
 const PAGE_SIZE = 10
 const images = ref([])

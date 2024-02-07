@@ -16,6 +16,7 @@ const homepageComponent = {
   artPrintsSlider: resolveComponent('LazySliderPrints'),
   artPosterSlider: resolveComponent('LazySliderPosters')
 }
+
 const { fetchHomepage, pageTitle, pageDescription, pageContent } = useContentfulPhotos()
 await fetchHomepage()
 useArtSeo({ title: pageTitle.value, description: pageDescription.value })

@@ -10,6 +10,7 @@ const { pageTitle, pageDescription, pageMainImage, fetchArtGalleryPage, pageTags
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 const slug = `art/posters/${Array.isArray(postersSlug) ? postersSlug.join('/') : postersSlug}`
 const { gtag } = useGtag()
+
 await fetchArtGalleryPage(slug)
 pageTags.value && await getPostersByTags(pageTags.value)
 

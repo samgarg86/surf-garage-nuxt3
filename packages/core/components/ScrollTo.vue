@@ -1,39 +1,22 @@
-<script setup>
-import { toRefs } from "vue";
-
-const props = defineProps({
-  to: {
-    type: String,
-    required: true,
-  },
-  linkType: {
-    type: String,
-    required: false,
-  },
-});
-const { to } = toRefs(props);
-
-const scrollIntoView = (e) => {
-  document.getElementById(to.value).scrollIntoView({ behavior: "smooth" });
-  e.preventDefault();
-};
-</script>
 <template>
   <a :class="linkType" :href="`#${to}`" @click="scrollIntoView">
     <slot></slot>
   </a>
 </template>
+<script setup lang="ts">
+const props = defineProps({
+  to: {
+    type: String,
+    required: true
+  },
+  linkType: {
+    type: String,
+    required: false
+  }
+})
 
-<style lang="postcss">
-.button {
-  border: 2px solid white;
-  padding: 12px 50px;
-  color: theme('colors.white');
-  display: block;
-  font-family: theme('fontFamily.avenir');
-  text-transform: uppercase;
-  min-width: 20rem;
-  max-width: 25rem;
-  font-size: 1.6rem;
+const scrollIntoView = (e) => {
+  window?.document.getElementById(props.to).scrollIntoView({ behavior: 'smooth' })
+  e.preventDefault()
 }
-</style>
+</script>

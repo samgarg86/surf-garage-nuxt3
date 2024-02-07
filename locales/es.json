@@ -36,7 +36,9 @@
     "add-to-cart": "Añadir a la cesta",
     "artwork": "Obras de Arte",
     "select-size": "Seleccionar tamaño",
+    "photo": "Foto",
     "by": "Por",
+    "moreBy": "Más por {name}",
     "shot-in": "tomada en",
     "accordion": {
       "shipping": {
