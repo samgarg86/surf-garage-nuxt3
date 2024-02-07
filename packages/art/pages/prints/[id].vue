@@ -73,7 +73,6 @@ const size = ref(baseSize)
 const { query, params: { id } } = useRoute()
 const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
 const { t } = useI18n()
-const reqUrl = useRequestURL()
 
 if (query.size) size.value = query.size
 const seoDescription = ref('')
@@ -84,7 +83,7 @@ else if (tags.artist || tags.place) {
   seoDescription.value = `${t('art.photo')} ${t('art.by').toLowerCase()} ${tags.artist?.name}${tags.place ? `, ${t('art.shot-in')} ${tags.place.name}` : ''}`
 }
 
-useArtSeo({ title, description: seoDescription, imageUrl: url, siteUrl: reqUrl.href })
+useArtSeo({ title, description: seoDescription, imageUrl: url })
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',

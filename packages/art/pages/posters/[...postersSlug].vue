@@ -10,7 +10,6 @@ const { pageTitle, pageDescription, pageMainImage, fetchArtGalleryPage, pageTags
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 const slug = `art/posters/${Array.isArray(postersSlug) ? postersSlug.join('/') : postersSlug}`
 const { gtag } = useGtag()
-const reqUrl = useRequestURL()
 
 await fetchArtGalleryPage(slug)
 pageTags.value && await getPostersByTags(pageTags.value)
@@ -21,8 +20,7 @@ const page = ref(1)
 useArtSeo({
   title: pageTitle.value,
   description: pageDescription.value,
-  imageUrl: pageMainImage.value,
-  siteUrl: reqUrl.href
+  imageUrl: pageMainImage.value
 })
 
 onMounted(async () => {

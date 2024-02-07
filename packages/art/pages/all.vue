@@ -11,7 +11,6 @@ const pageDesc = t('art.all.description')
 
 const { gtag } = useGtag()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
-const reqUrl = useRequestURL()
 
 const endOfScroller = ref(null)
 const page = ref(1)
@@ -22,8 +21,7 @@ await fetchAllArtworkPage()
 useArtSeo({
   title: pageTitle,
   description: pageDesc,
-  imageUrl: pageMainImage.value,
-  siteUrl: reqUrl.href
+  imageUrl: pageMainImage.value
 })
 
 gtag('event', 'page_view', {

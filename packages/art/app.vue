@@ -21,7 +21,8 @@ useHead({
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { 'http-equiv': 'accept-ch', content: 'width' },
-    { name: 'google-site-verification', content: 'zFkorbR5IM4CttFNPeqBdq-iNibbkw_c032veRnXwE4' }
+    { name: 'google-site-verification', content: 'zFkorbR5IM4CttFNPeqBdq-iNibbkw_c032veRnXwE4' },
+    { property: 'og:type', content: 'website' }
   ],
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
