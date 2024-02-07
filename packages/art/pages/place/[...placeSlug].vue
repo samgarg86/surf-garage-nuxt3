@@ -8,6 +8,7 @@
 const { params: { placeSlug } } = useRoute()
 const { fetchImagesByTags } = useImages()
 const { gtag } = useGtag()
+const reqUrl = useRequestURL()
 const { images, pageTitle: pTitle, pageDescription, fetchArtGalleryPage, loadMoreArtGalleryImages } = useContentfulPhotos()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
@@ -35,7 +36,8 @@ if (images.value?.length) {
 useArtSeo({
   title: pageTitle.value,
   description: pageDesc.value,
-  imageUrl: placeImages.value?.[0]?.url
+  imageUrl: placeImages.value?.[0]?.url,
+  siteUrl: reqUrl.href
 })
 
 gtag('event', 'page_view', {

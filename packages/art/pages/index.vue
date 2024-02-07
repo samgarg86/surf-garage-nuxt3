@@ -16,9 +16,10 @@ const homepageComponent = {
   artPrintsSlider: resolveComponent('LazySliderPrints'),
   artPosterSlider: resolveComponent('LazySliderPosters')
 }
+const reqUrl = useRequestURL()
 const { fetchHomepage, pageTitle, pageDescription, pageContent } = useContentfulPhotos()
 await fetchHomepage()
-useArtSeo({ title: pageTitle.value, description: pageDescription.value })
+useArtSeo({ title: pageTitle.value, description: pageDescription.value, siteUrl: reqUrl.href })
 </script>
 <style>
 @import '@splidejs/vue-splide/css';

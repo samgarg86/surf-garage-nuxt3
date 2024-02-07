@@ -27,14 +27,17 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+type PosterTileProps = {
   id: String,
   url: String,
   title: String,
   tags: Object,
   f: String,
-  fetchPriority: String,
+  fetchPriority?: 'low' | 'high' | 'auto'
   loading?: 'lazy' | 'eager'
-}>()
+}
+
+defineProps<PosterTileProps>()
+
 const localeRoute = useLocaleRoute()
 </script>
