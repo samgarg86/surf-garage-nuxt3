@@ -51,7 +51,12 @@
       </Accordion>
     </section>
   </div>
-  <LazySliderPosters :title="$t('art.moreBy', {name: tags.artist.name})" :description="description" :tag="tags.artist.id" class="mt-6"></LazySliderPosters>
+  <LazySliderPosters
+      :title="$t('art.moreBy', {name: tags.artist.name})"
+      :tag="tags.artist.id"
+      class="mt-6"
+      order="created"
+  />
 </template>
 <script setup>
 const { params: { id } } = useRoute()

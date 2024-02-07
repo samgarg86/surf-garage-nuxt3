@@ -55,7 +55,6 @@
 
   <LazySliderPrints
           :title="$t('art.moreBy', {name: tags.artist.name})"
-          description=""
           :tag="tags.artist.id"
           class="mt-6"
           order="created"/>
