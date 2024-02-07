@@ -6,7 +6,8 @@
         :class="theme === 'light' ? 'text-black' : 'text-white hover:text-lightYellow'">
         {{showLanguageName ? 'English' : 'EN'}}
       </NuxtLink>
-      <span v-if="!showLanguageName" :class="theme === 'light' ? 'text-black' : 'text-white'">|</span>
+      <svgo-chevron-down v-if="mode === 'dropdown'" class="language-switcher__chevron absolute top-1.5 right-0.5 text-[1rem] text-white cursor-pointer"/>
+      <span v-if="!showLanguageName && mode === 'links'" class="language-switcher__separator" :class="theme === 'light' ? 'text-black' : 'text-white'">|</span>
       <NuxtLink
         :class="theme === 'light' ? 'text-black' : 'text-white hover:text-lightYellow'"
         :to="switchLocalePath('es')">
@@ -16,17 +17,18 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
+<script setup lang="ts">
+defineProps<{
   showLanguageName: Boolean,
-  theme: String
-})
+  theme: String,
+  mode: 'links' | 'dropdown'
+}>()
 const switchLocalePath = useSwitchLocalePath()
 </script>
 
 <style lang="postcss">
 .language-switcher {
-  a.router-link-active {
+  .router-link-active {
     text-decoration: underline;
   }
 }
