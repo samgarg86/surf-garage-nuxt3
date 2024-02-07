@@ -7,7 +7,7 @@
         <button @click="close" class="text-white">
           <SvgoClose class="text-xl"/>
         </button>
-        <LazyLanguageSwitcher :showLanguageName="false" theme="dark" class="text-1.8"/>
+        <LazyLanguageSwitcher :showLanguageName="false" theme="dark" class="text-1.8" mode="links"/>
       </div>
       <div class="px-2">
         <slot/>
