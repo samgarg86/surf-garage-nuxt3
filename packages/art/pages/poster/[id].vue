@@ -58,6 +58,7 @@ const { getPoster } = useContentfulPosters()
 const localePath = useLocalePath()
 const host = useHost()
 const { gtag } = useGtag()
+const reqUrl = useRequestURL()
 
 const { title, description, images, tags, specialPrice } = await getPoster(id)
 
@@ -76,7 +77,7 @@ else if (tags.artist) {
   seoDescription.value = `Poster ${t('art.by').toLowerCase()} ${tags.artist?.name}`
 }
 
-useArtSeo({ title, description: seoDescription, imageUrl: images?.[0].url })
+useArtSeo({ title, description: seoDescription, imageUrl: images?.[0].url, siteUrl: reqUrl.href })
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',

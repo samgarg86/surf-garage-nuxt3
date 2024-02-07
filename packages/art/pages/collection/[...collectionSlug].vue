@@ -14,6 +14,7 @@ const { images, pageTitle: pTitle, pageDescription, pageMainImage, fetchArtGalle
 const { fetchImagesByTags } = useImages()
 const { gtag } = useGtag()
 const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
+const reqUrl = useRequestURL()
 
 const pageSlug = computed(() => `art/collection/${Array.isArray(slug) ? slug.join('/') : slug}`)
 const endOfScroller = ref(null)
@@ -38,7 +39,8 @@ if (images.value?.length) {
 useArtSeo({
   title: pageTitle.value,
   description: pageDesc.value,
-  imageUrl: pageMainImg.value
+  imageUrl: pageMainImg.value,
+  siteUrl: reqUrl.href
 })
 
 gtag('event', 'page_view', {
