@@ -1,11 +1,11 @@
 export const useArtSeo = ({title, description, imageUrl, siteUrl}) => {
     useSeoMeta({
-        title: `Surf Garage Art - ${title}`,
+        title: `${title} - Surf Garage Art Collective`,
         ogTitle: `${title}`,
-        ...(siteUrl && { ogUrl: siteUrl}),
+        // ...(siteUrl && { ogUrl: siteUrl}),
         ...(description && { description }),
         ...(description && { ogDescription: description }),
-        ...(imageUrl && { ogImage: imageUrl })
+        ...(imageUrl && { ogImage: imageUrl.includes('http') ? imageUrl : `https://${imageUrl}` })
     })
     const i18nHead = useLocaleHead({
         addSeoAttributes: true
