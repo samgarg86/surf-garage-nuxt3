@@ -37,7 +37,7 @@
         'text-black': theme === 'light',
         'text-amberYellow': theme !== 'light'
       }"/>
-      <LazyLanguageSwitcher :showLanguageName="true" :theme="theme"/>
+      <LazyLanguageSwitcher :showLanguageName="true" :theme="theme" mode="links"/>
     </div>
   </div>
 </template>
