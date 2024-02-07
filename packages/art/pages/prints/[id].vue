@@ -53,6 +53,12 @@
       </Accordion>
     </section>
   </div>
+
+  <LazySliderPrints
+          :title="$t('art.moreBy', {name: tags.artist.name})"
+          :tag="tags.artist.id"
+          class="mt-6"
+          order="created"/>
 </template>
 <script setup>
 const { public: { priceTable: { photos: pricing } } } = useRuntimeConfig()

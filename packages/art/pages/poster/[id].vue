@@ -51,6 +51,12 @@
       </Accordion>
     </section>
   </div>
+  <LazySliderPosters
+      :title="$t('art.moreBy', {name: tags.artist.name})"
+      :tag="tags.artist.id"
+      class="mt-6"
+      order="created"
+  />
 </template>
 <script setup>
 const { params: { id } } = useRoute()
@@ -83,5 +89,4 @@ gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',
   screen_name: `Poster Page - ${title}`
 })
-
 </script>

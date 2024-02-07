@@ -40,3 +40,11 @@ onMounted(async () => {
   posters.value = fetchedPosters.value
 })
 </script>
+
+<style lang="postcss">
+.splide__pagination__page {
+  &.is-active {
+    @apply bg-black;
+  }
+}
+</style>

@@ -38,6 +38,7 @@
     "select-size": "Select Size",
     "photo": "Photo",
     "by": "By",
+    "moreBy": "More by {name}",
     "shot-in": "shot in",
     "accordion": {
       "shipping": {
