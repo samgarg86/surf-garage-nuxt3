@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="max-w-[80rem] mx-auto mt-5 px-1 md:px-2">
-    <BlogRichText v-bind="text" />
+    <RichText v-bind="text" />
   </div>
 <!--  <pre>{{entries.items[0]}}</pre>-->
 </template>

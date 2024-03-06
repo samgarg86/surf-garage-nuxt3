@@ -65,7 +65,13 @@
         </Accordion>
       </li>
       <li>
-        <a href="https://surfgarage.es" target="_blank" class="art-menu-link">{{ $t("nav.storage") }}</a>
+        <a v-for="item in siteNav?.otherLinks"
+           :key="item"
+           :href="item.slug"
+           :target="item.slug.startsWith('http') ? '_blank' : '_self'"
+           class="art-menu-link">
+          {{ item[locale] }}
+        </a>
       </li>
 <!--      <li>-->
 <!--        <NuxtLink :to="localeRoute('/about')" class="mr-1" @click="$emit('hamburger:click')">-->

@@ -1,7 +1,7 @@
 export const useContentfulPhotos = () => {
     const { locale } = useI18n()
-    const { client, getEntries} = useContentful()
-    const { mapImages, fetchImagesByTags } = useImages()
+    const { getEntries} = useContentful()
+    const { fetchImagesByTags } = useImages()
     const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
 
     const pageTags = ref('')

@@ -4,9 +4,6 @@
     <h2 v-if="description" class="text-sm md:text-2 mt-1 md:mt-2">{{ description }}</h2>
   </div>
 </template>
-<script setup>
-defineProps({
-  title: String,
-  description: String
-})
+<script setup lang="ts">
+defineProps<{title: string, description?: string}>()
 </script>
