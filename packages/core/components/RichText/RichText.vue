@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-for="(item, i) in contentMap" :key="i">
-      <RichTextHeading v-if="item.type === 'heading'" class="mb-2" :format="item.format" :text="item.content"/>
+      <RichTextHeading v-if="item.type === 'heading'" class="mt-3 mb-2" :format="item.format" :text="item.content"/>
       <RichTextParagraph v-if="item.type == 'text'" class="mb-2" :content="item.content"/>
       <Image v-if="item.type == 'image'" class="mb-2 lg:mb-4 mx-auto" :src="`${item.content}?w=800&fm=webp`" />
       <video v-if="item.type == 'video'" class="mb-2 lg:mb-4 w-full max-w-[60rem] mx-auto" controls >
@@ -18,7 +18,7 @@ const props = defineProps({
   content: Array
 })
 
-const contentMap = props.content.map(({ content, nodeType, data: { target } }) => {
+const contentMap = props.content?.map(({ content, nodeType, data: { target } }) => {
   switch (true) {
     case nodeType === 'paragraph':
       return {

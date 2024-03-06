@@ -1,6 +1,6 @@
 <template>
-  <PageHeader :title="title" />
-  <div class="max-w-[80rem] mx-auto mt-5 px-1 md:px-2">
+  <PageHeader :title="title" :description="description"/>
+  <div class="max-w-[80rem] mx-auto px-1 md:px-2">
     <RichText v-bind="text" />
   </div>
 </template>
