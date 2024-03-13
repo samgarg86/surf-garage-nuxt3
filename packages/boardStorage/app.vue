@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLayout>
-      <NuxtLoadingIndicator/>
+      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
   </div>
@@ -9,7 +9,7 @@
 <script setup lang="ts">
 const i18nHead = useLocaleHead({
   addSeoAttributes: true
-})
+});
 useHead({
   bodyAttrs: {
     class: 'antialiased font-myriad text-base text-black m-0 w-full min-w-full'
@@ -21,14 +21,17 @@ useHead({
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { 'http-equiv': 'accept-ch', content: 'width' },
-    { name: 'google-site-verification', content: 'zFkorbR5IM4CttFNPeqBdq-iNibbkw_c032veRnXwE4' },
+    {
+      name: 'google-site-verification',
+      content: 'zFkorbR5IM4CttFNPeqBdq-iNibbkw_c032veRnXwE4'
+    },
     ...(i18nHead.value.meta || [])
   ],
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ...(i18nHead.value.link || [])
   ]
-})
+});
 </script>
 <style lang="scss">
 #app {

@@ -7,14 +7,17 @@
       </div>
       <div class="about-storage__tiles about-tiles">
         <article
-          v-for="({fields: {file, title}}, index) in icons"
+          v-for="({ fields: { file, title } }, index) in icons"
           :key="index"
           class="text-center w-16"
         >
-          <div class="h-16 bg-white" :style="{
-           'mask': `url('${file.url}') no-repeat center / contain`,
-            '-webkit-mask': `url('${file.url}') no-repeat center / contain`
-          }"/>
+          <div
+            class="h-16 bg-white"
+            :style="{
+              mask: `url('${file.url}') no-repeat center / contain`,
+              '-webkit-mask': `url('${file.url}') no-repeat center / contain`
+            }"
+          />
           <h3 class="about-tile__title font-metalsmith">{{ title }}</h3>
         </article>
       </div>
@@ -26,7 +29,7 @@ defineProps({
   title: String,
   subtitle: String,
   icons: Array
-})
+});
 </script>
 <style lang="postcss">
 .about-info {
@@ -115,8 +118,9 @@ defineProps({
 }
 
 .about-storage {
-  background: url("@core/assets/images/surf-pattern.svg") repeat,
-  theme('colors.amberYellow');
+  background:
+    url('@core/assets/images/surf-pattern.svg') repeat,
+    theme('colors.amberYellow');
   background-size: 200px;
   background-attachment: fixed;
   color: theme('colors.white');

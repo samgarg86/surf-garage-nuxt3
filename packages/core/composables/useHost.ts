@@ -1,5 +1,5 @@
 export const useHost = () => {
-  const {host} = process.server ? useRequestHeaders() : window.location
+  const { host } = process.server ? useRequestHeaders() : window.location;
 
-  return host
-}
+  return host;
+};

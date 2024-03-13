@@ -13,11 +13,11 @@
   </div>
 </template>
 <script setup lang="ts">
-const ABOVE_THE_FOLD_IMAGES = 6
+const ABOVE_THE_FOLD_IMAGES = 6;
 defineProps<{
-  images: Array<any>,
-  slug: string,
-  showArtist?: boolean,
-  showPlace?: boolean
-}>()
+  images: Array<any>;
+  slug: string;
+  showArtist?: boolean;
+  showPlace?: boolean;
+}>();
 </script>

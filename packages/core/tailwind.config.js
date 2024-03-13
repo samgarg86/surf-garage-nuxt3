@@ -60,19 +60,18 @@ module.exports = {
       25: '25rem',
       30: '30rem'
     },
-    fontSize:
-      {
-        xxs: '1.2rem',
-        xs: '1.4rem',
-        sm: '1.6rem',
-        1.8: '1.8rem',
-        2: '2rem',
-        base: '2.2rem',
-        xl: '2.5rem',
-        '2xl': '3rem',
-        '3xl': '3.5rem',
-        '4xl': '4rem',
-        '5xl': '4.5rem'
-      }
+    fontSize: {
+      xxs: '1.2rem',
+      xs: '1.4rem',
+      sm: '1.6rem',
+      1.8: '1.8rem',
+      2: '2rem',
+      base: '2.2rem',
+      xl: '2.5rem',
+      '2xl': '3rem',
+      '3xl': '3.5rem',
+      '4xl': '4rem',
+      '5xl': '4.5rem'
+    }
   }
-}
+};

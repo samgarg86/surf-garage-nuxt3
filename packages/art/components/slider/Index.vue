@@ -1,22 +1,30 @@
 <template>
-  <Splide class="horizontal-slider" :options="{...defaultOptions, ...options}" :has-track="false" >
+  <Splide
+    class="horizontal-slider"
+    :options="{ ...defaultOptions, ...options }"
+    :has-track="false"
+  >
     <SplideTrack>
-      <slot/>
+      <slot />
     </SplideTrack>
 
     <div class="splide__arrows">
-      <button class="splide__arrow splide__arrow--prev bg-grey-30 w-2.5 h-2.5 inline-grid place-content-center">
-          <svgo-chevron-down class="inline-block text-xs"/>
+      <button
+        class="splide__arrow splide__arrow--prev bg-grey-30 w-2.5 h-2.5 inline-grid place-content-center"
+      >
+        <svgo-chevron-down class="inline-block text-xs" />
       </button>
-      <button class="splide__arrow splide__arrow--next bg-grey-30 w-2.5 h-2.5 inline-grid place-content-center">
-        <svgo-chevron-down class="inline-block text-xs"/>
+      <button
+        class="splide__arrow splide__arrow--next bg-grey-30 w-2.5 h-2.5 inline-grid place-content-center"
+      >
+        <svgo-chevron-down class="inline-block text-xs" />
       </button>
     </div>
   </Splide>
 </template>
 
 <script setup lang="ts">
-import { Splide, SplideTrack } from '@splidejs/vue-splide'
+import { Splide, SplideTrack } from '@splidejs/vue-splide';
 const defaultOptions = {
   pagination: true,
   arrows: true,
@@ -24,11 +32,11 @@ const defaultOptions = {
   drag: true,
   perPage: 1,
   gap: '1rem'
-}
+};
 
 defineProps({
   options: Object
-})
+});
 </script>
 <style lang="postcss">
 .horizontal-slider {
@@ -55,5 +63,4 @@ defineProps({
     }
   }
 }
-
 </style>

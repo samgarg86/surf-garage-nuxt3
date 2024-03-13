@@ -1,5 +1,5 @@
 <script setup>
-const endpoint = 'https://formspree.io/f/xwkzrzpj'
+const endpoint = 'https://formspree.io/f/xwkzrzpj';
 // TODO: Move this to axios submit (but need to implement recaptcha myself)
 // import {ref} from "vue";
 // import axios from 'axios'
@@ -21,26 +21,30 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
 </script>
 
 <template>
-  <form class="contact-form w-full grid gap-1 mb-1" :action="endpoint" method="POST">
+  <form
+    class="contact-form w-full grid gap-1 mb-1"
+    :action="endpoint"
+    method="POST"
+  >
     <input
-        class="contact-form__input"
-        :placeholder="$t('contact.form.name')"
-        name="name"
-        required
-        style="grid-area: name"
+      class="contact-form__input"
+      :placeholder="$t('contact.form.name')"
+      name="name"
+      required
+      style="grid-area: name"
     />
     <input
-        class="contact-form__input"
-        :placeholder="$t('contact.form.phone')"
-        type="tel"
+      class="contact-form__input"
+      :placeholder="$t('contact.form.phone')"
+      type="tel"
       name="phone"
       style="grid-area: phone"
     />
     <input
-        class="contact-form__input"
-        :placeholder="$t('contact.form.email')"
-        name="email"
-        style="grid-area: email"
+      class="contact-form__input"
+      :placeholder="$t('contact.form.email')"
+      name="email"
+      style="grid-area: email"
     />
     <textarea
       class="contact-form__textarea"
@@ -51,7 +55,7 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
     />
     <div class="contact-form__send" style="grid-area: send">
       <button type="submit" class="contact-form__btn-send">
-        {{ $t("contact.form.send") }}
+        {{ $t('contact.form.send') }}
       </button>
     </div>
   </form>
@@ -60,21 +64,21 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
 <style lang="postcss">
 .contact-form {
   grid-template-areas:
-    "name"
-    "phone"
-    "email"
-    "message"
-    "send";
+    'name'
+    'phone'
+    'email'
+    'message'
+    'send';
 
   grid-template-rows: 1fr 1fr 1fr 3fr 1fr;
 
   @media screen(md) {
     grid-template-rows: 1fr 1fr 3fr 1fr;
     grid-template-areas:
-      "name name name"
-      "phone email email"
-      "message message message"
-      ". . send";
+      'name name name'
+      'phone email email'
+      'message message message'
+      '. . send';
   }
 
   &__input {
@@ -89,12 +93,14 @@ const endpoint = 'https://formspree.io/f/xwkzrzpj'
     @apply text-right;
 
     button {
-      @apply border-0 bg-white text-black py-1 px-2 cursor-pointer w-full md:w-auto
+      @apply border-0 bg-white text-black py-1 px-2 cursor-pointer w-full md:w-auto;
     }
   }
 
   &.lowercase {
-    input, textarea, button {
+    input,
+    textarea,
+    button {
       text-transform: lowercase;
     }
   }

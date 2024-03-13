@@ -13,10 +13,12 @@ const props = defineProps({
     type: String,
     required: false
   }
-})
+});
 
 const scrollIntoView = (e) => {
-  window?.document.getElementById(props.to).scrollIntoView({ behavior: 'smooth' })
-  e.preventDefault()
-}
+  window?.document
+    .getElementById(props.to)
+    .scrollIntoView({ behavior: 'smooth' });
+  e.preventDefault();
+};
 </script>

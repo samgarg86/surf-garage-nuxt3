@@ -11,9 +11,17 @@
     "dev:board": "yarn workspace surf-garage dev",
     "build:art": "yarn workspace surf-garage-art build",
     "build:board": "yarn workspace surf-garage build",
-    "deploy": "sh deployToOcean.sh"
+    "deploy": "sh deployToOcean.sh",
+    "pretify": "npx prettier . --write",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "3.2.5"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
