@@ -1,11 +1,11 @@
 <template>
-  <div class="text-white font-avenir">
+  <div class="text-white">
     <ul>
       <li class="pb-2">
         <Accordion>
           <LazyAccordionItem
               v-if="siteNav?.surfArtCategories"
-              title-class="text-lightYellow font-avenir"
+              title-class="text-lightYellow font-primary"
               :title="$t('nav.categories')"
               :is-open="true">
             <NuxtLink
@@ -20,7 +20,7 @@
           <LazyAccordionItem
               v-if="siteNav?.surfArtPosters"
               class="border-t"
-              title-class="text-lightYellow font-avenir"
+              title-class="text-lightYellow font-primary"
               :title="$t('nav.posters')"
               :is-open="true">
             <NuxtLink
@@ -35,7 +35,7 @@
           <LazyAccordionItem
               v-if="siteNav?.surfArtLocations"
               class="border-t"
-              title-class="text-lightYellow font-avenir"
+              title-class="text-lightYellow font-primary"
               :title="$t('nav.locations')"
               :is-open="false">
             <NuxtLink
@@ -50,7 +50,7 @@
           <LazyAccordionItem
               v-if="siteNav?.surfArtArtists"
               class="border-t"
-              title-class="text-lightYellow font-avenir"
+              title-class="text-lightYellow font-primary"
               :title="$t('nav.artists')"
               :is-open="false">
             <NuxtLink
@@ -93,7 +93,7 @@ const { locale } = useI18n()
 
 <style lang="postcss">
 .art-menu-link {
-  @apply block text-sm md:text-1.8 hover:underline;
+  @apply block text-xs md:text-sm hover:underline;
   line-height: 1.9;
 }
 </style>

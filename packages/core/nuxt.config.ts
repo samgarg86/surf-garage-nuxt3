@@ -3,7 +3,12 @@ export default defineNuxtConfig({
         '@core': __dirname
     },
     css: ['@core/assets/css/tailwind.css'],
-    modules: ['nuxt-svgo'],
+    modules: ['nuxt-svgo', ['@nuxtjs/google-fonts', {
+      display: 'swap',
+      families: {
+        'Work Sans': '200..700'
+      }
+    }]],
     svgo: {
         autoImportPath: '@core/assets/icons/',
         customComponent: 'SvgoIcon'

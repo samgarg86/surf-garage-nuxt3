@@ -1,6 +1,10 @@
 <template>
-  <header class="fixed z-10 left-0 top-0 w-full text-center py-1.5 bg-black">
-    <NuxtLink :to="localeRoute('/')" class="font-avenir font-extrabold text-2 md:text-[2.3rem] text-white">surf garage art co.</NuxtLink>
+  <header class="fixed z-10 left-0 top-0 w-full text-center py-[1.6rem] bg-black">
+    <NuxtLink :to="localeRoute('/')" class="text-white text-center">
+<svgo-art-logo :fontControlled="false" class="mx-auto w-15 md:w-20"/>
+<!--      <div class="font-primary font-extrabold text-xl tracking-[0.1rem]">Surf Garage</div>-->
+<!--      <div class="text-sm font-secondary font-medium uppercase tracking-[0.55rem]">Art Collective</div>-->
+    </NuxtLink>
     <div class="flex absolute right-1 top-2 md:top-1 md:right-2 md:items-start">
       <LazyLanguageSwitcher
           :showLanguageName="false"

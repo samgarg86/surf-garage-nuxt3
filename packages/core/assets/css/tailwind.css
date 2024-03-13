@@ -61,6 +61,43 @@
   font-display: swap;
 }
 
+/* WILCO */
+@font-face {
+  font-family: 'Wilco';
+  font-style: normal;
+  font-weight: 300;
+  src: url('@core/assets/fonts/wilco/WilcoLoftSans-Treble.woff2') format('woff2'),
+  url('@core/assets/fonts/wilco/WilcoLoftSans-Treble.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Wilco';
+  font-style: normal;
+  font-weight: 500;
+  src: url('@core/assets/fonts/wilco/WilcoLoftSans-Midrange.woff2') format('woff2'),
+  url('@core/assets/fonts/wilco/WilcoLoftSans-Midrange.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Wilco';
+  font-style: normal;
+  font-weight: 700;
+  src: url('@core/assets/fonts/wilco/WilcoLoftSans-LowEnd.woff2') format('woff2'),
+  url('@core/assets/fonts/wilco/WilcoLoftSans-LowEnd.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Wilco';
+  font-style: normal;
+  font-weight: 800;
+  src: url('@core/assets/fonts/wilco/WilcoLoftSans-Bass.woff2') format('woff2'),
+  url('@core/assets/fonts/wilco/WilcoLoftSans-Bass.woff') format('woff');
+  font-display: swap;
+}
+
 *::selection {
   @apply bg-pink;
 }
@@ -118,7 +155,7 @@ ul {
 }
 
 .add-to-cart {
-  @apply border-none px-5 py-1 w-full md:w-30 bg-black text-white font-avenir font-bold uppercase text-1.8 disabled:opacity-25;
+  @apply border-none px-5 py-1 w-full md:w-30 bg-black text-white font-primary font-bold uppercase text-1.8 disabled:opacity-25;
 }
 
 .image-frame {

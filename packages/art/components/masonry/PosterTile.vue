@@ -15,8 +15,8 @@
       </div>
     </NuxtLink>
     <div class="flex justify-between items-start px-1">
-      <div class="font-avenir mr-2 flex-1">
-        <p class="text-1.8 font-medium">{{title}}</p>
+      <div class="mr-2 flex-1">
+        <p class="text-1.8 font-bold font-primary">{{title}}</p>
         <p v-if="tags?.artist" class="text-[1.2rem] uppercase leading-loose">{{$t('art.by')}} {{tags.artist.name}}</p>
       </div>
       <NuxtLink class="underline text-1.8" :to="localeRoute(`/poster/${id}?f=${f}`)">

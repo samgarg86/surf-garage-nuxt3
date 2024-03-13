@@ -12,7 +12,7 @@ const i18nHead = useLocaleHead({
 })
 useHead({
   bodyAttrs: {
-    class: 'antialiased font-myriad text-base text-black m-0 w-full min-w-full'
+    class: 'antialiased font-secondary text-base text-black m-0 w-full min-w-full'
   },
   htmlAttrs: {
     lang: i18nHead.value.htmlAttrs?.lang

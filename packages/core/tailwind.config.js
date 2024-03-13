@@ -30,9 +30,10 @@ module.exports = {
     },
     fontFamily: {
       metalsmith: ['Metalsmith', 'sans-serif'],
-      avenir: ['Avenir Next', 'serif'],
+      avenir: ['avenir', 'serif'],
       myriad: ['Myriad Pro', 'serif'],
-      modelica: ['Modelica', 'serif']
+      primary: ['Wilco', 'serif'],
+      secondary: ['Work Sans', 'serif']
     },
     spacing: {
       px: '1px',

@@ -7,7 +7,7 @@
 
     <section class="md:mr-2">
       <div class="md:mt-3 md:mb-1">
-        <h1 class="text-3xl md:text-4xl font-avenir">{{ title }}</h1>
+        <h1 class="text-3xl md:text-4xl font-primary">{{ title }}</h1>
 
         <LazyArtistPlaceTag v-if="tags.artist" class="mb-1" :artist="tags.artist" :place="tags.place"/>
         <h2 v-if="description" class="text-2">{{description}}</h2>
@@ -22,7 +22,7 @@
 
       </div>
 
-      <div class="text-2xl mb-1 font-avenir font-medium">€{{pricing[size]}}</div>
+      <div class="text-2xl mb-1 font-primary font-medium">€{{pricing[size]}}</div>
       <SizeSelector v-model="size" class="mb-1"/>
       <AddToCart
         :id="`${id}`"
@@ -37,15 +37,15 @@
       />
 
       <Accordion class="mt-3 md:mt-5">
-          <AccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black font-avenir" class="border-t">
+          <AccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black font-primary" class="border-t">
               <p class="text-sm text-justify">{{$t('art.accordion.materials.descPhotos')}}</p>
           </AccordionItem>
-          <AccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black font-avenir" class="border-t">
+          <AccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black font-primary" class="border-t">
               <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line1')}}</p>
               <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line2')}}</p>
             <p class="text-sm text-justify font-bold">{{$t('art.accordion.shipping.free')}}</p>
           </AccordionItem>
-          <AccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black font-avenir" class="border-t">
+          <AccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black font-primary" class="border-t">
               <p class="text-sm text-justify">
                   {{$t('art.accordion.contact.desc')}} <ScrollTo to="contact" class="underline">{{$t('art.accordion.contact.link')}}</ScrollTo>
               </p>

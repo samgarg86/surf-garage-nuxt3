@@ -2,8 +2,8 @@
   <section id="contact" class="footer mb-2">
     <div class="footer__content md:text-left px-2 py-5 lg:py-10 lg:px-6">
       <section :style="{gridArea: 'form'}">
-        <p class="text-sm font-bold uppercase mb-2">{{$t('nav.contact')}}</p>
-        <LazyFooterContactForm class="text-sm font-avenir"/>
+        <p class="text-sm font-bold uppercase mb-2 font-primary">{{$t('nav.contact')}}</p>
+        <LazyFooterContactForm class="text-sm"/>
       </section>
 
       <Accordion class="footer__accordion md:hidden">

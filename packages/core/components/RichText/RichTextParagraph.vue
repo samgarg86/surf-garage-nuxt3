@@ -1,5 +1,5 @@
 <template>
-  <p class="text-2 font-avenir text-justify ">
+  <p class="text-2 font-primary text-justify ">
 <!--    <pre>{{content}}</pre>-->
     <template v-for="(node, i) in content" :key="i">
       <span v-if="node.nodeType === 'text' && node.value"
