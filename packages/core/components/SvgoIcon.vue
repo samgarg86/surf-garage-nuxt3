@@ -1,10 +1,10 @@
 <template>
   <component
-      :is="icon"
-      :class="{
-        'nuxt-icon': fontControlled,
-        'nuxt-icon--fill': !filled
-      }"
+    :is="icon"
+    :class="{
+      'nuxt-icon': fontControlled,
+      'nuxt-icon--fill': !filled
+    }"
   />
 </template>
 
@@ -26,7 +26,7 @@ export default {
       required: true
     }
   }
-}
+};
 </script>
 
 <style>

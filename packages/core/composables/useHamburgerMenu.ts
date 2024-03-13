@@ -1,9 +1,13 @@
 export const useHamburgerMenu = () => {
-    const isHamburgerOpen = ref(false)
+  const isHamburgerOpen = ref(false);
 
-    return {
-        isHamburgerOpen,
-        onHamburgerOpen: () => { isHamburgerOpen.value = true },
-        onHamburgerClose: () => { isHamburgerOpen.value = false }
+  return {
+    isHamburgerOpen,
+    onHamburgerOpen: () => {
+      isHamburgerOpen.value = true;
+    },
+    onHamburgerClose: () => {
+      isHamburgerOpen.value = false;
     }
-}
+  };
+};

@@ -2,7 +2,7 @@
   <button
     class="snipcart-add-item add-to-cart"
     :class="{
-      'bg-grey': !enableCommerce,
+      'bg-grey': !enableCommerce
     }"
     :data-item-id="id"
     :data-item-price="price"
@@ -15,7 +15,8 @@
     :data-item-url="url"
     :disabled="!enableCommerce || ecomDisabled"
     data-item-quantity="1"
-  >{{$t('art.add-to-cart')}}
+  >
+    {{ $t('art.add-to-cart') }}
   </button>
 </template>
 <script setup>
@@ -29,6 +30,8 @@ defineProps({
   sizes: String,
   selectedSize: String,
   ecomDisabled: Boolean
-})
-const { public: { enableCommerce } } = useRuntimeConfig()
+});
+const {
+  public: { enableCommerce }
+} = useRuntimeConfig();
 </script>

@@ -1,16 +1,24 @@
 <template>
   <section id="pricing" class="section pricing">
     <h2 class="pricing__section-title section__title font-metalsmith">
-      {{ $t("pricing.title") }}
+      {{ $t('pricing.title') }}
     </h2>
     <ul class="section__content pricing__content">
       <li
-        v-for="({fields: {title, monthlyPrice, priceDescription}}, index) in plans"
+        v-for="(
+          { fields: { title, monthlyPrice, priceDescription } }, index
+        ) in plans"
         :key="index"
-        class="pricing__content-item">
+        class="pricing__content-item"
+      >
         <h3 class="pricing__title font-metalsmith lowercase">{{ title }}</h3>
-        <h4 class="text-2">€{{ monthlyPrice }}/{{$t("pricing.month")}}</h4>
-        <div v-if="priceDescription" class="text-xs font-avenir font-medium mt-1">{{ priceDescription }}</div>
+        <h4 class="text-2">€{{ monthlyPrice }}/{{ $t('pricing.month') }}</h4>
+        <div
+          v-if="priceDescription"
+          class="text-xs font-avenir font-medium mt-1"
+        >
+          {{ priceDescription }}
+        </div>
       </li>
     </ul>
   </section>
@@ -19,7 +27,7 @@
 <script setup>
 defineProps({
   plans: Array
-})
+});
 </script>
 
 <style lang="postcss">

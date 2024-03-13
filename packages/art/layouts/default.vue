@@ -1,30 +1,37 @@
 <template>
   <Hamburger
-      :isOpen="isHamburgerOpen"
-      @hamburger:open="onHamburgerOpen"
-      @hamburger:close="onHamburgerClose">
+    :isOpen="isHamburgerOpen"
+    @hamburger:open="onHamburgerOpen"
+    @hamburger:close="onHamburgerClose"
+  >
     <template #hamburger-icon>
-      <HamburgerIcon class="left-1 top-2 md:left-2" invert @click="onHamburgerOpen"/>
+      <HamburgerIcon
+        class="left-1 top-2 md:left-2"
+        invert
+        @click="onHamburgerOpen"
+      />
     </template>
-    <ArtHamburger @hamburger:click="onHamburgerClose"/>
+    <ArtHamburger @hamburger:click="onHamburgerClose" />
   </Hamburger>
-  <main id="page-wrap" :class="{ 'slide': isHamburgerOpen }" class="pt-6">
-    <Header/>
+  <main id="page-wrap" :class="{ slide: isHamburgerOpen }" class="pt-6">
+    <Header />
     <div class="mx-1 md:mx-2 mb-4">
-      <slot/>
+      <slot />
     </div>
-    <Footer/>
+    <Footer />
   </main>
 
-  <div hidden
-       id="snipcart"
-       data-api-key="YWZhYTMyNDUtZWY4Ny00ZDg0LTk1ZjYtMzMzZDFjN2NjNzYxNjM4MjE1NzE4NjM4MjYyMjk0"
-       data-config-modal-style="side">
-  </div>
+  <div
+    hidden
+    id="snipcart"
+    data-api-key="YWZhYTMyNDUtZWY4Ny00ZDg0LTk1ZjYtMzMzZDFjN2NjNzYxNjM4MjE1NzE4NjM4MjYyMjk0"
+    data-config-modal-style="side"
+  ></div>
 </template>
 
 <script lang="ts" setup>
-const { isHamburgerOpen, onHamburgerOpen, onHamburgerClose } = useHamburgerMenu()
+const { isHamburgerOpen, onHamburgerOpen, onHamburgerClose } =
+  useHamburgerMenu();
 
 useHead({
   link: [
@@ -36,20 +43,26 @@ useHead({
     }
   ],
   script: [
-    { src: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js', async: true }
+    {
+      src: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js',
+      async: true
+    }
   ]
-})
+});
 
 useSeoMeta({
   title: 'Surf Garage Art Co',
-  description: 'Discover artwork created by photographers and illustrators based in the Canary Islands who bring to life their travels, experiences, emotions and surf vibes through prints and posters.',
+  description:
+    'Discover artwork created by photographers and illustrators based in the Canary Islands who bring to life their travels, experiences, emotions and surf vibes through prints and posters.',
   ogTitle: 'Surf Garage Art Co',
-  ogDescription: 'Discover artwork created by photographers and illustrators based in the Canary Islands who bring to life their travels, experiences, emotions and surf vibes through prints and posters.',
+  ogDescription:
+    'Discover artwork created by photographers and illustrators based in the Canary Islands who bring to life their travels, experiences, emotions and surf vibes through prints and posters.',
   ogImage: 'https://surfgarage.es/logo.png',
-  keywords: 'surf art, surf photography, surf illustrations, art, photography, illustrations, photo prints, surfing, art gallery'
-})
+  keywords:
+    'surf art, surf photography, surf illustrations, art, photography, illustrations, photo prints, surfing, art gallery'
+});
 </script>
 
 <style lang="postcss">
-@import "~/assets/css/snipcart.css";
+@import '~/assets/css/snipcart.css';
 </style>

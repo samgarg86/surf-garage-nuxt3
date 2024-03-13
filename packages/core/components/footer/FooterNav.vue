@@ -1,10 +1,15 @@
 <template>
-  <nav >
+  <nav>
     <div class="font-bold mb-1 uppercase">{{ title }}</div>
     <div v-for="item in nav" :key="item.slug">
       <NuxtLink
-        :to="scroll? `${localeRoute('/').fullPath}${item.slug}` : localeRoute(item.slug)"
-        class="inline-block text-black leading-loose font-avenir">
+        :to="
+          scroll
+            ? `${localeRoute('/').fullPath}${item.slug}`
+            : localeRoute(item.slug)
+        "
+        class="inline-block text-black leading-loose font-avenir"
+      >
         {{ item[locale] || item.name }}
       </NuxtLink>
     </div>
@@ -16,8 +21,8 @@ defineProps({
   to: String,
   scroll: Boolean,
   nav: Object
-})
+});
 
-const localeRoute = useLocaleRoute()
-const { locale } = useI18n()
+const localeRoute = useLocaleRoute();
+const { locale } = useI18n();
 </script>

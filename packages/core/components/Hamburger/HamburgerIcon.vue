@@ -1,14 +1,18 @@
 <template>
-    <button class="hamburger-icon fixed z-50" :class="{'color-invert': invert}" @click="$emit('click')">
-      <span class="menu-bar mb-0.5"></span>
-      <span class="menu-bar mb-0.5"></span>
-      <span class="menu-bar"></span>
-    </button>
+  <button
+    class="hamburger-icon fixed z-50"
+    :class="{ 'color-invert': invert }"
+    @click="$emit('click')"
+  >
+    <span class="menu-bar mb-0.5"></span>
+    <span class="menu-bar mb-0.5"></span>
+    <span class="menu-bar"></span>
+  </button>
 </template>
 <script setup>
 defineProps({
   invert: Boolean
-})
+});
 </script>
 <style lang="postcss">
 .menu-bar {

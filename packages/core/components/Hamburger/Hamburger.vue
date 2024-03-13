@@ -1,36 +1,41 @@
 <template>
-    <slot name="hamburger-icon">
-      <HamburgerIcon class="left-1 top-2 md:left-2" @click="open"/>
-    </slot>
-    <div class="hamburger-menu bg-black" :class="{slide: isOpen}">
-      <div class="flex justify-between items-center p-2">
-        <button @click="close" class="text-white">
-          <SvgoClose class="text-xl"/>
-        </button>
-        <LazyLanguageSwitcher :showLanguageName="false" theme="dark" class="text-1.8" mode="links"/>
-      </div>
-      <div class="px-2">
-        <slot/>
-      </div>
+  <slot name="hamburger-icon">
+    <HamburgerIcon class="left-1 top-2 md:left-2" @click="open" />
+  </slot>
+  <div class="hamburger-menu bg-black" :class="{ slide: isOpen }">
+    <div class="flex justify-between items-center p-2">
+      <button @click="close" class="text-white">
+        <SvgoClose class="text-xl" />
+      </button>
+      <LazyLanguageSwitcher
+        :showLanguageName="false"
+        theme="dark"
+        class="text-1.8"
+        mode="links"
+      />
     </div>
+    <div class="px-2">
+      <slot />
+    </div>
+  </div>
 
-    <div v-if="isOpen" @click="close" class="hamburger-menu-mask bg-black"/>
+  <div v-if="isOpen" @click="close" class="hamburger-menu-mask bg-black" />
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['hamburger:open', 'hamburger:close'])
+const emit = defineEmits(['hamburger:open', 'hamburger:close']);
 defineProps({
   isOpen: Boolean
-})
+});
 
 // const isHamburgerOpen = ref(false)
 const open = () => {
-  emit('hamburger:open')
-}
+  emit('hamburger:open');
+};
 
 const close = () => {
-  emit('hamburger:close')
-}
+  emit('hamburger:close');
+};
 </script>
 
 <style lang="postcss">
@@ -75,5 +80,4 @@ const close = () => {
     transform: translate3d(330px, 0px, 0px);
   }
 }
-
 </style>

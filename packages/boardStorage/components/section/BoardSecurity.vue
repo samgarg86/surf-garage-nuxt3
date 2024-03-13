@@ -11,14 +11,17 @@
       </div>
       <div class="about-security__tiles about-tiles">
         <article
-            v-for="({fields: {file, title}}, index) in icons"
+          v-for="({ fields: { file, title } }, index) in icons"
           :key="index"
           class="text-center w-16"
         >
-          <div class="h-15 bg-white" :style="{
-           'mask': `url('${file.url}') no-repeat center / contain`,
-            '-webkit-mask': `url('${file.url}') no-repeat center / contain`
-          }"/>
+          <div
+            class="h-15 bg-white"
+            :style="{
+              mask: `url('${file.url}') no-repeat center / contain`,
+              '-webkit-mask': `url('${file.url}') no-repeat center / contain`
+            }"
+          />
           <h3 class="about-tile__title font-metalsmith">{{ title }}</h3>
         </article>
       </div>
@@ -31,14 +34,12 @@ defineProps({
   subtitle: String,
   icons: Array,
   backgroundImage: Object
-})
+});
 </script>
 <style lang="postcss">
 .about-security {
-  background-image: linear-gradient(
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.4)
-  ), var(--bg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    var(--bg);
   background-attachment: fixed;
   background-size: cover;
 
