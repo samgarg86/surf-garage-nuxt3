@@ -1,5 +1,5 @@
 <template>
-  <component :is="component.tag" class="font-bold" :class="component.class">{{text}}</component>
+  <component :is="component.tag" class="font-medium font-primary" :class="component.class">{{text}}</component>
 </template>
 
 <script setup>
