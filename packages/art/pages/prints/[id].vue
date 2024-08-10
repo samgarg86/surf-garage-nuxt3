@@ -61,23 +61,25 @@
           order="created"/>
 </template>
 <script setup>
-const { public: { priceTable: { photos: pricing } } } = useRuntimeConfig()
+const { public: { priceTable } } = useRuntimeConfig()
 const { fetchImageById } = useImages()
 const localePath = useLocalePath()
 const host = useHost()
 const { gtag } = useGtag()
-const priceEntries = Object.entries(pricing)
+const { query, params: { id } } = useRoute()
+
+const { url, title, description, tags } = await fetchImageById(id)
+const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
+const pricing = computed(() => tags?.settings.includes('settingPosterPrice') ? priceTable.posters : priceTable.photos)
+const priceEntries = Object.entries(pricing.value)
 const baseSize = priceEntries[0][0]
 const basePrice = priceEntries[0][1]
 const size = ref(baseSize)
-const { query, params: { id } } = useRoute()
-const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
 const { t } = useI18n()
 
 if (query.size) size.value = query.size
 const seoDescription = ref('')
 
-const { url, title, description, tags } = await fetchImageById(id)
 if (description) seoDescription.value = description
 else if (tags.artist || tags.place) {
   seoDescription.value = `${t('art.photo')} ${t('art.by').toLowerCase()} ${tags.artist?.name}${tags.place ? `, ${t('art.shot-in')} ${tags.place.name}` : ''}`
