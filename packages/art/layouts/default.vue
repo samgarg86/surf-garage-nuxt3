@@ -32,11 +32,11 @@ useHead({
     { rel: 'preconnect', href: 'https://cdn.snipcart.com' },
     {
       rel: 'stylesheet',
-      href: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css'
+      href: 'https://cdn.snipcart.com/themes/v3.7.0/default/snipcart.css'
     }
   ],
   script: [
-    { src: 'https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js', async: true }
+    { src: 'https://cdn.snipcart.com/themes/v3.7.0/default/snipcart.js', async: true }
   ]
 })
 
