@@ -1,39 +1,39 @@
 import defaultContentful, { createClient } from "contentful"
 
-// Cache site navigation and tags for 1 hour
-const fetchSiteNavAndTags = defineCachedFunction(async () => {
-    const { public: { contentful: { space, accessToken } } } = useRuntimeConfig()
-
-    const client = process.env.NODE_ENV == 'production' ?
-        defaultContentful.createClient({space, accessToken}) :
-        createClient({space, accessToken})
-
-    console.log('Fetching site nav and tags from Contentful (should only happen once per day)')
-
-    const {items} = await client.getEntries({content_type: 'hamburgerMenu', include: 10})
-    const {items: tags} = await client.getTags()
-
-    const processedNav = items?.[0]?.fields
-    const processedTags = tags?.reduce((acc, tag) => {
-        const [type, name] = tag.name.split(': ')
-        acc[tag.sys.id] = { type: type?.toLowerCase(), name }
-        return acc
-    }, {})
-
-    return { nav: processedNav, tags: processedTags }
-}, {
-    maxAge: 60 * 60 * 24, // Cache for 24 hours
-    name: 'siteNavAndTags',
-    getKey: () => 'global'
-})
+// Simple in-memory cache that persists across requests
+let cachedData = null
+let cacheTimestamp = 0
+const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 hours in milliseconds
 
 export default defineNuxtPlugin(async () => {
+    const { public: { contentful: { space, accessToken } } } = useRuntimeConfig()
     const siteNav = useState('siteNav', () => {})
     const siteTags = useState('siteTags', () => {})
 
-    // Fetch from cache (only calls Contentful once per hour)
-    const { nav, tags } = await fetchSiteNavAndTags()
+    const now = Date.now()
+    const isCacheValid = cachedData && (now - cacheTimestamp) < CACHE_DURATION
 
-    siteNav.value = nav
-    siteTags.value = tags
+    if (!isCacheValid) {
+        console.log('Fetching site nav and tags from Contentful (should only happen once per day)')
+
+        const client = process.env.NODE_ENV == 'production' ?
+            defaultContentful.createClient({space, accessToken}) :
+            createClient({space, accessToken})
+
+        const {items} = await client.getEntries({content_type: 'hamburgerMenu', include: 10})
+        const {items: tags} = await client.getTags()
+
+        const processedNav = items?.[0]?.fields
+        const processedTags = tags?.reduce((acc, tag) => {
+            const [type, name] = tag.name.split(': ')
+            acc[tag.sys.id] = { type: type?.toLowerCase(), name }
+            return acc
+        }, {})
+
+        cachedData = { nav: processedNav, tags: processedTags }
+        cacheTimestamp = now
+    }
+
+    siteNav.value = cachedData.nav
+    siteTags.value = cachedData.tags
 })
