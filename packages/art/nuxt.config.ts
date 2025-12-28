@@ -19,8 +19,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       contentful: {
-        space: process.env.contentfulSpace,
-        accessToken: process.env.contentfulAccessToken,
+        space: process.env.contentfulArtSpace,
+        accessToken: process.env.contentfulArtAccessToken,
       },
       enableCommerce: process.env.enableCommerce || true,
       priceTable: {

@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   extends: [
     '../core'
   ],
-    
+
     modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", '@nuxtjs/robots', "nuxt-gtag"],
   i18n: {
     langDir: "../../locales",
@@ -32,8 +32,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       contentful: {
-        space: process.env.contentfulSpace,
-        accessToken: process.env.contentfulAccessToken,
+        space: process.env.contentfulBoardsSpace,
+        accessToken: process.env.contentfulBoardsAccessToken,
       }
     },
   },
