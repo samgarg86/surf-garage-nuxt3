@@ -2,7 +2,7 @@
   <section
     id="security"
     class="section about-security section--bg"
-    :style="{ '--bg': `url(${backgroundImage.fields.file.url})` }"
+    :style="{ '--bg': `url(${backgroundImage?.fields.file.url})` }"
   >
     <div class="section__content">
       <div class="about-security__info about-info">

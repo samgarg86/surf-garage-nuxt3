@@ -37,12 +37,12 @@ const mappedHero = {
   title: heroTitle,
   subtitle: heroSubtitle,
   bgVideo: heroYoutubeVideo,
-  bgImage: heroBgImage.fields.file.url
+  bgImage: heroBgImage?.fields.file.url
 }
 
 const mappedTiles = tiles.map(t => ({
   text: t.fields.text,
-  bg: t.fields.backgroundImage.fields.file.url,
+  bg: t.fields.backgroundImage?.fields.file.url,
   type: t.fields.type,
   link: t.fields.link
 })) || []
