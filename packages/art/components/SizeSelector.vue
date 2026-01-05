@@ -16,6 +16,21 @@
         <input type="radio" id="A3" value="A3" class="hidden"  @change="$emit('update:modelValue', 'A3')" :checked="modelValue==='A3'"/>
         <label for="A3" class="size-selector-label">A3 | 30x40 cm</label>
       </div>
+
+      <div class="size-selector-item">
+        <input type="radio" id="A2" value="A2" class="hidden"  @change="$emit('update:modelValue', 'A2')" :checked="modelValue==='A2'"/>
+        <label for="A2" class="size-selector-label">A2 | 40x50 cm</label>
+      </div>
+
+      <div class="size-selector-item">
+        <input type="radio" id="50x70" value="50x70" class="hidden"  @change="$emit('update:modelValue', '50x70')" :checked="modelValue==='50x70'"/>
+        <label for="50x70" class="size-selector-label">50x70 cm</label>
+      </div>
+
+      <div class="size-selector-item">
+        <input type="radio" id="A1" value="A1" class="hidden"  @change="$emit('update:modelValue', 'A1')" :checked="modelValue==='A1'"/>
+        <label for="A1" class="size-selector-label">A1 | 60x80 cm</label>
+      </div>
     </div>
   </div>
 

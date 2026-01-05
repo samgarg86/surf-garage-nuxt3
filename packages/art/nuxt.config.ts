@@ -28,11 +28,17 @@ export default defineNuxtConfig({
           A5: 8,
           A4: 15,
           A3: 20,
+          A2: 30,
+          '50x70': 40,
+          A1: 50
         },
         posters: {
           A5: 10,
           A4: 20,
           A3: 30,
+          A2: 40,
+          '50x70': 50,
+          A1: 60
         },
       },
       infiniteScrolling: {
