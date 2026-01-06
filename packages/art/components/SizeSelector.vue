@@ -1,58 +1,106 @@
 <template>
   <div>
     <p class="text-sm mb-0.5">{{ $t('art.select-size') }}</p>
-    <div class="text-2 size-selector-grid flex flex-wrap gap-0.5 md:gap-1 font-primary">
-      <div class="size-selector-item">
-        <input type="radio" id="A5" value="A5" class="hidden" @change="$emit('update:modelValue', 'A5')" :checked="modelValue==='A5'"/>
-        <label for="A5" class="size-selector-label">A5 | 15x20 cm</label>
-      </div>
 
-      <div class="size-selector-item">
-        <input type="radio" id="A4" value="A4" class="hidden"  @change="$emit('update:modelValue', 'A4')" :checked="modelValue==='A4'"/>
-        <label for="A4" class="size-selector-label" >A4 | 21x30 cm</label>
-      </div>
+    <!-- Flex grid with bottom alignment -->
+    <div class="flex flex-wrap items-end gap-1 md:gap-2">
+      <div
+        v-for="size in sizesWithDimensions"
+        :key="size.id"
+        class="flex-shrink-0"
+        :style="size.style"
+      >
+        <!-- Hidden radio input -->
+        <input
+          type="radio"
+          :id="size.id"
+          :value="size.id"
+          class="hidden"
+          @change="$emit('update:modelValue', size.id)"
+          :checked="modelValue === size.id"
+        />
 
-      <div class="size-selector-item">
-        <input type="radio" id="A3" value="A3" class="hidden"  @change="$emit('update:modelValue', 'A3')" :checked="modelValue==='A3'"/>
-        <label for="A3" class="size-selector-label">A3 | 30x40 cm</label>
-      </div>
+        <!-- Label with frame and text -->
+        <label
+          :for="size.id"
+          class="flex flex-col items-center gap-0.5 cursor-pointer min-w-[44px] min-h-[44px]"
+        >
+          <!-- Frame visual (styled via custom class for dynamic sizing) -->
+          <span
+            class="frame-visual border-2 bg-white p-1 relative group"
+            :class="modelValue === size.id ? 'border-black border-[3px]' : 'border-grey-20 hover:border-[#444]'"
+            aria-hidden="true"
+          >
+            <!-- Inner rectangle for matting effect -->
+            <span class="absolute inset-0.5 md:inset-[5px] border"
+                  :class="modelValue === size.id ? 'border-black' : 'border-grey-20 group-hover:border-[#444]'"
+            ></span>
+          </span>
 
-      <div class="size-selector-item">
-        <input type="radio" id="A2" value="A2" class="hidden"  @change="$emit('update:modelValue', 'A2')" :checked="modelValue==='A2'"/>
-        <label for="A2" class="size-selector-label">A2 | 40x50 cm</label>
-      </div>
-
-      <div class="size-selector-item">
-        <input type="radio" id="50x70" value="50x70" class="hidden"  @change="$emit('update:modelValue', '50x70')" :checked="modelValue==='50x70'"/>
-        <label for="50x70" class="size-selector-label">50x70 cm</label>
-      </div>
-
-      <div class="size-selector-item">
-        <input type="radio" id="A1" value="A1" class="hidden"  @change="$emit('update:modelValue', 'A1')" :checked="modelValue==='A1'"/>
-        <label for="A1" class="size-selector-label">A1 | 60x80 cm</label>
+          <!-- Text below frame -->
+          <span
+            class="flex flex-col items-center text-center text-xs leading-tight max-w-[100px]"
+            :class="modelValue === size.id ? 'text-black' : 'text-[#444]'"
+          >
+            <span class="font-secondary font-bold">{{ size.label }}</span>
+          </span>
+        </label>
       </div>
     </div>
   </div>
-
 </template>
+
 <script setup lang="ts">
+import { computed } from 'vue'
+
 defineProps(['modelValue'])
 defineEmits(['update:modelValue'])
+
+// Size configuration with dimensions and scaling
+const SIZES = [
+  { id: '15x20', label: '15x20', aspectRatio: 0.75, mobileHeight: 50, desktopHeight: 60 },
+  { id: '21x30', label: '21x30', aspectRatio: 0.7, mobileHeight: 60, desktopHeight: 72 },
+  { id: '30x40', label: '30x40', aspectRatio: 0.75, mobileHeight: 70, desktopHeight: 84 },
+  // { id: 'A2', label: 'A2', dimensions: '40x50 cm', aspectRatio: 0.8, mobileHeight: 78, desktopHeight: 94 },
+  { id: '50x70', label: '50x70', aspectRatio: 0.714, mobileHeight: 88, desktopHeight: 106 },
+  { id: '60x80', label: '60x80', aspectRatio: 0.75, mobileHeight: 96, desktopHeight: 115 }
+]
+
+// Compute dimensions with CSS custom properties
+const sizesWithDimensions = computed(() =>
+  SIZES.map(size => ({
+    ...size,
+    style: {
+      '--frame-height-mobile': `${size.mobileHeight}px`,
+      '--frame-width-mobile': `${Math.round(size.mobileHeight * size.aspectRatio)}px`,
+      '--frame-height-desktop': `${size.desktopHeight}px`,
+      '--frame-width-desktop': `${Math.round(size.desktopHeight * size.aspectRatio)}px`
+    }
+  }))
+)
 </script>
+
 <style lang="postcss">
-.size-selector-label {
-  @apply border-[1.5px] p-1 py-0.5 block text-1.8 border-grey-20 text-blackSoft text-center;
-}
-
-input:checked+.size-selector-label {
-  @apply border-black text-black;
-}
-
-.size-selector-item {
-  width: calc(50% - 0.5rem);
+/* Frame visual - dynamic sizing with CSS custom properties */
+.frame-visual {
+  width: var(--frame-width-mobile);
+  height: var(--frame-height-mobile);
+  box-sizing: border-box;
 
   @media screen(md) {
-    width: auto;
+    width: var(--frame-width-desktop);
+    height: var(--frame-height-desktop);
   }
+}
+
+/* Focus state for keyboard navigation */
+input:focus + label {
+  outline: 2px solid theme('colors.black');
+  outline-offset: 2px;
+}
+
+/* Active press effect */
+label:active .frame-visual {
+  transform: scale(0.98);
 }
 </style>
