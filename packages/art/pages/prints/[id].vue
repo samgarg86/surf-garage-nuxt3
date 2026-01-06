@@ -72,9 +72,8 @@ const { url, title, description, tags } = await fetchImageById(id)
 const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
 const pricing = computed(() => tags?.settings.includes('settingPosterPrice') ? priceTable.posters : priceTable.photos)
 const priceEntries = Object.entries(pricing.value)
-const baseSize = priceEntries[0][0]
-const basePrice = priceEntries[0][1]
-const size = ref(baseSize)
+const size = ref('30x40')
+const basePrice = computed(() => priceEntries[0][1])
 const { t } = useI18n()
 
 if (query.size) size.value = query.size

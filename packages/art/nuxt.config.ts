@@ -25,14 +25,18 @@ export default defineNuxtConfig({
       enableCommerce: process.env.enableCommerce || true,
       priceTable: {
         photos: {
-          A5: 8,
-          A4: 15,
-          A3: 20,
+          '15x20': 8,
+          '21x30': 15,
+          '30x40': 20,
+          '50x70': 45,
+          '60x80': 60
         },
         posters: {
-          A5: 10,
-          A4: 20,
-          A3: 30,
+          '15x20': 10,
+          '21x30': 20,
+          '30x40': 30,
+          '50x70': 50,
+          '60x80': 70
         },
       },
       infiniteScrolling: {
