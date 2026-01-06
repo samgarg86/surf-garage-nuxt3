@@ -73,7 +73,7 @@ const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled
 const pricing = computed(() => tags?.settings.includes('settingPosterPrice') ? priceTable.posters : priceTable.photos)
 const priceEntries = Object.entries(pricing.value)
 const size = ref('30x40')
-const basePrice = computed(() => pricing.value[size.value])
+const basePrice = computed(() => priceEntries[0][1])
 const { t } = useI18n()
 
 if (query.size) size.value = query.size
