@@ -20,6 +20,12 @@ export default defineNuxtPlugin(async () => {
             defaultContentful.createClient({space, accessToken}) :
             createClient({space, accessToken})
 
+        if (process.env.CONTENTFUL_LOGGING_ENABLED === 'true') {
+            const time = new Date().toLocaleTimeString('en-US', { hour12: false })
+            console.log(`[${time}] CONTENTFUL API: getEntries - content_type: hamburgerMenu - source: siteNav.plugin`)
+            console.log(`[${time}] CONTENTFUL API: getTags - source: siteNav.plugin`)
+        }
+
         const {items} = await client.getEntries({content_type: 'hamburgerMenu', include: 10})
         const {items: tags} = await client.getTags()
 
