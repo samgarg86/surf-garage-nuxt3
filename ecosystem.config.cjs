@@ -1,14 +1,14 @@
 module.exports = {
   apps: [
     {
-      name: 'Surf Garage Board Storage',
+      name: 'board-storage',
       port: '3000',
       exec_mode: 'cluster',
       instances: 'max',
       script: './packages/boardStorage/.output/server/index.mjs'
     },
     {
-      name: 'Surf Garage Art',
+      name: 'surf-art',
       port: '3001',
       exec_mode: 'cluster',
       instances: 'max',
