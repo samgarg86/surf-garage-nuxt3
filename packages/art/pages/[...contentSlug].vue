@@ -17,7 +17,7 @@ const entries = await client.getEntries({
   locale: locale.value,
   'fields.slug': slug
 })
-const { title, description, text, keywords } = entries?.items?.[0]?.fields || {}
+const { title = '', description, text, keywords } = entries?.items?.[0]?.fields || {}
 
 useArtSeo({title, description, keywords})
 gtag('event', 'page_view', {
