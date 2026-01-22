@@ -14,8 +14,6 @@ export default defineNuxtPlugin(async () => {
     const isCacheValid = cachedData && (now - cacheTimestamp) < CACHE_DURATION
 
     if (!isCacheValid) {
-        console.log('Fetching site nav and tags from Contentful (should only happen once per day)')
-
         const client = process.env.NODE_ENV == 'production' ?
             defaultContentful.createClient({space, accessToken}) :
             createClient({space, accessToken})
