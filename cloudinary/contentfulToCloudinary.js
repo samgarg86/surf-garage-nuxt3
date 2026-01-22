@@ -52,10 +52,8 @@ async function uploadAssetToCloudinary (asset) {
       return null
     }
 
-    // Ensure URL has protocol
-    const fullUrl = fileUrl.startsWith('//')
-      ? `https:${fileUrl}`
-      : fileUrl
+    // Build URL with protocol and Contentful Image API parameters to reduce file size
+    const fullUrl = `${fileUrl.startsWith('//') ? 'https:' : ''}${fileUrl}?w=3000&q=85&fm=jpg&fl=progressive`
 
     console.log(`Uploading: ${title || fileName}`)
 
@@ -144,6 +142,81 @@ async function migrateAllAssets () {
   console.log('\nResults saved to migration-results.json')
 }
 
+// ============================================================================
+// RETRY FAILED MIGRATIONS
+// ============================================================================
+async function retryFailedAssets () {
+  // Load existing results
+  let existingResults
+  try {
+    existingResults = JSON.parse(
+      fs.readFileSync('./migration-results.json', 'utf8')
+    )
+  } catch (error) {
+    console.error('Error reading migration-results.json:', error.message)
+    console.log('Make sure migration-results.json exists in the cloudinary folder')
+    return
+  }
+
+  const failedIds = existingResults.failed || []
+
+  if (failedIds.length === 0) {
+    console.log('No failed assets to retry!')
+    return
+  }
+
+  console.log(`Found ${failedIds.length} failed assets to retry\n`)
+
+  // Find the failed assets in the export
+  const assets = contentfulExport.assets || []
+  const failedAssets = assets.filter(asset => failedIds.includes(asset.sys.id))
+
+  console.log(`Matched ${failedAssets.length} assets from the export\n`)
+
+  const retryResults = {
+    successful: [],
+    stillFailed: []
+  }
+
+  // Process failed assets sequentially
+  for (let i = 0; i < failedAssets.length; i++) {
+    const asset = failedAssets[i]
+    console.log(`\n[${i + 1}/${failedAssets.length}] Retrying: ${asset.sys.id}`)
+
+    const result = await uploadAssetToCloudinary(asset)
+
+    if (result) {
+      retryResults.successful.push({
+        contentfulId: asset.sys.id,
+        cloudinaryId: result.public_id,
+        url: result.secure_url
+      })
+    } else {
+      retryResults.stillFailed.push(asset.sys.id)
+    }
+
+    // Add a small delay to avoid rate limiting
+    await new Promise(resolve => setTimeout(resolve, 500))
+  }
+
+  // Update the existing results
+  existingResults.successful.push(...retryResults.successful)
+  existingResults.failed = retryResults.stillFailed
+
+  // Save updated results
+  fs.writeFileSync(
+    'migration-results.json',
+    JSON.stringify(existingResults, null, 2)
+  )
+
+  console.log('\n=== Retry Complete ===')
+  console.log(`Successfully uploaded: ${retryResults.successful.length}`)
+  console.log(`Still failed: ${retryResults.stillFailed.length}`)
+  console.log(`\nTotal successful: ${existingResults.successful.length}`)
+  console.log(`Total failed: ${existingResults.failed.length}`)
+  console.log('\nUpdated results saved to migration-results.json')
+}
+
 // Read the Contentful export JSON
 const contentfulExport = JSON.parse(
   fs.readFileSync('../export/contentful-export-5im2bow6vhih-master-2025-12-27T11-21-14.json', 'utf8')
@@ -153,4 +226,7 @@ const contentfulExport = JSON.parse(
 // createMetadataFields().catch(console.error)
 
 // Run the migration
-migrateAllAssets().catch(console.error)
+// migrateAllAssets().catch(console.error)
+
+// Re-run failed
+retryFailedAssets().catch(console.error)
