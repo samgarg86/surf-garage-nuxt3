@@ -4,5 +4,5 @@ cd surf-garage-nuxt3
 git fetch origin && git switch feature/contentful-logging && git pull
 yarn
 yarn build:art
-#yarn build:board
+yarn build:board
 pm2 start ecosystem.config.cjs
