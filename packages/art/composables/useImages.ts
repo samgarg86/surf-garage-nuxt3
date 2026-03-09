@@ -1,6 +1,6 @@
 export const useImages = () => {
     const {processTags} = useTags()
-    const {getAssets, getAsset} = useContentful()
+    const {getAssets} = useContentful()
     const {locale} = useI18n()
 
     const mapImage = (image) => {
@@ -31,8 +31,26 @@ export const useImages = () => {
             return mapImages(assets.value?.items || [])
         },
         fetchImageById: async (id) => {
-            const asset = await getAsset(id)
-            return asset.value ? mapImage(asset.value) : {}
+            // Fetch image from Cloudinary via server API
+            const { data, error } = await useAsyncData(`cloudinary-${id}`, () =>
+                $fetch(`/api/cloudinary/${id}`)
+            )
+
+            if (error.value || !data.value) {
+                return {}
+            }
+
+            // Convert Cloudinary tag strings to Contentful tag format
+            const tags = data.value.tags.map(tagId => ({ sys: { id: tagId } }))
+
+            // Return in expected format with processed tags
+            return {
+                id: data.value.id,
+                url: data.value.url,
+                title: data.value.title,
+                description: data.value.description,
+                tags: processTags(tags)
+            }
         }
     }
 }

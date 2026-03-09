@@ -17,11 +17,15 @@ export default defineNuxtConfig({
     inferStaticPagesAsRoutes: false,
   },
   runtimeConfig: {
+    cloudinaryCloudName: process.env.cloudinaryCloudName || 'dvhajzz5s',
+    cloudinaryApiKey: process.env.cloudinaryApiKey,
+    cloudinaryApiSecret: process.env.cloudinaryApiSecret,
     public: {
       contentful: {
         space: process.env.contentfulArtSpace,
         accessToken: process.env.contentfulArtAccessToken,
       },
+      cloudinaryCloudName: process.env.cloudinaryCloudName || 'dvhajzz5s',
       enableCommerce: process.env.enableCommerce || true,
       priceTable: {
         photos: {
