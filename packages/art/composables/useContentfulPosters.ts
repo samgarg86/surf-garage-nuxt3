@@ -1,10 +1,23 @@
 export const useContentfulPosters = () => {
     const { getEntries, getEntry} = useContentful()
     const {processTags, processPlpTags} = useTags()
-    const {mapImages, mapImage} = useImages()
     const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
     const posters = ref([])
     const endReached = ref(false)
+
+  const mapImage = (image) => {
+    const { metadata: { tags }, sys: { id }, fields } = image
+
+    return {
+      id,
+      description: fields.description,
+      url: fields.file.url,
+      title: fields.title,
+      tags: processTags(tags)
+    }
+  }
+
+  const mapImages = (images) => images?.map(mapImage)
 
     const mapEntries = (entries) => {
       return entries?.items.map(({

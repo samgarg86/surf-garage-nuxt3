@@ -1,34 +1,34 @@
 export const useImages = () => {
-    const {processTags} = useTags()
-    const {getAssets} = useContentful()
-    const {locale} = useI18n()
-
-    const mapImage = (image) => {
-        const { metadata: { tags }, sys: { id }, fields } = image
-
-        return {
-            id,
-            description: fields.description,
-            url: fields.file.url,
-            title: fields.title,
-            tags: processTags(tags)
-        }
-    }
-
-    const mapImages = (images) => images?.map(mapImage)
+    const {processCloudinaryTags} = useTags()
 
     return {
-       mapImage,
-       mapImages,
        fetchImagesByTags: async (tags, limit = 12, skip = 0, order = 'updated') => {
-            const assets = await getAssets({
-                uniqueId: `${tags || 'all'}-${limit}-${skip}`,
-                ...(tags ? {'metadata.tags.sys.id[in]': tags} : {'metadata.tags.sys.id[nin]': 'settingNotArtwork,posters'}),
-                order: order === 'updated' ? '-sys.updatedAt' : '-sys.createdAt',
-                limit,
-                skip
-            })
-            return mapImages(assets.value?.items || [])
+         console.log('fetchImagesByTags', tags)
+            // Fetch images from Cloudinary via server API
+            const { data, error } = await useAsyncData(
+                `cloudinary-search-${tags || 'all'}-${limit}-${skip}-${order}`,
+                () => $fetch('/api/cloudinary/search', {
+                    query: {
+                        tags,
+                        limit,
+                        skip,
+                        order
+                    }
+                })
+            )
+
+            if (error.value || !data.value) {
+                return []
+            }
+
+            // Map images and process Cloudinary tags directly
+            return data.value.images.map(image => ({
+                id: image.id,
+                url: image.url,
+                title: image.title,
+                description: image.description,
+                tags: processCloudinaryTags(image.tags)
+            }))
         },
         fetchImageById: async (id) => {
             // Fetch image from Cloudinary via server API
@@ -40,16 +40,13 @@ export const useImages = () => {
                 return {}
             }
 
-            // Convert Cloudinary tag strings to Contentful tag format
-            const tags = data.value.tags.map(tagId => ({ sys: { id: tagId } }))
-
-            // Return in expected format with processed tags
+            // Return in expected format with processed Cloudinary tags
             return {
                 id: data.value.id,
                 url: data.value.url,
                 title: data.value.title,
                 description: data.value.description,
-                tags: processTags(tags)
+                tags: processCloudinaryTags(data.value.tags)
             }
         }
     }

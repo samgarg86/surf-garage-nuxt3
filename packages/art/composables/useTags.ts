@@ -20,6 +20,18 @@ export const useTags = () => {
                 place: findTags(fullTags, 'place')?.[0],
                 artist: findTags(fullTags, 'artist')?.[0]
             }: {}
+        },
+        processCloudinaryTags: (tagIds) => {
+            // Process tags from Cloudinary (array of tag ID strings)
+            const fullTags = tagIds?.map(tagId => ({id: tagId, ...siteTags.value[tagId]}))
+            const settings = tagIds?.filter(tagId => tagId.startsWith('setting')) || []
+
+            return fullTags ? {
+                page: findTags(fullTags, 'page'),
+                place: findTags(fullTags, 'place')?.[0],
+                artist: findTags(fullTags, 'artist')?.[0],
+                settings
+            }: {}
         }
     }
 }
