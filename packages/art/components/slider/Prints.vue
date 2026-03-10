@@ -53,7 +53,7 @@ const props = defineProps<{
 const PAGE_SIZE = 10
 const images = ref([])
 const endReached = ref(false)
-const { fetchImagesByTags } = useImages()
+const { fetchImagesByTags } = useCloudinaryImages()
 
 onMounted(async () => {
   images.value = await fetchImagesByTags(props.tag, PAGE_SIZE, 0, props.order)

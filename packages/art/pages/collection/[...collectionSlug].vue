@@ -26,7 +26,7 @@ const {
   loadMoreArtGalleryImages,
   pageTags
 } = useContentfulPhotos()
-const { fetchImagesByTags } = useImages()
+const { fetchImagesByTags } = useCloudinaryImages()
 const { gtag } = useGtag()
 const {
   public: {

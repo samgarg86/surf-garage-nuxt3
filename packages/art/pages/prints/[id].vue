@@ -101,7 +101,7 @@
 const {
   public: { priceTable }
 } = useRuntimeConfig()
-const { fetchImageById } = useImages()
+const { fetchImageById } = useCloudinaryImages()
 const localePath = useLocalePath()
 const host = useHost()
 const { gtag } = useGtag()

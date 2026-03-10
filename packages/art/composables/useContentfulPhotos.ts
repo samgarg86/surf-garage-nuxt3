@@ -1,7 +1,7 @@
 export const useContentfulPhotos = () => {
   const { locale } = useI18n()
   const { getEntries } = useContentful()
-  const { fetchImagesByTags } = useImages()
+  const { fetchImagesByTags } = useCloudinaryImages()
   const {
     public: {
       infiniteScrolling: { pageSize }

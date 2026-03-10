@@ -7,7 +7,7 @@
 const {
   params: { placeSlug }
 } = useRoute()
-const { fetchImagesByTags } = useImages()
+const { fetchImagesByTags } = useCloudinaryImages()
 const { gtag } = useGtag()
 const {
   images,
