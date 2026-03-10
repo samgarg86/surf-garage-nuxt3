@@ -3,7 +3,7 @@
     <p class="text-sm mb-0.5">{{ $t('art.select-size') }}</p>
 
     <!-- Flex grid with bottom alignment -->
-    <div class="flex flex-wrap items-end gap-1 md:gap-2">
+    <div class="flex flex-wrap items-end gap-1">
       <div
         v-for="size in sizesWithDimensions"
         :key="size.id"
@@ -58,25 +58,27 @@ defineEmits(['update:modelValue'])
 
 // Size configuration with dimensions and scaling
 const SIZES = [
-  { id: '15x20', label: '15x20', aspectRatio: 0.75, mobileHeight: 50, desktopHeight: 60 },
-  { id: '21x30', label: '21x30', aspectRatio: 0.7, mobileHeight: 60, desktopHeight: 72 },
-  { id: '30x40', label: '30x40', aspectRatio: 0.75, mobileHeight: 70, desktopHeight: 84 },
-  // { id: 'A2', label: 'A2', dimensions: '40x50 cm', aspectRatio: 0.8, mobileHeight: 78, desktopHeight: 94 },
-  { id: '50x70', label: '50x70', aspectRatio: 0.714, mobileHeight: 88, desktopHeight: 106 },
-  { id: '60x80', label: '60x80', aspectRatio: 0.75, mobileHeight: 96, desktopHeight: 115 }
+  { id: '15x20', label: '15x20', width: 18, height: 24 },
+  { id: '21x30', label: '21x30', width: 21, height: 30 },
+  { id: '30x40', label: '30x40', width: 30, height: 40 },
+  // { id: '40x50', label: '40x50', width: 40, height: 50 },
+  { id: '50x70', label: '50x70', width: 50, height: 70 },
+  { id: '60x80', label: '60x80', width: 60, height: 80 }
 ]
 
 // Compute dimensions with CSS custom properties
 const sizesWithDimensions = computed(() =>
-  SIZES.map(size => ({
-    ...size,
-    style: {
-      '--frame-height-mobile': `${size.mobileHeight}px`,
-      '--frame-width-mobile': `${Math.round(size.mobileHeight * size.aspectRatio)}px`,
-      '--frame-height-desktop': `${size.desktopHeight}px`,
-      '--frame-width-desktop': `${Math.round(size.desktopHeight * size.aspectRatio)}px`
+  SIZES.map(size => {
+    return {
+      ...size,
+      style: {
+        '--frame-height-mobile': `${size.height * 2}px`,
+        '--frame-width-mobile': `${size.width * 2}px`,
+        '--frame-height-desktop': `${size.height * 2}px`,
+        '--frame-width-desktop': `${size.width * 2}px`
+      }
     }
-  }))
+  })
 )
 </script>
 
