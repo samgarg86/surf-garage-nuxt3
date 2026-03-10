@@ -112,7 +112,7 @@ const {
 const pricing = computed(() => specialPrice || posters)
 const priceEntries = computed(() => Object.entries(pricing.value))
 const size = ref('30x40')
-const basePrice = computed(() => priceEntries[0][1])
+const basePrice = computed(() => priceEntries.value[0][1])
 const ecomDisabled = computed(() =>
   tags?.settings.includes('settingEcomDisabled')
 )
