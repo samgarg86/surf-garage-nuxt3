@@ -11,12 +11,14 @@
     "dev:board": "yarn workspace surf-garage dev",
     "build:art": "yarn workspace surf-garage-art build",
     "build:board": "yarn workspace surf-garage build",
+    "prettify": "npx prettier . --write",
     "deploy": "sh deployToOcean.sh"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
   },
   "dependencies": {
-    "cloudinary": "^2.9.0"
+    "cloudinary": "^2.9.0",
+    "prettier": "^3.8.1"
   }
 }

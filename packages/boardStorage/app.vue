@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLayout>
-      <NuxtLoadingIndicator/>
+      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
   </div>
@@ -21,7 +21,10 @@ useHead({
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { 'http-equiv': 'accept-ch', content: 'width' },
-    { name: 'google-site-verification', content: 'zFkorbR5IM4CttFNPeqBdq-iNibbkw_c032veRnXwE4' },
+    {
+      name: 'google-site-verification',
+      content: 'zFkorbR5IM4CttFNPeqBdq-iNibbkw_c032veRnXwE4'
+    },
     ...(i18nHead.value.meta || [])
   ],
   link: [

@@ -2956,8 +2956,6 @@
       "url": "https://res.cloudinary.com/dvhajzz5s/image/upload/v1768914827/contentful-migration/6h0Mtn4rbebmHhwNTiZqdr.jpg"
     }
   ],
-  "failed": [
-    "5SimD6WeeZNaHbmDZadQt"
-  ],
+  "failed": ["5SimD6WeeZNaHbmDZadQt"],
   "skipped": []
 }

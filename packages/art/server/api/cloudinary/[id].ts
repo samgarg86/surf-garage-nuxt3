@@ -20,10 +20,13 @@ export default defineEventHandler(async (event) => {
 
   try {
     // Fetch resource from Cloudinary with context and tags
-    const resource = await cloudinary.api.resource(`contentful-migration/${id}`, {
-      context: true,
-      tags: true
-    })
+    const resource = await cloudinary.api.resource(
+      `contentful-migration/${id}`,
+      {
+        context: true,
+        tags: true
+      }
+    )
 
     // Map to expected format
     return {

@@ -1,21 +1,33 @@
 <template>
   <section id="contact" class="footer mb-2">
-<!--    <LazyInstaFeed/>-->
-    <div class="footer__content text-center md:text-left px-2 py-5 lg:py-10 lg:px-6">
+    <!--    <LazyInstaFeed/>-->
+    <div
+      class="footer__content text-center md:text-left px-2 py-5 lg:py-10 lg:px-6"
+    >
       <section style="{gridArea: 'nav1'}">
-        <NuxtLink :to="localeRoute('/about')" class="footer__l1">{{ $t('nav.about') }}</NuxtLink>
-        <NuxtLink :to="localeRoute('/')" class="footer__l1">{{ $t('nav.storage') }}</NuxtLink>
-        <NuxtLink :to="localeRoute('/boards')" class="footer__l1">{{ $t('nav.boards') }}</NuxtLink>
-        <NuxtLink :to="localeRoute('/surf-gran-canaria')" class="footer__l1">Surf Gran Canaria</NuxtLink>
+        <NuxtLink :to="localeRoute('/about')" class="footer__l1">{{
+          $t('nav.about')
+        }}</NuxtLink>
+        <NuxtLink :to="localeRoute('/')" class="footer__l1">{{
+          $t('nav.storage')
+        }}</NuxtLink>
+        <NuxtLink :to="localeRoute('/boards')" class="footer__l1">{{
+          $t('nav.boards')
+        }}</NuxtLink>
+        <NuxtLink :to="localeRoute('/surf-gran-canaria')" class="footer__l1"
+          >Surf Gran Canaria</NuxtLink
+        >
       </section>
       <LazyContactLinks
-          class="font-metalsmith lowercase md:p-0"
-          :style="{gridArea: 'links'}"
-          theme="light"/>
+        class="font-metalsmith lowercase md:p-0"
+        :style="{ gridArea: 'links' }"
+        theme="light"
+      />
       <section
-          class="footer__form w-full font-metalsmith lowercase"
-          :style="{gridArea: 'form'}">
-        <LazyFooterContactForm class="lowercase"/>
+        class="footer__form w-full font-metalsmith lowercase"
+        :style="{ gridArea: 'form' }"
+      >
+        <LazyFooterContactForm class="lowercase" />
       </section>
     </div>
   </section>
@@ -26,7 +38,7 @@
   background: url('@core/assets/images/wave-bg.jpg') no-repeat center center;
   background-size: cover;
 
-  @media(hover: hover) {
+  @media (hover: hover) {
     a:hover {
       text-decoration: underline;
     }
@@ -55,25 +67,24 @@
     grid-gap: 2rem;
 
     grid-template-areas:
-      "links"
-      "form"
-      "nav1";
+      'links'
+      'form'
+      'nav1';
 
     @media screen(md) {
       grid-gap: 3rem;
       grid-template-areas:
-        "links links nav1"
-        "form form form";
+        'links links nav1'
+        'form form form';
     }
 
     @media screen(lg) {
       grid-gap: 5rem;
       grid-template-areas:
-        "nav1 links form form"
-        "art art form form"
+        'nav1 links form form'
+        'art art form form';
     }
   }
 }
 </style>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

@@ -25,9 +25,10 @@ export default defineEventHandler(async (event) => {
     if (tags) {
       // If specific tags provided, search for images with those tags
       const tagArray = tags.split(',')
-      const tagConditions = tagArray.length === 1
-        ? `tags=${tagArray[0]}`
-        : `(${tagArray.map(tag => `tags=${tag}`).join(' OR ')})`
+      const tagConditions =
+        tagArray.length === 1
+          ? `tags=${tagArray[0]}`
+          : `(${tagArray.map((tag) => `tags=${tag}`).join(' OR ')})`
       expression += ` AND (${tagConditions} -tags=settingNotArtwork -tags=posters)`
     }
 
@@ -54,7 +55,7 @@ export default defineEventHandler(async (event) => {
     const paginatedResults = searchResult.resources.slice(skip, skip + limit)
 
     // Map results to expected format
-    const images = paginatedResults.map(resource => ({
+    const images = paginatedResults.map((resource) => ({
       id: resource.public_id.replace('contentful-migration/', ''),
       url: resource.secure_url,
       title: resource.context?.custom?.caption || '',

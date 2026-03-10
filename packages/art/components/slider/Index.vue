@@ -1,15 +1,23 @@
 <template>
-  <Splide class="horizontal-slider" :options="{...defaultOptions, ...options}" :has-track="false" >
+  <Splide
+    class="horizontal-slider"
+    :options="{ ...defaultOptions, ...options }"
+    :has-track="false"
+  >
     <SplideTrack>
-      <slot/>
+      <slot />
     </SplideTrack>
 
     <div class="splide__arrows">
-      <button class="splide__arrow splide__arrow--prev bg-grey-30 w-2.5 h-2.5 inline-grid place-content-center">
-          <svgo-chevron-down class="inline-block text-xs"/>
+      <button
+        class="splide__arrow splide__arrow--prev bg-grey-30 w-2.5 h-2.5 inline-grid place-content-center"
+      >
+        <svgo-chevron-down class="inline-block text-xs" />
       </button>
-      <button class="splide__arrow splide__arrow--next bg-grey-30 w-2.5 h-2.5 inline-grid place-content-center">
-        <svgo-chevron-down class="inline-block text-xs"/>
+      <button
+        class="splide__arrow splide__arrow--next bg-grey-30 w-2.5 h-2.5 inline-grid place-content-center"
+      >
+        <svgo-chevron-down class="inline-block text-xs" />
       </button>
     </div>
   </Splide>
@@ -55,5 +63,4 @@ defineProps({
     }
   }
 }
-
 </style>

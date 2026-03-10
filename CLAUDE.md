@@ -5,6 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 This is a Yarn workspaces monorepo containing two Nuxt 3 applications for Surf Garage:
+
 - **boardStorage** (`packages/boardStorage`): Board storage/rental service site (surfgarage.es) - runs on port 3000
 - **art** (`packages/art`): Art gallery/photography site (surfgarage.art) - runs on port 3001
 - **core** (`packages/core`): Shared components, composables, and configuration
@@ -70,6 +71,7 @@ The monorepo uses Yarn workspaces with three packages:
 ### Contentful CMS Integration
 
 Both apps use Contentful as a headless CMS:
+
 - Content types include: `artGalleryPage`, `artHomepage`, blog posts, etc.
 - Images and metadata are tagged for filtering
 - The `useContentful` composable provides:
@@ -84,6 +86,7 @@ Both apps use Contentful as a headless CMS:
 ### i18n Configuration
 
 Both apps use @nuxtjs/i18n with:
+
 - Strategy: `prefix_except_default`
 - Locales: Spanish (`es`) and English (`en`)
 - Shared locale files in root `locales/` directory
@@ -94,6 +97,7 @@ Both apps use @nuxtjs/i18n with:
 ### Component Loading Strategy
 
 The art homepage uses dynamic component mapping to render Contentful components:
+
 ```javascript
 const homepageComponent = {
   artHeroBanner: resolveComponent('LazyHeroBanner'),
@@ -103,11 +107,13 @@ const homepageComponent = {
   artPosterSlider: resolveComponent('LazySliderPosters')
 }
 ```
+
 Components are rendered based on Contentful content type IDs.
 
 ### PostCSS Configuration
 
 Both apps use PostCSS with:
+
 - `postcss-comment` parser
 - `postcss-simple-vars` for CSS variables
 - `postcss-nested` for nested CSS syntax
@@ -116,6 +122,7 @@ Both apps use PostCSS with:
 ### Production Deployment
 
 Production uses PM2 with cluster mode (configured in `ecosystem.config.cjs`):
+
 - Both apps run in cluster mode with max instances
 - Board storage serves from `packages/boardStorage/.output/server/index.mjs`
 - Art gallery serves from `packages/art/.output/server/index.mjs`
@@ -124,6 +131,7 @@ Production uses PM2 with cluster mode (configured in `ecosystem.config.cjs`):
 ## Environment Variables
 
 Required in `.env` file at package level:
+
 - `contentfulSpace` - Contentful space ID
 - `contentfulAccessToken` - Contentful API access token
 - `instaAccessToken` - Instagram access token (for core package)

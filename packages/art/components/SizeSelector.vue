@@ -28,12 +28,21 @@
           <!-- Frame visual (styled via custom class for dynamic sizing) -->
           <span
             class="frame-visual border-2 bg-white p-1 relative group"
-            :class="modelValue === size.id ? 'border-black border-[3px]' : 'border-grey-20 hover:border-[#444]'"
+            :class="
+              modelValue === size.id
+                ? 'border-black border-[3px]'
+                : 'border-grey-20 hover:border-[#444]'
+            "
             aria-hidden="true"
           >
             <!-- Inner rectangle for matting effect -->
-            <span class="absolute inset-0.5 md:inset-[5px] border"
-                  :class="modelValue === size.id ? 'border-black' : 'border-grey-20 group-hover:border-[#444]'"
+            <span
+              class="absolute inset-0.5 md:inset-[5px] border"
+              :class="
+                modelValue === size.id
+                  ? 'border-black'
+                  : 'border-grey-20 group-hover:border-[#444]'
+              "
             ></span>
           </span>
 
@@ -68,7 +77,7 @@ const SIZES = [
 
 // Compute dimensions with CSS custom properties
 const sizesWithDimensions = computed(() =>
-  SIZES.map(size => {
+  SIZES.map((size) => {
     return {
       ...size,
       style: {

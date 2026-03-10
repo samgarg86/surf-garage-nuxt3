@@ -11,7 +11,7 @@ cloudinary.config({
 // ============================================================================
 // SETUP: Create metadata fields (run this once before migration)
 // ============================================================================
-async function createMetadataFields () {
+async function createMetadataFields() {
   try {
     // Create original_filename field
     await cloudinary.api.add_metadata_field({
@@ -29,13 +29,15 @@ async function createMetadataFields () {
     })
     console.log('✓ Created metadata field: contentful_created_at')
 
-    console.log('\n✓ Metadata fields created! Now uncomment migrateAllAssets() and run again.')
+    console.log(
+      '\n✓ Metadata fields created! Now uncomment migrateAllAssets() and run again.'
+    )
   } catch (error) {
     console.error('Error creating metadata fields:', error.message)
   }
 }
 
-async function uploadAssetToCloudinary (asset) {
+async function uploadAssetToCloudinary(asset) {
   try {
     // Extract asset data
     const assetId = asset.sys.id
@@ -45,7 +47,7 @@ async function uploadAssetToCloudinary (asset) {
     const fileName = asset.fields.file?.en?.fileName || ''
 
     // Extract tags from metadata
-    const tags = asset.metadata?.tags?.map(tag => tag.sys.id) || []
+    const tags = asset.metadata?.tags?.map((tag) => tag.sys.id) || []
 
     if (!fileUrl) {
       console.log(`Skipping asset ${assetId} - no file URL`)
@@ -98,7 +100,7 @@ async function uploadAssetToCloudinary (asset) {
   }
 }
 
-async function migrateAllAssets () {
+async function migrateAllAssets() {
   const assets = contentfulExport.assets || []
   console.log(`Found ${assets.length} assets to migrate\n`)
 
@@ -126,14 +128,11 @@ async function migrateAllAssets () {
     }
 
     // Add a small delay to avoid rate limiting
-    await new Promise(resolve => setTimeout(resolve, 500))
+    await new Promise((resolve) => setTimeout(resolve, 500))
   }
 
   // Save results to file
-  fs.writeFileSync(
-    'migration-results.json',
-    JSON.stringify(results, null, 2)
-  )
+  fs.writeFileSync('migration-results.json', JSON.stringify(results, null, 2))
 
   console.log('\n=== Migration Complete ===')
   console.log(`Successful: ${results.successful.length}`)
@@ -145,7 +144,7 @@ async function migrateAllAssets () {
 // ============================================================================
 // RETRY FAILED MIGRATIONS
 // ============================================================================
-async function retryFailedAssets () {
+async function retryFailedAssets() {
   // Load existing results
   let existingResults
   try {
@@ -154,7 +153,9 @@ async function retryFailedAssets () {
     )
   } catch (error) {
     console.error('Error reading migration-results.json:', error.message)
-    console.log('Make sure migration-results.json exists in the cloudinary folder')
+    console.log(
+      'Make sure migration-results.json exists in the cloudinary folder'
+    )
     return
   }
 
@@ -169,7 +170,9 @@ async function retryFailedAssets () {
 
   // Find the failed assets in the export
   const assets = contentfulExport.assets || []
-  const failedAssets = assets.filter(asset => failedIds.includes(asset.sys.id))
+  const failedAssets = assets.filter((asset) =>
+    failedIds.includes(asset.sys.id)
+  )
 
   console.log(`Matched ${failedAssets.length} assets from the export\n`)
 
@@ -196,7 +199,7 @@ async function retryFailedAssets () {
     }
 
     // Add a small delay to avoid rate limiting
-    await new Promise(resolve => setTimeout(resolve, 500))
+    await new Promise((resolve) => setTimeout(resolve, 500))
   }
 
   // Update the existing results
@@ -219,7 +222,10 @@ async function retryFailedAssets () {
 
 // Read the Contentful export JSON
 const contentfulExport = JSON.parse(
-  fs.readFileSync('../export/contentful-export-5im2bow6vhih-master-2025-12-27T11-21-14.json', 'utf8')
+  fs.readFileSync(
+    '../export/contentful-export-5im2bow6vhih-master-2025-12-27T11-21-14.json',
+    'utf8'
+  )
 )
 
 // STEP 1: Run this first to create metadata fields

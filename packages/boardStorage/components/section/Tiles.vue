@@ -1,7 +1,9 @@
 <template>
-  <section id="tiles"
-           class="section tiles"
-           :class="Math.abs(tiles.length % 2) === 1 && 'tiles--odd'">
+  <section
+    id="tiles"
+    class="section tiles"
+    :class="Math.abs(tiles.length % 2) === 1 && 'tiles--odd'"
+  >
     <div class="tiles__content">
       <template v-for="(tile, index) in tiles" :key="index">
         <ScrollTo
@@ -22,7 +24,7 @@
           target="_blank"
         >
           <h2 class="tile__title">
-            {{ tile.text}}
+            {{ tile.text }}
           </h2>
         </NuxtLink>
       </template>
@@ -40,7 +42,7 @@ const localeRoute = useLocaleRoute()
 <style lang="postcss">
 .tiles {
   @media screen(md) {
-    height: calc(30vh - 2 * theme("spacing[2.5]"));
+    height: calc(30vh - 2 * theme('spacing[2.5]'));
   }
 
   &__content {
@@ -48,20 +50,20 @@ const localeRoute = useLocaleRoute()
     z-index: 1;
     height: 100%;
     display: grid;
-    grid-column-gap: theme("spacing.1");
-    grid-row-gap: theme("spacing.1");
+    grid-column-gap: theme('spacing.1');
+    grid-row-gap: theme('spacing.1');
     grid-auto-rows: 1fr;
     grid-template-columns: repeat(2, 1fr);
 
     @media screen(md) {
       grid-template-columns: repeat(5, 1fr);
-      grid-column-gap: theme("spacing[2.5]");
-      grid-row-gap: theme("spacing[2.5]");
+      grid-column-gap: theme('spacing[2.5]');
+      grid-row-gap: theme('spacing[2.5]');
     }
   }
 
   &--odd {
-    @media (max-width: theme("screens.md")) {
+    @media (max-width: theme('screens.md')) {
       .tile:last-child {
         grid-column: 1/3;
       }
@@ -77,8 +79,8 @@ const localeRoute = useLocaleRoute()
   position: relative;
   padding: 5rem 1rem;
   line-height: 1.5;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    var(--bg);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--bg);
   background-size: cover;
 
   &__title {
