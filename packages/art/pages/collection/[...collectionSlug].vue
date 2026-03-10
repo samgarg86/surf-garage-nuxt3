@@ -4,8 +4,8 @@
   <div ref="endOfScroller"></div>
 </template>
 <script setup lang="ts">
-const pageTitle = ref()
-const pageDesc = ref()
+const pageTitle = ref('')
+const pageDesc = ref('')
 const pageImages = ref([])
 const pageMainImg = ref('')
 
