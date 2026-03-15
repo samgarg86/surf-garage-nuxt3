@@ -97,20 +97,29 @@
 const {
   params: { id }
 } = useRoute()
-const { getPoster } = useContentfulPosters()
+const { processCloudinaryTags } = useTags()
 const localePath = useLocalePath()
 const host = useHost()
 const { gtag } = useGtag()
 
-const { title, description, images, tags, specialPrice } = await getPoster(id)
+const { data: cloudinaryData } = await useAsyncData(
+  `cloudinary-poster-${id}`,
+  () => $fetch(`/api/cloudinary/poster/${id}`)
+)
+const {
+  images = [],
+  title = '',
+  description = '',
+  tags: rawTags = []
+} = cloudinaryData.value || {}
+const tags = processCloudinaryTags(rawTags)
 
 const {
   public: {
-    priceTable: { posters }
+    priceTable: { posters: pricing }
   }
 } = useRuntimeConfig()
-const pricing = computed(() => specialPrice || posters)
-const priceEntries = computed(() => Object.entries(pricing.value))
+const priceEntries = computed(() => Object.entries(pricing))
 const size = ref('30x40')
 const basePrice = computed(() => priceEntries.value[0][1])
 const ecomDisabled = computed(() =>
