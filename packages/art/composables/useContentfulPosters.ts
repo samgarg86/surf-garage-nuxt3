@@ -1,12 +1,12 @@
 export const useContentfulPosters = () => {
-  const { getEntries, getEntry } = useContentful()
-  const { processTags, processPlpTags } = useTags()
+  const { getEntry } = useContentful()
+  const { processTags, processCloudinaryTags } = useTags()
   const {
     public: {
       infiniteScrolling: { pageSize }
     }
   } = useRuntimeConfig()
-  const posters = ref([])
+  const posters = ref<any[]>([])
   const endReached = ref(false)
 
   const mapImage = (image) => {
@@ -27,40 +27,32 @@ export const useContentfulPosters = () => {
 
   const mapImages = (images) => images?.map(mapImage)
 
-  const mapEntries = (entries) => {
-    return entries?.items.map(
-      ({ sys: { id }, metadata: { tags }, fields: { title, images } }) => ({
-        id,
-        title,
-        tags: processPlpTags(tags),
-        image: mapImage(images?.[0])
-      })
-    )
-  }
+  type CloudinaryPoster = { id: string; title: string; tags: string[]; image: { id: string; url: string } }
+  type PostersResponse = { posters: CloudinaryPoster[]; total: number }
+
+  const mapCloudinaryPosters = (items: CloudinaryPoster[]) =>
+    items.map((p) => ({
+      id: p.id,
+      title: p.title,
+      tags: processCloudinaryTags(p.tags),
+      image: p.image
+    }))
 
   const loadInitialAllPosters = async () => {
-    const entries = await getEntries({
-      uniqueId: 'artwork-all',
-      content_type: 'artwork',
-      limit: pageSize
+    const result = await $fetch<PostersResponse>('/api/cloudinary/posters', {
+      query: { limit: pageSize }
     })
-
-    posters.value = mapEntries(entries.value)
+    posters.value = mapCloudinaryPosters(result.posters)
   }
 
   const loadMorePosters = async (skip = 0, tags = '') => {
     if (endReached.value) return
 
-    const entries = await getEntries({
-      uniqueId: `artwork-all-${pageSize}-${skip}`,
-      content_type: 'artwork',
-      ...(tags && { 'metadata.tags.sys.id[in]': tags }),
-      limit: pageSize,
-      skip
+    const result = await $fetch<PostersResponse>('/api/cloudinary/posters', {
+      query: { limit: pageSize, skip, ...(tags && { tags }) }
     })
-
-    const updatedEntries = mapEntries(entries.value)
-    if (updatedEntries.length) posters.value.push(...updatedEntries)
+    const updated = mapCloudinaryPosters(result.posters)
+    if (updated.length) posters.value.push(...updated)
     else endReached.value = true
   }
 
@@ -89,14 +81,11 @@ export const useContentfulPosters = () => {
         })
       }
     },
-    getPostersByTags: async (tags, limit = pageSize) => {
-      const entries = await getEntries({
-        uniqueId: `artwork-${tags}`,
-        content_type: 'artwork',
-        'metadata.tags.sys.id[in]': tags,
-        limit
+    getPostersByTags: async (tags: string, limit = pageSize) => {
+      const result = await $fetch<PostersResponse>('/api/cloudinary/posters', {
+        query: { tags, limit }
       })
-      posters.value = mapEntries(entries.value)
+      posters.value = mapCloudinaryPosters(result.posters)
     },
     posters: computed(() => posters.value),
     loadInitialAllPosters,
