@@ -40,6 +40,9 @@ const entries = await client.getEntries({
   locale: locale.value,
   'fields.slug': slug
 })
+if (!entries?.items?.length) {
+  throw createError({ statusCode: 404, statusMessage: 'Page not found' })
+}
 const { title, description, text, bannerImage, keywords } =
   entries?.items?.[0]?.fields || {}
 const image = computed(() =>
