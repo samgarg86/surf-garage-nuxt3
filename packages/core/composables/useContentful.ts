@@ -1,7 +1,7 @@
 import defaultContentful from 'contentful'
 import { createClient } from "contentful"
 
-const logContentfulCall = (method: string, details: string, source: string = 'useContentful') => {
+export const logContentfulCall = (method: string, details: string, source: string = 'useContentful') => {
   if (process.env.CONTENTFUL_LOGGING_ENABLED === 'true') {
     const time = new Date().toLocaleTimeString('en-US', { hour12: false })
     console.log(`[${time}] CONTENTFUL API: ${method} - ${details} - source: ${source}`)
