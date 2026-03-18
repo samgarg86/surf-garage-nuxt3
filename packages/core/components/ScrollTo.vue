@@ -16,7 +16,9 @@ const props = defineProps({
 })
 
 const scrollIntoView = (e) => {
-  window?.document.getElementById(props.to).scrollIntoView({ behavior: 'smooth' })
+  window?.document
+    .getElementById(props.to)
+    .scrollIntoView({ behavior: 'smooth' })
   e.preventDefault()
 }
 </script>

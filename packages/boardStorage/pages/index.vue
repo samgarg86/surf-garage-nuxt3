@@ -1,14 +1,15 @@
 <template>
-<!--  <pre>{{components.map(c => c.fields)}}</pre>-->
-  <SectionHero v-bind="mappedHero"/>
-  <SectionTiles :tiles="mappedTiles"/>
+  <!--  <pre>{{components.map(c => c.fields)}}</pre>-->
+  <SectionHero v-bind="mappedHero" />
+  <SectionTiles :tiles="mappedTiles" />
 
   <template v-for="cmp in components" :key="cmp.sys.id">
     <component
-        v-if="cmp.metadata.tags"
-        :is="homepageComponents[cmp.sys.contentType.sys.id]"
-        v-bind="{...cmp.fields}"
-        class="mb-4"/>
+      v-if="cmp.metadata.tags"
+      :is="homepageComponents[cmp.sys.contentType.sys.id]"
+      v-bind="{ ...cmp.fields }"
+      class="mb-4"
+    />
   </template>
 </template>
 
@@ -40,12 +41,13 @@ const mappedHero = {
   bgImage: heroBgImage?.fields.file.url
 }
 
-const mappedTiles = tiles.map(t => ({
-  text: t.fields.text,
-  bg: t.fields.backgroundImage?.fields.file.url,
-  type: t.fields.type,
-  link: t.fields.link
-})) || []
+const mappedTiles =
+  tiles.map((t) => ({
+    text: t.fields.text,
+    bg: t.fields.backgroundImage?.fields.file.url,
+    type: t.fields.type,
+    link: t.fields.link
+  })) || []
 
 gtag('event', 'page_view', {
   app_name: 'Surfgarage',

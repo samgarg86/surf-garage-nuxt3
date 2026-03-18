@@ -2,25 +2,34 @@
   <div>
     <SliderTitleViewAll :link="postersSlug(tag)" :title="title" />
 
-    <Slider :options="{
-      padding: { right: '6rem'},
-      gap: '2rem',
-      breakpoints: {
-        800: {
-          perPage: 2,
-          padding: { right: '10rem'}
-        },
-        1200: {
-          perPage: 3,
-          padding: { right: '10rem'}
-        },
-        1440: {
-          fixedWidth: '40rem',
-          padding: 0
-       }}
-    }">
-      <SplideSlide v-for="{id, title, image, tags} in posters" :key="id">
-        <LazyMasonryPosterTile :id="id" :title="title" :url="image.url" :tags="tags" loading="eager"/>
+    <Slider
+      :options="{
+        padding: { right: '6rem' },
+        gap: '2rem',
+        breakpoints: {
+          800: {
+            perPage: 2,
+            padding: { right: '10rem' }
+          },
+          1200: {
+            perPage: 3,
+            padding: { right: '10rem' }
+          },
+          1440: {
+            fixedWidth: '40rem',
+            padding: 0
+          }
+        }
+      }"
+    >
+      <SplideSlide v-for="{ id, title, image, tags } in posters" :key="id">
+        <LazyMasonryPosterTile
+          :id="id"
+          :title="title"
+          :url="image.url"
+          :tags="tags"
+          loading="eager"
+        />
       </SplideSlide>
     </Slider>
   </div>

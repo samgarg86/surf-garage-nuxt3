@@ -1,6 +1,11 @@
 <template>
   <PageHeader :title="pageTitle" :description="pageDesc" />
-  <LazyMasonryImageGallery v-if="pageImages?.length" :images="pageImages" :slug="pageSlug" show-artist/>
+  <LazyMasonryImageGallery
+    v-if="pageImages?.length"
+    :images="pageImages"
+    :slug="pageSlug"
+    show-artist
+  />
   <div ref="endOfScroller"></div>
 </template>
 <script setup lang="ts">
@@ -9,13 +14,29 @@ const pageDesc = ref('')
 const pageImages = ref([])
 const pageMainImg = ref('')
 
-const { params: { collectionSlug: slug } } = useRoute()
-const { images, pageTitle: pTitle, pageDescription, pageMainImage, fetchArtGalleryPage, loadMoreArtGalleryImages, pageTags } = useContentfulPhotos()
-const { fetchImagesByTags } = useImages()
+const {
+  params: { collectionSlug: slug }
+} = useRoute()
+const {
+  images,
+  pageTitle: pTitle,
+  pageDescription,
+  pageMainImage,
+  fetchArtGalleryPage,
+  loadMoreArtGalleryImages,
+  pageTags
+} = useContentfulPhotos()
+const { fetchImagesByTags } = useCloudinaryImages()
 const { gtag } = useGtag()
-const { public: { infiniteScrolling: { pageSize } } } = useRuntimeConfig()
+const {
+  public: {
+    infiniteScrolling: { pageSize }
+  }
+} = useRuntimeConfig()
 
-const pageSlug = computed(() => `art/collection/${Array.isArray(slug) ? slug.join('/') : slug}`)
+const pageSlug = computed(
+  () => `art/collection/${Array.isArray(slug) ? slug.join('/') : slug}`
+)
 const endOfScroller = ref(null)
 const page = ref(1)
 
@@ -47,13 +68,16 @@ gtag('event', 'page_view', {
 })
 
 onMounted(async () => {
-  const observer = new IntersectionObserver((entries) => {
-    const entry = entries[0]
-    if (entry.intersectionRatio > 0) {
-      loadMoreArtGalleryImages(page.value * pageSize)
-      page.value++
-    }
-  }, { rootMargin: '100px' })
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0]
+      if (entry.intersectionRatio > 0) {
+        loadMoreArtGalleryImages(page.value * pageSize)
+        page.value++
+      }
+    },
+    { rootMargin: '100px' }
+  )
   observer.observe(endOfScroller.value)
 })
 </script>

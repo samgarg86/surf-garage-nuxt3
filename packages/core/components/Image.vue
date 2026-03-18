@@ -8,10 +8,9 @@
   />
 </template>
 <script setup lang="ts">
-
 type ImageProps = {
-  src: string,
-  alt?: string,
+  src: string
+  alt?: string
   fetchPriority?: 'low' | 'high' | 'auto'
   loading?: 'lazy' | 'eager'
 }

@@ -1,12 +1,15 @@
 export default defineNuxtConfig({
-  extends: [
-    '../core'
-  ],
+  extends: ['../core'],
 
-    modules: ['@nuxtjs/i18n', "@nuxtjs/tailwindcss", '@nuxtjs/robots', "nuxt-gtag"],
+  modules: [
+    '@nuxtjs/i18n',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/robots',
+    'nuxt-gtag'
+  ],
   i18n: {
-    langDir: "../../locales",
-    strategy: "prefix_except_default",
+    langDir: '../../locales',
+    strategy: 'prefix_except_default',
     defaultLocale: 'es',
     locales: [
       {
@@ -33,17 +36,17 @@ export default defineNuxtConfig({
     public: {
       contentful: {
         space: process.env.contentfulBoardsSpace,
-        accessToken: process.env.contentfulBoardsAccessToken,
+        accessToken: process.env.contentfulBoardsAccessToken
       }
-    },
+    }
   },
   postcss: {
     parser: require('postcss-comment'),
     plugins: {
-      "postcss-simple-vars": {},
+      'postcss-simple-vars': {},
       'postcss-import': {},
-      'postcss-nested': {},
-    },
+      'postcss-nested': {}
+    }
   },
   server: {
     port: 3000

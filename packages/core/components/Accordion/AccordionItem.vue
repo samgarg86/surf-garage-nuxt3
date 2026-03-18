@@ -28,7 +28,8 @@ const onLeave = (el: Element) => {
   })
 }
 
-watch(() => props.isOpen,
+watch(
+  () => props.isOpen,
   (newValue, oldValue) => {
     if (newValue !== oldValue) {
       isExpanded.value = newValue
@@ -42,17 +43,24 @@ onMounted(() => {
 
 <template>
   <section>
-    <button class="py-[0.7rem] w-full flex justify-between items-center leading-none font-bold hover:outline-0"
-            :class="titleClass"
-            @click.prevent="toggleSection()"
-            :aria-expanded="isExpanded">
+    <button
+      class="py-[0.7rem] w-full flex justify-between items-center leading-none font-bold hover:outline-0"
+      :class="titleClass"
+      @click.prevent="toggleSection()"
+      :aria-expanded="isExpanded"
+    >
       <span class="text-xs uppercase">{{ title }}</span>
       <span class="leading-none">
-        {{ isExpanded ? '-' : '+'}}
+        {{ isExpanded ? '-' : '+' }}
       </span>
     </button>
 
-    <Transition name="expand" @after-enter="onAfterEnter" @enter="onEnter" @leave="onLeave">
+    <Transition
+      name="expand"
+      @after-enter="onAfterEnter"
+      @enter="onEnter"
+      @leave="onLeave"
+    >
       <div class="pb-1" v-show="isExpanded" :aria-hidden="!isExpanded">
         <slot />
       </div>

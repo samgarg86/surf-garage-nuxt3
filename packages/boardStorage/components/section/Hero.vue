@@ -1,24 +1,28 @@
 <template>
-  <section id="about" class="section hero"
-           :style="{ '--hero-bg': `url(${bgImage})` }">
-    <MenuHome/>
-    <ContactLinks class="hero__contact-links" :onlyIcons="true"/>
+  <section
+    id="about"
+    class="section hero"
+    :style="{ '--hero-bg': `url(${bgImage})` }"
+  >
+    <MenuHome />
+    <ContactLinks class="hero__contact-links" :onlyIcons="true" />
     <div class="hero__foreground">
       <h1 class="hero__title">{{ title }}</h1>
       <h2 class="hero__subtitle">{{ subtitle }}</h2>
-      <ScrollTo class="button__join" linkType="button" to="contact">{{
-          $t("hero.join-now")
-        }}
+      <ScrollTo class="button__join" linkType="button" to="contact"
+        >{{ $t('hero.join-now') }}
       </ScrollTo>
     </div>
 
     <ScrollTo to="tiles" class="hero__arrow">
-      <SvgoChevronDown class="text-white text-2xl"/>
+      <SvgoChevronDown class="text-white text-2xl" />
     </ScrollTo>
 
     <VolumeIcon
       class="absolute bottom-1 right-1 z-10 hidden md:block"
-      @click="isMute = !isMute" :animate="!isMute"/>
+      @click="isMute = !isMute"
+      :animate="!isMute"
+    />
 
     <div class="hero__video-bg">
       <div class="hero__dark-bg"></div>
@@ -26,7 +30,15 @@
         :src="`https://www.youtube.com/embed/${bgVideo}?autoplay=1&loop=1&playlist=${bgVideo}&controls=0&enablejsapi=1&mute=1&playsinline=1`"
         title="Surf Garage Video PLayer"
         frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share;
+        "
         allowfullscreen
         data-not-lazy
         ref="player"
@@ -65,11 +77,8 @@ const youtubeCommand = (func) => {
   height: calc(100vh - 2 * theme('spacing.1'));
   overflow: hidden;
   position: relative;
-  background-image: linear-gradient(
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.4)
-  ),
-  var(--hero-bg);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--hero-bg);
   background-attachment: fixed;
   background-size: cover;
   background-position: center;

@@ -1,6 +1,8 @@
 <template>
-  <Breadcrumbs class="h-[55px]"/>
-  <div class="mb-3 md:mb-5 grid md:grid-cols-[55%_auto] gap-1 md:gap-6 max-w-screen-container mx-auto">
+  <Breadcrumbs class="h-[55px]" />
+  <div
+    class="mb-3 md:mb-5 grid md:grid-cols-[55%_auto] gap-1 md:gap-6 max-w-screen-container mx-auto"
+  >
     <section class="mobile:-mx-1">
       <PdpGalleryPhotos :url="url" :title="title" />
     </section>
@@ -9,21 +11,32 @@
       <div class="md:mt-3 md:mb-1">
         <h1 class="text-3xl md:text-4xl font-primary">{{ title }}</h1>
 
-        <LazyArtistPlaceTag v-if="tags.artist" class="mb-1" :artist="tags.artist" :place="tags.place"/>
-        <h2 v-if="description" class="text-2">{{description}}</h2>
+        <LazyArtistPlaceTag
+          v-if="tags.artist"
+          class="mb-1"
+          :artist="tags.artist"
+          :place="tags.place"
+        />
+        <h2 v-if="description" class="text-2">{{ description }}</h2>
 
         <ul v-if="tags.page?.length" class="tags list-none mb-1">
           <template v-for="tag in tags.page" :key="tag">
-            <li v-if="tag.name !== 'Home'" class="inline-block text-sm px-1 leading-9 mr-1 bg-grey-10">
-              <NuxtLink :to="localePath(collectionSlug(tag))">{{ tag.name }}</NuxtLink>
+            <li
+              v-if="tag.name !== 'Home'"
+              class="inline-block text-sm px-1 leading-9 mr-1 bg-grey-10"
+            >
+              <NuxtLink :to="localePath(collectionSlug(tag))">{{
+                tag.name
+              }}</NuxtLink>
             </li>
           </template>
         </ul>
-
       </div>
 
-      <div class="text-2xl mb-1 font-primary font-medium">€{{pricing[size]}}</div>
-      <SizeSelector v-model="size" class="mb-1"/>
+      <div class="text-2xl mb-1 font-primary font-medium">
+        €{{ pricing[size] }}
+      </div>
+      <SizeSelector v-model="size" class="mb-1" />
       <AddToCart
         :id="`${id}`"
         :price="basePrice"
@@ -37,40 +50,75 @@
       />
 
       <Accordion class="mt-3 md:mt-5">
-          <AccordionItem :title="$t('art.accordion.materials.title')" title-class="text-black font-primary" class="border-t">
-              <p class="text-sm text-justify">{{$t('art.accordion.materials.descPhotos')}}</p>
-          </AccordionItem>
-          <AccordionItem :title="$t('art.accordion.shipping.title')" title-class="text-black font-primary" class="border-t">
-              <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line1')}}</p>
-              <p class="text-sm text-justify mb-1">{{$t('art.accordion.shipping.line2')}}</p>
-            <p class="text-sm text-justify font-bold">{{$t('art.accordion.shipping.free')}}</p>
-          </AccordionItem>
-          <AccordionItem :title="$t('art.accordion.contact.title')" title-class="text-black font-primary" class="border-t">
-              <p class="text-sm text-justify">
-                  {{$t('art.accordion.contact.desc')}} <ScrollTo to="contact" class="underline">{{$t('art.accordion.contact.link')}}</ScrollTo>
-              </p>
-          </AccordionItem>
+        <AccordionItem
+          :title="$t('art.accordion.materials.title')"
+          title-class="text-black font-primary"
+          class="border-t"
+        >
+          <p class="text-sm text-justify">
+            {{ $t('art.accordion.materials.descPhotos') }}
+          </p>
+        </AccordionItem>
+        <AccordionItem
+          :title="$t('art.accordion.shipping.title')"
+          title-class="text-black font-primary"
+          class="border-t"
+        >
+          <p class="text-sm text-justify mb-1">
+            {{ $t('art.accordion.shipping.line1') }}
+          </p>
+          <p class="text-sm text-justify mb-1">
+            {{ $t('art.accordion.shipping.line2') }}
+          </p>
+          <p class="text-sm text-justify font-bold">
+            {{ $t('art.accordion.shipping.free') }}
+          </p>
+        </AccordionItem>
+        <AccordionItem
+          :title="$t('art.accordion.contact.title')"
+          title-class="text-black font-primary"
+          class="border-t"
+        >
+          <p class="text-sm text-justify">
+            {{ $t('art.accordion.contact.desc') }}
+            <ScrollTo to="contact" class="underline">{{
+              $t('art.accordion.contact.link')
+            }}</ScrollTo>
+          </p>
+        </AccordionItem>
       </Accordion>
     </section>
   </div>
 
   <LazySliderPrints
-          :title="$t('art.moreBy', {name: tags.artist.name})"
-          :tag="tags.artist.id"
-          class="mt-6"
-          order="created"/>
+    :title="$t('art.moreBy', { name: tags.artist.name })"
+    :tag="tags.artist.id"
+    class="mt-6"
+    order="created"
+  />
 </template>
 <script setup>
-const { public: { priceTable } } = useRuntimeConfig()
-const { fetchImageById } = useImages()
+const {
+  public: { priceTable }
+} = useRuntimeConfig()
+const { fetchImageById } = useCloudinaryImages()
 const localePath = useLocalePath()
 const host = useHost()
 const { gtag } = useGtag()
-const { query, params: { id } } = useRoute()
+const {
+  query,
+  params: { id }
+} = useRoute()
 
 const { url, title, description, tags } = await fetchImageById(id)
-const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
-const pricing = computed(() => tags?.settings.includes('settingPosterPrice') ? priceTable.posters : priceTable.photos)
+const ecomDisabled = computed(() =>
+  tags?.settings.includes('settingEcomDisabled')
+)
+const pricing = computed(() =>
+  tags?.settings.includes('settingPosterPrice')
+    ? priceTable.posters
+    : priceTable.photos
+)
 const priceEntries = Object.entries(pricing.value)
 const size = ref('30x40')
 const basePrice = computed(() => priceEntries[0][1])
@@ -90,12 +138,12 @@ gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',
   screen_name: `Prints Page - ${title}`
 })
-
 </script>
 
 <style lang="postcss">
 .select-size {
   appearance: none;
-  background: url('@core/assets/icons/chevron-down.svg') no-repeat right 1rem top 50% / 2rem;
+  background: url('@core/assets/icons/chevron-down.svg') no-repeat right 1rem
+    top 50% / 2rem;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="md:grid grid-cols-2 lg:grid-cols-4 gap-2 mt-1 mb-2">
-    <BoardsTile v-for="tile in boards" :key="tile.id" v-bind="tile"/>
+    <BoardsTile v-for="tile in boards" :key="tile.id" v-bind="tile" />
   </div>
 </template>
 <script setup>

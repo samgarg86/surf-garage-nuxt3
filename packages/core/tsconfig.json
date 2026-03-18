@@ -5,10 +5,7 @@
     "outDir": "./output/",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
+    "lib": ["ES2022", "dom"],
     "esModuleInterop": true,
     "allowJs": true,
     "resolveJsonModule": true,
@@ -18,17 +15,8 @@
     "declaration": false,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "types": [
-      "@types/node"
-    ]
+    "types": ["@types/node"]
   },
-  "include": [
-    "./**/*.ts",
-    "./**/*.js",
-    "./**/*.vue"
-  ],
-  "exclude": [
-    "output",
-    "node_modules"
-  ]
+  "include": ["./**/*.ts", "./**/*.js", "./**/*.vue"],
+  "exclude": ["output", "node_modules"]
 }

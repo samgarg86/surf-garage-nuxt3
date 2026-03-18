@@ -1,4 +1,3 @@
-
 <!--
   Gallery component for art package
   This component exists primarily to avoid "Failed to resolve component: Gallery" errors
@@ -9,15 +8,17 @@
 -->
 <template>
   <Splide
-      :options="splideOptions"
-      :style="`max-width: ${width || 600}px`"
-      class="mx-auto">
+    :options="splideOptions"
+    :style="`max-width: ${width || 600}px`"
+    class="mx-auto"
+  >
     <SplideSlide v-for="img in images" :key="img.id">
       <img
-          :src="`${img.url}?w=${width || 600}&fm=webp`"
-          alt="Gallery Image"
-          :class="{'h-full object-cover': fillHeight}"
-          class="w-full" />
+        :src="`${img.url}?w=${width || 600}&fm=webp`"
+        alt="Gallery Image"
+        :class="{ 'h-full object-cover': fillHeight }"
+        class="w-full"
+      />
     </SplideSlide>
   </Splide>
 </template>

@@ -3,43 +3,45 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Metalsmith";
+  font-family: 'Metalsmith';
   font-style: normal;
-  src: url("@core/assets/fonts/Metalsmith-Regular.woff2") format("woff2"),
-       url("@core/assets/fonts/Metalsmith-Regular.woff") format("woff");
+  src:
+    url('@core/assets/fonts/Metalsmith-Regular.woff2') format('woff2'),
+    url('@core/assets/fonts/Metalsmith-Regular.woff') format('woff');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Avenir Next";
+  font-family: 'Avenir Next';
   font-style: normal;
   font-weight: 400;
-  src: url("@core/assets/fonts/AvenirNextLTPro-Regular.woff2") format("woff2"),
-       url("@core/assets/fonts/AvenirNextLTPro-Regular.woff") format("woff");
+  src:
+    url('@core/assets/fonts/AvenirNextLTPro-Regular.woff2') format('woff2'),
+    url('@core/assets/fonts/AvenirNextLTPro-Regular.woff') format('woff');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Avenir Next";
+  font-family: 'Avenir Next';
   font-style: normal;
   font-weight: 500;
-  src: url("@core/assets/fonts/AvenirLTPro-Medium.woff") format("woff");
+  src: url('@core/assets/fonts/AvenirLTPro-Medium.woff') format('woff');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Avenir Next";
+  font-family: 'Avenir Next';
   font-style: normal;
   font-weight: 700;
-  src: url("@core/assets/fonts/AvenirNextLTPro-Demi.woff") format("woff");
+  src: url('@core/assets/fonts/AvenirNextLTPro-Demi.woff') format('woff');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Avenir Next";
+  font-family: 'Avenir Next';
   font-style: normal;
   font-weight: 800;
-  src: url("@core/assets/fonts/AvenirNextLTPro-Bold.woff") format("woff");
+  src: url('@core/assets/fonts/AvenirNextLTPro-Bold.woff') format('woff');
   font-display: swap;
 }
 
@@ -47,8 +49,9 @@
   font-family: 'Myriad Pro';
   font-style: normal;
   font-weight: normal;
-  src: url('@core/assets/fonts/MyriadPro-Regular.woff2') format('woff2'),
-       url('@core/assets/fonts/MyriadPro-Regular.woff') format('woff');
+  src:
+    url('@core/assets/fonts/MyriadPro-Regular.woff2') format('woff2'),
+    url('@core/assets/fonts/MyriadPro-Regular.woff') format('woff');
   font-display: swap;
 }
 
@@ -56,8 +59,9 @@
   font-family: 'Myriad Pro';
   font-style: normal;
   font-weight: 700;
-  src: url('@core/assets/fonts/MyriadPro-Semibold.woff2') format('woff2'),
-  url('@core/assets/fonts/MyriadPro-Semibold.woff') format('woff');
+  src:
+    url('@core/assets/fonts/MyriadPro-Semibold.woff2') format('woff2'),
+    url('@core/assets/fonts/MyriadPro-Semibold.woff') format('woff');
   font-display: swap;
 }
 
@@ -66,8 +70,9 @@
   font-family: 'Wilco';
   font-style: normal;
   font-weight: 300;
-  src: url('@core/assets/fonts/wilco/WilcoLoftSans-Treble.woff2') format('woff2'),
-  url('@core/assets/fonts/wilco/WilcoLoftSans-Treble.woff') format('woff');
+  src:
+    url('@core/assets/fonts/wilco/WilcoLoftSans-Treble.woff2') format('woff2'),
+    url('@core/assets/fonts/wilco/WilcoLoftSans-Treble.woff') format('woff');
   font-display: swap;
 }
 
@@ -75,8 +80,9 @@
   font-family: 'Wilco';
   font-style: normal;
   font-weight: 500;
-  src: url('@core/assets/fonts/wilco/WilcoLoftSans-Midrange.woff2') format('woff2'),
-  url('@core/assets/fonts/wilco/WilcoLoftSans-Midrange.woff') format('woff');
+  src:
+    url('@core/assets/fonts/wilco/WilcoLoftSans-Midrange.woff2') format('woff2'),
+    url('@core/assets/fonts/wilco/WilcoLoftSans-Midrange.woff') format('woff');
   font-display: swap;
 }
 
@@ -84,8 +90,9 @@
   font-family: 'Wilco';
   font-style: normal;
   font-weight: 700;
-  src: url('@core/assets/fonts/wilco/WilcoLoftSans-LowEnd.woff2') format('woff2'),
-  url('@core/assets/fonts/wilco/WilcoLoftSans-LowEnd.woff') format('woff');
+  src:
+    url('@core/assets/fonts/wilco/WilcoLoftSans-LowEnd.woff2') format('woff2'),
+    url('@core/assets/fonts/wilco/WilcoLoftSans-LowEnd.woff') format('woff');
   font-display: swap;
 }
 
@@ -93,8 +100,9 @@
   font-family: 'Wilco';
   font-style: normal;
   font-weight: 800;
-  src: url('@core/assets/fonts/wilco/WilcoLoftSans-Bass.woff2') format('woff2'),
-  url('@core/assets/fonts/wilco/WilcoLoftSans-Bass.woff') format('woff');
+  src:
+    url('@core/assets/fonts/wilco/WilcoLoftSans-Bass.woff2') format('woff2'),
+    url('@core/assets/fonts/wilco/WilcoLoftSans-Bass.woff') format('woff');
   font-display: swap;
 }
 
@@ -162,14 +170,14 @@ ul {
   @apply bg-blackFrame;
   padding: 0.8rem;
   box-sizing: border-box;
-  box-shadow: -3px 3px 10px rgba(0,0,0,.3);
+  box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.3);
   position: relative;
 
   &::after {
     @apply absolute inset-0;
     margin: 0.8rem;
     content: '';
-    box-shadow: inset -1px 1px 5px rgba(0,0,0,0.3);
+    box-shadow: inset -1px 1px 5px rgba(0, 0, 0, 0.3);
   }
 
   img {
@@ -186,12 +194,12 @@ ul {
 
 .image-frame__living-room {
   @apply p-0.5 bg-brownFrame;
-  box-shadow: 4px 2px 6px rgba(0,0,0,.3);
+  box-shadow: 4px 2px 6px rgba(0, 0, 0, 0.3);
 
-    &::after {
-      @apply m-0.5;
-      box-shadow: inset 2px 0 3px rgba(0,0,0,0.3);
-    }
+  &::after {
+    @apply m-0.5;
+    box-shadow: inset 2px 0 3px rgba(0, 0, 0, 0.3);
+  }
 
   img {
     @apply border-[0.8rem] md:border-[1rem] border-white;
@@ -207,7 +215,3 @@ ul {
   padding-top: 12px;
   padding-bottom: 12px;
 }
-
-
-
-

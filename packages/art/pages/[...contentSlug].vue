@@ -1,11 +1,13 @@
 <template>
-  <PageHeader :title="title" :description="description"/>
+  <PageHeader :title="title" :description="description" />
   <div class="max-w-[80rem] mx-auto px-1 md:px-2">
     <RichText v-bind="text" />
   </div>
 </template>
 <script setup lang="ts">
-const { params: { contentSlug } } = useRoute()
+const {
+  params: { contentSlug }
+} = useRoute()
 const { client } = useContentful()
 const { locale } = useI18n()
 const { gtag } = useGtag()
@@ -17,9 +19,14 @@ const entries = await client.getEntries({
   locale: locale.value,
   'fields.slug': slug
 })
-const { title = '', description, text, keywords } = entries?.items?.[0]?.fields || {}
+const {
+  title = '',
+  description,
+  text,
+  keywords
+} = entries?.items?.[0]?.fields || {}
 
-useArtSeo({title, description, keywords})
+useArtSeo({ title, description, keywords })
 gtag('event', 'page_view', {
   app_name: 'Surfgarage Art',
   screen_name: `Content Page - ${slug}`

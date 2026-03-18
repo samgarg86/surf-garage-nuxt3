@@ -13,9 +13,14 @@
     "build:board": "yarn workspace surf-garage build",
     "deploy:art": "sh deployRsyncArt.sh",
     "deploy:board": "sh deployRsyncBoard.sh",
+    "prettify": "npx prettier . --write",
     "restart": "sh restart.sh"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "cloudinary": "^2.9.0",
+    "prettier": "^3.8.1"
   }
 }
