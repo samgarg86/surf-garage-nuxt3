@@ -24,13 +24,9 @@ defineProps({
 })
 
 // const isHamburgerOpen = ref(false)
-const open = () => {
-  emit('hamburger:open')
-}
+const open = () => emit('hamburger:open')
+const close = () => emit('hamburger:close')
 
-const close = () => {
-  emit('hamburger:close')
-}
 </script>
 
 <style lang="postcss">

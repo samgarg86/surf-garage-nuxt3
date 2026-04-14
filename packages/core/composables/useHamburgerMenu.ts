@@ -1,5 +1,5 @@
 export const useHamburgerMenu = () => {
-    const isHamburgerOpen = ref(false)
+    const isHamburgerOpen = useState('isHamburgerOpen', () => false)
 
     return {
         isHamburgerOpen,
