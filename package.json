@@ -13,6 +13,7 @@
     "build:board": "yarn workspace surf-garage build",
     "deploy:art": "sh deployRsyncArt.sh",
     "deploy:board": "sh deployRsyncBoard.sh",
+    "deploy": "sh deployRsync.sh",
     "restart": "sh restart.sh"
   },
   "devDependencies": {
