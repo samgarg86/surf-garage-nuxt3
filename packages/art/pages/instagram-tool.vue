@@ -179,14 +179,15 @@ function onDragStart(event, index) {
   if (!canDrag(img)) return
   const point = event.touches ? event.touches[0] : event
   const rect = event.currentTarget.getBoundingClientRect()
+  const borderPx = Math.round(rect.width * BORDER_RATIO)
   dragState = {
     index,
     startX: point.clientX,
     startY: point.clientY,
     startOffsetX: img.offsetX,
     startOffsetY: img.offsetY,
-    containerWidth: rect.width,
-    containerHeight: rect.height
+    containerWidth: rect.width - 2 * borderPx,
+    containerHeight: rect.height - 2 * borderPx
   }
   window.addEventListener('mousemove', onDragMove)
   window.addEventListener('mouseup', onDragEnd)
@@ -248,6 +249,15 @@ function loadImage(src) {
 
 async function renderImage(img) {
   const source = await loadImage(img.url)
+
+  // Bake EXIF orientation into a canvas. drawImage() always applies the EXIF
+  // rotation tag, but createImageBitmap() on an img element does not in all
+  // browsers — working from a canvas eliminates the mismatch.
+  const normalized = document.createElement('canvas')
+  normalized.width = source.naturalWidth
+  normalized.height = source.naturalHeight
+  normalized.getContext('2d').drawImage(source, 0, 0)
+
   const aspect = getAspectValue(img.aspectRatioId)
   const naturalAspect = source.naturalWidth / source.naturalHeight
 
@@ -276,7 +286,7 @@ async function renderImage(img) {
 
   // Use createImageBitmap with high-quality resize — much sharper than a
   // single-pass ctx.drawImage downscale from a large source.
-  const bitmap = await createImageBitmap(source, srcCropX, srcCropY, srcW, srcH, {
+  const bitmap = await createImageBitmap(normalized, srcCropX, srcCropY, srcW, srcH, {
     resizeWidth: outCropW,
     resizeHeight: outCropH,
     resizeQuality: 'high'
