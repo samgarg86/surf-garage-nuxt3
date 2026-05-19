@@ -351,6 +351,11 @@ function fileNameFor(img, suffixIndex = 0) {
     : `${base}-${suffix}-${suffixIndex}.jpg`
 }
 
+function clearImages() {
+  for (const img of images.value) URL.revokeObjectURL(img.url)
+  images.value = []
+}
+
 async function downloadZip() {
   isProcessing.value = true
   await nextTick()
@@ -359,19 +364,20 @@ async function downloadZip() {
       const img = images.value[0]
       const blob = await renderImage(img)
       await saveFile(blob, fileNameFor(img))
-      return
+    } else {
+      const zip = new JSZip()
+      const used = new Map()
+      for (const img of images.value) {
+        const blob = await renderImage(img)
+        const baseName = fileNameFor(img)
+        const count = used.get(baseName) || 0
+        used.set(baseName, count + 1)
+        zip.file(fileNameFor(img, count), blob)
+      }
+      const zipBlob = await zip.generateAsync({ type: 'blob' })
+      await saveFile(zipBlob, `instagram-photos-${Date.now()}.zip`)
     }
-    const zip = new JSZip()
-    const used = new Map()
-    for (const img of images.value) {
-      const blob = await renderImage(img)
-      const baseName = fileNameFor(img)
-      const count = used.get(baseName) || 0
-      used.set(baseName, count + 1)
-      zip.file(fileNameFor(img, count), blob)
-    }
-    const zipBlob = await zip.generateAsync({ type: 'blob' })
-    await saveFile(zipBlob, `instagram-photos-${Date.now()}.zip`)
+    clearImages()
   } finally {
     isProcessing.value = false
   }
