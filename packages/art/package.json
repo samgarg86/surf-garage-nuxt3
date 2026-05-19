@@ -39,6 +39,7 @@
     "@splidejs/vue-splide": "^0.6.12",
     "contentful": "^10.2.3",
     "eslint-plugin-nuxt": "^4.0.0",
+    "jszip": "^3.10.1",
     "postcss-simple-vars": "^7.0.1",
     "vue-gtag": "^2.0.1",
     "vue3-burger-menu": "^1.1.1"
