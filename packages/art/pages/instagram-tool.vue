@@ -37,6 +37,7 @@
             :class="canDrag(img) ? 'cursor-move' : 'cursor-default'"
             @mousedown="onDragStart($event, index)"
             @touchstart.prevent="onDragStart($event, index)"
+            @wheel.prevent="onWheel($event, index)"
           >
             <div :style="cropImageStyle(img)" />
           </div>
@@ -91,6 +92,7 @@ const isProcessing = ref(false)
 
 let nextId = 0
 let dragState = null
+let pinchState = null
 
 function getAspectValue(id) {
   return aspectRatios.find(r => r.id === id).value
@@ -110,6 +112,7 @@ function onFilesSelected(event) {
         naturalWidth: imgEl.naturalWidth,
         naturalHeight: imgEl.naturalHeight,
         aspectRatioId: DEFAULT_RATIO,
+        zoom: 1,
         offsetX: 0.5,
         offsetY: 0.5
       })
@@ -146,8 +149,15 @@ function cropPreviewStyle(img) {
 }
 
 function cropImageStyle(img) {
-  const { width } = previewDimensions(img)
+  const { width, height } = previewDimensions(img)
   const borderPx = Math.round(width * BORDER_RATIO)
+  const innerW = width - 2 * borderPx
+  const innerH = height - 2 * borderPx
+  const naturalAspect = img.naturalWidth / img.naturalHeight
+  const aspect = getAspectValue(img.aspectRatioId)
+  let coverW, coverH
+  if (naturalAspect > aspect) { coverH = innerH; coverW = coverH * naturalAspect }
+  else { coverW = innerW; coverH = coverW / naturalAspect }
   return {
     position: 'absolute',
     top: `${borderPx}px`,
@@ -155,27 +165,37 @@ function cropImageStyle(img) {
     right: `${borderPx}px`,
     bottom: `${borderPx}px`,
     backgroundImage: `url(${img.url})`,
-    backgroundSize: 'cover',
+    backgroundSize: `${coverW * img.zoom}px ${coverH * img.zoom}px`,
     backgroundPosition: `${img.offsetX * 100}% ${img.offsetY * 100}%`,
     backgroundRepeat: 'no-repeat'
   }
 }
 
 function canDrag(img) {
+  if (img.zoom > 1.001) return true
   const aspect = getAspectValue(img.aspectRatioId)
-  const naturalAspect = img.naturalWidth / img.naturalHeight
-  return Math.abs(naturalAspect - aspect) > 0.001
+  return Math.abs(img.naturalWidth / img.naturalHeight - aspect) > 0.001
 }
 
 function setAspectRatio(index, id) {
   const img = images.value[index]
   img.aspectRatioId = id
+  img.zoom = 1
   img.offsetX = 0.5
   img.offsetY = 0.5
 }
 
 function onDragStart(event, index) {
   const img = images.value[index]
+  if (event.touches?.length === 2) {
+    const [t0, t1] = event.touches
+    pinchState = {
+      index,
+      startDist: Math.hypot(t0.clientX - t1.clientX, t0.clientY - t1.clientY),
+      startZoom: img.zoom
+    }
+    return
+  }
   if (!canDrag(img)) return
   const point = event.touches ? event.touches[0] : event
   const rect = event.currentTarget.getBoundingClientRect()
@@ -196,6 +216,14 @@ function onDragStart(event, index) {
 }
 
 function onDragMove(event) {
+  if (event.touches?.length === 2 && pinchState) {
+    if (event.cancelable) event.preventDefault()
+    const [t0, t1] = event.touches
+    const dist = Math.hypot(t0.clientX - t1.clientX, t0.clientY - t1.clientY)
+    const img = images.value[pinchState.index]
+    img.zoom = clamp(pinchState.startZoom * dist / pinchState.startDist, 1, 4)
+    return
+  }
   if (!dragState) return
   if (event.cancelable) event.preventDefault()
   const point = event.touches ? event.touches[0] : event
@@ -203,14 +231,11 @@ function onDragMove(event) {
   const aspect = getAspectValue(img.aspectRatioId)
   const naturalAspect = img.naturalWidth / img.naturalHeight
 
-  let displayedWidth, displayedHeight
-  if (naturalAspect > aspect) {
-    displayedHeight = dragState.containerHeight
-    displayedWidth = displayedHeight * naturalAspect
-  } else {
-    displayedWidth = dragState.containerWidth
-    displayedHeight = displayedWidth / naturalAspect
-  }
+  let coverW, coverH
+  if (naturalAspect > aspect) { coverH = dragState.containerHeight; coverW = coverH * naturalAspect }
+  else { coverW = dragState.containerWidth; coverH = coverW / naturalAspect }
+  const displayedWidth = coverW * img.zoom
+  const displayedHeight = coverH * img.zoom
 
   const overflowX = displayedWidth - dragState.containerWidth
   const overflowY = displayedHeight - dragState.containerHeight
@@ -228,10 +253,16 @@ function onDragMove(event) {
 
 function onDragEnd() {
   dragState = null
+  pinchState = null
   window.removeEventListener('mousemove', onDragMove)
   window.removeEventListener('mouseup', onDragEnd)
   window.removeEventListener('touchmove', onDragMove)
   window.removeEventListener('touchend', onDragEnd)
+}
+
+function onWheel(event, index) {
+  const img = images.value[index]
+  img.zoom = clamp(img.zoom - event.deltaY * 0.001, 1, 4)
 }
 
 function clamp(value, min, max) {
@@ -263,10 +294,10 @@ async function renderImage(img) {
 
   let srcCropW, srcCropH
   if (naturalAspect > aspect) {
-    srcCropH = source.naturalHeight
+    srcCropH = source.naturalHeight / img.zoom
     srcCropW = srcCropH * aspect
   } else {
-    srcCropW = source.naturalWidth
+    srcCropW = source.naturalWidth / img.zoom
     srcCropH = srcCropW / aspect
   }
 
