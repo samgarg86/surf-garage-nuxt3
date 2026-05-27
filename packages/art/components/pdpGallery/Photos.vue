@@ -4,7 +4,7 @@
       <div class="image-frame image-frame__pdp max-w-[50rem] mx-auto">
         <Image
             :src="`${url}?w=700&fm=webp`"
-            :alt="`Surf Garage - ${title}`"
+            :alt="`Salty Lens - ${title}`"
             class="bg-white mx-auto border-[2rem] border-white"
             fetch-priority="high"
         />
@@ -13,7 +13,7 @@
     <SplideSlide class="relative">
       <Image
           src="/living-room.jpg"
-          :alt="`Surf Garage - living room`"
+          :alt="`Salty Lens - living room`"
           class="w-full"
           fetch-priority="high"
       />
@@ -21,7 +21,7 @@
         <div class="image-frame image-frame__living-room mx-auto">
           <Image
               :src="`${url}?w=700&fm=webp`"
-              :alt="`Surf Garage - ${title}`"
+              :alt="`Salty Lens - ${title}`"
               class="bg-white mx-auto max-h-[12rem] sm:max-h-20"
               fetch-priority="high"
           />
@@ -31,7 +31,7 @@
     <SplideSlide>
       <Image
           :src="`${url}?w=1000&fm=webp`"
-          :alt="`Surf Garage - ${title}`"
+          :alt="`Salty Lens - ${title}`"
           class="w-full mx-auto"
           fetch-priority="high"
       />

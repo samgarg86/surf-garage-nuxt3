@@ -1,6 +1,6 @@
 export const useArtSeo = ({title, description, imageUrl, keywords}) => {
     useSeoMeta({
-        title: `${title} - Surf Garage Art Collective`,
+        title: `${title}`,
         ogTitle: `${title}`,
         ...(description && { description }),
         ...(description && { ogDescription: description }),

@@ -41,11 +41,11 @@ useHead({
 })
 
 useSeoMeta({
-  title: 'Surf Garage Art Co',
-  description: 'Discover artwork created by photographers and illustrators based in the Canary Islands who bring to life their travels, experiences, emotions and surf vibes through prints and posters.',
-  ogTitle: 'Surf Garage Art Co',
-  ogDescription: 'Discover artwork created by photographers and illustrators based in the Canary Islands who bring to life their travels, experiences, emotions and surf vibes through prints and posters.',
-  ogImage: 'https://surfgarage.es/logo.png',
+  title: 'Salty Lens - That feeling from your last surf trip - framed',
+  description: 'Fine art prints by artists who capture their travels, waves and surf vibes',
+  ogTitle: 'Salty Lens',
+  ogDescription: 'Fine art prints by artists who capture their travels, waves and surf vibes',
+  ogImage: 'https://saltylens.art/logo.png',
   keywords: 'surf art, surf photography, surf illustrations, art, photography, illustrations, photo prints, surfing, art gallery'
 })
 </script>
