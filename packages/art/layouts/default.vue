@@ -4,7 +4,7 @@
       @hamburger:open="onHamburgerOpen"
       @hamburger:close="onHamburgerClose">
     <template #hamburger-icon>
-      <HamburgerIcon class="left-1 top-2 md:left-2" invert @click="onHamburgerOpen"/>
+      <HamburgerIcon class="left-1 top-2 mobile:block hidden" invert @click="onHamburgerOpen"/>
     </template>
     <ArtHamburger @hamburger:click="onHamburgerClose"/>
   </Hamburger>

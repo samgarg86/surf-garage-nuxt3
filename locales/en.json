@@ -1,7 +1,7 @@
 {
   "language": "English",
   "nav": {
-    "about": "About Us",
+    "about": "About",
     "storage": "Board Storage",
     "security": "Board Security",
     "services": "Services",
@@ -9,6 +9,7 @@
     "contact": "Contact",
     "boards": "Secondhand Surf Boards",
     "categories": "Collections",
+    "collections-section": "Collections",
     "locations": "Locations",
     "artists": "Artists",
     "posters": "Posters"

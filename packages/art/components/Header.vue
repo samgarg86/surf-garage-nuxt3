@@ -1,21 +1,31 @@
 <template>
-  <header class="fixed z-10 left-0 top-0 w-full text-center py-[1.6rem] bg-black">
-    <NuxtLink :to="localeRoute('/')" class="text-white text-center">
-<!--<svgo-art-logo :fontControlled="false" class="mx-auto w-15 md:w-20"/>-->
-      <div class="font-primary font-extrabold text-xl tracking-[0.1rem] mx-auto">SALTY LENS</div>
-    </NuxtLink>
-    <div class="flex absolute right-1 top-2 md:top-1 md:right-2 md:items-start">
-      <LazyLanguageSwitcher
-          :showLanguageName="false"
-          @click="toggleLangExpanded"
-          theme="dark"
-          mode="dropdown"
-          class="header-lang relative overflow-hidden w-6 h-4.5 text-1.8 mobile:hidden"
-          :class="{ 'isExpanded': langExpanded }"/>
-      <button class="snipcart-checkout flex items-center ml-1 md:mt-1">
-        <SvgoCart class="w-2 h-2 text-white"/>
-        <div class="snipcart-items-count text-xs text-white -translate-y-1"/>
-      </button>
+  <header class="fixed z-10 left-0 top-0 w-full bg-black text-white py-[1.6rem]">
+    <!-- mobile layout -->
+    <div class="md:hidden relative text-center">
+      <NuxtLink :to="localeRoute('/')" class="text-white text-center">
+        <div class="font-primary font-extrabold text-xl tracking-[0.1rem] mx-auto">SALTY LENS</div>
+      </NuxtLink>
+      <div class="flex absolute right-1 top-0 items-center">
+        <button class="snipcart-checkout flex items-center ml-1">
+          <SvgoCart class="w-2 h-2 text-white"/>
+          <div class="snipcart-items-count text-xs text-white -translate-y-1"/>
+        </button>
+      </div>
+    </div>
+
+    <!-- desktop layout -->
+    <div class="hidden md:grid grid-cols-[1fr_1fr_1fr] items-center gap-2 px-2 relative">
+      <ArtDesktopNav side="left" class="justify-self-end"/>
+      <NuxtLink :to="localeRoute('/')" class="text-white justify-self-center">
+        <div class="font-primary font-extrabold text-xl tracking-[0.1rem]">SALTY LENS</div>
+      </NuxtLink>
+      <ArtDesktopNav side="right" class="justify-self-start"/>
+      <div class="absolute right-1 top-2 md:top-1 md:right-2 md:items-start">
+        <button class="snipcart-checkout flex items-center">
+          <SvgoCart class="w-2 h-2 text-white"/>
+          <div class="snipcart-items-count text-xs text-white -translate-y-1"/>
+        </button>
+      </div>
     </div>
   </header>
 </template>

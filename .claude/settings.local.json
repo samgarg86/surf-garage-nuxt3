@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(yarn dev:art:*)",
+      "Bash(jq '.entries[] | select\\(.sys.id == \"787FtowVJrI9Y5E2bs70Dl\"\\)' /Users/samwise/dev/surf-garage/surf-garage-nuxt3/export/contentful-export-5im2bow6vhih-master-2025-12-27T11-21-14.json 2>/dev/null)",
+      "Bash(jq '.entries[] | select\\(.sys.id == \"2AHRc1flGpUkD3ABzOSU9s\"\\)' /Users/samwise/dev/surf-garage/surf-garage-nuxt3/export/contentful-export-5im2bow6vhih-master-2025-12-27T11-21-14.json 2>/dev/null)",
+      "Bash(jq '.entries[] | select\\(.sys.id == \"6545VqwB59vxn90pnGTFZu\"\\)' /Users/samwise/dev/surf-garage/surf-garage-nuxt3/export/contentful-export-5im2bow6vhih-master-2025-12-27T11-21-14.json 2>/dev/null)",
+      "Bash(jq '.assets[] | select\\(.sys.id == \"6dgRl1jZKlgehPJ2UIGVLm\"\\)' /Users/samwise/dev/surf-garage/surf-garage-nuxt3/export/contentful-export-5im2bow6vhih-master-2025-12-27T11-21-14.json 2>/dev/null)"
+    ]
+  }
+}
