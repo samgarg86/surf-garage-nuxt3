@@ -14,10 +14,10 @@
     </div>
 
     <!-- desktop layout -->
-    <div class="hidden md:grid grid-cols-[1fr_1fr_1fr] items-center gap-2 px-2 relative">
+    <div class="hidden md:grid grid-cols-[1fr_1fr_1fr] items-center px-2 relative">
       <ArtDesktopNav side="left" class="justify-self-end"/>
       <NuxtLink :to="localeRoute('/')" class="justify-self-center">
-        <img src="/logo.svg" alt="Salty Lens" class="w-15 h-auto"/>
+        <img src="/logo.svg" alt="Salty Lens" class="w-[17rem] h-auto"/>
       </NuxtLink>
       <ArtDesktopNav side="right" class="justify-self-start"/>
       <div class="absolute right-1 top-2 md:top-1 md:right-2 md:items-start">

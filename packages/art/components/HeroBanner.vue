@@ -1,5 +1,5 @@
 <template>
-  <div class="art-hero-banner -mt-6 md:-mt-[19rem] -mx-1 md:-mx-2 px-2 py-6 md:py-9 text-center text-white min-h-[60rem] flex flex-col justify-center"
+  <div class="art-hero-banner -mt-6 md:-mt-[19rem] -mx-1 md:-mx-2 px-2 py-6 md:py-9 text-center text-white min-h-[80rem] flex flex-col justify-center"
        :style="{
          '--art-hero-bg': `url(${backgroundImage.fields.file.url}?w=2000&fm=webp)`,
          '--art-hero-bg-mobile': bgImageMobile ? `url(${bgImageMobile.fields.file.url}?w=1200&fm=webp)` : `url(${backgroundImage.fields.file.url}?fm=webp)`
@@ -30,7 +30,7 @@ const localeRoute = useLocaleRoute()
 <style lang="postcss">
 .art-hero-banner {
   background-image: var(--art-hero-bg-mobile);
-  background-position: center;
+  background-position: bottom center;
   background-size: cover;
 
   @media (min-width: 768px) {

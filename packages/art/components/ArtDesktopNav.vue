@@ -89,7 +89,7 @@ const { locale } = useI18n()
 
 .art-nav-link {
   @apply block py-[0.4rem] text-sm hover:text-lightYellow normal-case font-secondary;
-  color: rgba(255, 255, 255, 0.85);
+  color: #e5d6bf;
   letter-spacing: 0;
   transition: color 0.15s ease, transform 0.15s ease;
 }

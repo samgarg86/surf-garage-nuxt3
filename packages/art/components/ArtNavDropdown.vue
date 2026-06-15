@@ -84,7 +84,7 @@ onBeforeUnmount(cancelClose)
 <style lang="postcss">
 .art-nav-trigger {
   @apply relative py-1 px-0.5 hover:text-lightYellow transition-colors duration-150;
-  color: rgba(255, 255, 255, 0.9);
+  color: #e5d6bf;
   letter-spacing: 0.12em;
 }
 .art-nav-trigger::after {
