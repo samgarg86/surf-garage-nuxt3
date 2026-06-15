@@ -79,5 +79,9 @@ export default defineNuxtConfig({
   },
   gtag: {
     id: 'G-KQ9XVBCK1R'
-  }
+  },
+  svgo: {
+    autoImportPath: ['@art/assets/icons/', '@core/assets/icons/'],
+    customComponent: 'SvgoIcon'
+  },
 });
