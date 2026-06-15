@@ -8,7 +8,7 @@
     </template>
     <ArtHamburger @hamburger:click="onHamburgerClose"/>
   </Hamburger>
-  <main id="page-wrap" :class="{ 'slide': isHamburgerOpen }" class="pt-6">
+  <main id="page-wrap" :class="{ 'slide': isHamburgerOpen }" class="pt-6 md:pt-[19rem]">
     <Header/>
     <div class="mx-1 md:mx-2 mb-4">
       <slot/>
