@@ -37,7 +37,7 @@ const toFrame = (a) => ({ src: `${a.fields.file.url}?w=800&fm=webp`, alt: a.fiel
 const columns = [
   { width: '10cqw', frames: props.framesLeft.slice(2, 4).map(toFrame), paddingBottom: '5cqh' },
   { width: '10cqw', frames: props.framesLeft.slice(0, 2).map(toFrame) },
-  { width: '20cqw', frames: [{ html: props.title, aspect: 'aspect-[5/6]' }] },
+  { width: '18cqw', frames: [{ html: props.title, aspect: 'aspect-[4.3/6]' }] },
   { width: '10cqw', frames: props.framesRight.slice(0, 2).map(toFrame) },
   { width: '10cqw', frames: props.framesRight.slice(2, 4).map(toFrame) }
 ].filter(c => c.frames.length)
