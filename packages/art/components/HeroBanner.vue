@@ -5,7 +5,7 @@
          '--art-hero-bg-mobile': bgImageMobile ? `url(${bgImageMobile.fields.file.url}?w=1200&fm=webp)` : `url(${backgroundImage.fields.file.url}?fm=webp)`
        }"
   >
-    <div class="hidden md:block absolute left-1/2 -translate-x-1/2 bottom-[27%] lg:bottom-[30%] w-[55%]">
+    <div class="hidden md:block absolute left-1/2 -translate-x-1/2 bottom-[27%] lg:bottom-[29%] w-[55%]">
       <FrameWall :columns="columns" gap="1.2cqw"/>
     </div>
     <div class="max-w-[70rem] mx-auto mt-auto">
@@ -36,9 +36,9 @@ const toFrame = (a) => ({ src: `${a.fields.file.url}?w=800&fm=webp`, alt: a.fiel
 
 const columns = [
   { width: '10cqw', frames: props.framesLeft.slice(2, 4).map(toFrame), paddingBottom: '5cqh' },
-  { width: '10cqw', frames: props.framesLeft.slice(0, 2).map(toFrame) },
-  { width: '18cqw', frames: [{ html: props.title, aspect: 'aspect-[4.3/6]' }] },
-  { width: '10cqw', frames: props.framesRight.slice(0, 2).map(toFrame) },
+  { width: '9cqw', frames: props.framesLeft.slice(0, 2).map(toFrame) },
+  { width: '16cqw', frames: [{ html: props.title, aspect: 'aspect-[4.2/6]' }] },
+  { width: '9cqw', frames: props.framesRight.slice(0, 2).map(toFrame) },
   { width: '10cqw', frames: props.framesRight.slice(2, 4).map(toFrame) }
 ].filter(c => c.frames.length)
 </script>

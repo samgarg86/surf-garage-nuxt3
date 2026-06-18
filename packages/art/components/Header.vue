@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed z-10 left-0 top-0 w-full py-[1.6rem]" :class="{ scrolled, 'is-opaque': !isHome }">
+  <header class="fixed z-10 left-0 top-0 w-full py-[1rem]" :class="{ scrolled, 'is-opaque': !isHome }">
     <!-- mobile layout -->
     <div class="md:hidden relative text-center">
       <NuxtLink :to="localeRoute('/')" :class="[isHome ? 'text-black' : 'text-white', 'text-center']">
