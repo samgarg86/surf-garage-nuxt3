@@ -79,7 +79,6 @@
 <!--        </NuxtLink>-->
 <!--      </li>-->
     </ul>
-
   </div>
 </template>
 

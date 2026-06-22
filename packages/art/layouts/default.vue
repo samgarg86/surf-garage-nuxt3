@@ -1,11 +1,9 @@
 <template>
   <Hamburger
       :isOpen="isHamburgerOpen"
+      :show-icon="false"
       @hamburger:open="onHamburgerOpen"
       @hamburger:close="onHamburgerClose">
-    <template #hamburger-icon>
-      <HamburgerIcon class="left-1 top-2 mobile:block hidden" invert @click="onHamburgerOpen"/>
-    </template>
     <ArtHamburger @hamburger:click="onHamburgerClose"/>
   </Hamburger>
   <main id="page-wrap" :class="{ 'slide': isHamburgerOpen }" class="pt-6 md:pt-[19rem]">

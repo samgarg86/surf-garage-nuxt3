@@ -1,16 +1,15 @@
 <template>
-  <header class="fixed z-10 left-0 top-0 w-full py-[1rem]" :class="{ scrolled, 'is-opaque': !isHome }">
+  <header class="fixed z-10 left-0 top-0 w-full py-[0.5rem] md:py-1" :class="{ scrolled, 'is-opaque': !isHome }">
     <!-- mobile layout -->
-    <div class="md:hidden relative text-center">
-      <NuxtLink :to="localeRoute('/')" :class="[isHome ? 'text-black' : 'text-white', 'text-center']">
-        <div class="font-primary font-extrabold text-xl tracking-[0.1rem] mx-auto">SALTY LENS</div>
+    <div class="md:hidden grid grid-cols-3 items-center px-1">
+      <HamburgerIcon inline invert class="justify-self-start" @click="onHamburgerOpen"/>
+      <NuxtLink :to="localeRoute('/')" class="justify-self-center">
+        <img src="/logo.svg" alt="Salty Lens" class="logo-mobile h-auto mx-auto"/>
       </NuxtLink>
-      <div class="flex absolute right-1 top-0 items-center">
-        <button class="snipcart-checkout flex items-center ml-1">
-          <SvgoCart :class="['w-2 h-2', isHome ? 'text-black' : 'text-white']"/>
-          <div :class="['snipcart-items-count text-xs -translate-y-1', isHome ? 'text-black' : 'text-white']"/>
-        </button>
-      </div>
+      <button class="snipcart-checkout justify-self-end mobile-icon flex items-center">
+        <SvgoCart class="w-2 h-2"/>
+        <div class="snipcart-items-count text-xs -translate-y-1"/>
+      </button>
     </div>
 
     <!-- desktop layout -->
@@ -32,8 +31,9 @@
 <script setup>
 const localeRoute = useLocaleRoute()
 const route = useRoute()
-const langExpanded = ref(false)
 const scrolled = ref(false)
+
+const { onHamburgerOpen } = useHamburgerMenu()
 
 const homePath = computed(() => {
   const r = localeRoute('/')
@@ -64,11 +64,27 @@ header {
     .logo {
       width: 8rem;
     }
+    .logo-mobile {
+      width: 5rem;
+    }
   }
 }
 
 .logo {
   width: 17rem;
   transition: width 0.3s ease;
+}
+
+.logo-mobile {
+  width: 9rem;
+  transition: width 0.3s ease;
+}
+
+:deep(.hamburger-icon .menu-bar) {
+  background-color: #e5d6bf;
+}
+
+.mobile-icon {
+  color: #e5d6bf;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <button class="hamburger-icon fixed z-50" :class="{'color-invert': invert}" @click="$emit('click')">
+    <button class="hamburger-icon" :class="{ 'fixed z-50': !inline, 'color-invert': invert }" @click="$emit('click')">
       <span class="menu-bar mb-0.5"></span>
       <span class="menu-bar mb-0.5"></span>
       <span class="menu-bar"></span>
@@ -7,7 +7,8 @@
 </template>
 <script setup>
 defineProps({
-  invert: Boolean
+  invert: Boolean,
+  inline: Boolean
 })
 </script>
 <style lang="postcss">
