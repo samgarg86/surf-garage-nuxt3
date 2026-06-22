@@ -89,7 +89,7 @@ const desktopColumns = [
 
 <style lang="postcss">
 .image-frame__frame-wall {
-  @apply p-[0.4rem] bg-black;
+  @apply p-[0.4rem] bg-blackFrame;
   box-shadow: -4px 2px 6px rgba(0,0,0,.3);
 
   &::after {
@@ -99,7 +99,7 @@ const desktopColumns = [
 }
 
 .image-frame__text {
-  @apply w-full bg-blackFrame text-white font-primary flex items-center justify-center text-center px-1 md:px-2 py-1 md:py-2;
+  @apply w-full bg-black text-sand font-primary flex items-center justify-center text-center px-1 md:px-2 py-1 md:py-2;
   text-transform: uppercase;
   line-height: 1.15;
   font-size: clamp(2rem, 2.2vw, 3rem);

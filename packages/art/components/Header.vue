@@ -76,7 +76,7 @@ header {
 }
 
 .logo-mobile {
-  width: 9rem;
+  width: 11rem;
   transition: width 0.3s ease;
 }
 
