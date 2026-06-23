@@ -34,7 +34,7 @@
       </div>
 
       <!-- Living room view -->
-      <div ref="livingRoomContainer" class="relative max-w-[50rem] mx-auto aspect-[4/5]">
+      <div ref="livingRoomContainer" class="relative max-w-[50rem] aspect-[4/5] overflow-hidden">
         <img
           src="/Sofa-wall-surf-boards.jpg"
           alt="Living room"
@@ -65,7 +65,7 @@
 </template>
 
 <script setup>
-import html2canvas from 'html2canvas'
+import { toBlob } from 'html-to-image'
 
 const imageUrl = ref(null)
 const isDownloadingFrame = ref(false)
@@ -81,20 +81,21 @@ function onFileSelected (event) {
 }
 
 async function captureAndDownload (el, filename) {
-  const canvas = await html2canvas(el, { scale: 2 })
-  return new Promise((resolve) => {
-    canvas.toBlob((blob) => {
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = filename
-      document.body.appendChild(a)
-      a.click()
-      document.body.removeChild(a)
-      URL.revokeObjectURL(url)
-      resolve()
-    }, 'image/jpeg', 0.95)
+  const blob = await toBlob(el, {
+    pixelRatio: 2,
+    type: 'image/jpeg',
+    quality: 0.95,
+    width: el.offsetWidth,
+    height: el.offsetHeight
   })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = filename
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
 }
 
 async function downloadFrameView () {
@@ -121,7 +122,7 @@ onUnmounted(() => {
     @apply absolute inset-0 pointer-events-none;
     margin: 0.8rem;
     background-color: transparent;
-    box-shadow: inset -1px 1px 5px rgba(0,0,0,0.3);
+    box-shadow: inset -5px 0px 13px rgba(0, 0, 0, 0.3);
   }
 }
 
