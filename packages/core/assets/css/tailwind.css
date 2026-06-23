@@ -169,7 +169,7 @@ ul {
     @apply absolute inset-0;
     margin: 0.8rem;
     content: '';
-    /*box-shadow: inset -1px 1px 5px rgba(0,0,0,0.3);*/
+    box-shadow: inset -1px 1px 5px rgba(0,0,0,0.3);
   }
 
   img {
@@ -187,7 +187,7 @@ ul {
 .button {
   border: 2px solid white;
   color: theme('colors.white');
-  font-family: theme('fontFamily.avenir');
+  font-family: theme('fontFamily.avenir'), serif;
   text-transform: uppercase;
   font-size: 1.6rem;
   padding-top: 12px;

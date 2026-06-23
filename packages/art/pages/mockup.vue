@@ -14,7 +14,7 @@
     <template v-if="imageUrl">
       <!-- Frame view -->
       <div ref="frameContainer" class="bg-grey-30 px-2 py-6 md:px-5 md:py-10">
-        <div class="mockup-frame mockup-frame__frame max-w-[50rem] mx-auto">
+        <div class="mockup-frame max-w-[50rem] mx-auto p-[0.8rem] md:p-1 bg-blackFrame relative">
           <div class="bg-white p-[2rem]">
             <img
               :src="imageUrl"
@@ -22,7 +22,6 @@
               class="mx-auto w-full block"
             />
           </div>
-          <div class="mockup-frame__shadow"></div>
         </div>
       </div>
       <div class="flex justify-center mt-4 mb-10">
@@ -42,7 +41,7 @@
           class="w-full object-cover"
         />
         <div class="absolute bottom-[50%] left-1/2 -translate-x-1/2">
-          <div class="mockup-frame mockup-frame__mockup mx-auto">
+          <div class="mockup-living-room mx-auto p-[0.4rem] bg-blackFrame relative">
             <div class="bg-white p-[0.8rem] md:p-[1rem]">
               <img
                 :src="imageUrl"
@@ -50,7 +49,6 @@
                 class="mx-auto h-[40%] max-h-25 block"
               />
             </div>
-            <div class="mockup-frame__shadow"></div>
           </div>
         </div>
       </div>
@@ -83,7 +81,7 @@ function onFileSelected (event) {
 }
 
 async function captureAndDownload (el, filename) {
-  const canvas = await html2canvas(el, { scale: 3, useCORS: true, logging: false })
+  const canvas = await html2canvas(el, { scale: 2 })
   return new Promise((resolve) => {
     canvas.toBlob((blob) => {
       const url = URL.createObjectURL(blob)
@@ -116,28 +114,26 @@ onUnmounted(() => {
 
 <style lang="postcss">
 .mockup-frame {
-  @apply bg-[#27272E] relative;
-  padding: 0.8rem;
   box-shadow: -3px 3px 10px rgba(0,0,0,.3);
 
-  &__frame {
-    @apply md:p-[1rem];
-  }
-
-  &__mockup {
-    @apply p-[0.4rem] bg-black;
-    box-shadow: 4px 2px 6px rgba(0,0,0,.3);
-  }
-
-  &__shadow {
+  &::after {
+    content: '';
     @apply absolute inset-0 pointer-events-none;
     margin: 0.8rem;
-    //box-shadow: inset -1px 1px 5px rgba(0,0,0,0.3);
+    background-color: transparent;
+    box-shadow: inset -1px 1px 5px rgba(0,0,0,0.3);
   }
+}
 
-  &__mockup &__shadow {
+.mockup-living-room {
+  box-shadow: 4px 2px 6px rgba(0,0,0,.3);
+
+  &::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
     margin: 0.4rem;
-    //box-shadow: inset 2px 0 3px rgba(0,0,0,0.3);
+    background-color: transparent;
+    box-shadow: inset 2px 0 8px rgba(0,0,0,0.3);
   }
 }
 </style>
