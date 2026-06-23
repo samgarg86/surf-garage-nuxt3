@@ -24,18 +24,18 @@
       </div>
 
       <!-- Living room view -->
-      <div class="relative mb-10">
+      <div class="relative mb-10 max-w-[50rem] mx-auto aspect-[4/5]">
         <img
-          src="/living-room.jpg"
+          src="/Sofa-wall-surf-boards.jpg"
           alt="Living room"
-          class="w-full"
+          class="w-full object-cover"
         />
-        <div class="absolute top-4 md:top-10 left-1/2 -translate-x-1/2">
-          <div class="image-frame image-frame__living-room mx-auto">
+        <div class="absolute bottom-[50%] left-1/2 -translate-x-1/2 ">
+          <div class="image-frame image-frame__mockup mx-auto">
             <img
               :src="imageUrl"
               alt="Mockup living room view"
-              class="bg-white mx-auto max-h-[12rem] sm:max-h-20"
+              class="bg-white mx-auto h-[40%] max-h-25"
             />
           </div>
         </div>
@@ -47,7 +47,7 @@
 <script setup>
 const imageUrl = ref(null)
 
-function onFileSelected(event) {
+function onFileSelected (event) {
   const file = event.target.files[0]
   if (!file) return
   if (imageUrl.value) {
@@ -56,3 +56,19 @@ function onFileSelected(event) {
   imageUrl.value = URL.createObjectURL(file)
 }
 </script>
+
+<style lang="postcss">
+.image-frame__mockup {
+  @apply p-[0.4rem] bg-black;
+  box-shadow: 4px 2px 6px rgba(0,0,0,.3);
+
+  &::after {
+    @apply m-[0.4rem];
+    box-shadow: inset 2px 0 3px rgba(0,0,0,0.3);
+  }
+
+  img {
+    @apply border-[0.8rem] md:border-[1rem] border-white;
+  }
+}
+</style>
