@@ -38,6 +38,7 @@
     "@splidejs/vue-splide": "^0.6.12",
     "contentful": "^10.2.3",
     "eslint-plugin-nuxt": "^4.0.0",
+    "html2canvas": "^1.4.1",
     "jszip": "^3.10.1",
     "nuxt-svgo": "^5.3.0",
     "postcss-simple-vars": "^7.0.1",
