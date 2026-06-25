@@ -71,7 +71,7 @@
       </div>
 
       <div class="mb-6 max-w-[1080px]">
-        <div class="grid grid-cols-2">
+        <div class="grid md:grid-cols-2">
           <!-- Border view -->
           <div>
             <p class="text-xs uppercase tracking-widest text-center mb-2">Border</p>
