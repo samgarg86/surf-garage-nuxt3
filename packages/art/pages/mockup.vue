@@ -13,18 +13,18 @@
 
     <template v-if="imageUrl">
       <!-- Frame view -->
-      <div ref="frameContainer" class="bg-grey-30 px-2 py-6 md:px-5 md:py-10">
-        <div class="mockup-frame max-w-[50rem] mx-auto p-[0.8rem] md:p-1 bg-blackFrame relative">
+      <div class="bg-grey-30 p-4 max-w-[60rem] " ref="frameContainer" >
+        <div class="mockup-frame p-[0.8rem] md:p-1 bg-blackFrame relative">
           <div class="bg-white p-[2rem]">
             <img
               :src="imageUrl"
               alt="Mockup frame view"
-              class="mx-auto w-full block"
+              class="w-full block"
             />
           </div>
         </div>
       </div>
-      <div class="flex justify-center mt-4 mb-10">
+      <div class="mt-4 mb-10">
         <button
           type="button"
           class="px-2 py-1 bg-black text-white text-xs font-semibold uppercase tracking-widest disabled:opacity-50"
@@ -41,18 +41,18 @@
           class="w-full object-cover"
         />
         <div class="absolute bottom-[50%] left-1/2 -translate-x-1/2">
-          <div class="mockup-living-room mx-auto p-[0.4rem] bg-blackFrame relative">
+          <div class="mockup-living-room p-[0.4rem] bg-blackFrame relative">
             <div class="bg-white p-[0.8rem] md:p-[1rem]">
               <img
                 :src="imageUrl"
                 alt="Mockup living room view"
-                class="mx-auto h-[40%] max-h-25 block"
+                class="h-[40%] max-h-25 block"
               />
             </div>
           </div>
         </div>
       </div>
-      <div class="flex justify-center mt-4 mb-10">
+      <div class="mt-4 mb-10">
         <button
           type="button"
           class="px-2 py-1 bg-black text-white text-xs font-semibold uppercase tracking-widest disabled:opacity-50"
