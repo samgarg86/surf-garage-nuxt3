@@ -70,47 +70,57 @@
         </button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
-        <!-- Border view -->
-        <div>
-          <p class="text-xs uppercase tracking-widest text-center mb-2">Border</p>
-          <div class="bg-grey-30 p-4">
-            <div style="padding: 2%; background: white;">
-              <img :src="croppedBlobUrl" class="w-full block" alt="Border view" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Frame view -->
-        <div>
-          <p class="text-xs uppercase tracking-widest text-center mb-2">Frame</p>
-          <div ref="frameContainer" class="bg-grey-30 p-4">
-            <div class="mockup-frame p-[0.8rem] md:p-1 bg-blackFrame relative">
-              <div class="bg-white p-[2rem]">
-                <img :src="croppedBlobUrl" alt="Frame view" class="w-full block" />
+      <div class="mb-6 max-w-[1080px]">
+        <div class="grid grid-cols-2">
+          <!-- Border view -->
+          <div>
+            <p class="text-xs uppercase tracking-widest text-center mb-2">Border</p>
+            <div class="bg-grey-30 p-4">
+              <div style="padding: 2%; background: white;">
+                <img :src="croppedBlobUrl" class="w-full block" alt="Border view" />
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Living room view -->
-        <div>
-          <p class="text-xs uppercase tracking-widest text-center mb-2">Living Room</p>
-          <div ref="livingRoomContainer" class="relative aspect-[4/5] overflow-hidden">
-            <img
-              src="/Sofa-wall-surf-boards.jpg"
-              alt="Living room"
-              class="w-full object-cover"
-            />
-            <div class="absolute bottom-[50%] left-1/2 -translate-x-1/2 h-[40%]">
-              <div class="mockup-living-room p-[0.4rem] bg-blackFrame relative h-full">
-                <div class="bg-white p-[0.8rem] md:p-1 h-full">
-                  <img :src="croppedBlobUrl" alt="Living room view" class="h-full block" />
+          <!-- Frame view -->
+          <div>
+            <p class="text-xs uppercase tracking-widest text-center mb-2">Frame</p>
+            <div ref="frameContainer" class="bg-grey-30 p-4">
+              <div class="mockup-frame p-[0.8rem] md:p-1 bg-blackFrame relative">
+                <div class="bg-white p-[2rem]">
+                  <img :src="croppedBlobUrl" alt="Frame view" class="w-full block" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Living room view -->
+          <div>
+            <p class="text-xs uppercase tracking-widest text-center mb-2">Living Room</p>
+            <div ref="livingRoomContainer" class="relative aspect-[4/5] overflow-hidden">
+              <img
+                src="/Sofa-wall-surf-boards.jpg"
+                alt="Living room"
+                class="w-full object-cover"
+              />
+              <div
+                class="absolute left-1/2 -translate-x-1/2"
+                :class="{
+                'h-[40%] bottom-[50%]': aspectRatioId === '4:5',
+                'h-[30%] bottom-[50%]': aspectRatioId === '1:1',
+                'h-[25%] bottom-[55%]': aspectRatioId === '3:2'
+              }"
+              >
+                <div class="mockup-living-room p-[0.4rem] bg-blackFrame relative h-full">
+                  <div class="bg-white p-[0.8rem] md:p-1 h-full">
+                    <img :src="croppedBlobUrl" alt="Living room view" class="h-full block" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
 
       <div class="flex justify-center">
