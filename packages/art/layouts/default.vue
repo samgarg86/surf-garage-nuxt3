@@ -6,7 +6,7 @@
       @hamburger:close="onHamburgerClose">
     <ArtHamburger @hamburger:click="onHamburgerClose"/>
   </Hamburger>
-  <main id="page-wrap" :class="{ 'slide': isHamburgerOpen }" class="pt-6 md:pt-[19rem]">
+  <main id="page-wrap" :class="{ 'slide': isHamburgerOpen }" class="pt-6 md:pt-15">
     <Header/>
     <div class="mx-1 md:mx-2 mb-4">
       <slot/>
