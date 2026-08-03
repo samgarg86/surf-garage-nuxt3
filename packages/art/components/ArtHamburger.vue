@@ -37,7 +37,7 @@
               class="border-t"
               title-class="text-lightYellow font-primary"
               :title="$t('nav.locations')"
-              :is-open="false">
+              :is-open="true">
             <NuxtLink
                 v-for="(item, index) in siteNav?.surfArtLocations"
                 :key="index"
@@ -52,7 +52,7 @@
               class="border-t"
               title-class="text-lightYellow font-primary"
               :title="$t('nav.artists')"
-              :is-open="false">
+              :is-open="true">
             <NuxtLink
                 v-for="({name, slug}, index) in siteNav?.surfArtArtists"
                 :key="index"
