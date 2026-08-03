@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     "nuxt-gtag"
   ],
   site: {
-    url: "https://surfgarage.art",
+    url: "https://saltylens.art",
   },
   sitemap: {
     inferStaticPagesAsRoutes: false,
@@ -67,7 +67,7 @@ export default defineNuxtConfig({
     lazy: true,
     types: "composition",
     skipSettingLocaleOnNavigate: false,
-    baseUrl: "https://surfgarage.art",
+    baseUrl: "https://saltylens.art",
   },
   postcss: {
     parser: require("postcss-comment"),
