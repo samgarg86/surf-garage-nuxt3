@@ -1,8 +1,14 @@
 <template>
   <div class="min-h-screen bg-grey-30 p-2 md:p-4">
-    <h1 class="font-primary text-2xl mb-3 text-center uppercase tracking-widest">Instagram Photo Tool</h1>
+    <h1 class="font-primary text-2xl mb-3 text-center uppercase tracking-widest">Instagram Cropping Tool</h1>
 
-    <div class="flex justify-center mb-3">
+    <div
+      class="flex justify-center mb-3 border-2 border-dashed p-4"
+      :class="isDragging ? 'border-black' : 'border-grey-100'"
+      @dragover.prevent="isDragging = true"
+      @dragleave.self="isDragging = false"
+      @drop.prevent="onDrop"
+    >
       <label class="inline-block">
         <span class="inline-block py-1 px-2 bg-black text-white text-xs font-semibold uppercase tracking-widest cursor-pointer">
           Browse images
@@ -14,6 +20,10 @@
           class="hidden"
           @change="onFilesSelected"
         />
+      </label>
+      <label class="inline-flex items-center gap-1 ml-4 text-xs uppercase tracking-widest cursor-pointer">
+        <input v-model="addBorder" type="checkbox" class="cursor-pointer" />
+        White border
       </label>
     </div>
 
@@ -89,16 +99,24 @@ const TARGET_OUTPUT_WIDTH = 1440
 
 const images = ref([])
 const isProcessing = ref(false)
+const isDragging = ref(false)
+const addBorder = ref(true)
+const borderRatio = computed(() => addBorder.value ? BORDER_RATIO : 0)
 
 let nextId = 0
 let dragState = null
 let pinchState = null
 
-function getAspectValue(id) {
+function getAspectValue (id) {
   return aspectRatios.find(r => r.id === id).value
 }
 
-function onFilesSelected(event) {
+function onDrop (event) {
+  isDragging.value = false
+  onFilesSelected({ target: { files: event.dataTransfer.files, value: '' } })
+}
+
+function onFilesSelected (event) {
   const files = Array.from(event.target.files || [])
   for (const file of files) {
     if (!file.type.startsWith('image/')) continue
@@ -122,12 +140,12 @@ function onFilesSelected(event) {
   event.target.value = ''
 }
 
-function removeImage(index) {
+function removeImage (index) {
   const [removed] = images.value.splice(index, 1)
   if (removed) URL.revokeObjectURL(removed.url)
 }
 
-function previewDimensions(img) {
+function previewDimensions (img) {
   const aspect = getAspectValue(img.aspectRatioId)
   const maxHeight = 480
   let width = 420
@@ -139,7 +157,7 @@ function previewDimensions(img) {
   return { width, height }
 }
 
-function cropPreviewStyle(img) {
+function cropPreviewStyle (img) {
   const { width, height } = previewDimensions(img)
   return {
     width: `${width}px`,
@@ -148,16 +166,15 @@ function cropPreviewStyle(img) {
   }
 }
 
-function cropImageStyle(img) {
+function cropImageStyle (img) {
   const { width, height } = previewDimensions(img)
-  const borderPx = Math.round(width * BORDER_RATIO)
+  const borderPx = Math.round(width * borderRatio.value)
   const innerW = width - 2 * borderPx
   const innerH = height - 2 * borderPx
   const naturalAspect = img.naturalWidth / img.naturalHeight
   const aspect = getAspectValue(img.aspectRatioId)
   let coverW, coverH
-  if (naturalAspect > aspect) { coverH = innerH; coverW = coverH * naturalAspect }
-  else { coverW = innerW; coverH = coverW / naturalAspect }
+  if (naturalAspect > aspect) { coverH = innerH; coverW = coverH * naturalAspect } else { coverW = innerW; coverH = coverW / naturalAspect }
   return {
     position: 'absolute',
     top: `${borderPx}px`,
@@ -171,13 +188,13 @@ function cropImageStyle(img) {
   }
 }
 
-function canDrag(img) {
+function canDrag (img) {
   if (img.zoom > 1.001) return true
   const aspect = getAspectValue(img.aspectRatioId)
   return Math.abs(img.naturalWidth / img.naturalHeight - aspect) > 0.001
 }
 
-function setAspectRatio(index, id) {
+function setAspectRatio (index, id) {
   const img = images.value[index]
   img.aspectRatioId = id
   img.zoom = 1
@@ -185,7 +202,7 @@ function setAspectRatio(index, id) {
   img.offsetY = 0.5
 }
 
-function onDragStart(event, index) {
+function onDragStart (event, index) {
   const img = images.value[index]
   if (event.touches?.length === 2) {
     const [t0, t1] = event.touches
@@ -199,7 +216,7 @@ function onDragStart(event, index) {
   if (!canDrag(img)) return
   const point = event.touches ? event.touches[0] : event
   const rect = event.currentTarget.getBoundingClientRect()
-  const borderPx = Math.round(rect.width * BORDER_RATIO)
+  const borderPx = Math.round(rect.width * borderRatio.value)
   dragState = {
     index,
     startX: point.clientX,
@@ -215,7 +232,7 @@ function onDragStart(event, index) {
   window.addEventListener('touchend', onDragEnd)
 }
 
-function onDragMove(event) {
+function onDragMove (event) {
   if (event.touches?.length === 2 && pinchState) {
     if (event.cancelable) event.preventDefault()
     const [t0, t1] = event.touches
@@ -232,8 +249,7 @@ function onDragMove(event) {
   const naturalAspect = img.naturalWidth / img.naturalHeight
 
   let coverW, coverH
-  if (naturalAspect > aspect) { coverH = dragState.containerHeight; coverW = coverH * naturalAspect }
-  else { coverW = dragState.containerWidth; coverH = coverW / naturalAspect }
+  if (naturalAspect > aspect) { coverH = dragState.containerHeight; coverW = coverH * naturalAspect } else { coverW = dragState.containerWidth; coverH = coverW / naturalAspect }
   const displayedWidth = coverW * img.zoom
   const displayedHeight = coverH * img.zoom
 
@@ -251,7 +267,7 @@ function onDragMove(event) {
   }
 }
 
-function onDragEnd() {
+function onDragEnd () {
   dragState = null
   pinchState = null
   window.removeEventListener('mousemove', onDragMove)
@@ -260,16 +276,16 @@ function onDragEnd() {
   window.removeEventListener('touchend', onDragEnd)
 }
 
-function onWheel(event, index) {
+function onWheel (event, index) {
   const img = images.value[index]
   img.zoom = clamp(img.zoom - event.deltaY * 0.001, 1, 4)
 }
 
-function clamp(value, min, max) {
+function clamp (value, min, max) {
   return Math.max(min, Math.min(max, value))
 }
 
-function loadImage(src) {
+function loadImage (src) {
   return new Promise((resolve, reject) => {
     const el = new Image()
     el.onload = () => resolve(el)
@@ -278,7 +294,7 @@ function loadImage(src) {
   })
 }
 
-async function renderImage(img) {
+async function renderImage (img) {
   const source = await loadImage(img.url)
 
   // Bake EXIF orientation into a canvas. drawImage() always applies the EXIF
@@ -308,10 +324,10 @@ async function renderImage(img) {
   const srcH = Math.round(srcCropH)
 
   // Scale to Instagram's 1080px-wide display target. Don't upscale.
-  const maxCropW = Math.floor(TARGET_OUTPUT_WIDTH / (1 + 2 * BORDER_RATIO))
+  const maxCropW = Math.floor(TARGET_OUTPUT_WIDTH / (1 + 2 * borderRatio.value))
   const outCropW = Math.min(srcW, maxCropW)
   const outCropH = Math.round(outCropW / aspect)
-  const border = Math.round(outCropW * BORDER_RATIO)
+  const border = Math.round(outCropW * borderRatio.value)
   const finalW = outCropW + border * 2
   const finalH = outCropH + border * 2
 
@@ -339,11 +355,11 @@ async function renderImage(img) {
   })
 }
 
-function sanitizeName(name) {
+function sanitizeName (name) {
   return name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9._-]/g, '_')
 }
 
-async function saveFile(blob, suggestedName) {
+async function saveFile (blob, suggestedName) {
   if (window.showSaveFilePicker) {
     const ext = suggestedName.split('.').pop().toLowerCase()
     const typeMap = {
@@ -374,7 +390,7 @@ async function saveFile(blob, suggestedName) {
   URL.revokeObjectURL(url)
 }
 
-function fileNameFor(img, suffixIndex = 0) {
+function fileNameFor (img, suffixIndex = 0) {
   const base = sanitizeName(img.file.name)
   const suffix = img.aspectRatioId.replace(':', 'x')
   return suffixIndex === 0
@@ -382,12 +398,12 @@ function fileNameFor(img, suffixIndex = 0) {
     : `${base}-${suffix}-${suffixIndex}.jpg`
 }
 
-function clearImages() {
+function clearImages () {
   for (const img of images.value) URL.revokeObjectURL(img.url)
   images.value = []
 }
 
-async function downloadZip() {
+async function downloadZip () {
   isProcessing.value = true
   await nextTick()
   try {
