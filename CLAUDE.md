@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Yarn workspaces monorepo containing two Nuxt 3 applications for Surf Garage:
 - **boardStorage** (`packages/boardStorage`): Board storage/rental service site (surfgarage.es) - runs on port 3000
-- **art** (`packages/art`): Art gallery/photography site (surfgarage.art) - runs on port 3001
+- **saltyLens** (`packages/saltyLens`): Art gallery/photography site (surfgarage.art) - runs on port 3001
 - **core** (`packages/core`): Shared components, composables, and configuration
 
 Both apps extend the core package and share common functionality while maintaining separate domains and content.
@@ -21,16 +21,16 @@ yarn install
 yarn dev
 
 # Development (individual apps)
-yarn dev:board    # Board storage app on port 3000
-yarn dev:art      # Art gallery app on port 3001
+yarn dev:board      # Board storage app on port 3000
+yarn dev:saltyLens  # Art gallery app on port 3001
 
 # Build
-yarn build:board  # Build board storage app
-yarn build:art    # Build art gallery app
+yarn build:board      # Build board storage app
+yarn build:saltyLens  # Build art gallery app
 
 # Linting (within individual packages)
 cd packages/boardStorage && yarn lint
-cd packages/art && yarn lint
+cd packages/saltyLens && yarn lint
 
 # Deploy to production server
 yarn deploy       # Runs deployToOcean.sh script
@@ -57,7 +57,7 @@ The monorepo uses Yarn workspaces with three packages:
    - Custom composables: `useImages`, `useBlogSeo`
    - Pages: index, boards, art, blog posts (`[...blogSlug].vue`)
 
-3. **packages/art**: Art gallery and photography
+3. **packages/saltyLens**: Art gallery and photography
    - Extends `../core`
    - i18n with English as default (`es`, `en`)
    - Contentful CMS integration for art/photo content
@@ -118,7 +118,7 @@ Both apps use PostCSS with:
 Production uses PM2 with cluster mode (configured in `ecosystem.config.cjs`):
 - Both apps run in cluster mode with max instances
 - Board storage serves from `packages/boardStorage/.output/server/index.mjs`
-- Art gallery serves from `packages/art/.output/server/index.mjs`
+- Art gallery serves from `packages/saltyLens/.output/server/index.mjs`
 - Deploy script (`deployToOcean.sh`) SSH's to production server, pulls latest code, installs dependencies, builds both apps, and restarts PM2
 
 ## Environment Variables

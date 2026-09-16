@@ -12,7 +12,7 @@ module.exports = {
       port: '3001',
       exec_mode: 'cluster',
       instances: 'max',
-      script: './packages/art/.output/server/index.mjs'
+      script: './packages/saltyLens/.output/server/index.mjs'
     }
   ]
 }
