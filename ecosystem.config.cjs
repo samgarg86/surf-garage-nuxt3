@@ -8,7 +8,7 @@ module.exports = {
       script: './packages/boardStorage/.output/server/index.mjs'
     },
     {
-      name: 'surf-art',
+      name: 'salty-lens',
       port: '3001',
       exec_mode: 'cluster',
       instances: 'max',

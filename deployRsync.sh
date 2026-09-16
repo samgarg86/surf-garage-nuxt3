@@ -1,4 +1,5 @@
 yarn && yarn build:salty && yarn build:board
+rsync -avz ecosystem.config.cjs root@174.138.103.192:~/surf-garage-nuxt3/ecosystem.config.cjs
 rsync -avz packages/saltyLens/.output/ root@174.138.103.192:~/surf-garage-nuxt3/packages/saltyLens/.output
 rsync -avz packages/boardStorage/.output/ root@174.138.103.192:~/surf-garage-nuxt3/packages/boardStorage/.output
 ssh root@174.138.103.192 <<EOF
