@@ -1,5 +1,5 @@
 <template>
-    <slot name="hamburger-icon">
+    <slot v-if="showIcon" name="hamburger-icon">
       <HamburgerIcon class="left-1 top-2 md:left-2" @click="open"/>
     </slot>
     <div class="hamburger-menu bg-black" :class="{slide: isOpen}">
@@ -20,7 +20,8 @@
 <script setup lang="ts">
 const emit = defineEmits(['hamburger:open', 'hamburger:close'])
 defineProps({
-  isOpen: Boolean
+  isOpen: Boolean,
+  showIcon: { type: Boolean, default: true },
 })
 
 // const isHamburgerOpen = ref(false)

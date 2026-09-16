@@ -1,70 +1,90 @@
 <template>
-  <header class="fixed z-10 left-0 top-0 w-full text-center py-[1.6rem] bg-black">
-    <NuxtLink :to="localeRoute('/')" class="text-white text-center">
-<svgo-art-logo :fontControlled="false" class="mx-auto w-15 md:w-20"/>
-<!--      <div class="font-primary font-extrabold text-xl tracking-[0.1rem]">Surf Garage</div>-->
-<!--      <div class="text-sm font-secondary font-medium uppercase tracking-[0.55rem]">Art Collective</div>-->
-    </NuxtLink>
-    <div class="flex absolute right-1 top-2 md:top-1 md:right-2 md:items-start">
-      <LazyLanguageSwitcher
-          :showLanguageName="false"
-          @click="toggleLangExpanded"
-          theme="dark"
-          mode="dropdown"
-          class="header-lang relative overflow-hidden w-6 h-4.5 text-1.8 mobile:hidden"
-          :class="{ 'isExpanded': langExpanded }"/>
-      <button class="snipcart-checkout flex items-center ml-1 md:mt-1">
-        <SvgoCart class="w-2 h-2 text-white"/>
-        <div class="snipcart-items-count text-xs text-white -translate-y-1"/>
+  <header class="fixed z-10 left-0 top-0 w-full py-[0.5rem] md:py-1" :class="{ scrolled, 'is-opaque': !isHome }">
+    <!-- mobile layout -->
+    <div class="md:hidden grid grid-cols-3 items-center px-1">
+      <HamburgerIcon inline invert class="justify-self-start" @click="onHamburgerOpen"/>
+      <NuxtLink :to="localeRoute('/')" class="justify-self-center">
+        <img src="/logo.svg" alt="Salty Lens" class="logo-mobile h-auto mx-auto"/>
+      </NuxtLink>
+      <button class="snipcart-checkout justify-self-end mobile-icon flex items-center">
+        <SvgoCart class="w-2 h-2"/>
+        <div class="snipcart-items-count text-xs -translate-y-1"/>
       </button>
+    </div>
+
+    <!-- desktop layout -->
+    <div class="hidden md:grid grid-cols-[1fr_1fr_1fr] items-center px-2 relative">
+      <ArtDesktopNav side="left" class="justify-self-end"/>
+      <NuxtLink :to="localeRoute('/')" class="justify-self-center">
+        <img src="/logo.svg" alt="Salty Lens" class="logo h-auto"/>
+      </NuxtLink>
+      <ArtDesktopNav side="right" class="justify-self-start"/>
+      <div class="absolute right-1 top-2 md:top-1 md:right-2 md:items-start">
+        <button class="snipcart-checkout flex items-center">
+          <SvgoCart class="w-2 h-2 text-white"/>
+          <div class="snipcart-items-count text-xs text-white -translate-y-1"/>
+        </button>
+      </div>
     </div>
   </header>
 </template>
 <script setup>
 const localeRoute = useLocaleRoute()
-const langExpanded = ref(false)
+const route = useRoute()
+const scrolled = ref(false)
 
-const toggleLangExpanded = () => {
-  langExpanded.value = !langExpanded.value
-}
+const { onHamburgerOpen } = useHamburgerMenu()
+
+const homePath = computed(() => {
+  const r = localeRoute('/')
+  const p = typeof r === 'string' ? r : r?.path
+  return p || '/'
+})
+const isHome = computed(() => route.path === homePath.value)
+
+const onScroll = () => { scrolled.value = window.scrollY > 60 }
+onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
-<style>
-.header-lang {
-  &.isExpanded {
-    @apply h-9 rounded-lg;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);
+<style scoped lang="postcss">
+header {
+  transition: background-color 0.3s ease, padding 0.3s ease;
 
-    .language-switcher {
-      @apply bg-white;
-
-      a {
-        @apply text-black;
-
-        &:hover {
-          @apply underline;
-        }
-      }
-    }
-
-    .language-switcher__chevron {
-      @apply text-black -rotate-180;
-    }
+  &.scrolled {
+    background-color: rgba(9, 9, 14, 0.8);
+    backdrop-filter: blur(8px);
+  }
+  &.is-opaque {
+    background-color: theme('colors.black');
   }
 
-  .language-switcher {
-    @apply absolute w-full flex-col-reverse gap-0.5;
-
-    a {
-      @apply px-1.5 py-1 leading-tight;
+  &.scrolled,&.is-opaque {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    .logo {
+      width: 8rem;
+    }
+    .logo-mobile {
+      width: 5rem;
     }
   }
+}
 
-  .language-switcher__chevron {
-    @apply transition-all;
-  }
+.logo {
+  width: 17rem;
+  transition: width 0.3s ease;
+}
 
-  a.router-link-active {
-    @apply order-1 no-underline;
-  }
+.logo-mobile {
+  width: 11rem;
+  transition: width 0.3s ease;
+}
+
+:deep(.hamburger-icon .menu-bar) {
+  background-color: #e5d6bf;
+}
+
+.mobile-icon {
+  color: #e5d6bf;
 }
 </style>

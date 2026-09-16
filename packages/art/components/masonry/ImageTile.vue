@@ -7,7 +7,7 @@
       <div class="image-frame">
         <Image
             :src="`${url}?w=600&fm=webp`"
-            :alt="`Surf Garage Art Co - ${title}`"
+            :alt="`Salty Lens - ${title}`"
             class="w-full bg-white border-[1.5rem] border-white"
             :fetch-priority="fetchPriority"
             :loading="loading"

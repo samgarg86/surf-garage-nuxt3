@@ -20,7 +20,7 @@ export const useImages = () => {
     return {
        mapImage,
        mapImages,
-       fetchImagesByTags: async (tags, limit = 12, skip = 0, order = 'updated') => {
+       fetchImagesByTags: async (tags, limit = 12, skip = 0, order = 'created') => {
             const assets = await getAssets({
                 uniqueId: `${tags || 'all'}-${limit}-${skip}`,
                 ...(tags ? {'metadata.tags.sys.id[in]': tags} : {'metadata.tags.sys.id[nin]': 'settingNotArtwork,posters'}),

@@ -43,7 +43,3 @@ const splideOptions = {
   height: props.fillHeight ? '400px' : 'auto'
 }
 </script>
-
-<style scoped>
-/* Additional Gallery-specific styles if needed */
-</style>

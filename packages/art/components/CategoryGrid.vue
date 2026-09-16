@@ -31,9 +31,9 @@ const mappedCategories = computed(() => props.categories.map(mapCategory))
       rgba(0, 0, 0, 0.0),
       rgba(0, 0, 0, 0.0),
       rgba(0, 0, 0, 0.0),
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15)
   ),
   var(--cat-bg);
   background-position: center;
