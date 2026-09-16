@@ -6,12 +6,12 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "concurrently  \"yarn dev:board\" \"yarn dev:art\"",
-    "dev:art": "yarn workspace surf-garage-art dev",
+    "dev": "concurrently  \"yarn dev:board\" \"yarn dev:salty\"",
+    "dev:salty": "yarn workspace salty-lens dev",
     "dev:board": "yarn workspace surf-garage dev",
-    "build:art": "yarn workspace surf-garage-art build",
+    "build:salty": "yarn workspace salty-lens build",
     "build:board": "yarn workspace surf-garage build",
-    "deploy:art": "sh deployRsyncArt.sh",
+    "deploy:salty": "sh deployRsyncArt.sh",
     "deploy:board": "sh deployRsyncBoard.sh",
     "deploy": "sh deployRsync.sh",
     "restart": "sh restart.sh"
