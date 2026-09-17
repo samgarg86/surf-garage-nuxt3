@@ -9,22 +9,24 @@ module.exports = {
       lg: '1440px',
       xl: '1920px'
     },
-    colors: {
-      amberYellow: '#ba8723',
-      lightYellow: '#E9C465',
-      waveBlue: '#1A304E',
-      boardRed: '#6B1F15',
-      white: '#fff',
-      grey: {
-        10: '#f1f1f1',
-        20: '#d7d7d7',
-        30: '#eee',
-        100: '#adadad'
-      },
-      blackSoft: '#444',
-      black: '#09090e',
-      pink: '#fff0f5',
-      yellow: '#fffacd'
+    extend: {
+      colors: {
+        amberYellow: '#ba8723',
+        lightYellow: '#E9C465',
+        waveBlue: '#1A304E',
+        boardRed: '#6B1F15',
+        white: '#fff',
+        grey: {
+          10: '#f1f1f1',
+          20: '#d7d7d7',
+          30: '#eee',
+          100: '#adadad'
+        },
+        blackSoft: '#444',
+        black: '#09090e',
+        pink: '#fff0f5',
+        yellow: '#fffacd'
+      }
     },
     fontFamily: {
       metalsmith: ['Metalsmith', 'sans-serif'],

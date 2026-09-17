@@ -14,29 +14,11 @@
     <Footer/>
   </main>
 
-  <div hidden
-       id="snipcart"
-       data-api-key="YWZhYTMyNDUtZWY4Ny00ZDg0LTk1ZjYtMzMzZDFjN2NjNzYxNjM4MjE1NzE4NjM4MjYyMjk0"
-       data-config-modal-style="side">
-  </div>
+  <CartDrawer />
 </template>
 
 <script lang="ts" setup>
 const { isHamburgerOpen, onHamburgerOpen, onHamburgerClose } = useHamburgerMenu()
-
-useHead({
-  link: [
-    { rel: 'preconnect', href: 'https://app.snipcart.com' },
-    { rel: 'preconnect', href: 'https://cdn.snipcart.com' },
-    {
-      rel: 'stylesheet',
-      href: 'https://cdn.snipcart.com/themes/v3.7.0/default/snipcart.css'
-    }
-  ],
-  script: [
-    { src: 'https://cdn.snipcart.com/themes/v3.7.0/default/snipcart.js', async: true }
-  ]
-})
 
 useSeoMeta({
   title: 'Salty Lens - That feeling from your last surf trip - framed',
@@ -47,7 +29,3 @@ useSeoMeta({
   keywords: 'surf art, surf photography, surf illustrations, art, photography, illustrations, photo prints, surfing, art gallery'
 })
 </script>
-
-<style lang="postcss">
-@import "~/assets/css/snipcart.css";
-</style>
