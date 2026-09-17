@@ -154,36 +154,6 @@ ul {
   list-style: none;
 }
 
-.add-to-cart {
-  @apply border-none px-5 py-1 w-full md:w-30 bg-black text-white font-primary font-bold uppercase text-1.8 disabled:opacity-25;
-}
-
-.image-frame {
-  @apply bg-blackFrame;
-  padding: 0.8rem;
-  box-sizing: border-box;
-  box-shadow: -3px 3px 10px rgba(0,0,0,.3);
-  position: relative;
-
-  &::after {
-    @apply absolute inset-0;
-    margin: 0.8rem;
-    content: '';
-    box-shadow: inset -1px 1px 5px rgba(0,0,0,0.3);
-  }
-
-  img {
-    box-sizing: border-box;
-  }
-}
-
-.image-frame__pdp {
-  @apply md:p-1;
-  &::after {
-    @apply md:m-1;
-  }
-}
-
 .button {
   border: 2px solid white;
   color: theme('colors.white');

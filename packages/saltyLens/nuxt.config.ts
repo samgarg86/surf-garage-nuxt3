@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   alias:{
     '@art': __dirname
   },
+  css: ['~/assets/css/style.css'],
   modules: [
     "@nuxtjs/i18n",
     "@nuxtjs/tailwindcss",
