@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     inferStaticPagesAsRoutes: false,
   },
   runtimeConfig: {
-    stripeSecretKey: process.env.stripeTestSecretKey,
+    stripeSecretKey: process.env.stripeSecretKey,
     public: {
       siteUrl: process.env.SITE_URL || 'https://saltylens.art',
       contentful: {
