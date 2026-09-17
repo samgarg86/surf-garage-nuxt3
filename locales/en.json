@@ -69,7 +69,7 @@
       "empty": "Your cart is empty",
       "remove": "Remove",
       "total": "Total",
-      "checkout": "Checkout",
+      "checkout": "Go to Checkout",
       "processing": "Processing...",
       "freeShippingHint": "Add €{amount} more for free shipping",
       "freeShippingApplied": "Free shipping applied",
