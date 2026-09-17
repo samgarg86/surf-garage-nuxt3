@@ -63,7 +63,22 @@
       "title": "All Artwork",
       "description": "Explore all our artwork"
     },
-    "viewAll": "View All"
+    "viewAll": "View All",
+    "cart": {
+      "title": "Cart",
+      "empty": "Your cart is empty",
+      "remove": "Remove",
+      "total": "Total",
+      "checkout": "Checkout",
+      "processing": "Processing...",
+      "freeShippingHint": "Add €{amount} more for free shipping",
+      "freeShippingApplied": "Free shipping applied",
+      "successTitle": "Order Placed",
+      "successDesc": "Thank you! Your order has been confirmed and will be printed and shipped within 5-7 days.",
+      "cancelTitle": "Order Cancelled",
+      "cancelDesc": "Your order was not completed. Your cart is still saved.",
+      "backToShop": "Back to Shop"
+    }
   },
   "boards": {
     "typeLabel": "Type",

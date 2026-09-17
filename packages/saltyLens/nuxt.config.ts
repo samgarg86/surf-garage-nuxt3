@@ -17,7 +17,9 @@ export default defineNuxtConfig({
     inferStaticPagesAsRoutes: false,
   },
   runtimeConfig: {
+    stripeSecretKey: process.env.stripeTestSecretKey,
     public: {
+      siteUrl: process.env.SITE_URL || 'https://saltylens.art',
       contentful: {
         space: process.env.contentfulArtSpace,
         accessToken: process.env.contentfulArtAccessToken,
@@ -41,7 +43,8 @@ export default defineNuxtConfig({
       },
       infiniteScrolling: {
         pageSize: 12
-      }
+      },
+      freeShippingThreshold: 60
     },
   },
   i18n: {
