@@ -63,7 +63,22 @@
       "title": "Todas las Obras de Arte ",
       "description": "Explora toda nuestra obra de arte"
     },
-    "viewAll": "Ver Todo"
+    "viewAll": "Ver Todo",
+    "cart": {
+      "title": "Cesta",
+      "empty": "Tu cesta está vacía",
+      "remove": "Eliminar",
+      "total": "Total",
+      "checkout": "Pagar",
+      "processing": "Procesando...",
+      "freeShippingHint": "Añade €{amount} más para envío gratuito",
+      "freeShippingApplied": "Envío gratuito aplicado",
+      "successTitle": "Pedido realizado",
+      "successDesc": "¡Gracias! Tu pedido ha sido confirmado y se imprimirá y enviará en un plazo de 5-7 días.",
+      "cancelTitle": "Pedido cancelado",
+      "cancelDesc": "Tu pedido no se completó. Tu cesta sigue guardada.",
+      "backToShop": "Volver a la tienda"
+    }
   },
   "boards": {
     "typeLabel": "Tipo",

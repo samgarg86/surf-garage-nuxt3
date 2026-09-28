@@ -26,13 +26,10 @@
       <SizeSelector v-model="size" class="mb-1"/>
       <AddToCart
         :id="`${id}`"
-        :price="basePrice"
+        :price="pricing[size]"
         :title="title"
-        :decription="size"
         :image="`${url}?w=600`"
-        :sizes="priceOptions(priceEntries)"
-        :selectedSize="size"
-        :url="validateUrl(id, host, 'photos')"
+        :size="size"
         :ecomDisabled="ecomDisabled"
       />
 
@@ -64,16 +61,13 @@
 const { public: { priceTable } } = useRuntimeConfig()
 const { fetchImageById } = useImages()
 const localePath = useLocalePath()
-const host = useHost()
 const { gtag } = useGtag()
 const { query, params: { id } } = useRoute()
 
 const { url, title, description, tags } = await fetchImageById(id)
 const ecomDisabled = computed(() => tags?.settings.includes('settingEcomDisabled'))
 const pricing = computed(() => tags?.settings.includes('settingPosterPrice') ? priceTable.posters : priceTable.photos)
-const priceEntries = Object.entries(pricing.value)
 const size = ref('30x40')
-const basePrice = computed(() => priceEntries[0][1])
 const { t } = useI18n()
 
 if (query.size) size.value = query.size

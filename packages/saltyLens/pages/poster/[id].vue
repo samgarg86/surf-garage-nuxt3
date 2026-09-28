@@ -37,13 +37,10 @@
       <SizeSelector v-model="size" class="mb-1" />
       <AddToCart
         :id="`${id}`"
-        :price="basePrice"
+        :price="pricing[size]"
         :title="title"
-        :decription="size"
         :image="`${images[0].url}?w=600`"
-        :sizes="priceOptions(priceEntries)"
-        :selectedSize="size"
-        :url="validateUrl(id, host, 'posters')"
+        :size="size"
         :ecomDisabled="ecomDisabled"
       />
       <Accordion class="mt-3 md:mt-5">
@@ -99,7 +96,6 @@ const {
 } = useRoute()
 const { getPoster } = useContentfulPosters()
 const localePath = useLocalePath()
-const host = useHost()
 const { gtag } = useGtag()
 
 const { title, description, images, tags, specialPrice } = await getPoster(id)
@@ -110,9 +106,7 @@ const {
   }
 } = useRuntimeConfig()
 const pricing = computed(() => specialPrice || posters)
-const priceEntries = computed(() => Object.entries(pricing.value))
 const size = ref('30x40')
-const basePrice = computed(() => priceEntries.value[0][1])
 const ecomDisabled = computed(() =>
   tags?.settings.includes('settingEcomDisabled')
 )

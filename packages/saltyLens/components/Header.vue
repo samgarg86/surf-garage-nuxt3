@@ -6,9 +6,9 @@
       <NuxtLink :to="localeRoute('/')" class="justify-self-center">
         <img src="/logo.svg" alt="Salty Lens" class="logo-mobile h-auto mx-auto"/>
       </NuxtLink>
-      <button class="snipcart-checkout justify-self-end mobile-icon flex items-center">
+      <button class="justify-self-end mobile-icon flex items-center" @click="isOpen = true">
         <SvgoCart class="w-2 h-2"/>
-        <div class="snipcart-items-count text-xs -translate-y-1"/>
+        <span v-if="itemCount > 0" class="text-xs -translate-y-1">{{ itemCount }}</span>
       </button>
     </div>
 
@@ -20,15 +20,16 @@
       </NuxtLink>
       <ArtDesktopNav side="right" class="justify-self-start"/>
       <div class="absolute right-1 top-2 md:top-1 md:right-2 md:items-start">
-        <button class="snipcart-checkout flex items-center">
+        <button class="flex items-center" @click="isOpen = true">
           <SvgoCart class="w-2 h-2 text-white"/>
-          <div class="snipcart-items-count text-xs text-white -translate-y-1"/>
+          <span v-if="itemCount > 0" class="text-xs text-white -translate-y-1">{{ itemCount }}</span>
         </button>
       </div>
     </div>
   </header>
 </template>
 <script setup>
+const { isOpen, itemCount } = useCart()
 const localeRoute = useLocaleRoute()
 const route = useRoute()
 const scrolled = ref(false)

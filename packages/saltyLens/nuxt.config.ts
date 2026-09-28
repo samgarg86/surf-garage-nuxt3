@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   alias:{
     '@art': __dirname
   },
+  css: ['~/assets/css/style.css'],
   modules: [
     "@nuxtjs/i18n",
     "@nuxtjs/tailwindcss",
@@ -17,7 +18,9 @@ export default defineNuxtConfig({
     inferStaticPagesAsRoutes: false,
   },
   runtimeConfig: {
+    stripeSecretKey: process.env.stripeSecretKey,
     public: {
+      siteUrl: process.env.SITE_URL || 'https://saltylens.art',
       contentful: {
         space: process.env.contentfulArtSpace,
         accessToken: process.env.contentfulArtAccessToken,
@@ -41,7 +44,8 @@ export default defineNuxtConfig({
       },
       infiniteScrolling: {
         pageSize: 12
-      }
+      },
+      freeShippingThreshold: 60
     },
   },
   i18n: {
